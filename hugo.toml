@@ -1,0 +1,47 @@
+baseURL = "https://gobyld.com/"
+defaultContentLanguage = "en"
+title = "BYLD — Modular Construction Systems and Site Development"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[languages.en]
+  label = "English"
+  locale = "en-US"
+
+[params]
+  description = "Design and manufacture of modular building systems, supported by site planning, logistics, and installation strategies."
+  email = "office@gobyld.com"
+  address = "Calle Conde de Aranda 1, 28014 Madrid, Spain"
+
+  [params.social]
+    instagram = "https://www.instagram.com/gobyld"
+    linkedin = "https://www.linkedin.com/company/gobyld"
+
+[menu]
+  [[menu.main]]
+    name = "Approach"
+    url = "/#approach"
+    weight = 10
+  [[menu.main]]
+    name = "Services"
+    url = "/#services"
+    weight = 20
+  [[menu.main]]
+    name = "Systems"
+    url = "/#systems"
+    weight = 30
+  [[menu.main]]
+    name = "Compare"
+    url = "/#compare"
+    weight = 40
+  [[menu.main]]
+    name = "Press"
+    url = "/#press"
+    weight = 50
+  [[menu.main]]
+    name = "Contact"
+    url = "/#contact"
+    weight = 60
+
+[markup.goldmark.renderer]
+  unsafe = true

@@ -1,0 +1,30 @@
+<footer class="site-footer" id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="{{ "img/byld-logo-white.svg" | relURL }}" alt="BYLD" class="footer-logo">
+      <p>{{ site.Params.description }}</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <p>{{ site.Params.address }}</p>
+      <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow</h4>
+      {{ with site.Params.social.instagram }}<p><a href="{{ . }}" rel="noopener" target="_blank">Instagram</a></p>{{ end }}
+      {{ with site.Params.social.linkedin }}<p><a href="{{ . }}" rel="noopener" target="_blank">LinkedIn</a></p>{{ end }}
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      {{ range site.Menus.main }}<p><a href="{{ .URL | relURL }}">{{ .Name }}</a></p>{{ end }}
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {{ now.Year }} BYLD. All rights reserved.</span>
+    <a href="#top" class="back-top">Back to top ↑</a>
+  </div>
+</footer>

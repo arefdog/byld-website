@@ -1,0 +1,14 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ $title := .Title }}
+  {{ if .IsHome }}{{ $title = site.Title }}{{ else }}{{ $title = printf "%s — BYLD" .Title }}{{ end }}
+  <title>{{ $title }}</title>
+  <meta name="description" content="{{ .Description | default site.Params.description }}">
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ .Description | default site.Params.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ "img/byld-logo-black.png" | absURL }}">
+  <link rel="icon" href="{{ "img/favicon.svg" | relURL }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+</head>

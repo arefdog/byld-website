@@ -1,0 +1,24 @@
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="BYLD home">
+      <img src="{{ "img/byld-logo-black.svg" | relURL }}" alt="BYLD" class="brand-logo">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {{ range site.Menus.main }}
+        <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" hidden>
+    {{ range site.Menus.main }}
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{ end }}
+    <a href="mailto:{{ site.Params.email }}" class="mobile-cta">Enquire</a>
+  </div>
+</header>

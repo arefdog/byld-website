@@ -1,0 +1,107 @@
+{{ define "main" }}
+
+<!-- HERO -->
+<section class="hero" id="approach">
+  <div class="hero-inner">
+    <p class="eyebrow">BYLD — Madrid</p>
+    <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
+    <p class="hero-intro">{{ .Params.hero_intro }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#systems">Explore the systems</a>
+      <a class="btn btn-ghost" href="mailto:{{ site.Params.email }}">Start a project</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-head">
+    <p class="eyebrow">What we do</p>
+    <h2>End-to-end delivery, from site strategy to installation</h2>
+  </div>
+  <div class="grid grid-3">
+    {{ range $i, $s := hugo.Data.services }}
+    <article class="card service-card">
+      <span class="card-index">{{ printf "%02d" (add $i 1) }}</span>
+      <h3>{{ $s.title }}</h3>
+      <p>{{ $s.body }}</p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<section class="section section-dark" id="systems">
+  <div class="section-head">
+    <p class="eyebrow">The systems</p>
+    <h2>Three building systems, one kit-of-parts philosophy</h2>
+  </div>
+  <div class="systems">
+    {{ range hugo.Data.systems }}
+    <article class="system">
+      <div class="system-label">
+        <span class="system-sector">{{ .sector }}</span>
+        <span class="system-name">{{ .name }}</span>
+      </div>
+      <p class="system-body">{{ .body }}</p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section" id="compare">
+  <div class="section-head">
+    <p class="eyebrow">Why BYLD</p>
+    <h2>BYLD against the alternatives</h2>
+  </div>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Traditional</th>
+          <th>Standard Prefab</th>
+          <th class="col-byld">BYLD</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range hugo.Data.comparison.rows }}
+        <tr>
+          <th scope="row">{{ .metric }}</th>
+          <td>{{ .traditional }}</td>
+          <td>{{ .prefab }}</td>
+          <td class="col-byld">{{ .byld }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="section section-press" id="press">
+  <div class="section-head">
+    <p class="eyebrow">In the press</p>
+    <h2>What people are saying</h2>
+  </div>
+  <div class="grid grid-3 press-grid">
+    {{ range hugo.Data.press }}
+    <figure class="press-card">
+      <blockquote>“{{ .quote }}”</blockquote>
+      <figcaption>{{ .source }}</figcaption>
+    </figure>
+    {{ end }}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta" id="enquire">
+  <div class="cta-inner">
+    <h2>Building something ambitious?</h2>
+    <p>From a single hospitality unit to a full residential community, we design, manufacture, and install the system that fits your site.</p>
+    <a class="btn btn-primary" href="mailto:{{ site.Params.email }}">Get in touch</a>
+  </div>
+</section>
+
+{{ end }}
