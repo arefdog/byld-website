@@ -12,6 +12,10 @@ disableKinds = ["taxonomy", "term"]
   description = "Design and manufacture of modular building systems, supported by site planning, logistics, and installation strategies."
   email = "office@gobyld.com"
   address = "Calle Conde de Aranda 1, 28014 Madrid, Spain"
+  # Consultation form endpoint. Create a free form at https://formspree.io,
+  # then paste its URL here (e.g. https://formspree.io/f/abcdwxyz).
+  # While empty, the form falls back to a pre-filled email to the address above.
+  formAction = ""
 
   [params.social]
     instagram = "https://www.instagram.com/gobyld"
@@ -19,29 +23,33 @@ disableKinds = ["taxonomy", "term"]
 
 [menu]
   [[menu.main]]
-    name = "Approach"
-    url = "/#approach"
+    name = "Who we serve"
+    url = "/#audiences"
     weight = 10
-  [[menu.main]]
-    name = "Services"
-    url = "/#services"
-    weight = 20
   [[menu.main]]
     name = "Systems"
     url = "/#systems"
+    weight = 20
+  [[menu.main]]
+    name = "Process"
+    url = "/#process"
     weight = 30
   [[menu.main]]
-    name = "Compare"
-    url = "/#compare"
+    name = "Work"
+    url = "/#work"
     weight = 40
   [[menu.main]]
-    name = "Press"
-    url = "/#press"
+    name = "Sustainability"
+    url = "/#sustainability"
     weight = 50
+  [[menu.main]]
+    name = "FAQ"
+    url = "/#faq"
+    weight = 60
   [[menu.main]]
     name = "Contact"
     url = "/#contact"
-    weight = 60
+    weight = 70
 
 [markup.goldmark.renderer]
   unsafe = true

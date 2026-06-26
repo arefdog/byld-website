@@ -10,6 +10,8 @@
       {{ end }}
     </nav>
 
+    <a class="btn btn-primary btn-sm header-cta" href="{{ "/#contact" | relURL }}">Book a consultation</a>
+
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -19,6 +21,6 @@
     {{ range site.Menus.main }}
       <a href="{{ .URL | relURL }}">{{ .Name }}</a>
     {{ end }}
-    <a href="mailto:{{ site.Params.email }}" class="mobile-cta">Enquire</a>
+    <a href="{{ "/#contact" | relURL }}" class="mobile-cta">Book a consultation</a>
   </div>
 </header>

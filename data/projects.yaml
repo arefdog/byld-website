@@ -1,0 +1,18 @@
+- name: ECHO
+  sector: Hospitality
+  location: Venice Architecture Biennale
+  year: "2027"
+  status: In development
+  body: A ring-form structure and the flagship deployment of the ECHO system — standardized hospitality units clustered around shared utilities, engineered in timber.
+- name: The ICON
+  sector: Commercial
+  location: Event & activation circuit
+  year: "—"
+  status: Available
+  body: A demountable pavilion system for commercial activations, designed for a strong architectural presence with rapid installation and repeat use across locations.
+- name: ATLAS
+  sector: Residential
+  location: Multiple sites
+  year: "—"
+  status: Available
+  body: A residential kit-of-parts for varied housing layouts — from individual homes to complete communities — with shared infrastructure planning.

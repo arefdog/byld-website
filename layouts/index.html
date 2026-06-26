@@ -7,14 +7,56 @@
     <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
     <p class="hero-intro">{{ .Params.hero_intro }}</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#systems">Explore the systems</a>
-      <a class="btn btn-ghost" href="mailto:{{ site.Params.email }}">Start a project</a>
+      <a class="btn btn-primary" href="#contact">Book a consultation</a>
+      <a class="btn btn-ghost" href="#systems">Explore the systems</a>
     </div>
   </div>
 </section>
 
+<!-- STATS -->
+<section class="stats-band" aria-label="BYLD at a glance">
+  <div class="stats-inner">
+    {{ range hugo.Data.stats }}
+    <div class="stat">
+      <span class="stat-figure">{{ .figure }}</span>
+      <span class="stat-label">{{ .label }}</span>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- AUDIENCES -->
+<section class="section" id="audiences">
+  <div class="section-head">
+    <p class="eyebrow">Who we serve</p>
+    <h2>One system, value for everyone at the table</h2>
+    <p class="section-lead">Whether you are funding it, operating it, own the land, or are designing it — BYLD is built around what you need to move forward.</p>
+  </div>
+
+  <div class="audience-tabs" role="tablist" aria-label="Audiences">
+    {{ range $i, $a := hugo.Data.audiences }}
+    <button class="audience-tab{{ if eq $i 0 }} is-active{{ end }}" role="tab" data-target="aud-{{ $a.key }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $a.label }}</button>
+    {{ end }}
+  </div>
+
+  <div class="audience-panels">
+    {{ range $i, $a := hugo.Data.audiences }}
+    <article class="audience-panel{{ if eq $i 0 }} is-active{{ end }}" id="aud-{{ $a.key }}" role="tabpanel">
+      <div class="audience-copy">
+        <h3>{{ $a.headline }}</h3>
+        <p>{{ $a.body }}</p>
+        <a class="text-link" href="#contact">Talk to us about your project →</a>
+      </div>
+      <ul class="audience-points">
+        {{ range $a.points }}<li>{{ . }}</li>{{ end }}
+      </ul>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section section-alt" id="services">
   <div class="section-head">
     <p class="eyebrow">What we do</p>
     <h2>End-to-end delivery, from site strategy to installation</h2>
@@ -49,8 +91,27 @@
   </div>
 </section>
 
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="section-head">
+    <p class="eyebrow">How we work</p>
+    <h2>A clear path from first call to a building that performs</h2>
+  </div>
+  <ol class="process">
+    {{ range hugo.Data.process }}
+    <li class="process-step">
+      <span class="process-num">{{ .step }}</span>
+      <div class="process-text">
+        <h3>{{ .title }}</h3>
+        <p>{{ .body }}</p>
+      </div>
+    </li>
+    {{ end }}
+  </ol>
+</section>
+
 <!-- COMPARISON -->
-<section class="section" id="compare">
+<section class="section section-alt" id="compare">
   <div class="section-head">
     <p class="eyebrow">Why BYLD</p>
     <h2>BYLD against the alternatives</h2>
@@ -79,6 +140,46 @@
   </div>
 </section>
 
+<!-- SUSTAINABILITY -->
+<section class="section section-sustain" id="sustainability">
+  <div class="sustain-grid">
+    <div class="sustain-head">
+      <p class="eyebrow">Sustainability</p>
+      <h2>Lower impact, by design</h2>
+      <p class="section-lead">{{ hugo.Data.sustainability.intro }}</p>
+    </div>
+    <ul class="sustain-list">
+      {{ range hugo.Data.sustainability.points }}
+      <li>
+        <h3>{{ .title }}</h3>
+        <p>{{ .body }}</p>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-head">
+    <p class="eyebrow">Selected work</p>
+    <h2>Systems in the field</h2>
+  </div>
+  <div class="grid grid-3">
+    {{ range hugo.Data.projects }}
+    <article class="card project-card">
+      <div class="project-top">
+        <span class="project-sector">{{ .sector }}</span>
+        <span class="project-status">{{ .status }}</span>
+      </div>
+      <h3>{{ .name }}</h3>
+      <p class="project-meta">{{ .location }}{{ if ne .year "—" }} · {{ .year }}{{ end }}</p>
+      <p>{{ .body }}</p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
 <!-- PRESS -->
 <section class="section section-press" id="press">
   <div class="section-head">
@@ -95,12 +196,80 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section cta" id="enquire">
-  <div class="cta-inner">
-    <h2>Building something ambitious?</h2>
-    <p>From a single hospitality unit to a full residential community, we design, manufacture, and install the system that fits your site.</p>
-    <a class="btn btn-primary" href="mailto:{{ site.Params.email }}">Get in touch</a>
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="section-head">
+    <p class="eyebrow">FAQ</p>
+    <h2>The questions we hear most</h2>
+  </div>
+  <div class="faq">
+    {{ range hugo.Data.faq }}
+    <details class="faq-item">
+      <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"></span></summary>
+      <div class="faq-answer"><p>{{ .a }}</p></div>
+    </details>
+    {{ end }}
+  </div>
+</section>
+
+<!-- CONSULTATION / CONTACT -->
+<section class="section section-contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <p class="eyebrow">Book a consultation</p>
+      <h2>Tell us about your site or project</h2>
+      <p>Share a few details and we’ll come back with how BYLD could work for you — feasibility, systems, programme, and indicative costs.</p>
+      <ul class="contact-details">
+        <li><span>Studio</span>{{ site.Params.address }}</li>
+        <li><span>Email</span><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></li>
+      </ul>
+    </div>
+
+    {{ $action := site.Params.formAction }}
+    <form class="contact-form"
+          {{ if $action }}action="{{ $action }}" method="POST"{{ else }}action="mailto:{{ site.Params.email }}" method="POST" enctype="text/plain"{{ end }}>
+      <div class="field-row">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+      </div>
+      <div class="field-row">
+        <label class="field">
+          <span>I am a…</span>
+          <select name="role">
+            <option>Developer / Investor</option>
+            <option>Operator / Brand</option>
+            <option>Landowner</option>
+            <option>Architect / Partner</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Project type</span>
+          <select name="project_type">
+            <option>Hospitality</option>
+            <option>Commercial</option>
+            <option>Residential</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+      </div>
+      <label class="field">
+        <span>Location</span>
+        <input type="text" name="location" placeholder="City / country">
+      </label>
+      <label class="field">
+        <span>About your project</span>
+        <textarea name="message" rows="4" placeholder="Site, scale, timeline, anything useful…"></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary">Send enquiry</button>
+      {{ if not $action }}<p class="form-note">This opens an email to {{ site.Params.email }}. To collect submissions on the page instead, add a form endpoint in <code>hugo.toml</code>.</p>{{ end }}
+    </form>
   </div>
 </section>
 

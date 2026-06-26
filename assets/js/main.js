@@ -20,3 +20,24 @@
     });
   });
 })();
+
+// Audience tabs
+(function () {
+  const tabs = Array.prototype.slice.call(document.querySelectorAll('.audience-tab'));
+  const panels = Array.prototype.slice.call(document.querySelectorAll('.audience-panel'));
+  if (!tabs.length) return;
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      const targetId = tab.getAttribute('data-target');
+      tabs.forEach(function (t) {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', String(active));
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle('is-active', p.id === targetId);
+      });
+    });
+  });
+})();
