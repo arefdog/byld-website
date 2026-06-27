@@ -1,0 +1,22 @@
+<section class="section section-config" id="configurator">
+  <div class="section-head">
+    <p class="eyebrow">Instant estimate</p>
+    <h2>Configure your project, get an indicative price</h2>
+    <p class="section-lead">A few quick questions return an indicative cost range in under a minute. Enter your details to reveal the figure — we’ll follow up with a detailed estimate.</p>
+  </div>
+
+  <div class="configurator"
+       data-configurator
+       data-form-action="{{ site.Params.formAction }}"
+       data-email="{{ site.Params.email }}">
+    <noscript>
+      <p class="config-noscript">The estimate configurator needs JavaScript. Please email <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a> and we’ll prepare an estimate for you.</p>
+    </noscript>
+    <div class="config-shell" hidden>
+      <div class="config-progress" aria-hidden="true"><span class="config-progress-bar"></span></div>
+      <div class="config-stage" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script id="pricing-config" type="application/json">{{ hugo.Data.pricing | jsonify | safeJS }}</script>
+</section>

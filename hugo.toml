@@ -31,17 +31,13 @@ disableKinds = ["taxonomy", "term"]
     url = "/#systems"
     weight = 20
   [[menu.main]]
+    name = "Estimate"
+    url = "/#configurator"
+    weight = 25
+  [[menu.main]]
     name = "Process"
     url = "/#process"
     weight = 30
-  [[menu.main]]
-    name = "Work"
-    url = "/#work"
-    weight = 40
-  [[menu.main]]
-    name = "Sustainability"
-    url = "/#sustainability"
-    weight = 50
   [[menu.main]]
     name = "FAQ"
     url = "/#faq"

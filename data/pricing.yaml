@@ -1,0 +1,82 @@
+# =============================================================================
+# Configurator pricing model — ALL FIGURES ARE INDICATIVE PLACEHOLDERS.
+# Replace rates/multipliers with BYLD's real numbers before relying on these.
+# Estimate = area(m2) x system.rate x finish.mult x site.mult x region.mult
+# A range is shown using rangeLow / rangeHigh around that figure.
+# =============================================================================
+currency: "EUR"
+currencySymbol: "€"
+rangeLow: 0.88
+rangeHigh: 1.12
+disclaimer: "Indicative range for early-stage planning only — not a quote. We confirm a detailed estimate after reviewing your project."
+
+systems:
+  - key: echo
+    name: ECHO
+    sector: Hospitality
+    blurb: Scalable hospitality units, clustered around shared utilities.
+    rate: 2600            # € per m²
+    unitSize: 30          # avg m² per key/unit
+    unitLabel: keys
+    area: { min: 300, max: 6000, step: 30, default: 900 }
+  - key: icon
+    name: The ICON
+    sector: Commercial
+    blurb: Demountable pavilion system for commercial activations.
+    rate: 2200
+    unitSize: 0
+    unitLabel: ""
+    area: { min: 150, max: 3000, step: 25, default: 500 }
+  - key: atlas
+    name: ATLAS
+    sector: Residential
+    blurb: Residential kit-of-parts, from single homes to communities.
+    rate: 2000
+    unitSize: 90          # avg m² per home
+    unitLabel: homes
+    area: { min: 270, max: 9000, step: 30, default: 900 }
+
+finishes:
+  - key: essential
+    name: Essential
+    mult: 0.9
+    desc: Robust, efficient specification.
+  - key: signature
+    name: Signature
+    mult: 1.0
+    desc: BYLD's standard architectural finish.
+  - key: bespoke
+    name: Bespoke
+    mult: 1.25
+    desc: Premium materials and custom detailing.
+
+sites:
+  - key: flat
+    name: Flat & accessible
+    mult: 1.0
+    desc: Level ground, easy site access.
+  - key: sloping
+    name: Sloping or constrained
+    mult: 1.08
+    desc: Gradient or tight access.
+  - key: remote
+    name: Remote
+    mult: 1.18
+    desc: Limited access or off-grid.
+
+regions:
+  - key: spain
+    name: Spain
+    mult: 1.0
+  - key: europe
+    name: Rest of Europe
+    mult: 1.05
+  - key: middle-east
+    name: Middle East
+    mult: 1.15
+  - key: africa
+    name: Africa
+    mult: 1.12
+  - key: americas
+    name: Americas
+    mult: 1.2

@@ -7,7 +7,7 @@
     <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
     <p class="hero-intro">{{ .Params.hero_intro }}</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#contact">Book a consultation</a>
+      <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
       <a class="btn btn-ghost" href="#systems">Explore the systems</a>
     </div>
   </div>
@@ -90,6 +90,8 @@
     {{ end }}
   </div>
 </section>
+
+{{ partial "configurator.html" . }}
 
 <!-- PROCESS -->
 <section class="section" id="process">

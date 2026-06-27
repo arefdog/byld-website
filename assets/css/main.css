@@ -326,7 +326,65 @@ main { display: block; }
 .form-note { font-size: 12.5px; color: var(--muted); margin: 14px 0 0; }
 .form-note code { background: var(--paper-2); padding: 1px 5px; border-radius: 3px; }
 
+/* ---- Configurator ---- */
+.section-config { max-width: none; background: var(--paper-2); }
+.section-config > .section-head,
+.section-config > .configurator { max-width: 920px; margin-left: auto; margin-right: auto; }
+.config-noscript { color: var(--muted); }
+.config-shell { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.config-progress { height: 4px; background: var(--line); }
+.config-progress-bar { display: block; height: 100%; width: 25%; background: var(--ink); transition: width .35s ease; }
+.config-stage { padding: clamp(26px, 4vw, 46px); }
+.config-step-meta { text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--muted); margin-bottom: 22px; }
+.config-q { font-size: clamp(22px, 3vw, 32px); margin-bottom: 26px; }
+
+.config-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.config-card { text-align: left; cursor: pointer; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; transition: border-color .2s ease, transform .15s ease; }
+.config-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.config-card.is-selected { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.config-card-sector { text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--muted); }
+.config-card-name { font-family: var(--font-display); font-size: 24px; }
+.config-card-blurb { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+
+.config-readout { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+.config-area { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); }
+.config-units { font-size: 15px; color: var(--muted); }
+.config-slider input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; height: 3px; background: var(--ink); outline: none; margin: 10px 0; }
+.config-slider input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); cursor: pointer; border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--ink); }
+.config-slider input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); cursor: pointer; border: 3px solid var(--paper); }
+.config-slider-ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+
+.config-group { margin-bottom: 26px; }
+.config-group-label { display: block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+.config-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.config-opt { text-align: left; cursor: pointer; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; transition: border-color .2s ease; }
+.config-opt:hover { border-color: var(--ink); }
+.config-opt.is-selected { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.config-opt-name { font-weight: 500; font-size: 15px; }
+.config-opt-desc { font-size: 12.5px; color: var(--muted); }
+
+.config-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; gap: 12px; }
+.btn[disabled] { opacity: .35; pointer-events: none; }
+
+.config-summary { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+.config-result { position: relative; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; text-align: center; }
+.config-figure { font-family: var(--font-display); font-size: clamp(30px, 6vw, 56px); letter-spacing: -0.03em; }
+.config-figure-sub { color: var(--muted); font-size: 15px; margin-top: 8px; }
+.config-blur { filter: blur(11px); user-select: none; opacity: .8; }
+.config-result.is-locked { padding: 0; text-align: left; }
+.config-result.is-locked .config-figure { padding: 40px 32px 28px; text-align: center; }
+.config-lock { border-top: 1px solid var(--line); background: var(--paper-2); padding: 26px 32px 32px; }
+.config-form-lead { font-size: 14.5px; color: var(--ink); margin: 0 0 18px; }
+.config-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.config-form .btn { width: 100%; margin-top: 6px; }
+.config-error { color: #b00020; font-size: 13px; margin: 12px 0 0; }
+.config-success { background: var(--ink); color: var(--paper); padding: 18px 22px; border-radius: var(--radius); margin-top: 18px; font-size: 15px; }
+.config-disclaimer { font-size: 12.5px; color: var(--muted); margin: 18px 0 0; }
+
 /* ---- Responsive ---- */
+@media (max-width: 760px) {
+  .config-cards, .config-opts, .config-field-row { grid-template-columns: 1fr; }
+}
 @media (max-width: 1040px) {
   .nav, .header-cta { display: none; }
   .nav-toggle { display: flex; }

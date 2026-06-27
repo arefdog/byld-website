@@ -10,7 +10,7 @@
       {{ end }}
     </nav>
 
-    <a class="btn btn-primary btn-sm header-cta" href="{{ "/#contact" | relURL }}">Book a consultation</a>
+    <a class="btn btn-primary btn-sm header-cta" href="{{ "/#configurator" | relURL }}">Get an estimate</a>
 
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
@@ -21,6 +21,6 @@
     {{ range site.Menus.main }}
       <a href="{{ .URL | relURL }}">{{ .Name }}</a>
     {{ end }}
-    <a href="{{ "/#contact" | relURL }}" class="mobile-cta">Book a consultation</a>
+    <a href="{{ "/#configurator" | relURL }}" class="mobile-cta">Get an estimate</a>
   </div>
 </header>
