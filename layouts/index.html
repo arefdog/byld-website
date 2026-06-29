@@ -3,13 +3,21 @@
 <!-- HERO -->
 <section class="hero" id="approach">
   <div class="hero-inner">
-    <p class="eyebrow">BYLD — Madrid</p>
-    <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
-    <p class="hero-intro">{{ .Params.hero_intro }}</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
-      <a class="btn btn-ghost" href="#systems">Explore the systems</a>
+    <div class="hero-copy">
+      <p class="eyebrow">BYLD — Madrid</p>
+      <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
+      <p class="hero-intro">{{ .Params.hero_intro }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
+        <a class="btn btn-ghost" href="#systems">Explore the systems</a>
+      </div>
     </div>
+    <figure class="hero-media">
+      <img src="{{ "img/echo-hero.jpg" | relURL }}"
+           alt="ECHO ring-form structure in a landscape setting"
+           width="1600" height="2000" fetchpriority="high">
+      <figcaption>ECHO — ring-form hospitality system</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -168,8 +176,11 @@
     <h2>Systems in the field</h2>
   </div>
   <div class="grid grid-3">
-    {{ range hugo.Data.projects }}
-    <article class="card project-card">
+    {{ range $p := hugo.Data.projects }}
+    <article class="card project-card{{ if $p.image }} has-image{{ end }}">
+      {{ with $p.image }}
+      <div class="project-media"><img src="{{ . | relURL }}" alt="{{ $p.name }} — {{ $p.sector }}" loading="lazy"></div>
+      {{ end }}
       <div class="project-top">
         <span class="project-sector">{{ .sector }}</span>
         <span class="project-status">{{ .status }}</span>

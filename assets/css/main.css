@@ -140,16 +140,38 @@ main { display: block; }
 }
 .hero-inner {
   max-width: var(--maxw); margin: 0 auto;
-  padding: clamp(72px, 12vw, 168px) var(--gutter) clamp(64px, 9vw, 120px);
+  padding: clamp(56px, 9vw, 120px) var(--gutter);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
 }
+.hero-copy { min-width: 0; }
 .hero-title {
-  font-size: clamp(40px, 8vw, 104px);
+  font-size: clamp(40px, 6vw, 84px);
   letter-spacing: -0.035em;
-  max-width: 14ch;
+  max-width: 16ch;
   margin-bottom: 32px;
 }
-.hero-intro { font-size: clamp(17px, 2vw, 21px); color: #2c2c2c; max-width: 60ch; margin: 0 0 40px; }
+.hero-intro { font-size: clamp(17px, 1.6vw, 20px); color: #2c2c2c; max-width: 54ch; margin: 0 0 40px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-media { margin: 0; position: relative; }
+.hero-media img {
+  width: 100%; height: clamp(380px, 52vw, 620px);
+  object-fit: cover; border-radius: var(--radius);
+  display: block;
+}
+.hero-media figcaption {
+  position: absolute; left: 16px; bottom: 16px;
+  background: rgba(10,10,10,.72); color: #fff;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 7px 12px; border-radius: var(--radius);
+}
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-media { order: -1; }
+  .hero-media img { height: clamp(280px, 60vw, 420px); }
+}
 
 /* ---- Grids ---- */
 .grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
@@ -277,6 +299,14 @@ main { display: block; }
 
 /* ---- Projects ---- */
 .project-card { display: flex; flex-direction: column; }
+.project-card.has-image { padding: 0; overflow: hidden; }
+.project-card.has-image .project-top { margin: 0 0 22px; }
+.project-card.has-image > :not(.project-media) { padding-left: 32px; padding-right: 32px; }
+.project-card.has-image > .project-top { margin-top: 28px; }
+.project-card.has-image > p:last-child { padding-bottom: 36px; }
+.project-media { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; }
+.project-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.project-card.has-image:hover .project-media img { transform: scale(1.04); }
 .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
 .project-sector { text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--muted); }
 .project-status { font-size: 11px; letter-spacing: 0.06em; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); }

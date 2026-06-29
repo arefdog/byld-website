@@ -1,5 +1,6 @@
 - name: ECHO
   sector: Hospitality
+  image: img/echo-card.jpg
   location: Venice Architecture Biennale
   year: "2027"
   status: In development
