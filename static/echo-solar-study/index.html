@@ -195,7 +195,7 @@
   arrow.position.set(0,0.05,-7.2);arrow.rotation.x=-Math.PI/2;scene.add(arrow);
 
   // ---- sun-path arc ----
-  const arc=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0xffe9a0,transparent:true,opacity:0.55}));
+  const arc=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0xffd86b,transparent:true,opacity:0.85}));
   scene.add(arc);let lastArcDay=-999;
   function buildArc(day){
     const pts=[];
@@ -231,7 +231,7 @@
 
   function setSky(altDeg,dir){
     const f=Math.max(0,Math.min(1,(altDeg+6)/18));
-    const dz=[0.17,0.40,0.82],nz=[0.02,0.03,0.07],dh=[0.80,0.87,0.93],nh=[0.05,0.07,0.12],warm=[0.96,0.55,0.30];
+    const dz=[0.10,0.30,0.86],nz=[0.02,0.03,0.07],dh=[0.50,0.68,0.88],nh=[0.05,0.07,0.12],warm=[0.98,0.52,0.26];
     const low=Math.max(0,Math.min(1,(10-altDeg)/16))*Math.max(0,Math.min(1,(altDeg+4)/8));
     const z=dz.map((c,i)=>nz[i]+(c-nz[i])*f);
     let h=dh.map((c,i)=>nh[i]+(c-nh[i])*f);
