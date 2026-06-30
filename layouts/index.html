@@ -13,9 +13,7 @@
       </div>
     </div>
     <figure class="hero-media">
-      <img src="{{ "img/echo-hero.jpg" | relURL }}"
-           alt="ECHO ring-form structure in a landscape setting"
-           width="1600" height="2000" fetchpriority="high">
+      {{ partial "picture.html" (dict "src" "img/echo-hero.jpg" "alt" "ECHO ring-form structure in a landscape setting" "loading" "eager" "fetchpriority" "high" "width" 1600 "height" 2000) }}
       <figcaption>ECHO — ring-form hospitality system</figcaption>
     </figure>
   </div>
@@ -93,9 +91,12 @@
         <span class="system-sector">{{ $s.sector }}</span>
         <span class="system-name">{{ $s.name }}</span>
       </div>
-      <p class="system-body">{{ $s.body }}</p>
+      <div class="system-body">
+        <p>{{ $s.body }}</p>
+        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "/systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
+      </div>
       {{ with $s.image }}
-      <div class="system-media"><img src="{{ . | relURL }}" alt="{{ $s.name }} — {{ $s.sector }}" loading="lazy"></div>
+      <div class="system-media">{{ partial "picture.html" (dict "src" . "alt" (printf "%s — %s" $s.name $s.sector) "loading" "lazy") }}</div>
       {{ end }}
     </article>
     {{ end }}
@@ -182,7 +183,7 @@
     {{ range $p := hugo.Data.projects }}
     <article class="card project-card{{ if $p.image }} has-image{{ end }}">
       {{ with $p.image }}
-      <div class="project-media"><img src="{{ . | relURL }}" alt="{{ $p.name }} — {{ $p.sector }}" loading="lazy"></div>
+      <div class="project-media">{{ partial "picture.html" (dict "src" . "alt" (printf "%s — %s" $p.name $p.sector) "loading" "lazy") }}</div>
       {{ end }}
       <div class="project-top">
         <span class="project-sector">{{ .sector }}</span>
@@ -242,8 +243,10 @@
     </div>
 
     {{ $action := site.Params.formAction }}
-    <form class="contact-form"
+    <form class="contact-form" data-email="{{ site.Params.email }}"
           {{ if $action }}action="{{ $action }}" method="POST"{{ else }}action="mailto:{{ site.Params.email }}" method="POST" enctype="text/plain"{{ end }}>
+      <input type="hidden" name="_subject" value="New BYLD enquiry from gobyld.com">
+      <p class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
       <div class="field-row">
         <label class="field">
           <span>Name</span>

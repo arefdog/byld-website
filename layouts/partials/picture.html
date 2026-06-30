@@ -1,0 +1,16 @@
+{{- /*
+  Reusable responsive <picture>: WebP source with JPEG fallback.
+  Params: src (jpg path, e.g. "img/echo-hero.jpg"), alt, class, loading,
+          fetchpriority, width, height.
+*/ -}}
+{{- $src := .src -}}
+{{- $webp := replaceRE `\.(jpe?g|png)$` ".webp" $src -}}
+<picture{{ with .class }} class="{{ . }}"{{ end }}>
+  <source srcset="{{ $webp | relURL }}" type="image/webp">
+  <img src="{{ $src | relURL }}" alt="{{ .alt }}"
+       {{ with .loading }}loading="{{ . }}"{{ end }}
+       {{ with .fetchpriority }}fetchpriority="{{ . }}"{{ end }}
+       {{ with .width }}width="{{ . }}"{{ end }}
+       {{ with .height }}height="{{ . }}"{{ end }}
+       decoding="async">
+</picture>

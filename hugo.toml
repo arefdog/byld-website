@@ -17,6 +17,12 @@ disableKinds = ["taxonomy", "term"]
   # While empty, the form falls back to a pre-filled email to the address above.
   formAction = ""
 
+  # Analytics (off until set). Use ONE of these:
+  #   plausibleDomain = "gobyld.com"   # privacy-friendly, recommended
+  #   googleAnalytics = "G-XXXXXXXXXX" # GA4
+  plausibleDomain = ""
+  googleAnalytics = ""
+
   [params.social]
     instagram = "https://www.instagram.com/gobyld"
     linkedin = "https://www.linkedin.com/company/gobyld"

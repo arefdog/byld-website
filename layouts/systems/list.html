@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="section">
+  <div class="section-head">
+    <p class="eyebrow">The systems</p>
+    <h2>{{ .Title }}</h2>
+    {{ with .Content }}<div class="section-lead">{{ . }}</div>{{ end }}
+  </div>
+  <div class="grid grid-3">
+    {{ range .Pages.ByWeight }}
+    <article class="card project-card has-image">
+      {{ with .Params.image }}
+      <div class="project-media">{{ partial "picture.html" (dict "src" . "alt" $.Title "loading" "lazy") }}</div>
+      {{ end }}
+      <div class="project-top">
+        <span class="project-sector">{{ .Params.sector }}</span>
+      </div>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Params.lead }}</p>
+      <p style="padding-bottom:32px"><a class="text-link" href="{{ .RelPermalink }}">Explore {{ .Title }} →</a></p>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section class="system-hero">
+  <div class="system-hero-inner">
+    <div>
+      <a class="system-back" href="{{ "/#systems" | relURL }}">← All systems</a>
+      <p class="eyebrow">{{ .Params.sector }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}<p class="lead">{{ . }}</p>{{ end }}
+      <div class="hero-actions" style="margin-top:28px">
+        <a class="btn btn-primary" href="{{ "/#configurator" | relURL }}">Get an estimate</a>
+        <a class="btn btn-ghost" href="{{ "/#contact" | relURL }}">Book a consultation</a>
+      </div>
+    </div>
+    {{ with .Params.image }}
+    {{ partial "picture.html" (dict "src" . "alt" $.Title "loading" "eager") }}
+    {{ end }}
+  </div>
+</section>
+
+<article class="section system-detail">
+  {{ .Content }}
+</article>
+{{ end }}
