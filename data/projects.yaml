@@ -7,12 +7,14 @@
   body: A ring-form structure and the flagship deployment of the ECHO system — standardized hospitality units clustered around shared utilities, engineered in timber.
 - name: The ICON
   sector: Commercial
+  image: img/icon-card.jpg
   location: Event & activation circuit
   year: "—"
   status: Available
   body: A demountable pavilion system for commercial activations, designed for a strong architectural presence with rapid installation and repeat use across locations.
 - name: ATLAS
   sector: Residential
+  image: img/atlas-card.jpg
   location: Multiple sites
   year: "—"
   status: Available

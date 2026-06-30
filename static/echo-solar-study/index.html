@@ -14,14 +14,18 @@
   .wrap{width:100%;max-width:760px}
   .bar{display:flex;flex-direction:column;gap:9px;margin-bottom:12px}
   .row{display:flex;align-items:center;gap:10px;font-size:13px;color:#a8a69d}
-  .row span.lbl{min-width:54px}
+  .row span.lbl{min-width:64px}
   .row input[type=range]{flex:1}
-  .row .out{min-width:88px;text-align:right;font-weight:500;color:#e8e6df}
+  .row .out{min-width:92px;text-align:right;font-weight:500;color:#e8e6df}
   button{background:#1c1e24;color:#e8e6df;border:0.5px solid #3a3d44;border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer}
   button:hover{background:#262932}
-  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  .ctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:#a8a69d}
+  .ctl .lbl{min-width:64px}
+  .g-btn.is-on,.v-btn.is-on{background:#33373f;border-color:#5a5f68;color:#fff}
+  .btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .sep{flex:1 1 12px}
   #stage{width:100%;height:460px;border-radius:12px;overflow:hidden;background:#0a0c10;border:0.5px solid #2a2d33;cursor:grab}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
   .card{background:#16181d;border-radius:8px;padding:9px 12px}
   .card .k{font-size:12px;color:#8b8a82}
   .card .v{font-size:18px;font-weight:500}
@@ -48,14 +52,25 @@
 <body>
 <div class="wrap">
 <h1>BYLD ECHO — solar &amp; shade study</h1>
-<p class="sub">Madrid sierra · latitude 40.7°N · real sun position, shadow-mapped roof. Drag to orbit.</p>
+<p class="sub">Madrid sierra · latitude 40.7°N · real sun position, shadow-mapped roof. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
 <div class="bar">
   <div class="row"><span class="lbl">Day</span><input type="range" id="day" min="1" max="365" value="172"><span class="out" id="dayout"></span></div>
   <div class="row"><span class="lbl">Time</span><input type="range" id="hr" min="4" max="20" value="12" step="0.25"><span class="out" id="hrout"></span></div>
+  <div class="row"><span class="lbl">Overhang</span><input type="range" id="ov" min="0.8" max="4.5" step="0.05" value="2.82"><span class="out" id="ovout"></span></div>
+  <div class="ctl">
+    <span class="lbl">Glazing</span>
+    <button class="g-btn is-on" data-shgc="0.50">Clear · 0.50</button>
+    <button class="g-btn" data-shgc="0.38">Low-E · 0.38</button>
+    <button class="g-btn" data-shgc="0.25">Solar-control · 0.25</button>
+  </div>
   <div class="btns">
     <button id="sols">Summer solstice</button>
     <button id="wins">Winter solstice</button>
     <button id="play">Sweep day</button>
+    <span class="sep"></span>
+    <button class="v-btn is-on" data-view="orbit">Orbit</button>
+    <button class="v-btn" data-view="plan">Plan</button>
+    <button class="v-btn" data-view="eye">Eye level</button>
   </div>
 </div>
 <div id="stage"></div>
@@ -63,26 +78,27 @@
   <div class="card"><div class="k">Sun altitude</div><div class="v" id="m-alt">—</div></div>
   <div class="card"><div class="k">Azimuth (from S)</div><div class="v" id="m-az">—</div></div>
   <div class="card"><div class="k">Core glass</div><div class="v" id="m-gl">—</div></div>
+  <div class="card"><div class="k">Annual gain</div><div class="v" id="m-ann">—</div></div>
 </div>
 <div class="findings">
   <h2>What this shows</h2>
-  <p>A physically accurate sun for the El&nbsp;Boalo / Guadarrama site (40.7°N). The round roof casts a real shadow onto the deck and the central glass core. Drag <b>Day</b> and <b>Time</b>, or use <b>Sweep&nbsp;day</b>, and orbit the model.</p>
+  <p>A physically accurate sun for the El&nbsp;Boalo / Guadarrama site (40.7°N). The round roof casts a real shadow onto the deck and the central glass core. Drag <b>Day</b>, <b>Time</b> and <b>Overhang</b>, switch the <b>glazing</b>, or use <b>Sweep&nbsp;day</b> — the heat table below recomputes live.</p>
   <ul>
-    <li><b>The overhang is a powerful, all-round sunshade.</b> Oversailing the core by ~2.75&nbsp;m, it keeps the glass in shade whenever the sun is above ~8° — i.e. essentially the whole day, every season.</li>
+    <li><b>The overhang is the main solar control.</b> Drag it wider and the glass stays shaded down to lower sun angles; pull it in and more direct beam reaches the core. Watch the annual figure respond.</li>
     <li><b>Only low sunrise/sunset light reaches under the eaves.</b> Set Time to ~6:00 or ~19:00 to see the rays rake across the deck and into the core.</li>
-    <li><b>Open question for Madrid:</b> the roof shades the glass in <i>winter</i> too — when low December sun could instead be welcomed in for warmth. A point for the next (systems) phase.</li>
+    <li><b>The winter trade-off:</b> a deep overhang blocks summer heat beautifully — but also shades the low December sun you might want to welcome in. The slider lets you find the balance.</li>
   </ul>
-  <p class="fine">Solar time, true-south assumed. Geometry is the as-built ECHO (≈10&nbsp;m roof, 4.5&nbsp;m glazed core). A study model — not a substitute for full energy simulation.</p>
+  <p class="fine">Solar time, true-south assumed. Core is the as-built ECHO glazed pod (≈4.5&nbsp;m). A study model — not a substitute for full energy simulation.</p>
 </div>
 <div class="heat">
   <h2>Heat reaching the interior — indicative solar gain</h2>
-  <p class="lead">Clear-sky solar energy entering the glazed core through the east / south / west glass, <i>after</i> the roof overhang's shading. A radiant solar-gain estimate only — conduction through the envelope and ventilation are separate.</p>
+  <p class="lead">Clear-sky solar energy entering the glazed core through the east / south / west glass, <i>after</i> the roof overhang's shading. Recomputes live with the overhang and glazing controls. A radiant solar-gain estimate only — conduction and ventilation are separate.</p>
   <table class="heat-t">
     <thead><tr><th>Month</th><th>Peak (kW)</th><th>Daily (kWh)</th><th>Monthly (kWh)</th><th>Direct %</th></tr></thead>
     <tbody id="heatBody"></tbody>
   </table>
   <p id="heatCompare" class="lead" style="margin-top:14px"></p>
-  <p class="assume">Assumptions: ≈34&nbsp;m² glazing (E/S/W; north face solid), SHGC&nbsp;0.50 (clear double glazing), ASHRAE clear-sky model at 40.7°N, isotropic diffuse with overhang sky-blocking, ground albedo&nbsp;0.20, overhang shades direct beam above ≈8° sun altitude. Clear-sky upper bound — real gains are lower on cloudy days. Indicative, not a full energy simulation.</p>
+  <p class="assume">Assumptions: ≈34&nbsp;m² glazing (E/S/W; north face solid), selectable SHGC, ASHRAE clear-sky model at 40.7°N, isotropic diffuse with overhang sky-blocking, ground albedo&nbsp;0.20, overhang shades direct beam above the angle set by its depth. Clear-sky upper bound — real gains are lower on cloudy days. Indicative, not a full energy simulation.</p>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -95,39 +111,116 @@
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   renderer.outputEncoding=THREE.sRGBEncoding;stage.appendChild(renderer.domElement);
-  const scene=new THREE.Scene();scene.background=new THREE.Color('#bcd0e4');
-  const cam=new THREE.PerspectiveCamera(42,Wf()/Hh,0.1,4000);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(42,Wf()/Hh,0.1,6000);
 
+  // ---- shader sky dome ----
+  const skyMat=new THREE.ShaderMaterial({
+    side:THREE.BackSide, depthWrite:false,
+    uniforms:{
+      uZenith:{value:new THREE.Color(0.17,0.40,0.82)},
+      uHorizon:{value:new THREE.Color(0.80,0.87,0.93)},
+      uGround:{value:new THREE.Color(0.10,0.10,0.10)},
+      uSun:{value:new THREE.Color(1.0,0.93,0.78)},
+      uSunDir:{value:new THREE.Vector3(0,1,0)}
+    },
+    vertexShader:`varying vec3 vDir;void main(){vDir=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+    fragmentShader:`varying vec3 vDir;uniform vec3 uZenith,uHorizon,uGround,uSun,uSunDir;
+      void main(){vec3 d=normalize(vDir);vec3 sky;
+        if(d.y>=0.0){sky=mix(uHorizon,uZenith,pow(clamp(d.y,0.0,1.0),0.55));}
+        else{sky=mix(uHorizon,uGround,clamp(-d.y*3.0,0.0,1.0));}
+        float md=max(dot(d,normalize(uSunDir)),0.0);
+        sky+=uSun*pow(md,420.0)*2.2;
+        sky+=uSun*pow(md,13.0)*0.16;
+        gl_FragColor=vec4(sky,1.0);}`
+  });
+  const skyDome=new THREE.Mesh(new THREE.SphereGeometry(2400,32,16),skyMat);
+  skyDome.renderOrder=-1;scene.add(skyDome);
+
+  // ---- static elements ----
   const ground=new THREE.Mesh(new THREE.CircleGeometry(1500,160),new THREE.MeshStandardMaterial({color:'#6f8a4a',roughness:1}));
   ground.rotation.x=-Math.PI/2;ground.position.y=-0.42;ground.receiveShadow=true;scene.add(ground);
-  const deck=new THREE.Mesh(new THREE.CylinderGeometry(5,5,0.28,64),new THREE.MeshStandardMaterial({color:'#8a6a48',roughness:0.85}));
-  deck.position.y=-0.14;deck.receiveShadow=true;deck.castShadow=true;scene.add(deck);
-  const base=new THREE.Mesh(new THREE.CylinderGeometry(4.7,4.7,0.42,64),new THREE.MeshStandardMaterial({color:'#9aa0a4',roughness:0.7,metalness:0.3}));
-  base.position.y=-0.4;scene.add(base);
+
+  // shared materials
+  const deckMat=new THREE.MeshStandardMaterial({color:'#8a6a48',roughness:0.85});
+  const baseMat=new THREE.MeshStandardMaterial({color:'#9aa0a4',roughness:0.7,metalness:0.3});
   const postMat=new THREE.MeshStandardMaterial({color:'#c2c8cc',roughness:0.5,metalness:0.6});
-  for(let i=0;i<16;i++){const a=i/16*Math.PI*2;const p=new THREE.Mesh(new THREE.BoxGeometry(0.12,2.95,0.12),postMat);
-    p.position.set(Math.cos(a)*4.82,1.47,Math.sin(a)*4.82);p.castShadow=true;scene.add(p);}
-  const roof=new THREE.Mesh(new THREE.CylinderGeometry(5.05,5.05,0.2,64),new THREE.MeshStandardMaterial({color:'#caa46a',roughness:0.8}));
-  roof.position.y=3.0;roof.castShadow=true;roof.receiveShadow=true;scene.add(roof);
-  const ring=new THREE.Mesh(new THREE.CylinderGeometry(5.12,5.12,0.34,64,1,true),new THREE.MeshStandardMaterial({color:'#b9c0c4',roughness:0.5,metalness:0.6,side:THREE.DoubleSide}));
-  ring.position.y=2.95;scene.add(ring);
+  const roofMat=new THREE.MeshStandardMaterial({color:'#caa46a',roughness:0.8});
+  const ringMat=new THREE.MeshStandardMaterial({color:'#b9c0c4',roughness:0.5,metalness:0.6,side:THREE.DoubleSide});
+
+  // fixed glazed core (4.46 box, half-width 2.23)
+  const GLASS_HALF=2.23;
   const coreFloor=new THREE.Mesh(new THREE.BoxGeometry(4.5,0.12,4.5),new THREE.MeshStandardMaterial({color:'#7a5c3c',roughness:0.9}));
   coreFloor.position.y=0.06;coreFloor.receiveShadow=true;scene.add(coreFloor);
   const coreTop=new THREE.Mesh(new THREE.BoxGeometry(4.5,0.12,4.5),new THREE.MeshStandardMaterial({color:'#8a6c48',roughness:0.9}));
   coreTop.position.y=2.6;coreTop.castShadow=true;coreTop.receiveShadow=true;scene.add(coreTop);
-  const glass=new THREE.Mesh(new THREE.BoxGeometry(4.46,2.52,4.46),new THREE.MeshStandardMaterial({color:'#9fc4e0',roughness:0.08,transparent:true,opacity:0.22}));
+  const glassMat=new THREE.MeshStandardMaterial({color:'#9fc4e0',roughness:0.08,transparent:true,opacity:0.22});
+  const glass=new THREE.Mesh(new THREE.BoxGeometry(4.46,2.52,4.46),glassMat);
   glass.position.y=1.32;glass.receiveShadow=true;scene.add(glass);
   const wall=new THREE.Mesh(new THREE.BoxGeometry(4.5,2.52,0.14),new THREE.MeshStandardMaterial({color:'#5a4330',roughness:0.85}));
   wall.position.set(0,1.32,-2.25);wall.castShadow=true;wall.receiveShadow=true;scene.add(wall);
   const bed=new THREE.Mesh(new THREE.BoxGeometry(2.0,0.4,1.4),new THREE.MeshStandardMaterial({color:'#e9d7b0',emissive:'#caa45a',emissiveIntensity:0.25,roughness:0.9}));
   bed.position.set(-0.8,0.32,-1.2);scene.add(bed);
+
+  // ---- lights ----
   const hemi=new THREE.HemisphereLight('#bcd0e4','#4a5a38',0.7);scene.add(hemi);
   const sun=new THREE.DirectionalLight('#fff2d0',2.6);sun.castShadow=true;
-  sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.near=1;sun.shadow.camera.far=80;
-  const S=9;sun.shadow.camera.left=-S;sun.shadow.camera.right=S;sun.shadow.camera.top=S;sun.shadow.camera.bottom=-S;
+  sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.near=1;sun.shadow.camera.far=120;
   sun.shadow.bias=-0.0005;sun.target.position.set(0,1.2,0);scene.add(sun);scene.add(sun.target);
-  const sunDisc=new THREE.Mesh(new THREE.SphereGeometry(0.6,16,16),new THREE.MeshBasicMaterial({color:'#ffe9a0'}));scene.add(sunDisc);
 
+  // ---- human figure (≈1.7 m) for scale ----
+  (function(){
+    const g=new THREE.Group();const pm=new THREE.MeshStandardMaterial({color:'#3a3d44',roughness:0.95});
+    const legs=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.13,0.85,12),pm);legs.position.y=0.42;
+    const torso=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.16,0.72,12),pm);torso.position.y=1.0;
+    const head=new THREE.Mesh(new THREE.SphereGeometry(0.16,16,16),pm);head.position.y=1.5;
+    [legs,torso,head].forEach(m=>{m.castShadow=true;g.add(m);});
+    g.position.set(2.6,0,1.9);scene.add(g);
+  })();
+
+  // ---- compass + north arrow ----
+  function makeLabel(txt,color){
+    const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');
+    x.fillStyle=color;x.font='bold 70px system-ui';x.textAlign='center';x.textBaseline='middle';x.fillText(txt,64,70);
+    const t=new THREE.CanvasTexture(c);t.anisotropy=4;
+    const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true}));s.scale.set(1.7,1.7,1.7);return s;
+  }
+  // +z = South, -z = North, +x = West, -x = East
+  const R=8.6;
+  const lN=makeLabel('N','#e0705a');lN.position.set(0,0.6,-R);scene.add(lN);
+  const lS=makeLabel('S','#9a988f');lS.position.set(0,0.6,R);scene.add(lS);
+  const lE=makeLabel('E','#9a988f');lE.position.set(-R,0.6,0);scene.add(lE);
+  const lW=makeLabel('W','#9a988f');lW.position.set(R,0.6,0);scene.add(lW);
+  const arrow=new THREE.Mesh(new THREE.ConeGeometry(0.42,1.1,4),new THREE.MeshStandardMaterial({color:'#d2624b',roughness:0.6}));
+  arrow.position.set(0,0.05,-7.2);arrow.rotation.x=-Math.PI/2;scene.add(arrow);
+
+  // ---- sun-path arc ----
+  const arc=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0xffe9a0,transparent:true,opacity:0.55}));
+  scene.add(arc);let lastArcDay=-999;
+  function buildArc(day){
+    const pts=[];
+    for(let h=2;h<=22;h+=0.1){const s=solar(day,h);if(s.alt<-0.04)continue;
+      pts.push(new THREE.Vector3(Math.cos(s.alt)*Math.sin(s.az),Math.sin(s.alt),Math.cos(s.alt)*Math.cos(s.az)).multiplyScalar(24).add(new THREE.Vector3(0,1.2,0)));}
+    arc.geometry.dispose();arc.geometry=new THREE.BufferGeometry().setFromPoints(pts);
+  }
+
+  // ---- rebuildable shell (overhang lever) ----
+  const VGAP=0.32; // glass top -> roof underside
+  let thresh=8, roofR=5.05, shell=[];
+  function rebuildShell(O){
+    shell.forEach(m=>{scene.remove(m);m.geometry.dispose();});shell=[];
+    roofR=GLASS_HALF+O;
+    const deckR=roofR-0.05, baseR=Math.max(1.5,deckR-0.3), postR=roofR-0.23;
+    const deck=new THREE.Mesh(new THREE.CylinderGeometry(deckR,deckR,0.28,64),deckMat);deck.position.y=-0.14;deck.receiveShadow=true;deck.castShadow=true;scene.add(deck);shell.push(deck);
+    const base=new THREE.Mesh(new THREE.CylinderGeometry(baseR,baseR,0.42,64),baseMat);base.position.y=-0.4;scene.add(base);shell.push(base);
+    for(let i=0;i<16;i++){const a=i/16*Math.PI*2;const p=new THREE.Mesh(new THREE.BoxGeometry(0.12,2.95,0.12),postMat);p.position.set(Math.cos(a)*postR,1.47,Math.sin(a)*postR);p.castShadow=true;scene.add(p);shell.push(p);}
+    const roof=new THREE.Mesh(new THREE.CylinderGeometry(roofR,roofR,0.2,64),roofMat);roof.position.y=3.0;roof.castShadow=true;roof.receiveShadow=true;scene.add(roof);shell.push(roof);
+    const ring=new THREE.Mesh(new THREE.CylinderGeometry(roofR+0.07,roofR+0.07,0.34,64,1,true),ringMat);ring.position.y=2.95;scene.add(ring);shell.push(ring);
+    thresh=Math.atan2(VGAP,O)*R2D;
+    const S=roofR+1.5;sun.shadow.camera.left=-S;sun.shadow.camera.right=S;sun.shadow.camera.top=S;sun.shadow.camera.bottom=-S;sun.shadow.camera.updateProjectionMatrix();
+  }
+
+  // ---- solar geometry ----
   const lat=40.7*Math.PI/180,D2R=Math.PI/180,R2D=180/Math.PI;
   function solar(day,hr){const decl=23.45*Math.sin(2*Math.PI*(284+day)/365)*D2R;const ha=15*(hr-12)*D2R;
     const sinAlt=Math.sin(lat)*Math.sin(decl)+Math.cos(lat)*Math.cos(decl)*Math.cos(ha);
@@ -135,88 +228,129 @@
     const az=Math.atan2(Math.sin(ha),Math.cos(ha)*Math.sin(lat)-Math.tan(decl)*Math.cos(lat));return {alt,az};}
   function dateStr(d0){const d=new Date(2025,0,1);d.setDate(d0);return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});}
   function hrStr(h){const hh=Math.floor(h),mm=Math.round((h-hh)*60);return (hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm;}
-  const thresh=Math.atan2(0.4,2.75)*R2D;
+
+  function setSky(altDeg,dir){
+    const f=Math.max(0,Math.min(1,(altDeg+6)/18));
+    const dz=[0.17,0.40,0.82],nz=[0.02,0.03,0.07],dh=[0.80,0.87,0.93],nh=[0.05,0.07,0.12],warm=[0.96,0.55,0.30];
+    const low=Math.max(0,Math.min(1,(10-altDeg)/16))*Math.max(0,Math.min(1,(altDeg+4)/8));
+    const z=dz.map((c,i)=>nz[i]+(c-nz[i])*f);
+    let h=dh.map((c,i)=>nh[i]+(c-nh[i])*f);
+    h=h.map((c,i)=>c+(warm[i]-c)*low*0.6);
+    skyMat.uniforms.uZenith.value.setRGB(z[0],z[1],z[2]);
+    skyMat.uniforms.uHorizon.value.setRGB(h[0],h[1],h[2]);
+    const sc=altDeg<6?[1.0,0.55,0.28]:[1.0,0.93,0.78];
+    skyMat.uniforms.uSun.value.setRGB(sc[0],sc[1],sc[2]);
+    skyMat.uniforms.uSunDir.value.copy(dir);
+  }
+
   function applySun(){
     const day=+document.getElementById('day').value,hr=+document.getElementById('hr').value;
     document.getElementById('dayout').textContent=dateStr(day);document.getElementById('hrout').textContent=hrStr(hr);
-    const {alt,az}=solar(day,hr);const night=alt<=0;
+    if(Math.floor(day)!==lastArcDay){lastArcDay=Math.floor(day);buildArc(day);}
+    const {alt,az}=solar(day,hr);const night=alt<=0;const altDeg=alt*R2D;
     const dir=new THREE.Vector3(Math.cos(alt)*Math.sin(az),Math.sin(alt),Math.cos(alt)*Math.cos(az));
-    if(night){sun.intensity=0;sunDisc.visible=false;scene.background.set('#1a2230');hemi.intensity=0.18;}
-    else{sun.intensity=2.6*Math.min(1,0.3+alt/(Math.PI/4));sunDisc.visible=true;hemi.intensity=0.5+0.3*Math.sin(alt);
-      sun.color.set(alt<0.25?'#ff9e58':'#fff2d0');const t=Math.max(0,Math.sin(alt));scene.background.setRGB(0.36+0.42*t,0.5+0.32*t,0.62+0.22*t);}
-    sun.position.copy(dir).multiplyScalar(30).add(new THREE.Vector3(0,1.2,0));
-    sunDisc.position.copy(dir).multiplyScalar(26).add(new THREE.Vector3(0,1.2,0));
-    document.getElementById('m-alt').textContent=night?'—':Math.round(alt*R2D)+'°';
+    setSky(altDeg,dir);
+    if(night){sun.intensity=0;hemi.intensity=0.18;}
+    else{sun.intensity=2.6*Math.min(1,0.3+alt/(Math.PI/4));hemi.intensity=0.5+0.3*Math.sin(alt);
+      sun.color.set(altDeg<14?'#ff9e58':'#fff2d0');}
+    sun.position.copy(dir).multiplyScalar(40).add(new THREE.Vector3(0,1.2,0));
+    document.getElementById('m-alt').textContent=night?'—':Math.round(altDeg)+'°';
     document.getElementById('m-az').textContent=night?'—':Math.round(az*R2D)+'°';
     const gl=document.getElementById('m-gl');
     if(night){gl.textContent='night';gl.style.color='#8b8a82';}
-    else if(alt*R2D<thresh){gl.textContent='sun under eaves';gl.style.color='#e0a85a';}
+    else if(altDeg<thresh){gl.textContent='sun under eaves';gl.style.color='#e0a85a';}
     else {gl.textContent='shaded by roof';gl.style.color='#7cc49a';}
   }
+
+  // ---- camera ----
   let drag=false,px=0,py=0,yaw=-0.7,pitch=0.34,rad=15;
   function place(){cam.position.set(Math.sin(yaw)*Math.cos(pitch)*rad,Math.sin(pitch)*rad+2.2,Math.cos(yaw)*Math.cos(pitch)*rad);cam.lookAt(0,1.1,0);}
   function pos(e){const t=e.touches?e.touches[0]:e;return[t.clientX,t.clientY];}
   const el=renderer.domElement;
   el.addEventListener('mousedown',e=>{drag=true;[px,py]=pos(e);el.style.cursor='grabbing';});
   el.addEventListener('touchstart',e=>{drag=true;[px,py]=pos(e);},{passive:true});
-  function mv(e){if(!drag)return;const[x,y]=pos(e);yaw-=(x-px)*0.008;pitch=Math.max(0.08,Math.min(1.1,pitch+(y-py)*0.005));px=x;py=y;}
+  function mv(e){if(!drag)return;const[x,y]=pos(e);yaw-=(x-px)*0.008;pitch=Math.max(0.06,Math.min(1.45,pitch+(y-py)*0.005));px=x;py=y;}
   window.addEventListener('mousemove',mv);el.addEventListener('touchmove',e=>{mv(e);},{passive:true});
   window.addEventListener('mouseup',()=>{drag=false;el.style.cursor='grab';});window.addEventListener('touchend',()=>drag=false);
+  el.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(6,Math.min(40,rad+(e.deltaY>0?1:-1)));},{passive:false});
   window.addEventListener('resize',()=>{renderer.setSize(Wf(),Hh);cam.aspect=Wf()/Hh;cam.updateProjectionMatrix();});
-  ['day','hr'].forEach(id=>document.getElementById(id).addEventListener('input',applySun));
-  document.getElementById('sols').onclick=()=>{document.getElementById('day').value=172;applySun();};
-  document.getElementById('wins').onclick=()=>{document.getElementById('day').value=355;applySun();};
-  let playing=false;document.getElementById('play').onclick=function(){playing=!playing;this.textContent=playing?'Pause':'Sweep day';};
-  applySun();
-  function loop(){if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();renderer.render(scene,cam);requestAnimationFrame(loop);}
-  loop();
 
-  // ---- interior solar heat gain (simplified clear-sky model) ----
-  (function buildHeatTable(){
-    const ASHRAE=[
-      {A:1230,B:0.142,C:0.058},{A:1215,B:0.144,C:0.060},{A:1186,B:0.156,C:0.071},
-      {A:1136,B:0.180,C:0.097},{A:1104,B:0.196,C:0.121},{A:1088,B:0.205,C:0.134},
-      {A:1085,B:0.207,C:0.136},{A:1107,B:0.201,C:0.122},{A:1151,B:0.177,C:0.092},
-      {A:1192,B:0.160,C:0.073},{A:1221,B:0.149,C:0.063},{A:1233,B:0.142,C:0.057}
-    ];
-    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const repDay=[17,47,75,105,135,162,198,228,258,288,318,344];
-    const daysIn=[31,28,31,30,31,30,31,31,30,31,30,31];
-    const SHGC=0.50, faceArea=4.46*2.52, faces=[0,-90,90], albedo=0.20; // S,E,W normals (deg from south)
-    function dayGain(m,withOv){
-      const A=ASHRAE[m].A,B=ASHRAE[m].B,C=ASHRAE[m].C; let wh=0,dirWh=0,peak=0;
-      for(let hr=4;hr<=20;hr+=0.25){
-        const s=solar(repDay[m],hr); if(s.alt<=0) continue;
-        const sa=Math.sin(s.alt); if(sa<0.02) continue;
-        const DNI=A*Math.exp(-B/sa), Dh=C*DNI, GHI=DNI*sa+Dh;
-        const shaded = withOv && (s.alt*R2D>thresh);
-        let Pinc=0, Pdir=0;
-        for(let i=0;i<faces.length;i++){
-          const cosI=Math.cos(s.alt)*Math.cos(s.az-faces[i]*D2R);
-          const dir=(!shaded && cosI>0)? DNI*cosI : 0;
-          const dif=Dh*0.5*(withOv?0.7:1.0);
-          const ref=albedo*GHI*0.25;
-          Pinc+=(dir+dif+ref)*faceArea; Pdir+=dir*faceArea;
-        }
-        const Q=SHGC*Pinc; wh+=Q*0.25; dirWh+=SHGC*Pdir*0.25; if(Q>peak)peak=Q;
+  // ---- heat model (recomputes live) ----
+  let SHGC=0.50;
+  const ASHRAE=[
+    {A:1230,B:0.142,C:0.058},{A:1215,B:0.144,C:0.060},{A:1186,B:0.156,C:0.071},
+    {A:1136,B:0.180,C:0.097},{A:1104,B:0.196,C:0.121},{A:1088,B:0.205,C:0.134},
+    {A:1085,B:0.207,C:0.136},{A:1107,B:0.201,C:0.122},{A:1151,B:0.177,C:0.092},
+    {A:1192,B:0.160,C:0.073},{A:1221,B:0.149,C:0.063},{A:1233,B:0.142,C:0.057}
+  ];
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const repDay=[17,47,75,105,135,162,198,228,258,288,318,344];
+  const daysIn=[31,28,31,30,31,30,31,31,30,31,30,31];
+  const faceArea=4.46*2.52, faces=[0,-90,90], albedo=0.20;
+  function dayGain(m,withOv){
+    const A=ASHRAE[m].A,B=ASHRAE[m].B,C=ASHRAE[m].C;let wh=0,dirWh=0,peak=0;
+    for(let hr=4;hr<=20;hr+=0.25){
+      const s=solar(repDay[m],hr);if(s.alt<=0)continue;
+      const sa=Math.sin(s.alt);if(sa<0.02)continue;
+      const DNI=A*Math.exp(-B/sa),Dh=C*DNI,GHI=DNI*sa+Dh;
+      const shaded=withOv&&(s.alt*R2D>thresh);
+      let Pinc=0,Pdir=0;
+      for(let i=0;i<faces.length;i++){
+        const cosI=Math.cos(s.alt)*Math.cos(s.az-faces[i]*D2R);
+        const dir=(!shaded&&cosI>0)?DNI*cosI:0;
+        const dif=Dh*0.5*(withOv?0.7:1.0);
+        const ref=albedo*GHI*0.25;
+        Pinc+=(dir+dif+ref)*faceArea;Pdir+=dir*faceArea;
       }
-      return {daily:wh/1000, peak:peak/1000, directShare: wh>0?dirWh/wh:0};
+      const Q=SHGC*Pinc;wh+=Q*0.25;dirWh+=SHGC*Pdir*0.25;if(Q>peak)peak=Q;
     }
-    let annOv=0, annNo=0, rows='';
+    return {daily:wh/1000,peak:peak/1000,directShare:wh>0?dirWh/wh:0};
+  }
+  function recomputeHeat(){
+    let annOv=0,annNo=0,rows='';
     for(let m=0;m<12;m++){
-      const g=dayGain(m,true), gN=dayGain(m,false);
-      const monthly=g.daily*daysIn[m]; annOv+=monthly; annNo+=gN.daily*daysIn[m];
+      const g=dayGain(m,true),gN=dayGain(m,false);
+      const monthly=g.daily*daysIn[m];annOv+=monthly;annNo+=gN.daily*daysIn[m];
       rows+='<tr><td>'+months[m]+'</td><td>'+g.peak.toFixed(2)+'</td><td>'+g.daily.toFixed(1)+
             '</td><td>'+Math.round(monthly)+'</td><td>'+Math.round(g.directShare*100)+'%</td></tr>';
     }
     rows+='<tr class="tot"><td>Year</td><td>—</td><td>'+(annOv/365).toFixed(1)+' avg</td><td>'+Math.round(annOv)+'</td><td>—</td></tr>';
     document.getElementById('heatBody').innerHTML=rows;
+    document.getElementById('m-ann').textContent=(annOv/1000).toFixed(1)+' MWh';
+    const O=(roofR-GLASS_HALF).toFixed(2);
     document.getElementById('heatCompare').innerHTML=
-      'With the overhang, the core takes in <b class="hl">≈'+(annOv/1000).toFixed(1)+'&nbsp;MWh/yr</b> of solar heat. '+
-      'Remove the roof oversail and that climbs to <b class="hl">≈'+(annNo/1000).toFixed(1)+'&nbsp;MWh/yr</b> — '+
-      'the overhang cuts solar gain by <b class="hl">'+Math.round((1-annOv/annNo)*100)+'%</b>, almost all of it midday beam. '+
-      'Note the low <b>Direct&nbsp;%</b>: nearly all the heat that does get in is diffuse sky light, not direct sun.';
-  })();
+      'At a <b class="hl">'+O+'&nbsp;m</b> overhang and <b class="hl">SHGC '+SHGC.toFixed(2)+'</b>, the core takes in '+
+      '<b class="hl">≈'+(annOv/1000).toFixed(1)+'&nbsp;MWh/yr</b> of solar heat. With no overhang that would be '+
+      '<b class="hl">≈'+(annNo/1000).toFixed(1)+'&nbsp;MWh/yr</b> — this overhang cuts gain by '+
+      '<b class="hl">'+Math.round((1-annOv/annNo)*100)+'%</b>. Note the low <b>Direct&nbsp;%</b>: most heat that gets in is diffuse sky light, not direct sun.';
+  }
+
+  // ---- controls ----
+  ['day','hr'].forEach(id=>document.getElementById(id).addEventListener('input',applySun));
+  document.getElementById('ov').addEventListener('input',function(){
+    document.getElementById('ovout').textContent=(+this.value).toFixed(2)+' m';
+    rebuildShell(+this.value);applySun();recomputeHeat();
+  });
+  document.querySelectorAll('.g-btn').forEach(b=>b.addEventListener('click',function(){
+    document.querySelectorAll('.g-btn').forEach(x=>x.classList.remove('is-on'));this.classList.add('is-on');
+    SHGC=+this.dataset.shgc;
+    glassMat.color.set(SHGC>=0.5?'#9fc4e0':SHGC>=0.38?'#8fb6cc':'#7fa0ad');
+    recomputeHeat();
+  }));
+  const views={orbit:[-0.7,0.34,15],plan:[-0.45,1.30,18],eye:[-0.7,0.12,12]};
+  document.querySelectorAll('.v-btn').forEach(b=>b.addEventListener('click',function(){
+    document.querySelectorAll('.v-btn').forEach(x=>x.classList.remove('is-on'));this.classList.add('is-on');
+    const v=views[this.dataset.view];yaw=v[0];pitch=v[1];rad=v[2];
+  }));
+  document.getElementById('sols').onclick=()=>{document.getElementById('day').value=172;applySun();};
+  document.getElementById('wins').onclick=()=>{document.getElementById('day').value=355;applySun();};
+  let playing=false;document.getElementById('play').onclick=function(){playing=!playing;this.textContent=playing?'Pause':'Sweep day';};
+
+  // ---- init ----
+  document.getElementById('ovout').textContent='2.82 m';
+  rebuildShell(2.82);applySun();recomputeHeat();
+  function loop(){if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();renderer.render(scene,cam);requestAnimationFrame(loop);}
+  loop();
 })();
 </script>
 </body>
