@@ -35,6 +35,10 @@ disableKinds = ["taxonomy", "term"]
     url = "/#configurator"
     weight = 25
   [[menu.main]]
+    name = "Feasibility"
+    url = "/feasibility/"
+    weight = 27
+  [[menu.main]]
     name = "Process"
     url = "/#process"
     weight = 30
