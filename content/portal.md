@@ -18,4 +18,11 @@ language of our hospitality systems into a residential setting.
 This portal is where partners will find the current studies, drawings, and
 project material as the scheme develops.
 
+### Site analysis map
+
+An interactive screening map of the Comunidad de Madrid — attractiveness
+scoring, purchasing power, land classification, hotels and short-term rental.
+
+<a class="btn btn-primary" href="{{< ref "portal-madrid.md" >}}">Open the site-analysis map →</a>
+
 More to come.
