@@ -11,7 +11,7 @@ collaborators:
   - "Arup — structural engineering"
   - "Climetric — comfort & climate design"
 studyUrl: "/systems/echo/solar-study/"
-studyLabel: "Open the ECHO solar study"
+studyLabel: "Check out the ECHO solar study"
 weight: 10
 ---
 
