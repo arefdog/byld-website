@@ -86,6 +86,7 @@
   <div class="section-head">
     <p class="eyebrow">Why BYLD</p>
     <h2>BYLD against the alternatives</h2>
+    <p class="table-hint" aria-hidden="true"><span>Swipe to compare all three</span> →</p>
   </div>
   <div class="table-wrap">
     <table class="compare">
@@ -101,9 +102,9 @@
         {{ range hugo.Data.comparison.rows }}
         <tr>
           <th scope="row">{{ .metric }}</th>
-          <td>{{ .traditional }}</td>
-          <td>{{ .prefab }}</td>
-          <td class="col-byld">{{ .byld }}</td>
+          <td>{{ partial "compare-cell.html" (dict "text" .traditional) }}</td>
+          <td>{{ partial "compare-cell.html" (dict "text" .prefab) }}</td>
+          <td class="col-byld">{{ partial "compare-cell.html" (dict "text" .byld "byld" true) }}</td>
         </tr>
         {{ end }}
       </tbody>

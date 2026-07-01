@@ -1,0 +1,7 @@
+{{- /* Params: text ("Keyword — description"), byld (bool) */ -}}
+{{- $parts := split .text " — " -}}
+{{- $key := index $parts 0 -}}
+{{- $rest := "" -}}
+{{- if gt (len $parts) 1 }}{{ $rest = delimit (after 1 $parts) " — " }}{{ end -}}
+<span class="cell-key{{ if .byld }} cell-key-byld{{ end }}">{{ $key }}</span>
+{{- with $rest }} <span class="cell-desc">{{ . }}</span>{{ end -}}
