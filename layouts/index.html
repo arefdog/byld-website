@@ -10,10 +10,6 @@
     <div class="hero-copy">
       <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
       {{ with .Params.hero_subtitle }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
-        <a class="btn btn-ghost btn-on-dark" href="#systems">Explore the systems</a>
-      </div>
     </div>
   </div>
 </section>
@@ -23,6 +19,10 @@
   <div class="section-head">
     <p class="eyebrow">What we do</p>
     <h2>End-to-end delivery, from site strategy to installation</h2>
+    <div class="section-actions">
+      <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
+      <a class="btn btn-ghost" href="#systems">Explore the systems</a>
+    </div>
   </div>
   <div class="grid grid-3">
     {{ range $i, $s := hugo.Data.services }}

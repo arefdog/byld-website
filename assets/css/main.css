@@ -178,6 +178,7 @@ main { display: block; }
 }
 .section-head { max-width: 720px; margin-bottom: clamp(40px, 6vw, 72px); }
 .section-head h2 { font-size: clamp(28px, 4.4vw, 50px); }
+.section-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 
 /* ---- Hero (full-bleed) ---- */
 .hero-full {
