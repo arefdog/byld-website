@@ -135,6 +135,37 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
+// Image carousels
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), function (car) {
+    var track = car.querySelector('.carousel-track');
+    var slides = car.querySelectorAll('.carousel-slide');
+    var dots = car.querySelectorAll('.carousel-dot');
+    var n = slides.length;
+    if (n < 2) return;
+    var idx = 0, timer = null;
+
+    function go(i) {
+      idx = (i + n) % n;
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+      Array.prototype.forEach.call(dots, function (d, j) { d.classList.toggle('is-active', j === idx); });
+    }
+    function start() { if (!reduce) timer = setInterval(function () { go(idx + 1); }, 5000); }
+    function stop() { clearInterval(timer); }
+    function reset() { stop(); start(); }
+
+    var next = car.querySelector('.carousel-next');
+    var prev = car.querySelector('.carousel-prev');
+    if (next) next.addEventListener('click', function () { go(idx + 1); reset(); });
+    if (prev) prev.addEventListener('click', function () { go(idx - 1); reset(); });
+    Array.prototype.forEach.call(dots, function (d, j) { d.addEventListener('click', function () { go(j); reset(); }); });
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    start();
+  });
+})();
+
 // Reveal-on-scroll (respects prefers-reduced-motion)
 (function () {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

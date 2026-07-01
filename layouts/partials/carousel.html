@@ -1,0 +1,17 @@
+{{- /* Params: images (slice of jpg paths), alt */ -}}
+{{ $imgs := .images }}
+{{ $alt := .alt }}
+<div class="carousel" data-carousel>
+  <div class="carousel-track">
+    {{ range $i, $src := $imgs }}
+    <div class="carousel-slide">{{ partial "picture.html" (dict "src" $src "alt" $alt "loading" (cond (eq $i 0) "eager" "lazy")) }}</div>
+    {{ end }}
+  </div>
+  {{ if gt (len $imgs) 1 }}
+  <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">&#8249;</button>
+  <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">&#8250;</button>
+  <div class="carousel-dots">
+    {{ range $i, $src := $imgs }}<button class="carousel-dot{{ if eq $i 0 }} is-active{{ end }}" type="button" aria-label="Go to image {{ add $i 1 }}"></button>{{ end }}
+  </div>
+  {{ end }}
+</div>

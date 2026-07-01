@@ -1,15 +1,24 @@
 - sector: Hospitality
   name: ECHO
   slug: echo
-  image: img/sys-echo.jpg
+  images:
+    - img/sys-echo-1.jpg
+    - img/sys-echo-2.jpg
+    - img/sys-echo-3.jpg
   body: Scalable hospitality units that stretch or cluster around shared utilities.
 - sector: Commercial
   name: The ICON
   slug: icon
-  image: img/sys-icon.jpg
+  images:
+    - img/sys-icon-1.jpg
+    - img/sys-icon-2.jpg
+    - img/sys-icon-3.jpg
   body: A demountable pavilion for commercial activations — strong presence, fast to install and reuse.
 - sector: Residential
   name: ATLAS
   slug: atlas
-  image: img/sys-atlas.jpg
+  images:
+    - img/sys-atlas-1.jpg
+    - img/sys-atlas-2.jpg
+    - img/sys-atlas-3.jpg
   body: A residential kit-of-parts, from single homes to whole communities.
