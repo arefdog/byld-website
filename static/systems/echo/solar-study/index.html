@@ -137,6 +137,8 @@ import { SAOPass } from 'three/addons/postprocessing/SAOPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { SMAAPass } from 'three/addons/postprocessing/SMAAPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const stage=document.getElementById('stage');
@@ -146,14 +148,14 @@ const Wf=()=>stage.clientWidth||760, Hh=460;
 const renderer=new THREE.WebGLRenderer({antialias:false});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 renderer.setSize(Wf(),Hh);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.9;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.VSMShadowMap;
+renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.0;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 stage.appendChild(renderer.domElement);
 if(loadingEl) loadingEl.remove();
 
 const scene=new THREE.Scene();
-const cam=new THREE.PerspectiveCamera(42,Wf()/Hh,0.1,6000);
+const cam=new THREE.PerspectiveCamera(32,Wf()/Hh,0.1,6000);
 const D2R=Math.PI/180,R2D=180/Math.PI,lat=40.7*D2R;
 const MAXA=renderer.capabilities.getMaxAnisotropy();
 
@@ -219,7 +221,8 @@ bed.position.set(-0.8,0.32,-1.2);bed.castShadow=true;scene.add(bed);
 // ---- sun light ----
 const sun=new THREE.DirectionalLight('#fff4e0',3.0);sun.castShadow=true;
 sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.near=1;sun.shadow.camera.far=140;
-sun.shadow.bias=-0.0004;sun.shadow.normalBias=0.02;sun.target.position.set(0,1.2,0);
+sun.shadow.radius=7;sun.shadow.blurSamples=18;
+sun.shadow.bias=-0.0005;sun.shadow.normalBias=0.03;sun.target.position.set(0,1.2,0);
 scene.add(sun);scene.add(sun.target);
 const fill=new THREE.HemisphereLight('#cfe0f0','#4a5a38',0.12);scene.add(fill);
 
@@ -302,7 +305,7 @@ function applySun(){
 }
 
 // ---- camera ----
-let drag=false,px=0,py=0,yaw=-0.7,pitch=0.34,rad=15;
+let drag=false,px=0,py=0,yaw=-0.7,pitch=0.34,rad=19;
 function place(){cam.position.set(Math.sin(yaw)*Math.cos(pitch)*rad,Math.sin(pitch)*rad+2.2,Math.cos(yaw)*Math.cos(pitch)*rad);cam.lookAt(0,1.1,0);}
 function pos(e){const t=e.touches?e.touches[0]:e;return[t.clientX,t.clientY];}
 const el=renderer.domElement;
@@ -311,19 +314,28 @@ el.addEventListener('touchstart',e=>{drag=true;[px,py]=pos(e);},{passive:true});
 function mv(e){if(!drag)return;const[x,y]=pos(e);yaw-=(x-px)*0.008;pitch=Math.max(0.06,Math.min(1.45,pitch+(y-py)*0.005));px=x;py=y;}
 window.addEventListener('mousemove',mv);el.addEventListener('touchmove',e=>{mv(e);},{passive:true});
 window.addEventListener('mouseup',()=>{drag=false;el.style.cursor='grab';});window.addEventListener('touchend',()=>drag=false);
-el.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(6,Math.min(40,rad+(e.deltaY>0?1:-1)));},{passive:false});
+el.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(8,Math.min(52,rad+(e.deltaY>0?1.3:-1.3)));},{passive:false});
 
 // ---- post-processing ----
 const composer=new EffectComposer(renderer);
 composer.setPixelRatio(renderer.getPixelRatio());
 composer.setSize(Wf(),Hh);
 composer.addPass(new RenderPass(scene,cam));
+const bokeh=new BokehPass(scene,cam,{focus:19.0,aperture:0.0001,maxblur:0.0038});
+composer.addPass(bokeh);
 const sao=new SAOPass(scene,cam);
 sao.params.saoBias=0.4;sao.params.saoIntensity=0.008;sao.params.saoScale=6;sao.params.saoKernelRadius=28;sao.params.saoBlur=true;
 composer.addPass(sao);
 const bloom=new UnrealBloomPass(new THREE.Vector2(Wf(),Hh),0.2,0.7,0.92);composer.addPass(bloom);
 composer.addPass(new SMAAPass(Wf(),Hh));
 composer.addPass(new OutputPass());
+const GrainVignette={
+  uniforms:{tDiffuse:{value:null},time:{value:0},grain:{value:0.05},vig:{value:0.4},ca:{value:0.0014}},
+  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+  fragmentShader:'uniform sampler2D tDiffuse;uniform float time,grain,vig,ca;varying vec2 vUv;float rand(vec2 c){return fract(sin(dot(c,vec2(12.9898,78.233)))*43758.5453);}void main(){vec2 uv=vUv;vec2 d=uv-0.5;float r=length(d);vec2 off=d*ca*r*2.0;vec3 col;col.r=texture2D(tDiffuse,uv+off).r;col.g=texture2D(tDiffuse,uv).g;col.b=texture2D(tDiffuse,uv-off).b;float v=smoothstep(0.88,0.30,r);col*=mix(1.0,v,vig);col+=(rand(uv+fract(time))-0.5)*grain;gl_FragColor=vec4(col,1.0);}'
+};
+const grainPass=new ShaderPass(GrainVignette);composer.addPass(grainPass);
+const _focusTarget=new THREE.Vector3(0,1.1,0);
 window.addEventListener('resize',()=>{const w=Wf();renderer.setSize(w,Hh);composer.setSize(w,Hh);cam.aspect=w/Hh;cam.updateProjectionMatrix();});
 
 // ---- heat model ----
@@ -418,7 +430,7 @@ document.querySelectorAll('.g-btn').forEach(b=>b.addEventListener('click',functi
   else {glassMat.color.set('#c7d6da');glassMat.transmission=0.62;}
   recomputeHeat();
 }));
-const views={orbit:[-0.7,0.34,15],plan:[-0.45,1.30,18],eye:[-0.7,0.12,12]};
+const views={orbit:[-0.7,0.34,19],plan:[-0.45,1.30,23],eye:[-0.7,0.12,15]};
 document.querySelectorAll('.v-btn').forEach(b=>b.addEventListener('click',function(){
   document.querySelectorAll('.v-btn').forEach(x=>x.classList.remove('is-on'));this.classList.add('is-on');
   const v=views[this.dataset.view];yaw=v[0];pitch=v[1];rad=v[2];
@@ -430,7 +442,10 @@ document.getElementById('play').onclick=function(){playing=!playing;this.textCon
 // ---- init ----
 document.getElementById('ovout').textContent='2.82 m';
 rebuildShell(2.82);applySun();recomputeHeat();
-function loop(){frame++;if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();composer.render();requestAnimationFrame(loop);}
+function loop(){frame++;if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();
+  bokeh.uniforms.focus.value=cam.position.distanceTo(_focusTarget);
+  grainPass.uniforms.time.value=performance.now()*0.001;
+  composer.render();requestAnimationFrame(loop);}
 loop();
 
 // Optional as-built model: drop an "echo.glb" next to this file to replace the procedural shell.
