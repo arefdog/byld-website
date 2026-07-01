@@ -42,7 +42,7 @@ ECHO was developed with expert collaborators:
 - **Climetric** brought climate and comfort-design expertise, tuning the
   building to perform in its setting.
 
-Explore the [**ECHO solar study**](/systems/echo/solar-study/) — an interactive
+Explore the [**ECHO solar study**](solar-study/) — an interactive
 sun-and-shade model for the Madrid site, with live cost, carbon, and comfort
 figures as you adjust the roof overhang and glazing.
 

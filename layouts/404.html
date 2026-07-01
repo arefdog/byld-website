@@ -4,8 +4,8 @@
   <h1 style="font-size:clamp(48px,10vw,120px); letter-spacing:-.04em; margin:0 0 16px;">Page not found</h1>
   <p style="color:var(--muted); font-size:18px; max-width:46ch; margin:0 0 32px;">The page you’re after doesn’t exist or has moved. Let’s get you back on track.</p>
   <div class="hero-actions" style="justify-content:center;">
-    <a class="btn btn-primary" href="{{ "/" | relURL }}">Back to home</a>
-    <a class="btn btn-ghost" href="{{ "/#contact" | relURL }}">Contact us</a>
+    <a class="btn btn-primary" href="{{ site.Home.RelPermalink }}">Back to home</a>
+    <a class="btn btn-ghost" href="{{ "#contact" | relURL }}">Contact us</a>
   </div>
 </section>
 {{ end }}

@@ -3,10 +3,6 @@ defaultContentLanguage = "en"
 title = "BYLD — Modular Construction Systems and Site Development"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
-# Rewrites root-relative links (/systems/…, /#contact, menu URLs) against the
-# baseURL so they carry the /byld-website/ subpath on GitHub Pages. Without
-# this, relURL leaves leading-slash paths unprefixed and subpages 404.
-canonifyURLs = true
 
 [languages.en]
   label = "English"

@@ -19,7 +19,7 @@
 
     <div class="footer-col">
       <h4>Navigate</h4>
-      {{ range site.Menus.main }}<p><a href="{{ .URL | relURL }}">{{ .Name }}</a></p>{{ end }}
+      {{ range site.Menus.main }}<p><a href="{{ .URL | strings.TrimPrefix "/" | relURL }}">{{ .Name }}</a></p>{{ end }}
     </div>
   </div>
 

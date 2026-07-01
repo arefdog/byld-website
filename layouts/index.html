@@ -1,7 +1,11 @@
 {{ define "main" }}
 
-<!-- HERO -->
-<section class="hero" id="approach">
+<!-- HERO (full-bleed) -->
+<section class="hero hero-full" id="approach">
+  <div class="hero-bg">
+    {{ partial "picture.html" (dict "src" "img/hero.jpg" "alt" "ECHO ring-form structure in a mountain landscape at sunset" "loading" "eager" "fetchpriority" "high" "width" 1920 "height" 1440) }}
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="eyebrow">BYLD — Madrid</p>
@@ -9,13 +13,9 @@
       <p class="hero-intro">{{ .Params.hero_intro }}</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
-        <a class="btn btn-ghost" href="#systems">Explore the systems</a>
+        <a class="btn btn-ghost btn-on-dark" href="#systems">Explore the systems</a>
       </div>
     </div>
-    <figure class="hero-media">
-      {{ partial "picture.html" (dict "src" "img/echo-hero.jpg" "alt" "ECHO ring-form structure in a landscape setting" "loading" "eager" "fetchpriority" "high" "width" 1600 "height" 2000) }}
-      <figcaption>ECHO — ring-form hospitality system</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -93,7 +93,7 @@
       </div>
       <div class="system-body">
         <p>{{ $s.body }}</p>
-        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "/systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
+        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
       </div>
       {{ with $s.image }}
       <div class="system-media">{{ partial "picture.html" (dict "src" . "alt" (printf "%s — %s" $s.name $s.sector) "loading" "lazy") }}</div>
