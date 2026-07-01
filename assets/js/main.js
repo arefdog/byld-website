@@ -1,37 +1,3 @@
-// Dropdown menu (three-dot button)
-(function () {
-  const btn = document.querySelector('.menu-btn');
-  const menu = document.querySelector('.dropdown-menu');
-  if (!btn || !menu) return;
-
-  function setOpen(open) {
-    btn.setAttribute('aria-expanded', String(open));
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    if (open) {
-      menu.hidden = false;
-      void menu.offsetHeight;                 // reflow so the transition plays
-      menu.classList.add('open');
-    } else {
-      menu.classList.remove('open');
-      setTimeout(function () { if (!menu.classList.contains('open')) menu.hidden = true; }, 220);
-    }
-  }
-
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    setOpen(!menu.classList.contains('open'));
-  });
-  menu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () { setOpen(false); });
-  });
-  document.addEventListener('click', function (e) {
-    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) setOpen(false);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu.classList.contains('open')) setOpen(false);
-  });
-})();
-
 // Contact form — AJAX submit with inline success/error (when an https
 // endpoint is configured). Falls back to the native mailto: form otherwise.
 (function () {
