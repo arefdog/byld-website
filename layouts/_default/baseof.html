@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.Lang | default "en" }}">
 {{ partial "head.html" . }}
-<body>
+<body class="{{ if .IsHome }}home-hero{{ end }}">
   {{ partial "header.html" . }}
   <main>
     {{ block "main" . }}{{ end }}
