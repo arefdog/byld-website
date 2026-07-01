@@ -316,18 +316,24 @@ main { display: block; }
 .table-hint { display: none; }
 @media (max-width: 820px) {
   .table-hint {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 13px; color: var(--muted); margin: 16px 0 0;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+    text-transform: uppercase; color: var(--ink);
+    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 14px; margin: 18px 0 0;
   }
-  .table-hint span { animation: hintNudge 1.6s ease-in-out infinite; }
+  .table-hint .th-arrow {
+    font-size: 16px; line-height: 1; color: var(--ink);
+    animation: hintNudge 1.2s ease-in-out infinite;
+  }
   .table-wrap::after {
-    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
-    background: linear-gradient(to right, rgba(244,243,240,0), var(--paper-2));
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 54px;
+    background: linear-gradient(to right, rgba(244,243,240,0), var(--paper-2) 85%);
     pointer-events: none;
   }
 }
-@keyframes hintNudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
-@media (prefers-reduced-motion: reduce) { .table-hint span { animation: none; } }
+@keyframes hintNudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+@media (prefers-reduced-motion: reduce) { .table-hint .th-arrow { animation: none; } }
 .compare th, .compare td { text-align: left; padding: 18px 20px; vertical-align: top; border-bottom: 1px solid var(--line); }
 .compare thead th { font-family: var(--font-display); font-size: 16px; font-weight: 400; background: var(--paper-2); }
 .compare tbody th { font-weight: 500; color: var(--ink); width: 180px; }
