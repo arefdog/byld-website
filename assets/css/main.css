@@ -206,15 +206,16 @@ main { display: block; }
 .hero-full .hero-inner {
   position: relative; z-index: 2;
   max-width: var(--maxw); margin: 0 auto; width: 100%;
-  padding: clamp(88px, 11vh, 124px) var(--gutter) clamp(40px, 7vw, 80px);
+  padding: clamp(128px, 17vh, 190px) var(--gutter) clamp(40px, 7vw, 80px);
 }
 .hero-copy { min-width: 0; max-width: 900px; margin: 0 auto; text-align: center; }
 .hero-full .eyebrow { color: rgba(255,255,255,.75); }
 .hero-title {
-  font-size: clamp(28px, 3.2vw, 44px);
+  font-size: clamp(26px, 3.4vw, 42px);
   letter-spacing: -0.015em;
-  line-height: 1.14;
-  max-width: 15ch;
+  line-height: 1.1;
+  max-width: none;
+  white-space: nowrap;
   margin: 0 auto 24px;
   color: #fff;
   text-shadow: 0 2px 30px rgba(0,0,0,.35);
@@ -238,6 +239,7 @@ main { display: block; }
 .btn-on-dark:hover { background: #fff; color: var(--ink); border-color: #fff; }
 @media (max-width: 640px) {
   .hero-full { min-height: 78vh; }
+  .hero-title { white-space: normal; font-size: clamp(30px, 8vw, 40px); }
 }
 
 /* ---- Grids ---- */
