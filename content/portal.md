@@ -23,6 +23,8 @@ project material as the scheme develops.
 An interactive screening map of the Comunidad de Madrid — attractiveness
 scoring, purchasing power, land classification, hotels and short-term rental.
 
-<a class="btn btn-primary" href="{{< ref "portal-madrid.md" >}}">Open the site-analysis map →</a>
+<iframe class="portal-embed" src="https://arefdog.github.io/madrid-site-analysis/" title="Madrid site analysis" loading="lazy" allowfullscreen style="width:100%;height:80vh;border:0;border-radius:10px;margin:.5rem 0"></iframe>
+
+<a href="https://arefdog.github.io/madrid-site-analysis/" target="_blank" rel="noopener">Open full screen ↗</a>
 
 More to come.
