@@ -131,29 +131,6 @@
   </div>
 </section>
 
-<!-- WORK -->
-<section class="section" id="work">
-  <div class="section-head">
-    <p class="eyebrow">Selected work</p>
-    <h2>Systems in the field</h2>
-  </div>
-  <div class="grid grid-3">
-    {{ range $p := hugo.Data.projects }}
-    <article class="card project-card{{ if $p.image }} has-image{{ end }}">
-      {{ with $p.image }}
-      <div class="project-media">{{ partial "picture.html" (dict "src" . "alt" (printf "%s — %s" $p.name $p.sector) "loading" "lazy") }}</div>
-      {{ end }}
-      <div class="project-top">
-        <span class="project-sector">{{ .sector }}</span>
-        <span class="project-status">{{ .status }}</span>
-      </div>
-      <h3>{{ .name }}</h3>
-      <p class="project-meta">{{ .location }}{{ if ne .year "—" }} · {{ .year }}{{ end }}</p>
-      <p>{{ .body }}</p>
-    </article>
-    {{ end }}
-  </div>
-</section>
 
 <!-- PRESS -->
 <section class="section section-press" id="press">
