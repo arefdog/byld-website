@@ -11,11 +11,5 @@
     {{ $js := . | minify | fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
   {{ end }}
-  {{ if .IsHome }}
-    {{ with resources.Get "js/configurator.js" }}
-      {{ $cfg := . | minify | fingerprint }}
-      <script src="{{ $cfg.RelPermalink }}" integrity="{{ $cfg.Data.Integrity }}" defer></script>
-    {{ end }}
-  {{ end }}
 </body>
 </html>

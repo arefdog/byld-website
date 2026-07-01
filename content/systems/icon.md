@@ -33,5 +33,4 @@ installed quickly, used intensively, and demounted for reuse.
 - Adaptable branding and fit-out across events and campaigns
 - A repeatable asset rather than single-use build spend
 
-Planning an activation? [Get an indicative estimate](/#configurator) or
-[book a consultation](/#contact).
+Planning an activation? [Book a consultation](/#contact).

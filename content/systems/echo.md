@@ -52,5 +52,4 @@ ECHO is modular: the system can be **stretched to accommodate more function** â€
 adding space and program as a project grows, without losing the efficiency of a
 standardized kit.
 
-Ready to explore ECHO for your site? [Get an indicative estimate](/#configurator)
-or [book a consultation](/#contact).
+Ready to explore ECHO for your site? [Book a consultation](/#contact).
