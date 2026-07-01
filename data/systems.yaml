@@ -2,9 +2,9 @@
   name: ECHO
   slug: echo
   images:
-    - img/sys-echo-1.jpg
-    - img/sys-echo-2.jpg
     - img/sys-echo-3.jpg
+    - img/sys-echo-2.jpg
+    - img/sys-echo-1.jpg
   body: Scalable hospitality units that stretch or cluster around shared utilities.
 - sector: Commercial
   name: The ICON
