@@ -8,8 +8,8 @@
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <p class="eyebrow">BYLD — Madrid</p>
       <h1 class="hero-title">{{ .Params.hero_tagline }}</h1>
+      {{ with .Params.hero_subtitle }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
       <div class="hero-actions">
         <a class="btn btn-primary" href="#configurator">Get a price estimate</a>
         <a class="btn btn-ghost btn-on-dark" href="#systems">Explore the systems</a>
