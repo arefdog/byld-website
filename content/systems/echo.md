@@ -10,6 +10,8 @@ collaboratorsLabel: "Collaborators"
 collaborators:
   - "Arup — structural engineering"
   - "Climetric — comfort & climate design"
+studyUrl: "/systems/echo/solar-study/"
+studyLabel: "Open the ECHO solar study"
 weight: 10
 ---
 
@@ -39,6 +41,10 @@ ECHO was developed with expert collaborators:
 - **Arup** helped engineer the structure.
 - **Climetric** brought climate and comfort-design expertise, tuning the
   building to perform in its setting.
+
+Explore the [**ECHO solar study**](/systems/echo/solar-study/) — an interactive
+sun-and-shade model for the Madrid site, with live cost, carbon, and comfort
+figures as you adjust the roof overhang and glazing.
 
 ## Modular by design
 

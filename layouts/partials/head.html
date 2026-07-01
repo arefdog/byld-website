@@ -5,6 +5,7 @@
   {{ if .IsHome }}{{ $title = site.Title }}{{ else }}{{ $title = printf "%s — BYLD" .Title }}{{ end }}
   <title>{{ $title }}</title>
   <meta name="description" content="{{ .Description | default site.Params.description }}">
+  {{ if .Params.private }}<meta name="robots" content="noindex, nofollow">{{ end }}
   {{ $desc := .Description | default site.Params.description }}
   {{ $ogimg := "img/og.jpg" | absURL }}
   <link rel="canonical" href="{{ .Permalink }}">

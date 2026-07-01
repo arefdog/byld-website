@@ -4,8 +4,8 @@ sector: "Residential"
 status: "In development"
 image: "img/sys-atlas.jpg"
 lead: "A residential solution, in development — a kit-of-parts for housing, from individual homes to complete communities."
-# Collaborator portal → project detail (e.g. the Madrid studies) lives behind this.
-portalUrl: "mailto:office@gobyld.com?subject=ATLAS%20collaborator%20access"
+# Collaborator portal → password-gated page holding the Madrid studies.
+portalUrl: "/portal/"
 portalLabel: "Collaborator portal"
 weight: 30
 ---

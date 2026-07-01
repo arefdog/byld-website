@@ -71,6 +71,47 @@
   });
 })();
 
+// Collaborator portal — client-side password gate (obfuscation, not real
+// security: this is a public static site). Compares SHA-256 of the input
+// against the stored hash; unlock persists for the browser session.
+(function () {
+  var root = document.querySelector('[data-portal]');
+  if (!root) return;
+  var expected = (root.getAttribute('data-hash') || '').toLowerCase();
+  var lock = root.querySelector('.portal-lock');
+  var content = root.querySelector('.portal-content');
+  var form = root.querySelector('.portal-form');
+  var err = root.querySelector('.portal-error');
+  var KEY = 'byld-portal-' + expected.slice(0, 8);
+
+  function unlock() { lock.hidden = true; content.hidden = false; }
+  try { if (sessionStorage.getItem(KEY) === '1') unlock(); } catch (e) {}
+
+  function sha256(str) {
+    var data = new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256', data).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return b.toString(16).padStart(2, '0');
+      }).join('');
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.hidden = true;
+    sha256(form.password.value).then(function (h) {
+      if (h === expected) {
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+        unlock();
+      } else {
+        err.hidden = false;
+        form.password.value = '';
+        form.password.focus();
+      }
+    });
+  });
+})();
+
 // Reveal-on-scroll (respects prefers-reduced-motion)
 (function () {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

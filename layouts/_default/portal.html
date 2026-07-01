@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="section portal" data-portal data-hash="{{ .Params.passwordHash }}">
+  <div class="portal-lock">
+    <a class="system-back" href="{{ "/systems/atlas/" | relURL }}">← Back to ATLAS</a>
+    <p class="eyebrow">Collaborator portal</p>
+    <h1>{{ .Title }}</h1>
+    <p class="portal-intro">This area is for BYLD collaborators. Enter the access password to continue.</p>
+    <form class="portal-form" autocomplete="off" novalidate>
+      <label class="field">
+        <span>Access password</span>
+        <input type="password" name="password" required autocomplete="off">
+      </label>
+      <button type="submit" class="btn btn-primary">Unlock</button>
+      <p class="portal-error" role="alert" hidden>That password isn’t right. Try again or email {{ site.Params.email }}.</p>
+    </form>
+  </div>
+
+  <div class="portal-content system-detail" hidden>
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}
