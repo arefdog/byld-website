@@ -29,10 +29,6 @@ disableKinds = ["taxonomy", "term"]
 
 [menu]
   [[menu.main]]
-    name = "Who we serve"
-    url = "/#audiences"
-    weight = 10
-  [[menu.main]]
     name = "Systems"
     url = "/#systems"
     weight = 20

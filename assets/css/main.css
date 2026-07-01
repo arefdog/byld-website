@@ -168,7 +168,7 @@ main { display: block; }
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;   /* copy sits in the sky, top of frame */
   overflow: hidden;
   color: #fff;
 }
@@ -177,24 +177,27 @@ main { display: block; }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
+  object-position: 50% 22%;   /* keep the building low, sky behind the text */
 }
 .hero-scrim {
   position: absolute; inset: 0; z-index: 1;
+  /* dark at the top (behind nav + copy), clearing off the building below */
   background:
-    linear-gradient(to top, rgba(8,10,12,.80) 0%, rgba(8,10,12,.28) 38%, rgba(8,10,12,.10) 60%, rgba(8,10,12,.42) 100%);
+    linear-gradient(to bottom, rgba(8,10,12,.62) 0%, rgba(8,10,12,.34) 26%, rgba(8,10,12,.08) 48%, rgba(8,10,12,0) 66%);
 }
 .hero-full .hero-inner {
   position: relative; z-index: 2;
   max-width: var(--maxw); margin: 0 auto; width: 100%;
-  padding: clamp(48px, 8vw, 96px) var(--gutter);
+  padding: clamp(112px, 16vh, 200px) var(--gutter) clamp(48px, 8vw, 96px);
 }
-.hero-copy { min-width: 0; max-width: 46ch; }
+.hero-copy { min-width: 0; max-width: 42ch; }
 .hero-full .eyebrow { color: rgba(255,255,255,.75); }
 .hero-title {
-  font-size: clamp(40px, 6.4vw, 88px);
+  font-size: clamp(38px, 5.6vw, 76px);
   letter-spacing: -0.035em;
-  max-width: 16ch;
-  margin-bottom: 24px;
+  line-height: 1.02;
+  max-width: 15ch;
+  margin-bottom: 30px;
   color: #fff;
   text-shadow: 0 2px 30px rgba(0,0,0,.35);
 }
@@ -426,9 +429,9 @@ main { display: block; }
 .config-card { text-align: left; cursor: pointer; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; transition: border-color .2s ease, transform .15s ease; }
 .config-card:hover { border-color: var(--ink); transform: translateY(-2px); }
 .config-card.is-selected { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
-.config-card-sector { text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--muted); }
-.config-card-name { font-family: var(--font-display); font-size: 24px; }
-.config-card-blurb { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+.config-card-sector { font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.015em; color: var(--ink); line-height: 1.02; }
+.config-card-name { text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px; color: var(--muted); }
+.config-card-blurb { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
 .config-readout { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
 .config-area { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); }
