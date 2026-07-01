@@ -1,22 +1,30 @@
 ---
 title: "The ICON"
 sector: "Commercial"
+status: "Available"
 image: "img/sys-icon.jpg"
-lead: "A demountable pavilion system for commercial activations — strong architectural presence, rapid installation, and repeat use."
+image2: "img/icon-card.jpg"
+image2Caption: "The ICON at the World Economic Forum, Davos."
+lead: "A commercial solution for events — a demountable pavilion with real architectural presence, built to install fast and travel."
+collaboratorsLabel: "Partners"
+collaborators:
+  - "TVA"
+  - "Hub Culture"
 weight: 20
 ---
 
-## A landmark you can take with you
+## A commercial pavilion for events
 
-The ICON is a demountable pavilion system built for commercial activations. It
-creates a strong architectural presence while supporting rapid installation,
-repeat use, and adaptable branding across events, locations, and campaigns.
+The ICON is BYLD's commercial solution: a demountable pavilion system built for
+events and activations. It delivers a strong architectural presence while
+supporting rapid installation, repeat use, and adaptable branding across
+locations and campaigns.
 
-## Proven on the world stage
+## Proven in Davos
 
-The ICON has been deployed as an event location at the **World Economic Forum in
-Davos** — a timber-shingle pavilion installed quickly, used intensively, and
-demounted for reuse. It is the kind of statement architecture that travels.
+The ICON was deployed at the **World Economic Forum in Davos**, delivered
+together with partners including **TVA** and **Hub Culture** — a timber pavilion
+installed quickly, used intensively, and demounted for reuse.
 
 ## What you get
 

@@ -1,31 +1,50 @@
 ---
 title: "ECHO"
 sector: "Hospitality"
+status: "Available"
 image: "img/sys-echo.jpg"
-lead: "A ring-form hospitality system that scales by stretching or clustering standardized units around shared utilities."
+image2: "img/echo-card.jpg"
+image2Caption: "ECHO — the deck shades and protects while keeping the views open."
+lead: "A hospitality solution and a study in what sustainability means in nature — minimal materials to create comfort anywhere."
+collaboratorsLabel: "Collaborators"
+collaborators:
+  - "Arup — structural engineering"
+  - "Climetric — comfort & climate design"
 weight: 10
 ---
 
-## A hospitality system that grows with the site
+## Comfort anywhere, with the lightest possible touch
 
-ECHO is built for hospitality projects that need to start small and scale
-cleanly. Standardized guest units connect to shared utility cores, so layouts
-and density adapt to each location, market, and operating model — from a
-handful of keys to a full resort.
+ECHO is a study in what sustainability really means in nature: using the
+minimum of material to create genuine comfort, wherever it lands. Everything is
+pared back to what the guest actually needs — and no more.
 
-## Engineered in timber
+## A deck that shades, protects, and opens the view
 
-The flagship deployment of ECHO is a ring-form structure engineered in glulam
-and CLT, selected for the **Venice Architecture Biennale 2027**. Precision-made
-components are fabricated regionally and assembled on site, keeping the
-programme short and the foundations shallow.
+At its heart is a deck designed to **shade and protect** while keeping the views
+open in every direction. The envelope does the environmental work so the
+interior can stay calm, generous, and connected to the landscape.
 
-## What you get
+## Space, saved
 
-- Standardized, repeatable guest units with a shared utility core
-- Layouts that stretch or cluster to suit the site and operating model
-- Timber primary structure for low embodied carbon and fast assembly
-- Minimal groundworks — works on uneven or sensitive terrain
+Every square metre is considered. Within a compact footprint ECHO provides
+**sleeping quarters, storage, and a bathroom**, with all MEP (mechanical,
+electrical, and plumbing) minimized to keep the build lean and the running
+costs low.
+
+## Engineered with the best
+
+ECHO was developed with expert collaborators:
+
+- **Arup** helped engineer the structure.
+- **Climetric** brought climate and comfort-design expertise, tuning the
+  building to perform in its setting.
+
+## Modular by design
+
+ECHO is modular: the system can be **stretched to accommodate more function** —
+adding space and program as a project grows, without losing the efficiency of a
+standardized kit.
 
 Ready to explore ECHO for your site? [Get an indicative estimate](/#configurator)
 or [book a consultation](/#contact).

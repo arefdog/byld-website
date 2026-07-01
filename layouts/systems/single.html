@@ -3,12 +3,22 @@
   <div class="system-hero-inner">
     <div>
       <a class="system-back" href="{{ "/#systems" | relURL }}">← All systems</a>
-      <p class="eyebrow">{{ .Params.sector }}</p>
+      <div class="system-eyebrow-row">
+        <p class="eyebrow">{{ .Params.sector }}</p>
+        {{ with .Params.status }}
+        <span class="status-badge {{ if eq . "Available" }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>
+        {{ end }}
+      </div>
       <h1>{{ .Title }}</h1>
       {{ with .Params.lead }}<p class="lead">{{ . }}</p>{{ end }}
       <div class="hero-actions" style="margin-top:28px">
+        {{ if .Params.portalUrl }}
+        <a class="btn btn-primary" href="{{ .Params.portalUrl }}">{{ .Params.portalLabel | default "Collaborator portal" }} →</a>
+        <a class="btn btn-ghost" href="{{ "/#contact" | relURL }}">Book a consultation</a>
+        {{ else }}
         <a class="btn btn-primary" href="{{ "/#configurator" | relURL }}">Get an estimate</a>
         <a class="btn btn-ghost" href="{{ "/#contact" | relURL }}">Book a consultation</a>
+        {{ end }}
       </div>
     </div>
     {{ with .Params.image }}
@@ -19,5 +29,21 @@
 
 <article class="section system-detail">
   {{ .Content }}
+
+  {{ with .Params.image2 }}
+  <figure class="system-figure">
+    {{ partial "picture.html" (dict "src" . "alt" $.Title "loading" "lazy") }}
+    {{ with $.Params.image2Caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{ end }}
+
+  {{ with .Params.collaborators }}
+  <div class="collaborators">
+    <h2>{{ $.Params.collaboratorsLabel | default "Collaborators & partners" }}</h2>
+    <ul class="collab-list">
+      {{ range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  </div>
+  {{ end }}
 </article>
 {{ end }}

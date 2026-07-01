@@ -1,30 +1,29 @@
 ---
 title: "ATLAS"
 sector: "Residential"
+status: "In development"
 image: "img/sys-atlas.jpg"
-lead: "A residential kit-of-parts for varied housing layouts — from individual homes to complete communities."
+lead: "A residential solution, in development — a kit-of-parts for housing, from individual homes to complete communities."
+# Collaborator portal → project detail (e.g. the Madrid studies) lives behind this.
+portalUrl: "mailto:office@gobyld.com?subject=ATLAS%20collaborator%20access"
+portalLabel: "Collaborator portal"
 weight: 30
 ---
 
-## Housing as a kit-of-parts
+## A residential system, in development
 
-ATLAS is a residential system for creating varied housing layouts across
-different site types, densities, and development scales. Standardized components
-support efficient construction and shared infrastructure planning, with flexible
-configurations from individual homes to complete residential communities.
+ATLAS is BYLD's residential solution, currently **in development**. It extends
+the kit-of-parts approach into housing — standardized components that support
+efficient construction and flexible configurations, from individual homes to
+complete residential communities.
 
-## Designed for density that adapts
+## Design freedom with delivery certainty
 
 Because ATLAS is configurable within a defined design system, developers get
 meaningful choice without losing the efficiency of standardized manufacture —
-the right balance of design freedom and delivery certainty.
+the right balance of design freedom and predictable delivery.
 
-## What you get
+## Collaborator access
 
-- A kit-of-parts that spans single homes to whole communities
-- Standardized components for efficient, predictable construction
-- Shared infrastructure planning across plots and phases
-- Configurable layouts and densities within one design system
-
-Exploring a residential scheme? [Get an indicative estimate](/#configurator) or
-[book a consultation](/#contact).
+Working with us on ATLAS? The **collaborator portal** gives partners access to
+current project studies and the latest material.
