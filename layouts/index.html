@@ -55,15 +55,15 @@
       </div>
       <div class="system-body">
         <p>{{ $s.body }}</p>
-      </div>
-      {{ with $s.images }}
-      <div class="system-media">
         {{ with $s.accolade }}
         <span class="accolade-above">
           {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
           <span class="accolade-ov-text">{{ . }}</span>
         </span>
         {{ end }}
+      </div>
+      {{ with $s.images }}
+      <div class="system-media">
         <div class="system-media-frame">
           {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
         </div>
