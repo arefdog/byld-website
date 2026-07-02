@@ -137,7 +137,7 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
 
-  const targets = document.querySelectorAll('.section-head, .card, .system, .press-card, .process-step, .sustain-list li, .hero-copy, .hero-media');
+  const targets = document.querySelectorAll('.section-head, .card, .system, .press-card, .hero-copy, .hero-media');
   if (!targets.length) return;
 
   const io = new IntersectionObserver(function (entries) {

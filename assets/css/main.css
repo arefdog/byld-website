@@ -458,18 +458,6 @@ main { display: block; }
 .audience-points li::before { content: ""; position: absolute; left: 0; top: 23px; width: 12px; height: 1px; background: var(--ink); }
 
 /* ---- Process ---- */
-/* ---- Sustainability ---- */
-.section-sustain { max-width: none; background: #11150f; color: var(--paper); }
-.sustain-grid { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
-.section-sustain .eyebrow { color: #93a07f; }
-.sustain-head h2 { color: var(--paper); font-size: clamp(28px, 4vw, 48px); }
-.sustain-head .section-lead { color: #c5ccba; }
-.sustain-list { list-style: none; margin: 0; padding: 0; }
-.sustain-list li { padding: 24px 0; border-top: 1px solid #2c331f; }
-.sustain-list li:first-child { border-top: 0; padding-top: 0; }
-.sustain-list h3 { font-size: 20px; margin-bottom: 8px; color: var(--paper); }
-.sustain-list p { color: #b3bba4; margin: 0; }
-
 /* ---- Projects ---- */
 .project-card { display: flex; flex-direction: column; }
 .project-card.has-image { padding: 0; overflow: hidden; }

@@ -24,6 +24,7 @@
       <p>We create high-performance environments that can be delivered anywhere faster and scaled effectively.</p>
     </div>
   </div>
+  <p class="eyebrow">Services</p>
   <div class="services-grid">
     {{ range hugo.Data.services }}
     <details class="service-item">
@@ -103,26 +104,6 @@
     </table>
   </div>
 </section>
-
-<!-- SUSTAINABILITY -->
-<section class="section section-sustain" id="sustainability">
-  <div class="sustain-grid">
-    <div class="sustain-head">
-      <p class="eyebrow">Sustainability</p>
-      <h2>Lower impact, by design</h2>
-      <p class="section-lead">{{ hugo.Data.sustainability.intro }}</p>
-    </div>
-    <ul class="sustain-list">
-      {{ range hugo.Data.sustainability.points }}
-      <li>
-        <h3>{{ .title }}</h3>
-        <p>{{ .body }}</p>
-      </li>
-      {{ end }}
-    </ul>
-  </div>
-</section>
-
 
 <!-- PRESS -->
 <section class="section section-press" id="press">
