@@ -54,16 +54,18 @@
       </div>
       <div class="system-body">
         <p>{{ $s.body }}</p>
-        {{ with $s.accolade }}
-        <span class="accolade-badge">
-          {{ with $s.accoladeLogo }}<img class="accolade-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
-          {{ . }}
-        </span>
-        {{ end }}
         {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
       </div>
       {{ with $s.images }}
-      <div class="system-media">{{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}</div>
+      <div class="system-media">
+        {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
+        {{ with $s.accolade }}
+        <span class="accolade-overlay">
+          {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
+          <span class="accolade-ov-text">{{ . }}</span>
+        </span>
+        {{ end }}
+      </div>
       {{ end }}
     </article>
     {{ end }}
