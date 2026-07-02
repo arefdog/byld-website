@@ -731,6 +731,10 @@ main { display: block; }
 .system-figure { margin: 2.4em 0; }
 .system-figure img { width: 100%; border-radius: var(--radius); }
 .system-figure figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.system-video video {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius); background: #000;
+}
 .collaborators { margin-top: 2.4em; padding-top: 1.8em; border-top: 1px solid var(--line); }
 .collaborators h2 { margin: 0 0 .6em; }
 .collab-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 14px; }

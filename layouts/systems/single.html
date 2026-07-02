@@ -32,6 +32,18 @@
 <article class="section system-detail">
   {{ .Content }}
 
+  {{ with .Params.video }}
+  <figure class="system-figure system-video">
+    <video controls playsinline preload="none"
+           {{ with $.Params.videoPoster }}poster="{{ . | relURL }}"{{ end }}
+           style="{{ printf "aspect-ratio: %s" ($.Params.videoAspect | default "16 / 9") | safeCSS }}">
+      <source src="{{ . | relURL }}" type="video/mp4">
+      Your browser does not support embedded video.
+    </video>
+    {{ with $.Params.videoCaption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{ end }}
+
   {{ with .Params.image2 }}
   <figure class="system-figure">
     {{ partial "picture.html" (dict "src" . "alt" $.Title "loading" "lazy") }}
