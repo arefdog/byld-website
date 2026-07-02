@@ -150,6 +150,7 @@
           {{ else }}
           <span class="press-name">{{ $p.source }}</span>
           {{ end }}
+          {{ with $p.accolade }}<span class="press-accolade">{{ . }}</span>{{ end }}
           {{ with $p.url }}<a class="press-read-link" href="{{ . }}" target="_blank" rel="noopener">Read more →</a>{{ end }}
         </figcaption>
       </figure>
