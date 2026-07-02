@@ -1,6 +1,6 @@
 baseURL = "https://gobyld.com/"
 defaultContentLanguage = "en"
-title = "BYLD — Modular Construction Systems and Site Development"
+title = "BYLD – Modular Construction Systems"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 
@@ -25,7 +25,7 @@ disableKinds = ["taxonomy", "term"]
 
   [params.social]
     instagram = "https://www.instagram.com/gobyld"
-    linkedin = "https://www.linkedin.com/company/gobyld"
+    linkedin = "https://www.linkedin.com/company/byld-development/"
 
 [menu]
   [[menu.main]]

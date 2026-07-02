@@ -3,7 +3,7 @@ title: "ATLAS"
 sector: "Residential"
 status: "In development"
 image: "img/sys-atlas.jpg"
-lead: "A residential solution, in development — a kit-of-parts for housing, from individual homes to complete communities."
+lead: "A residential solution, in development: a kit-of-parts for housing, from individual homes to complete communities."
 # Collaborator portal → password-gated page holding the Madrid studies.
 portalUrl: "/portal/"
 portalLabel: "Collaborator portal"
@@ -13,14 +13,14 @@ weight: 30
 ## A residential system, in development
 
 ATLAS is BYLD's residential solution, currently **in development**. It extends
-the kit-of-parts approach into housing — standardized components that support
+the kit-of-parts approach into housing: standardized components that support
 efficient construction and flexible configurations, from individual homes to
 complete residential communities.
 
 ## Design freedom with delivery certainty
 
 Because ATLAS is configurable within a defined design system, developers get
-meaningful choice without losing the efficiency of standardized manufacture —
+meaningful choice without losing the efficiency of standardized manufacture:
 the right balance of design freedom and predictable delivery.
 
 ## Collaborator access

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BYLD ECHO — Madrid Solar / Shade Study</title>
+<title>BYLD ECHO – Madrid Solar / Shade Study</title>
 <style>
   :root{color-scheme:dark}
   *{box-sizing:border-box}
@@ -62,7 +62,7 @@
 <body>
 <div class="wrap">
 <a href="../" style="display:inline-block;margin:0 0 12px;font-size:13px;color:#8b8a82;text-decoration:none">← Back to ECHO</a>
-<h1>BYLD ECHO — solar &amp; shade study</h1>
+<h1>BYLD ECHO – solar &amp; shade study</h1>
 <p class="sub">Madrid sierra · latitude 40.7°N · real sun position, physically-based sky &amp; lighting. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
 <div class="bar">
   <div class="row"><span class="lbl">Day</span><input type="range" id="day" min="1" max="365" value="172"><span class="out" id="dayout"></span></div>
@@ -86,36 +86,36 @@
 </div>
 <div id="stage"><div class="loading">Loading 3D model…</div></div>
 <div class="cards">
-  <div class="card"><div class="k">Sun altitude</div><div class="v" id="m-alt">—</div></div>
-  <div class="card"><div class="k">Azimuth (from S)</div><div class="v" id="m-az">—</div></div>
-  <div class="card"><div class="k">Core glass</div><div class="v" id="m-gl">—</div></div>
-  <div class="card"><div class="k">Annual gain</div><div class="v" id="m-ann">—</div></div>
+  <div class="card"><div class="k">Sun altitude</div><div class="v" id="m-alt">–</div></div>
+  <div class="card"><div class="k">Azimuth (from S)</div><div class="v" id="m-az">–</div></div>
+  <div class="card"><div class="k">Core glass</div><div class="v" id="m-gl">–</div></div>
+  <div class="card"><div class="k">Annual gain</div><div class="v" id="m-ann">–</div></div>
 </div>
 <div class="findings">
   <h2>What this shows</h2>
-  <p>A physically accurate sun for the El&nbsp;Boalo / Guadarrama site (40.7°N), lit by a physically-based sky. The round roof casts a real shadow onto the deck and the central glass core. Drag <b>Day</b>, <b>Time</b> and <b>Overhang</b>, switch the <b>glazing</b>, or use <b>Sweep&nbsp;day</b> — the heat table below recomputes live.</p>
+  <p>A physically accurate sun for the El&nbsp;Boalo / Guadarrama site (40.7°N), lit by a physically-based sky. The round roof casts a real shadow onto the deck and the central glass core. Drag <b>Day</b>, <b>Time</b> and <b>Overhang</b>, switch the <b>glazing</b>, or use <b>Sweep&nbsp;day</b> – the heat table below recomputes live.</p>
   <ul>
     <li><b>The overhang is the main solar control.</b> Drag it wider and the glass stays shaded down to lower sun angles; pull it in and more direct beam reaches the core. Watch the annual figure respond.</li>
     <li><b>Only low sunrise/sunset light reaches under the eaves.</b> Set Time to ~6:00 or ~19:00 to see the rays rake across the deck and into the core.</li>
-    <li><b>The winter trade-off:</b> a deep overhang blocks summer heat beautifully — but also shades the low December sun you might want to welcome in. The slider lets you find the balance.</li>
+    <li><b>The winter trade-off:</b> a deep overhang blocks summer heat beautifully – but also shades the low December sun you might want to welcome in. The slider lets you find the balance.</li>
   </ul>
-  <p class="fine">Solar time, true-south assumed. Core is the as-built ECHO glazed pod (≈4.5&nbsp;m). A study model — not a substitute for full energy simulation.</p>
+  <p class="fine">Solar time, true-south assumed. Core is the as-built ECHO glazed pod (≈4.5&nbsp;m). A study model – not a substitute for full energy simulation.</p>
 </div>
 <div class="heat">
-  <h2>Heat reaching the interior — indicative solar gain</h2>
-  <p class="lead">Clear-sky solar energy entering the glazed core through the east / south / west glass, <i>after</i> the roof overhang's shading. Recomputes live with the overhang and glazing controls. A radiant solar-gain estimate only — conduction and ventilation are separate.</p>
+  <h2>Heat reaching the interior – indicative solar gain</h2>
+  <p class="lead">Clear-sky solar energy entering the glazed core through the east / south / west glass, <i>after</i> the roof overhang's shading. Recomputes live with the overhang and glazing controls. A radiant solar-gain estimate only – conduction and ventilation are separate.</p>
   <table class="heat-t">
     <thead><tr><th>Month</th><th>Peak (kW)</th><th>Daily (kWh)</th><th>Monthly (kWh)</th><th>Direct %</th></tr></thead>
     <tbody id="heatBody"></tbody>
   </table>
   <p id="heatCompare" class="lead" style="margin-top:14px"></p>
-  <p class="assume">Assumptions: ≈34&nbsp;m² glazing (E/S/W; north face solid), selectable SHGC, ASHRAE clear-sky model at 40.7°N, isotropic diffuse with overhang sky-blocking, ground albedo&nbsp;0.20, overhang shades direct beam above the angle set by its depth. Clear-sky upper bound — real gains are lower on cloudy days. Indicative, not a full energy simulation.</p>
+  <p class="assume">Assumptions: ≈34&nbsp;m² glazing (E/S/W; north face solid), selectable SHGC, ASHRAE clear-sky model at 40.7°N, isotropic diffuse with overhang sky-blocking, ground albedo&nbsp;0.20, overhang shades direct beam above the angle set by its depth. Clear-sky upper bound – real gains are lower on cloudy days. Indicative, not a full energy simulation.</p>
 </div>
 <div class="heat" id="verdict">
   <h2>Cost, carbon &amp; comfort verdict</h2>
-  <p class="lead">The solar gain above translated into cooling energy, running cost and CO₂ — and the free winter heat the overhang gives up. Recomputes with the overhang and glazing.</p>
+  <p class="lead">The solar gain above translated into cooling energy, running cost and CO₂ – and the free winter heat the overhang gives up. Recomputes with the overhang and glazing.</p>
   <div class="vcards" id="vcards"></div>
-  <div class="balance-h">Monthly solar gain — cooling burden vs useful winter heat</div>
+  <div class="balance-h">Monthly solar gain – cooling burden vs useful winter heat</div>
   <div id="balanceChart"></div>
   <div class="legend"><span class="lg" style="--c:#d2624b"></span>Cooling season (burden)<span class="lg" style="--c:#7cc49a"></span>Heating season (useful)<span class="lg" style="--c:#8b8a82"></span>Shoulder</div>
   <p class="assume" id="vassume"></p>
@@ -293,8 +293,8 @@ function applySun(){
   sun.intensity=night?0:3.0*Math.min(1,0.25+alt/(Math.PI/4));
   sun.color.set(altDeg<12?'#ff9e58':'#fff4e0');
   if(!playing||frame%18===0) updateEnv(dir);
-  document.getElementById('m-alt').textContent=night?'—':Math.round(altDeg)+'°';
-  document.getElementById('m-az').textContent=night?'—':Math.round(az*R2D)+'°';
+  document.getElementById('m-alt').textContent=night?'–':Math.round(altDeg)+'°';
+  document.getElementById('m-az').textContent=night?'–':Math.round(az*R2D)+'°';
   const gl=document.getElementById('m-gl');
   if(night){gl.textContent='night';gl.style.color='#8b8a82';}
   else if(altDeg<thresh){gl.textContent='sun under eaves';gl.style.color='#e0a85a';}
@@ -366,14 +366,14 @@ function recomputeHeat(){
     rows+='<tr><td>'+months[m]+'</td><td>'+g.peak.toFixed(2)+'</td><td>'+g.daily.toFixed(1)+
           '</td><td>'+Math.round(mo)+'</td><td>'+Math.round(g.directShare*100)+'%</td></tr>';
   }
-  rows+='<tr class="tot"><td>Year</td><td>—</td><td>'+(annOv/365).toFixed(1)+' avg</td><td>'+Math.round(annOv)+'</td><td>—</td></tr>';
+  rows+='<tr class="tot"><td>Year</td><td>–</td><td>'+(annOv/365).toFixed(1)+' avg</td><td>'+Math.round(annOv)+'</td><td>–</td></tr>';
   document.getElementById('heatBody').innerHTML=rows;
   document.getElementById('m-ann').textContent=(annOv/1000).toFixed(1)+' MWh';
   const O=(roofR-GLASS_HALF).toFixed(2);
   document.getElementById('heatCompare').innerHTML=
     'At a <b class="hl">'+O+'&nbsp;m</b> overhang and <b class="hl">SHGC '+SHGC.toFixed(2)+'</b>, the core takes in '+
     '<b class="hl">≈'+(annOv/1000).toFixed(1)+'&nbsp;MWh/yr</b> of solar heat. With no overhang that would be '+
-    '<b class="hl">≈'+(annNo/1000).toFixed(1)+'&nbsp;MWh/yr</b> — this overhang cuts gain by '+
+    '<b class="hl">≈'+(annNo/1000).toFixed(1)+'&nbsp;MWh/yr</b> – this overhang cuts gain by '+
     '<b class="hl">'+Math.round((1-annOv/annNo)*100)+'%</b>. Note the low <b>Direct&nbsp;%</b>: most heat that gets in is diffuse sky light, not direct sun.';
   renderVerdict(monthlyArr,peakMax);
 }

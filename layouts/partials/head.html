@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ $title := .Title }}
-  {{ if .IsHome }}{{ $title = site.Title }}{{ else }}{{ $title = printf "%s — BYLD" .Title }}{{ end }}
+  {{ if .IsHome }}{{ $title = site.Title }}{{ else }}{{ $title = printf "%s – BYLD" .Title }}{{ end }}
   <title>{{ $title }}</title>
   <meta name="description" content="{{ .Description | default site.Params.description }}">
   {{ if .Params.private }}<meta name="robots" content="noindex, nofollow">{{ end }}

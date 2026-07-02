@@ -52,7 +52,7 @@
         {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
       </div>
       {{ with $s.images }}
-      <div class="system-media">{{ partial "carousel.html" (dict "images" . "alt" (printf "%s — %s" $s.name $s.sector)) }}</div>
+      <div class="system-media">{{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}</div>
       {{ end }}
     </article>
     {{ end }}
@@ -144,6 +144,9 @@
         {{ else }}
         <span class="press-name">{{ $p.source }}</span>
         {{ end }}
+        {{ with $p.url }}
+        <a class="btn btn-ghost btn-sm press-read" href="{{ . }}" target="_blank" rel="noopener">Read more</a>
+        {{ end }}
       </figcaption>
     </figure>
     {{ end }}
@@ -172,7 +175,7 @@
     <div class="contact-intro">
       <p class="eyebrow">Book a consultation</p>
       <h2>Tell us about your site or project</h2>
-      <p>Leave your details and a few times that suit you next week — we’ll come back to set up a call and talk through how BYLD could work for you.</p>
+      <p>Leave your details and a few times that suit you next week, and we’ll come back to set up a call and talk through how BYLD could work for you.</p>
       <ul class="contact-details">
         <li><span>Studio</span>{{ site.Params.address }}</li>
         <li><span>Email</span><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></li>

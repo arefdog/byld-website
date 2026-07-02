@@ -1,21 +1,21 @@
 rows:
   - metric: Speed of Construction
-    traditional: "Slow — long programme; sequenced trades with no parallel workstreams."
-    prefab: "Fast — factory-built modules; reduced programme."
-    byld: "Fast — factory and site in parallel; quick assembly."
+    traditional: "Slow – long programme; sequenced trades with no parallel workstreams."
+    prefab: "Fast – factory-built modules; reduced programme."
+    byld: "Fast – factory and site in parallel; quick assembly."
   - metric: Ground Preparation
-    traditional: "Extensive — excavation and traditional foundations."
-    prefab: "Moderate — excavation, levelling, and a concrete pad in most cases."
-    byld: "Minimal — shallow foundations that work on uneven or difficult ground."
+    traditional: "Extensive – excavation and traditional foundations."
+    prefab: "Moderate – excavation, levelling, and a concrete pad in most cases."
+    byld: "Minimal – shallow foundations that work on uneven or difficult ground."
   - metric: Customisation
-    traditional: "Unlimited — fully bespoke design possible."
-    prefab: "Limited — fixed catalogue; form dictated by container dimensions and delivery."
-    byld: "Flexible — configurable within the design system; meaningful choice."
+    traditional: "Unlimited – fully bespoke design possible."
+    prefab: "Limited – fixed catalogue; form dictated by container dimensions and delivery."
+    byld: "Flexible – configurable within the design system; meaningful choice."
   - metric: Design Freedom
-    traditional: "High — architect-led, no form constraints."
-    prefab: "Low — form follows the factory module."
-    byld: "Moderate–High — varied form with efficiency retained."
+    traditional: "High – architect-led, no form constraints."
+    prefab: "Low – form follows the factory module."
+    byld: "Moderate–High – varied form with efficiency retained."
   - metric: Localism
-    traditional: "High — local trades and regional materials."
-    prefab: "Low — centralised manufacture; remote jobs, no local finishes."
-    byld: "Balanced — local assembly, regional supply chain, and local finishes where possible."
+    traditional: "High – local trades and regional materials."
+    prefab: "Low – centralised manufacture; remote jobs, no local finishes."
+    byld: "Balanced – local assembly, regional supply chain, and local finishes where possible."

@@ -5,7 +5,7 @@ status: "Available"
 image: "img/sys-icon.jpg"
 image2: "img/icon-card.jpg"
 image2Caption: "The ICON at the World Economic Forum, Davos."
-lead: "A commercial solution for events — a demountable pavilion with real architectural presence, built to install fast and travel."
+lead: "A commercial solution for events: a demountable pavilion with real architectural presence, built to install fast and travel."
 collaboratorsLabel: "Partners"
 collaborators:
   - "TVA"
@@ -23,7 +23,7 @@ locations and campaigns.
 ## Proven in Davos
 
 The ICON was deployed at the **World Economic Forum in Davos**, delivered
-together with partners including **TVA** and **Hub Culture** — a timber pavilion
+together with partners including **TVA** and **Hub Culture**, a timber pavilion
 installed quickly, used intensively, and demounted for reuse.
 
 ## What you get
