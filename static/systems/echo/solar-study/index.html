@@ -131,23 +131,17 @@
 <script type="module">
 import * as THREE from 'three';
 import { Sky } from 'three/addons/objects/Sky.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { SAOPass } from 'three/addons/postprocessing/SAOPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { SMAAPass } from 'three/addons/postprocessing/SMAAPass.js';
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const stage=document.getElementById('stage');
 const loadingEl=stage.querySelector('.loading');
 const Wf=()=>stage.clientWidth||760, Hh=460;
 
-const renderer=new THREE.WebGLRenderer({antialias:false});
+const renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 renderer.setSize(Wf(),Hh);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.9;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.95;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 stage.appendChild(renderer.domElement);
 if(loadingEl) loadingEl.remove();
@@ -201,7 +195,7 @@ const coreFloor=new THREE.Mesh(new THREE.BoxGeometry(4.5,0.12,4.5),new THREE.Mes
 coreFloor.position.y=0.06;coreFloor.receiveShadow=true;scene.add(coreFloor);
 const coreTop=new THREE.Mesh(new THREE.BoxGeometry(4.5,0.12,4.5),new THREE.MeshStandardMaterial({map:timberTex,color:'#8a6c48',roughness:0.85}));
 coreTop.position.y=2.6;coreTop.castShadow=true;coreTop.receiveShadow=true;scene.add(coreTop);
-const glassMat=new THREE.MeshPhysicalMaterial({color:'#eef6fb',roughness:0.04,metalness:0,transmission:0.95,ior:1.5,thickness:0.5,transparent:true,envMapIntensity:1.0,clearcoat:0.25,clearcoatRoughness:0.08});
+const glassMat=new THREE.MeshStandardMaterial({color:'#cfe3f0',roughness:0.05,metalness:0,transparent:true,opacity:0.30,envMapIntensity:1.0});
 const glass=new THREE.Mesh(new THREE.BoxGeometry(4.46,2.52,4.46),glassMat);
 glass.position.y=1.32;scene.add(glass);
 const wall=new THREE.Mesh(new THREE.BoxGeometry(4.5,2.52,0.14),new THREE.MeshStandardMaterial({color:'#5a4330',roughness:0.85}));
@@ -314,17 +308,7 @@ window.addEventListener('mouseup',()=>{drag=false;el.style.cursor='grab';});wind
 el.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(6,Math.min(40,rad+(e.deltaY>0?1:-1)));},{passive:false});
 
 // ---- post-processing ----
-const composer=new EffectComposer(renderer);
-composer.setPixelRatio(renderer.getPixelRatio());
-composer.setSize(Wf(),Hh);
-composer.addPass(new RenderPass(scene,cam));
-const sao=new SAOPass(scene,cam);
-sao.params.saoBias=0.4;sao.params.saoIntensity=0.008;sao.params.saoScale=6;sao.params.saoKernelRadius=28;sao.params.saoBlur=true;
-composer.addPass(sao);
-const bloom=new UnrealBloomPass(new THREE.Vector2(Wf(),Hh),0.2,0.7,0.92);composer.addPass(bloom);
-composer.addPass(new SMAAPass(Wf(),Hh));
-composer.addPass(new OutputPass());
-window.addEventListener('resize',()=>{const w=Wf();renderer.setSize(w,Hh);composer.setSize(w,Hh);cam.aspect=w/Hh;cam.updateProjectionMatrix();});
+window.addEventListener('resize',()=>{const w=Wf();renderer.setSize(w,Hh);cam.aspect=w/Hh;cam.updateProjectionMatrix();});
 
 // ---- heat model ----
 let SHGC=0.50;
@@ -413,9 +397,9 @@ document.getElementById('ov').addEventListener('input',function(){
 document.querySelectorAll('.g-btn').forEach(b=>b.addEventListener('click',function(){
   document.querySelectorAll('.g-btn').forEach(x=>x.classList.remove('is-on'));this.classList.add('is-on');
   SHGC=+this.dataset.shgc;
-  if(SHGC>=0.5){glassMat.color.set('#eef6fb');glassMat.transmission=0.95;}
-  else if(SHGC>=0.38){glassMat.color.set('#dce9ef');glassMat.transmission=0.82;}
-  else {glassMat.color.set('#c7d6da');glassMat.transmission=0.62;}
+  if(SHGC>=0.5){glassMat.color.set('#cfe3f0');glassMat.opacity=0.28;}
+  else if(SHGC>=0.38){glassMat.color.set('#bcd3df');glassMat.opacity=0.40;}
+  else {glassMat.color.set('#a9c1c9');glassMat.opacity=0.52;}
   recomputeHeat();
 }));
 const views={orbit:[-0.7,0.34,15],plan:[-0.45,1.30,18],eye:[-0.7,0.12,12]};
@@ -430,7 +414,7 @@ document.getElementById('play').onclick=function(){playing=!playing;this.textCon
 // ---- init ----
 document.getElementById('ovout').textContent='2.82 m';
 rebuildShell(2.82);applySun();recomputeHeat();
-function loop(){frame++;if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();composer.render();requestAnimationFrame(loop);}
+function loop(){frame++;if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();renderer.render(scene,cam);requestAnimationFrame(loop);}
 loop();
 
 // Optional as-built model: drop an "echo.glb" next to this file to replace the procedural shell.
