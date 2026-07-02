@@ -13,6 +13,9 @@ documents:
   - title: "BYLD Company Profile"
     note: "PDF · 2.5 MB"
     file: "docs/BYLD_Company_Profile.pdf"
+  - title: "BYLD EL BOALO"
+    note: "PDF · 15 MB"
+    file: "docs/BYLD_El_Boalo.pdf"
 ---
 
 ## Madrid Sierra
