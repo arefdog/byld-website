@@ -441,7 +441,11 @@ main { display: block; }
 .faq-answer p { margin: 0; color: var(--muted); }
 
 /* ---- Contact / consultation ---- */
-.section-contact { max-width: none; background: var(--ink); color: var(--paper); }
+.section-contact { max-width: none; background: var(--ink); color: var(--paper); text-align: center; }
+.contact-simple { max-width: 640px; margin: 0 auto; }
+.contact-simple h2 { color: var(--paper); font-size: clamp(30px, 5vw, 54px); margin: 0 0 32px; }
+.btn-light { background: #fff; color: var(--ink); border-color: #fff; }
+.btn-light:hover { background: transparent; color: #fff; border-color: #fff; }
 .contact-grid { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start; }
 .section-contact .eyebrow { color: #9a9a9a; }
 .contact-intro h2 { color: var(--paper); font-size: clamp(28px, 4vw, 46px); margin-bottom: 18px; }

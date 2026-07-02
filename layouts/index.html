@@ -169,56 +169,12 @@
   </div>
 </section>
 
-<!-- CONSULTATION / CONTACT -->
+<!-- CONTACT -->
 <section class="section section-contact" id="contact">
-  <div class="contact-grid">
-    <div class="contact-intro">
-      <p class="eyebrow">Book a consultation</p>
-      <h2>Tell us about your site or project</h2>
-      <p>Leave your details and a few times that suit you next week, and we’ll come back to set up a call and talk through how BYLD could work for you.</p>
-      <ul class="contact-details">
-        <li><span>Studio</span>{{ site.Params.address }}</li>
-        <li><span>Email</span><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></li>
-      </ul>
-    </div>
-
-    {{ $action := site.Params.formAction }}
-    <form class="contact-form" data-email="{{ site.Params.email }}"
-          {{ if $action }}action="{{ $action }}" method="POST"{{ else }}action="mailto:{{ site.Params.email }}" method="POST" enctype="text/plain"{{ end }}>
-      <input type="hidden" name="_subject" value="New BYLD enquiry from gobyld.com">
-      <p class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
-      <div class="field-row">
-        <label class="field">
-          <span>Name</span>
-          <input type="text" name="name" required>
-        </label>
-        <label class="field">
-          <span>Company</span>
-          <input type="text" name="company">
-        </label>
-      </div>
-      <label class="field">
-        <span>How to reach you</span>
-        <input type="text" name="contact" placeholder="Email, phone, or website" required>
-      </label>
-      <fieldset class="field avail">
-        <legend>Best times to talk next week</legend>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="days" value="Monday"><span>Mon</span></label>
-          <label class="chip"><input type="checkbox" name="days" value="Tuesday"><span>Tue</span></label>
-          <label class="chip"><input type="checkbox" name="days" value="Wednesday"><span>Wed</span></label>
-          <label class="chip"><input type="checkbox" name="days" value="Thursday"><span>Thu</span></label>
-          <label class="chip"><input type="checkbox" name="days" value="Friday"><span>Fri</span></label>
-        </div>
-        <div class="chips">
-          <label class="chip"><input type="checkbox" name="time_of_day" value="Morning"><span>Morning</span></label>
-          <label class="chip"><input type="checkbox" name="time_of_day" value="Afternoon"><span>Afternoon</span></label>
-          <label class="chip"><input type="checkbox" name="time_of_day" value="Evening"><span>Evening</span></label>
-        </div>
-      </fieldset>
-      <button type="submit" class="btn btn-primary">Request a call</button>
-      {{ if not $action }}<p class="form-note">This opens an email to {{ site.Params.email }}. To collect submissions on the page instead, add a form endpoint in <code>hugo.toml</code>.</p>{{ end }}
-    </form>
+  <div class="contact-simple">
+    <p class="eyebrow">Contact</p>
+    <h2>Let’s talk about your project</h2>
+    <a class="btn btn-light" href="mailto:{{ site.Params.email }}">Email us</a>
   </div>
 </section>
 
