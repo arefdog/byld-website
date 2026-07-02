@@ -356,6 +356,8 @@ main { display: block; }
 .section-alt > .table-wrap,
 .section-alt > .faq { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
 .section-lead { font-size: clamp(16px, 1.6vw, 19px); color: var(--muted); margin: 18px 0 0; }
+.section-lead p { margin: 0 0 14px; }
+.section-lead p:last-child { margin-bottom: 0; }
 .text-link { display: inline-block; font-weight: 500; font-size: 15px; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
 .text-link:hover { opacity: .65; }
 
