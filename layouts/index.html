@@ -31,11 +31,14 @@
   </div>
   <div class="services-grid">
     {{ range hugo.Data.services }}
-    <article class="service-item">
-      <span class="service-rule" aria-hidden="true"></span>
-      <h3>{{ .title }}</h3>
+    <details class="service-item">
+      <summary>
+        <span class="service-rule" aria-hidden="true"></span>
+        <h3>{{ .title }}</h3>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </summary>
       <p>{{ .body }}</p>
-    </article>
+    </details>
     {{ end }}
   </div>
 </section>
