@@ -452,16 +452,6 @@ main { display: block; }
 .audience-points li::before { content: ""; position: absolute; left: 0; top: 23px; width: 12px; height: 1px; background: var(--ink); }
 
 /* ---- Process ---- */
-/* ---- Process timeline ---- */
-.timeline { list-style: none; margin: 0; padding: 0; position: relative; max-width: 780px; }
-.timeline::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(to bottom, var(--ink) 0%, var(--line) 100%); }
-.timeline-step { position: relative; padding: 0 0 clamp(34px, 4.5vw, 54px) clamp(40px, 5vw, 56px); }
-.timeline-step:last-child { padding-bottom: 0; }
-.timeline-marker { position: absolute; left: 0; top: 5px; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); box-shadow: 0 0 0 5px var(--paper); transition: background .25s ease; }
-.timeline-step:hover .timeline-marker { background: var(--ink); }
-.timeline-content h3 { font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.01em; margin-bottom: 10px; }
-.timeline-content p { color: var(--muted); margin: 0; max-width: 62ch; }
-
 /* ---- Sustainability ---- */
 .section-sustain { max-width: none; background: #11150f; color: var(--paper); }
 .sustain-grid { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }

@@ -75,25 +75,6 @@
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section" id="process">
-  <div class="section-head">
-    <p class="eyebrow">How we work</p>
-    <h2>A clear path from first call to a building that performs</h2>
-  </div>
-  <ol class="timeline">
-    {{ range hugo.Data.process }}
-    <li class="timeline-step">
-      <span class="timeline-marker" aria-hidden="true"></span>
-      <div class="timeline-content">
-        <h3>{{ .title }}</h3>
-        <p>{{ .body }}</p>
-      </div>
-    </li>
-    {{ end }}
-  </ol>
-</section>
-
 <!-- COMPARISON -->
 <section class="section section-alt" id="compare">
   <div class="section-head">
