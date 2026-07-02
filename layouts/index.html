@@ -29,12 +29,12 @@
       <a class="btn btn-ghost" href="#contact">Book a consultation</a>
     </div>
   </div>
-  <div class="grid grid-3">
-    {{ range $i, $s := hugo.Data.services }}
-    <article class="card service-card">
-      <span class="card-index">{{ printf "%02d" (add $i 1) }}</span>
-      <h3>{{ $s.title }}</h3>
-      <p>{{ $s.body }}</p>
+  <div class="services-grid">
+    {{ range hugo.Data.services }}
+    <article class="service-item">
+      <span class="service-rule" aria-hidden="true"></span>
+      <h3>{{ .title }}</h3>
+      <p>{{ .body }}</p>
     </article>
     {{ end }}
   </div>
@@ -54,6 +54,12 @@
       </div>
       <div class="system-body">
         <p>{{ $s.body }}</p>
+        {{ with $s.accolade }}
+        <span class="accolade-badge">
+          {{ with $s.accoladeLogo }}<img class="accolade-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
+          {{ . }}
+        </span>
+        {{ end }}
         {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
       </div>
       {{ with $s.images }}
@@ -70,11 +76,11 @@
     <p class="eyebrow">How we work</p>
     <h2>A clear path from first call to a building that performs</h2>
   </div>
-  <ol class="process">
+  <ol class="timeline">
     {{ range hugo.Data.process }}
-    <li class="process-step">
-      <span class="process-num">{{ .step }}</span>
-      <div class="process-text">
+    <li class="timeline-step">
+      <span class="timeline-marker" aria-hidden="true"></span>
+      <div class="timeline-content">
         <h3>{{ .title }}</h3>
         <p>{{ .body }}</p>
       </div>
@@ -151,16 +157,15 @@
         {{ if lt $idx $n }}
         {{ $p := index $press $idx }}
         <figure class="press-quote">
-          <blockquote>“{{ $p.quote }}”</blockquote>
-          <figcaption>
+          <div class="press-source">
             {{ with $p.logo }}
             <img class="press-logo" src="{{ . | relURL }}" alt="{{ $p.source }}" loading="lazy">
             {{ else }}
             <span class="press-name">{{ $p.source }}</span>
             {{ end }}
-            {{ with $p.accolade }}<span class="press-accolade">{{ . }}</span>{{ end }}
-            {{ with $p.url }}<a class="press-read-link" href="{{ . }}" target="_blank" rel="noopener">Read more →</a>{{ end }}
-          </figcaption>
+          </div>
+          <blockquote>“{{ $p.quote }}”</blockquote>
+          {{ with $p.url }}<a class="press-read-link" href="{{ . }}" target="_blank" rel="noopener">Read more →</a>{{ end }}
         </figure>
         {{ end }}
         {{ end }}

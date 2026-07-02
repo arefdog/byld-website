@@ -6,6 +6,8 @@
     - img/sys-echo-2.jpg
     - img/sys-echo-1.jpg
   body: Scalable hospitality units that stretch or cluster around shared utilities.
+  accolade: "Winner · Designer of the Year 2025"
+  accoladeLogo: img/press/condenast.svg
 - sector: Commercial
   name: The ICON
   slug: icon
@@ -14,6 +16,8 @@
     - img/sys-icon-2.jpg
     - img/sys-icon-3.jpg
   body: "A demountable pavilion for commercial activations: strong presence, fast to install and reuse."
+  accolade: "A+Awards 2026 Winner · Pop-Ups & Temporary"
+  accoladeLogo: img/press/architizer.svg
 - sector: Residential
   name: ATLAS
   slug: atlas
