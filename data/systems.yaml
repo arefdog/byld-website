@@ -1,6 +1,7 @@
 - sector: Hospitality
   name: ECHO
   slug: echo
+  status: Available
   images:
     - img/sys-echo-3.jpg
     - img/sys-echo-2.jpg
@@ -11,6 +12,7 @@
 - sector: Commercial
   name: The ICON
   slug: icon
+  status: Available
   images:
     - img/sys-icon-1.jpg
     - img/sys-icon-2.jpg
@@ -21,8 +23,7 @@
 - sector: Residential
   name: ATLAS
   slug: atlas
+  status: In development
   images:
     - img/sys-atlas-1.jpg
-    - img/sys-atlas-2.jpg
-    - img/sys-atlas-3.jpg
   body: A residential kit-of-parts, from single homes to whole communities.

@@ -51,20 +51,21 @@
       <div class="system-label">
         <span class="system-sector">{{ $s.sector }}</span>
         <span class="system-name">{{ $s.name }}</span>
+        {{ with $s.status }}<span class="status-badge {{ if eq . "Available" }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>{{ end }}
       </div>
       <div class="system-body">
         <p>{{ $s.body }}</p>
       </div>
       {{ with $s.images }}
       <div class="system-media">
+        {{ with $s.accolade }}
+        <span class="accolade-above">
+          {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
+          <span class="accolade-ov-text">{{ . }}</span>
+        </span>
+        {{ end }}
         <div class="system-media-frame">
           {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
-          {{ with $s.accolade }}
-          <span class="accolade-overlay">
-            {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
-            <span class="accolade-ov-text">{{ . }}</span>
-          </span>
-          {{ end }}
         </div>
         {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore {{ $s.name }} →</a>{{ end }}
       </div>
