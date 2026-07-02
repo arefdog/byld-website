@@ -688,3 +688,17 @@ main { display: block; }
 @keyframes portalIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 .header-spacer { justify-self: end; }
+
+/* ---- Portal documents ---- */
+.portal-docs { margin-top: 2.2em; padding-top: 1.6em; border-top: 1px solid var(--line); }
+.portal-docs h2 { margin: 0 0 .8em; }
+.doc-list { list-style: none; padding: 0; margin: 0; }
+.doc-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--paper); margin-bottom: 10px; flex-wrap: wrap;
+}
+.doc-info { display: flex; flex-direction: column; gap: 3px; }
+.doc-title { font-weight: 500; }
+.doc-note { font-size: 12.5px; color: var(--muted); }
+.doc-actions { display: flex; gap: 8px; }

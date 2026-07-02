@@ -7,6 +7,12 @@ sitemap:
   disable: true
 build:
   list: never
+# Documents shown behind the gate: drop the file in static/docs/ and add an
+# entry here. "View" opens the PDF in the browser; "Download" saves it.
+documents:
+  - title: "BYLD Company Profile"
+    note: "PDF · 2.5 MB"
+    file: "docs/BYLD_Company_Profile.pdf"
 ---
 
 ## Madrid Sierra

@@ -17,6 +17,26 @@
 
   <div class="portal-content system-detail" hidden>
     {{ .Content }}
+
+    {{ with .Params.documents }}
+    <div class="portal-docs">
+      <h2>Documents</h2>
+      <ul class="doc-list">
+        {{ range . }}
+        <li class="doc-item">
+          <div class="doc-info">
+            <span class="doc-title">{{ .title }}</span>
+            {{ with .note }}<span class="doc-note">{{ . }}</span>{{ end }}
+          </div>
+          <div class="doc-actions">
+            <a class="btn btn-ghost btn-sm" href="{{ .file | relURL }}" target="_blank" rel="noopener">View</a>
+            <a class="btn btn-primary btn-sm" href="{{ .file | relURL }}" download>Download</a>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
   </div>
 </section>
 {{ end }}
