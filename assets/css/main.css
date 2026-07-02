@@ -165,7 +165,7 @@ main { display: block; }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  object-position: 50% 22%;   /* keep the building low, sky behind the text */
+  object-position: 50% 42%;   /* center the pavilion, sky above for the title */
 }
 .hero-scrim {
   position: absolute; inset: 0; z-index: 1;
