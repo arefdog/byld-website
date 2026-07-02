@@ -8,8 +8,12 @@ image2Caption: "ECHO – the deck shades and protects while keeping the views op
 lead: "A hospitality solution and a study in what sustainability means in nature: minimal materials to create comfort anywhere."
 collaboratorsLabel: "Collaborators"
 collaborators:
-  - "Arup – structural engineering"
-  - "Climetric – comfort & climate design"
+  - name: "Arup"
+    role: "Structural engineering"
+    logo: "img/collab/arup.png"
+  - name: "Climetric"
+    role: "Comfort & climate design"
+    logo: "img/collab/climetric.png"
 studyUrl: "/systems/echo/solar-study/"
 studyLabel: "Check out the ECHO solar study"
 weight: 10

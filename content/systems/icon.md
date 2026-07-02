@@ -12,8 +12,11 @@ videoCaption: "The ICON going up on site at the World Economic Forum, Davos."
 lead: "A commercial solution for events: a demountable pavilion with real architectural presence, built to install fast and travel."
 collaboratorsLabel: "Partners"
 collaborators:
-  - "TVA"
-  - "Hub Culture"
+  - name: "TVA"
+    role: "The Visionist Advisers"
+    logo: "img/collab/tva.png"
+  - name: "Hub Culture"
+    logo: "img/collab/hubculture.png"
 weight: 20
 ---
 

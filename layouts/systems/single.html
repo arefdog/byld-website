@@ -55,7 +55,19 @@
   <div class="collaborators">
     <h2>{{ $.Params.collaboratorsLabel | default "Collaborators & partners" }}</h2>
     <ul class="collab-list">
-      {{ range . }}<li>{{ . }}</li>{{ end }}
+      {{ range . }}
+      {{ if reflect.IsMap . }}
+      <li class="collab-card">
+        {{ with .logo }}<span class="collab-logo"><img src="{{ . | relURL }}" alt="{{ $.Title }} collaborator logo" loading="lazy"></span>{{ end }}
+        <span class="collab-meta">
+          <span class="collab-name">{{ .name }}</span>
+          {{ with .role }}<span class="collab-role">{{ . }}</span>{{ end }}
+        </span>
+      </li>
+      {{ else }}
+      <li>{{ . }}</li>
+      {{ end }}
+      {{ end }}
     </ul>
   </div>
   {{ end }}
