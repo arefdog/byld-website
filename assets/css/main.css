@@ -311,16 +311,6 @@ main { display: block; }
 .table-wrap { position: relative; overflow-x: auto; border: 1px solid var(--line); -webkit-overflow-scrolling: touch; }
 .compare { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 14.5px; }
 
-/* keyword pills */
-.cell-key {
-  display: inline-block; font-size: 10.5px; font-weight: 500;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 999px;
-  background: #fff; color: var(--ink); border: 1px solid var(--line);
-  margin-bottom: 8px; white-space: nowrap;
-}
-.cell-key-byld { background: var(--ink); color: #fff; border-color: var(--ink); }
-.cell-desc { display: block; }
 
 /* mobile scroll hint + right-edge fade */
 .table-hint { display: none; }
@@ -366,6 +356,8 @@ main { display: block; }
 }
 .cell-key:hover { background: #e8e7e4; }
 .cell-key:focus-visible { outline: 2px solid var(--ink); outline-offset: -1px; }
+.cell-key-byld { background: var(--ink); color: #fff; border-color: var(--ink); }
+.cell-key-byld:hover { background: #222; }
 .cell-key[aria-expanded="false"]::after { content: " +"; }
 .cell-key[aria-expanded="true"]::after { content: " −"; }
 .cell-desc {
