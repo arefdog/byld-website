@@ -171,7 +171,12 @@ main { display: block; }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  object-position: 50% 0%;   /* crop from bottom, show sky */
+  object-position: 50% 50%;
+}
+@media (max-width: 768px) {
+  .hero-bg img {
+    object-position: 50% 0%;   /* crop from bottom, show sky */
+  }
 }
 @media (min-width: 769px) {
   .hero-bg img {
