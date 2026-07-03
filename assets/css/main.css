@@ -157,13 +157,14 @@ main { display: block; }
   min-height: 100svh;
   display: flex;
   align-items: flex-start;   /* copy sits in the sky, top of frame */
-  overflow: hidden;
+  overflow: visible;
   color: #fff;
 }
 @media (max-width: 768px) {
   .hero-full {
     min-height: 100vh;
     min-height: 100svh;
+    overflow: hidden;
   }
 }
 .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
