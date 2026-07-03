@@ -77,6 +77,28 @@
   </div>
 </section>
 
+<!-- PROJECTS / CASE STUDIES -->
+<section class="section" id="projects">
+  <div class="section-head">
+    <p class="eyebrow">Built and tested</p>
+  </div>
+  <div class="projects-grid">
+    {{ range hugo.Data.projects }}
+    <article class="project-card">
+      <div class="project-image">
+        {{ partial "picture.html" (dict "src" .image "alt" .title "loading" "lazy") }}
+      </div>
+      <div class="project-body">
+        <p class="project-year">{{ .year }}</p>
+        <h3>{{ .title }}</h3>
+        <p class="project-excerpt">{{ .excerpt }}</p>
+        {{ with .highlight }}<p class="project-highlight">★ {{ . }}</p>{{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
 <!-- COMPARISON -->
 <section class="section section-alt" id="compare">
   <div class="section-head">
