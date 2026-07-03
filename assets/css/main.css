@@ -340,8 +340,7 @@ main { display: block; }
 .compare td { color: var(--muted); }
 .compare tbody tr:nth-child(odd) { background: #faf9f7; }
 .compare tbody tr:nth-child(even) { background: var(--paper); }
-.compare .col-byld { background: #faf9f7; color: var(--ink); }
-.compare tbody tr:nth-child(even) .col-byld { background: #f1ebe5; }
+.compare .col-byld { color: var(--ink); }
 .compare thead .col-byld { background: var(--ink); color: var(--paper); }
 .cell-toggle-group { display: flex; flex-direction: column; gap: 8px; }
 .cell-key {
