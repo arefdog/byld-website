@@ -171,7 +171,7 @@ main { display: block; }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  object-position: 50% 65%;
+  object-position: 50% 25%;
 }
 @media (max-width: 768px) {
   .hero-bg img {
