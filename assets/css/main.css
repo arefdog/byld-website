@@ -351,12 +351,32 @@ main { display: block; }
 .compare .col-byld { background: #faf9f7; color: var(--ink); }
 .compare thead .col-byld { background: var(--ink); color: var(--paper); }
 .cell-toggle-group { display: flex; flex-direction: column; gap: 8px; }
-.cell-key { background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; font-weight: inherit; color: inherit; cursor: pointer; text-align: left; transition: opacity .15s ease; }
-.cell-key:hover { opacity: .6; }
-.cell-key:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.cell-key[aria-expanded="true"]::after { content: " −"; }
+.cell-key {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: left;
+  transition: background .15s ease, border-color .15s ease;
+}
+.cell-key:hover { background: #e8e7e4; }
+.cell-key:focus-visible { outline: 2px solid var(--ink); outline-offset: -1px; }
 .cell-key[aria-expanded="false"]::after { content: " +"; }
-.cell-desc { font-size: 14px; line-height: 1.5; color: var(--muted); }
+.cell-key[aria-expanded="true"]::after { content: " −"; }
+.cell-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  display: none;
+}
+.cell-desc:not([hidden]) {
+  display: block;
+}
 
 /* ---- Press ---- */
 .section-press { background: var(--paper-2); max-width: none; text-align: center; }
