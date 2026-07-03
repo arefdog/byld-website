@@ -371,6 +371,9 @@ main { display: block; }
 .cell-desc:not([hidden]) {
   display: block;
 }
+.col-byld .cell-desc {
+  color: #fff;
+}
 
 /* ---- Press ---- */
 .section-press { background: var(--paper-2); max-width: none; text-align: center; }
