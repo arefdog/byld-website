@@ -181,10 +181,10 @@ main { display: block; }
 @media (max-width: 768px) {
   .hero-full .hero-inner {
     position: absolute;
-    bottom: -100vh;
+    bottom: 10%;
     left: 0;
     right: 0;
-    padding: 80px var(--gutter) 40px;
+    padding: 40px var(--gutter) 40px;
   }
 }
 .hero-copy { min-width: 0; max-width: 900px; margin: 0 auto; text-align: center; }
