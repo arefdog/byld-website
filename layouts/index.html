@@ -48,7 +48,7 @@
         {{ with $s.accolade }}
         <span class="accolade-above">
           {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
-          <span class="accolade-ov-text">{{ . }}</span>
+          <span class="accolade-ov-text{{ if eq . "In Development" }} no-star{{ end }}">{{ . }}</span>
         </span>
         {{ end }}
       </div>
