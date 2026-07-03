@@ -141,7 +141,7 @@
       if (e.changedTouches && e.changedTouches.length) {
         touchEndX = e.changedTouches[0].clientX;
         var diff = touchStartX - touchEndX;
-        var threshold = 40; // minimum swipe distance in pixels
+        var threshold = 20; // minimum swipe distance in pixels
         if (Math.abs(diff) > threshold) {
           if (diff > 0) { go(idx + 1); } else { go(idx - 1); }
         }
