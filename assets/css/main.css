@@ -411,7 +411,7 @@ main { display: block; }
 /* rotating quote carousel — blended, no card box */
 .press-carousel { position: relative; max-width: var(--maxw); margin: 0 auto; overflow: hidden; }
 /* each slide is a row of up to 3 quotes */
-.press-row { flex: 0 0 100%; min-width: 0; display: flex; gap: clamp(20px, 3vw, 44px); align-items: stretch; justify-content: center; padding: 4px clamp(30px, 5vw, 60px) 8px; }
+.press-row { flex: 0 0 100%; min-width: 0; display: flex; gap: clamp(20px, 3vw, 44px); align-items: stretch; justify-content: center; padding: 4px clamp(52px, 5vw, 64px) 8px; }
 .press-quote {
   flex: 1 1 0; min-width: 0; margin: 0; max-width: 360px;
   display: flex; flex-direction: column; align-items: center; gap: 30px;   /* space between logo, quote, link */
@@ -442,13 +442,20 @@ main { display: block; }
 .press-read-link { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color .2s ease; }
 .press-read-link:hover { border-color: var(--ink); }
 /* carousel controls tuned for the light section */
-.press-carousel .carousel-arrow { background: transparent; color: var(--ink); border: none; opacity: 0.25; top: 50%; width: 32px; height: 32px; font-size: 18px; transition: opacity .2s ease; }
-.press-carousel .carousel-arrow:hover { opacity: 0.6; background: transparent; }
-.press-carousel .carousel-prev { left: -70px; }
-.press-carousel .carousel-next { right: -70px; }
+.press-carousel .carousel-arrow { background: transparent; color: var(--ink); border: 1px solid rgba(10,10,10,.25); opacity: 0.35; top: 50%; width: 36px; height: 36px; font-size: 18px; transition: opacity .2s ease; }
+.press-carousel .carousel-arrow:hover { opacity: 0.8; background: transparent; color: var(--ink); }
+.press-carousel .carousel-prev { left: 8px; }
+.press-carousel .carousel-next { right: 8px; }
 .press-carousel .carousel-dots { position: static; margin-top: 28px; }
 .press-carousel .carousel-dot { background: rgba(10,10,10,.18); }
 .press-carousel .carousel-dot.is-active { background: var(--ink); }
+/* mobile: arrows drop below the quotes, flanking the dots, so they never cover text */
+@media (max-width: 720px) {
+  .press-carousel .carousel-arrow { top: auto; bottom: 0; transform: none; opacity: 1; width: 40px; height: 40px; font-size: 20px; }
+  .press-carousel .carousel-prev { left: calc(50% - 110px); }
+  .press-carousel .carousel-next { right: calc(50% - 110px); }
+  .press-carousel .carousel-dots { margin-top: 44px; margin-bottom: 16px; }
+}
 
 /* ---- CTA ---- */
 .cta { text-align: center; }
