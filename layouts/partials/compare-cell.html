@@ -3,5 +3,7 @@
 {{- $key := index $parts 0 -}}
 {{- $rest := "" -}}
 {{- if gt (len $parts) 1 }}{{ $rest = delimit (after 1 $parts) " – " }}{{ end -}}
-<span class="cell-key{{ if .byld }} cell-key-byld{{ end }}">{{ $key }}</span>
-{{- with $rest }} <span class="cell-desc">{{ . }}</span>{{ end -}}
+<div class="cell-toggle-group">
+  <button class="cell-key{{ if .byld }} cell-key-byld{{ end }}" type="button" aria-expanded="false">{{ $key }}</button>
+  {{- with $rest }}<div class="cell-desc" hidden>{{ . }}</div>{{ end -}}
+</div>
