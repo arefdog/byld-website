@@ -80,7 +80,7 @@
   <div class="btns">
     <button id="sols">Summer solstice</button>
     <button id="wins">Winter solstice</button>
-    <button id="play">Sweep day</button>
+    <button id="play">Play</button>
     <span class="sep"></span>
     <button class="v-btn is-on" data-view="orbit">Orbit</button>
     <button class="v-btn" data-view="plan">Plan</button>
@@ -412,7 +412,7 @@ document.querySelectorAll('.v-btn').forEach(b=>b.addEventListener('click',functi
 }));
 document.getElementById('sols').onclick=()=>{document.getElementById('day').value=172;applySun();};
 document.getElementById('wins').onclick=()=>{document.getElementById('day').value=355;applySun();};
-document.getElementById('play').onclick=function(){playing=!playing;this.textContent=playing?'Pause':'Sweep day';};
+document.getElementById('play').onclick=function(){playing=!playing;this.textContent=playing?'Pause':'Play';};
 
 // ---- init ----
 document.getElementById('ovout').textContent='2.82 m';
