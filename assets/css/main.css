@@ -365,6 +365,8 @@ main { display: block; }
   text-align: left;
   transition: background .15s ease, border-color .15s ease;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 .cell-key:hover { background: #e8e7e4; }
 .cell-key:focus-visible { outline: 2px solid var(--ink); outline-offset: -1px; }
@@ -375,11 +377,14 @@ main { display: block; }
 .cell-desc {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--muted);
+  color: var(--ink);
   display: none;
+  margin-top: 4px;
 }
 .cell-desc:not([hidden]) {
   display: block;
+  position: relative;
+  z-index: 1;
 }
 .col-byld .cell-desc {
   color: #fff;
