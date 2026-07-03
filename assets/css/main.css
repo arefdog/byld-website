@@ -206,11 +206,17 @@ main { display: block; }
   margin: 0 auto 32px;
   text-shadow: 0 1px 16px rgba(0,0,0,.35);
 }
+@media (max-width: 768px) {
+  .hero-subtitle { display: none; }
+}
 .hero-intro {
   font-size: clamp(17px, 1.7vw, 21px);
   color: rgba(255,255,255,.92);
   max-width: 52ch; margin: 0 0 36px;
   text-shadow: 0 1px 18px rgba(0,0,0,.35);
+}
+@media (max-width: 768px) {
+  .hero-intro { display: none; }
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 /* ghost button on a dark image */
