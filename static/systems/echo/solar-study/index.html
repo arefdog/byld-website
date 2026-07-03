@@ -14,7 +14,12 @@
        display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px}
   h1{font-size:18px;font-weight:500;margin:4px 0 2px}
   .sub{font-size:13px;color:#8b8a82;margin:0 0 16px}
-  .wrap{width:100%;max-width:760px}
+  .wrap{width:100%;max-width:1320px}
+  .study-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,2.6vw,40px);align-items:start;margin-top:14px}
+  .study-left,.study-right{min-width:0}
+  .study-right .findings,.study-right .heat{margin-top:16px}
+  .study-right .cards{margin-top:0}
+  @media (max-width:920px){.study-grid{grid-template-columns:1fr;gap:20px}}
   .bar{display:flex;flex-direction:column;gap:9px;margin-bottom:12px}
   .row{display:flex;align-items:center;gap:10px;font-size:13px;color:#a8a69d}
   .row span.lbl{min-width:64px}
@@ -33,7 +38,7 @@
   .g-btn.is-on,.v-btn.is-on{background:#33373f;border-color:#5a5f68;color:#fff}
   .btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   .sep{flex:1 1 12px}
-  #stage{width:100%;height:460px;border-radius:12px;overflow:hidden;background:#0a0c10;border:0.5px solid #2a2d33;cursor:grab;position:relative}
+  #stage{width:100%;height:clamp(440px,64vh,640px);border-radius:12px;overflow:hidden;background:#0a0c10;border:0.5px solid #2a2d33;cursor:grab;position:relative}
   #stage .loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#6b6a63;font-size:13px}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
   .card{background:#16181d;border-radius:8px;padding:9px 12px}
@@ -72,12 +77,14 @@
 <div class="wrap">
 <a href="../" style="display:inline-block;margin:0 0 12px;font-size:13px;color:#8b8a82;text-decoration:none">← Back to ECHO</a>
 <h1>BYLD ECHO – solar &amp; shade study</h1>
-<p class="sub"><span id="loc-name">Central Madrid</span> · latitude <span id="loc-lat">40.4°N</span> · real sun position, physically-based sky &amp; lighting. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
+<p class="sub"><span id="loc-name">Madrid</span> · latitude <span id="loc-lat">40.4°N</span> · real sun position, physically-based sky &amp; lighting. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
+<div class="study-grid">
+<div class="study-left">
 <div class="bar">
   <div class="ctl">
     <span class="lbl">Location</span>
     <select id="loc">
-      <option value="40.42" selected>Central Madrid</option>
+      <option value="40.42" selected>Madrid</option>
       <option value="41.39">Barcelona</option>
       <option value="48.86">Paris</option>
       <option value="51.51">London</option>
@@ -118,6 +125,8 @@
   </div>
 </div>
 <div id="stage"><div class="loading">Loading 3D model…</div></div>
+</div><!-- /study-left -->
+<div class="study-right">
 <div class="cards">
   <div class="card"><div class="k">Sun altitude</div><div class="v" id="m-alt">–</div></div>
   <div class="card"><div class="k">Azimuth (from S)</div><div class="v" id="m-az">–</div></div>
@@ -153,6 +162,8 @@
   <div class="legend"><span class="lg" style="--c:#d2624b"></span>Cooling season (burden)<span class="lg" style="--c:#7cc49a"></span>Heating season (useful)<span class="lg" style="--c:#8b8a82"></span>Shoulder</div>
   <p class="assume" id="vassume"></p>
 </div>
+</div><!-- /study-right -->
+</div><!-- /study-grid -->
 </div>
 
 <script type="importmap">
@@ -168,11 +179,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const stage=document.getElementById('stage');
 const loadingEl=stage.querySelector('.loading');
-const Wf=()=>stage.clientWidth||760, Hh=460;
+const Wf=()=>stage.clientWidth||760, Hh=()=>stage.clientHeight||460;
 
 const renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(Wf(),Hh);
+renderer.setSize(Wf(),Hh());
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.95;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -180,7 +191,7 @@ stage.appendChild(renderer.domElement);
 if(loadingEl) loadingEl.remove();
 
 const scene=new THREE.Scene();
-const cam=new THREE.PerspectiveCamera(42,Wf()/Hh,0.1,6000);
+const cam=new THREE.PerspectiveCamera(42,Wf()/Hh(),0.1,6000);
 const D2R=Math.PI/180,R2D=180/Math.PI;let lat=40.42*D2R;
 const MAXA=renderer.capabilities.getMaxAnisotropy();
 
@@ -341,7 +352,9 @@ window.addEventListener('mouseup',()=>{drag=false;el.style.cursor='grab';});wind
 el.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(6,Math.min(40,rad+(e.deltaY>0?1:-1)));},{passive:false});
 
 // ---- post-processing ----
-window.addEventListener('resize',()=>{const w=Wf();renderer.setSize(w,Hh);cam.aspect=w/Hh;cam.updateProjectionMatrix();});
+function resizeStage(){const w=Wf(),h=Hh();if(w&&h){renderer.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();}}
+window.addEventListener('resize',resizeStage);
+new ResizeObserver(resizeStage).observe(stage);
 
 // ---- heat model ----
 let SHGC=0.50;
