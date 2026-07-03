@@ -3,9 +3,9 @@
   slug: echo
   status: Available
   images:
-    - img/sys-echo-3.jpg
-    - img/sys-echo-2.jpg
-    - img/sys-echo-1.jpg
+    - img/sys-echo-3.png
+    - img/sys-echo-2.png
+    - img/sys-echo-1.png
   body: Scalable hospitality units that stretch or cluster around shared utilities.
   accolade: "Winner · Designer of the Year 2025"
   accoladeLogo: img/press/condenast.svg
@@ -14,9 +14,9 @@
   slug: icon
   status: Available
   images:
-    - img/sys-icon-1.jpg
-    - img/sys-icon-2.jpg
-    - img/sys-icon-3.jpg
+    - img/sys-icon-1.png
+    - img/sys-icon-2.png
+    - img/sys-icon-3.png
   body: "A demountable pavilion for commercial activations: strong presence, fast to install and reuse."
   accolade: "A+Awards 2026 Winner · Pop-Ups & Temporary"
   accoladeLogo: img/press/architizer.svg
@@ -25,6 +25,7 @@
   slug: atlas
   status: In development
   images:
-    - img/sys-atlas-1.jpg
+    - img/sys-atlas-1.png
+    - img/sys-atlas-2.png
   body: A residential kit-of-parts, from single homes to whole communities.
   accolade: "In Development"
