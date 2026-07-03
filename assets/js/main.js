@@ -131,13 +131,20 @@
     car.addEventListener('mouseleave', start);
 
     // Touch/swipe support for mobile
-    car.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].clientX; }, false);
-    car.addEventListener('touchend', function (e) {
-      touchEndX = e.changedTouches[0].clientX;
-      var diff = touchStartX - touchEndX;
-      var threshold = 50; // minimum swipe distance in pixels
-      if (Math.abs(diff) > threshold) {
-        if (diff > 0) { go(idx + 1); } else { go(idx - 1); }
+    track.addEventListener('touchstart', function (e) {
+      if (e.touches && e.touches.length) {
+        touchStartX = e.touches[0].clientX;
+        stop();
+      }
+    }, false);
+    track.addEventListener('touchend', function (e) {
+      if (e.changedTouches && e.changedTouches.length) {
+        touchEndX = e.changedTouches[0].clientX;
+        var diff = touchStartX - touchEndX;
+        var threshold = 40; // minimum swipe distance in pixels
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) { go(idx + 1); } else { go(idx - 1); }
+        }
         reset();
       }
     }, false);
