@@ -28,6 +28,8 @@
   .play-btn.is-playing:hover{background:#454951}
   .ctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:#a8a69d}
   .ctl .lbl{min-width:64px}
+  select#loc{background:#1c1e24;color:#e8e6df;border:0.5px solid #3a3d44;border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer}
+  select#loc:hover{background:#262932}
   .g-btn.is-on,.v-btn.is-on{background:#33373f;border-color:#5a5f68;color:#fff}
   .btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   .sep{flex:1 1 12px}
@@ -70,8 +72,33 @@
 <div class="wrap">
 <a href="../" style="display:inline-block;margin:0 0 12px;font-size:13px;color:#8b8a82;text-decoration:none">← Back to ECHO</a>
 <h1>BYLD ECHO – solar &amp; shade study</h1>
-<p class="sub">Madrid sierra · latitude 40.7°N · real sun position, physically-based sky &amp; lighting. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
+<p class="sub"><span id="loc-name">Central Madrid</span> · latitude <span id="loc-lat">40.4°N</span> · real sun position, physically-based sky &amp; lighting. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
 <div class="bar">
+  <div class="ctl">
+    <span class="lbl">Location</span>
+    <select id="loc">
+      <option value="40.42" selected>Central Madrid</option>
+      <option value="41.39">Barcelona</option>
+      <option value="48.86">Paris</option>
+      <option value="51.51">London</option>
+      <option value="52.52">Berlin</option>
+      <option value="55.75">Moscow</option>
+      <option value="64.13">Reykjavík</option>
+      <option value="40.71">New York</option>
+      <option value="34.05">Los Angeles</option>
+      <option value="19.43">Mexico City</option>
+      <option value="-22.91">Rio de Janeiro</option>
+      <option value="25.20">Dubai</option>
+      <option value="30.04">Cairo</option>
+      <option value="31.63">Marrakech</option>
+      <option value="-1.29">Nairobi</option>
+      <option value="-33.92">Cape Town</option>
+      <option value="19.08">Mumbai</option>
+      <option value="1.35">Singapore</option>
+      <option value="35.68">Tokyo</option>
+      <option value="-33.87">Sydney</option>
+    </select>
+  </div>
   <div class="row"><span class="lbl">Day</span><input type="range" id="day" min="1" max="365" value="172"><span class="out" id="dayout"></span><button id="play" class="play-btn">▶ Play</button></div>
   <div class="row"><span class="lbl">Time</span><input type="range" id="hr" min="4" max="20" value="12" step="0.25"><span class="out" id="hrout"></span></div>
   <div class="row"><span class="lbl">Overhang</span><input type="range" id="ov" min="0.8" max="4.5" step="0.05" value="2.82"><span class="out" id="ovout"></span></div>
@@ -99,7 +126,7 @@
 </div>
 <div class="findings">
   <h2>What this shows</h2>
-  <p>A physically accurate sun for the El&nbsp;Boalo / Guadarrama site (40.7°N), lit by a physically-based sky. The round roof casts a real shadow onto the deck and the central glass core. Drag <b>Day</b>, <b>Time</b> and <b>Overhang</b>, switch the <b>glazing</b>, or use <b>Sweep&nbsp;day</b> – the heat table below recomputes live.</p>
+  <p>A physically accurate sun for the <b>selected location</b>, lit by a physically-based sky. The round roof casts a real shadow onto the deck and the central glass core. Choose a <b>location</b>, drag <b>Day</b>, <b>Time</b> and <b>Overhang</b>, switch the <b>glazing</b>, or press <b>Play</b> – the heat table below recomputes live.</p>
   <ul>
     <li><b>The overhang is the main solar control.</b> Drag it wider and the glass stays shaded down to lower sun angles; pull it in and more direct beam reaches the core. Watch the annual figure respond.</li>
     <li><b>Only low sunrise/sunset light reaches under the eaves.</b> Set Time to ~6:00 or ~19:00 to see the rays rake across the deck and into the core.</li>
@@ -154,7 +181,7 @@ if(loadingEl) loadingEl.remove();
 
 const scene=new THREE.Scene();
 const cam=new THREE.PerspectiveCamera(42,Wf()/Hh,0.1,6000);
-const D2R=Math.PI/180,R2D=180/Math.PI,lat=40.7*D2R;
+const D2R=Math.PI/180,R2D=180/Math.PI;let lat=40.42*D2R;
 const MAXA=renderer.capabilities.getMaxAnisotropy();
 
 // ---- physically-based sky + image-based lighting ----
@@ -416,10 +443,20 @@ document.querySelectorAll('.v-btn').forEach(b=>b.addEventListener('click',functi
 document.getElementById('sols').onclick=()=>{document.getElementById('day').value=172;applySun();};
 document.getElementById('wins').onclick=()=>{document.getElementById('day').value=355;applySun();};
 document.getElementById('play').onclick=function(){playing=!playing;this.classList.toggle('is-playing',playing);this.textContent=playing?'⏸ Pause':'▶ Play';};
+const locSel=document.getElementById('loc');
+function applyLoc(){
+  const L=+locSel.value;
+  lat=L*D2R;
+  document.getElementById('loc-name').textContent=locSel.options[locSel.selectedIndex].textContent;
+  document.getElementById('loc-lat').textContent=Math.abs(L).toFixed(1)+(L>=0?'°N':'°S');
+  lastArcDay=-999; // force sun-path arc rebuild for the new latitude
+  applySun();recomputeHeat();
+}
+locSel.addEventListener('change',applyLoc);
 
 // ---- init ----
 document.getElementById('ovout').textContent='2.82 m';
-rebuildShell(2.82);applySun();recomputeHeat();
+rebuildShell(2.82);applyLoc();
 function loop(){frame++;if(playing){const d=document.getElementById('day');d.value=(+d.value%365)+1;applySun();}place();renderer.render(scene,cam);requestAnimationFrame(loop);}
 loop();
 
