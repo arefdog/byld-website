@@ -357,7 +357,7 @@ main { display: block; }
   }
   .table-wrap::after {
     content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 54px;
-    background: linear-gradient(to right, rgba(244,243,240,0), var(--paper-2) 85%);
+    background: var(--paper-2);
     pointer-events: none;
   }
 }
