@@ -15,7 +15,7 @@ collaborators:
     role: "Comfort & climate design"
     logo: "img/collab/climetric.png"
 studyUrl: "/systems/echo/solar-study/"
-studyLabel: "Check out the ECHO solar study"
+studyLabel: "Explore the ECHO solar studies"
 weight: 10
 ---
 
