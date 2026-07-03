@@ -160,6 +160,12 @@ main { display: block; }
   overflow: hidden;
   color: #fff;
 }
+@media (max-width: 768px) {
+  .hero-full {
+    min-height: 150vh;
+    min-height: 150svh;
+  }
+}
 .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .hero-bg picture { position: absolute; inset: 0; display: block; }
 .hero-bg img {
