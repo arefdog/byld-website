@@ -111,6 +111,7 @@
     var n = slides.length;
     if (n < 2) return;
     var idx = 0, timer = null;
+    var touchStartX = 0, touchEndX = 0;
 
     function go(i) {
       idx = (i + n) % n;
@@ -128,6 +129,19 @@
     Array.prototype.forEach.call(dots, function (d, j) { d.addEventListener('click', function () { go(j); reset(); }); });
     car.addEventListener('mouseenter', stop);
     car.addEventListener('mouseleave', start);
+
+    // Touch/swipe support for mobile
+    car.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].clientX; }, false);
+    car.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].clientX;
+      var diff = touchStartX - touchEndX;
+      var threshold = 50; // minimum swipe distance in pixels
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) { go(idx + 1); } else { go(idx - 1); }
+        reset();
+      }
+    }, false);
+
     start();
   });
 })();
