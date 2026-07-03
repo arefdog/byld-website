@@ -63,6 +63,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          # Pages backend can be slow to pick up queued deployments;
-          # wait up to 30 min instead of the default 10.
-          timeout: 1800000
+          # Wait the maximum the action allows (10 min) for Pages pickup.
+          timeout: 600000
