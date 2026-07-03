@@ -173,6 +173,11 @@ main { display: block; }
   object-fit: cover; display: block;
   object-position: 50% 20%;   /* pavilion lower, more sky visible */
 }
+@media (min-width: 769px) {
+  .hero-bg img {
+    object-fit: contain;
+  }
+}
 .hero-scrim {
   position: absolute; inset: 0; z-index: 1;
   /* dark at the top (behind nav + copy), clearing off the building below */
