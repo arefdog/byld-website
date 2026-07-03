@@ -1,5 +1,6 @@
 ---
 title: "ATLAS"
+description: "Modular residential system for single homes to complete communities. Kit-of-parts design using engineered timber. Sustainable housing solution in development by BYLD."
 sector: "Residential"
 status: "In development"
 image: "img/sys-atlas.jpg"

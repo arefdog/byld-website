@@ -1,5 +1,6 @@
 ---
 title: "The ICON"
+description: "Demountable pavilion for commercial activations and events. Fast installation, reusable modular system. Award-winning temporary structure built with engineered timber and precision engineering."
 sector: "Commercial"
 status: "Available"
 image: "img/sys-icon.jpg"

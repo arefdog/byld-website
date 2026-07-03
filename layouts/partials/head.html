@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ $title := .Title }}
   {{ if .IsHome }}{{ $title = site.Title }}{{ else }}{{ $title = printf "%s – BYLD" .Title }}{{ end }}
-  <title>{{ $title }}</title>
+  <title>{{ if eq .Type "systems" }}{{ .Title }} – Modular Building System by BYLD{{ else }}{{ $title }}{{ end }}</title>
   <meta name="description" content="{{ .Description | default site.Params.description }}">
   {{ if .Params.private }}<meta name="robots" content="noindex, nofollow">{{ end }}
   {{ $desc := .Description | default site.Params.description }}
@@ -42,6 +42,25 @@
       "email" site.Params.email
       "address" (dict "@type" "PostalAddress" "streetAddress" "Calle Conde de Aranda 1" "postalCode" "28014" "addressLocality" "Madrid" "addressCountry" "ES")
       "sameAs" (slice site.Params.social.instagram site.Params.social.linkedin) }}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+  {{ else if eq .Type "systems" }}
+  <!-- Product schema for system pages -->
+  {{ $ld := dict
+      "@context" "https://schema.org"
+      "@type" "Product"
+      "name" .Title
+      "description" (.Description | default site.Params.description)
+      "brand" (dict "@type" "Brand" "name" "BYLD")
+      "manufacturer" (dict "@type" "Organization" "name" "BYLD" "url" site.BaseURL) }}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+  <!-- Breadcrumb schema for navigation -->
+  {{ $ld := dict
+      "@context" "https://schema.org"
+      "@type" "BreadcrumbList"
+      "itemListElement" (slice
+        (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL)
+        (dict "@type" "ListItem" "position" 2 "name" "Systems" "item" (site.BaseURL | strings.TrimSuffix "/"))
+        (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)) }}
   <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
   {{ end }}
 

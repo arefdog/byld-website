@@ -20,7 +20,7 @@ disableKinds = ["taxonomy", "term"]
   # Analytics (off until set). Use ONE of these:
   #   plausibleDomain = "gobyld.com"   # privacy-friendly, recommended
   #   googleAnalytics = "G-XXXXXXXXXX" # GA4
-  plausibleDomain = ""
+  plausibleDomain = "gobyld.com"
   googleAnalytics = ""
 
   [params.social]

@@ -1,5 +1,6 @@
 ---
 title: "ECHO"
+description: "Scalable hospitality units that cluster around shared utilities. Minimalist design using timber and natural materials. Award-winning modular construction system for resorts and hospitality."
 sector: "Hospitality"
 status: "Available"
 image: "img/sys-echo.jpg"
