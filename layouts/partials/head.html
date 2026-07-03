@@ -7,7 +7,7 @@
   <meta name="description" content="{{ .Description | default site.Params.description }}">
   {{ if .Params.private }}<meta name="robots" content="noindex, nofollow">{{ end }}
   {{ $desc := .Description | default site.Params.description }}
-  {{ $ogimg := "img/og.jpg" | absURL }}
+  {{ $ogimg := "img/og-image.jpg" | absURL }}
   <link rel="canonical" href="{{ .Permalink }}">
   <meta property="og:site_name" content="BYLD">
   <meta property="og:title" content="{{ $title }}">
@@ -37,7 +37,7 @@
       "name" "BYLD"
       "url" site.BaseURL
       "logo" ("img/byld-logo-black.png" | absURL)
-      "image" ("img/og.jpg" | absURL)
+      "image" ("img/og-image.jpg" | absURL)
       "description" site.Params.description
       "email" site.Params.email
       "address" (dict "@type" "PostalAddress" "streetAddress" "Calle Conde de Aranda 1" "postalCode" "28014" "addressLocality" "Madrid" "addressCountry" "ES")
