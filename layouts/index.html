@@ -115,7 +115,7 @@
   {{ $press := hugo.Data.press }}
   {{ $n := len $press }}
   {{ $starts := seq 0 3 (sub $n 1) }}
-  <div class="press-carousel press-multi carousel" data-carousel>
+  <div class="press-carousel press-multi carousel" data-carousel data-no-autoplay>
     <div class="carousel-track">
       {{ range $g := $starts }}
       <div class="carousel-slide press-row">

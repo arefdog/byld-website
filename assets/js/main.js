@@ -118,7 +118,8 @@
       track.style.transform = 'translateX(' + (-idx * 100) + '%)';
       Array.prototype.forEach.call(dots, function (d, j) { d.classList.toggle('is-active', j === idx); });
     }
-    function start() { if (!reduce) timer = setInterval(function () { go(idx + 1); }, 5000); }
+    var autoplay = !car.hasAttribute('data-no-autoplay');
+    function start() { if (!reduce && autoplay) timer = setInterval(function () { go(idx + 1); }, 5000); }
     function stop() { clearInterval(timer); }
     function reset() { stop(); start(); }
 
