@@ -57,7 +57,7 @@
         <div class="system-media-frame">
           {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
         </div>
-        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore<br>→</a>{{ end }}
+        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore →</a>{{ end }}
       </div>
       {{ end }}
     </article>
