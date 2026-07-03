@@ -342,7 +342,7 @@ main { display: block; }
 .compare tbody tr:nth-child(even) { background: var(--paper); }
 .compare .col-byld { color: var(--ink); }
 .compare thead .col-byld { background: var(--ink); color: var(--paper); }
-.cell-toggle-group { display: flex; flex-direction: column; gap: 8px; }
+.cell-toggle-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 .cell-key {
   background: var(--paper-2);
   border: 1px solid var(--line);
@@ -355,6 +355,7 @@ main { display: block; }
   border-radius: 999px;
   text-align: left;
   transition: background .15s ease, border-color .15s ease;
+  flex-shrink: 0;
 }
 .cell-key:hover { background: #e8e7e4; }
 .cell-key:focus-visible { outline: 2px solid var(--ink); outline-offset: -1px; }
