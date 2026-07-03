@@ -1,4 +1,4 @@
-baseURL = "https://www.gobyld.com/"
+baseURL = "https://gobyld.com/"
 defaultContentLanguage = "en"
 title = "BYLD – Modular Construction Systems"
 enableRobotsTXT = true
