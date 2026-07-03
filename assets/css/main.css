@@ -350,6 +350,11 @@ main { display: block; }
 .compare td { color: var(--muted); }
 .compare .col-byld { background: #faf9f7; color: var(--ink); }
 .compare thead .col-byld { background: var(--ink); color: var(--paper); }
+.col-toggle { cursor: pointer; user-select: none; transition: opacity .2s ease; }
+.col-toggle:hover, .col-toggle:focus-visible { opacity: .7; outline: none; }
+.col-toggle[data-hidden="true"] { opacity: .4; }
+.compare td[data-col], .compare th[data-col] { transition: opacity .2s ease; }
+.compare td[data-hidden="true"], .compare th[data-hidden="true"] { display: none; }
 
 /* ---- Press ---- */
 .section-press { background: var(--paper-2); max-width: none; text-align: center; }

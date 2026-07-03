@@ -89,18 +89,18 @@
       <thead>
         <tr>
           <th></th>
-          <th>Traditional</th>
-          <th>Standard Prefab</th>
-          <th class="col-byld">BYLD</th>
+          <th class="col-toggle" data-col="1" role="button" tabindex="0">Traditional</th>
+          <th class="col-toggle" data-col="2" role="button" tabindex="0">Standard Prefab</th>
+          <th class="col-toggle col-byld" data-col="3" role="button" tabindex="0">BYLD</th>
         </tr>
       </thead>
       <tbody>
         {{ range hugo.Data.comparison.rows }}
         <tr>
           <th scope="row">{{ .metric }}</th>
-          <td>{{ partial "compare-cell.html" (dict "text" .traditional) }}</td>
-          <td>{{ partial "compare-cell.html" (dict "text" .prefab) }}</td>
-          <td class="col-byld">{{ partial "compare-cell.html" (dict "text" .byld "byld" true) }}</td>
+          <td data-col="1">{{ partial "compare-cell.html" (dict "text" .traditional) }}</td>
+          <td data-col="2">{{ partial "compare-cell.html" (dict "text" .prefab) }}</td>
+          <td class="col-byld" data-col="3">{{ partial "compare-cell.html" (dict "text" .byld "byld" true) }}</td>
         </tr>
         {{ end }}
       </tbody>

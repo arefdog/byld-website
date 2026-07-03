@@ -172,3 +172,34 @@
     });
   });
 })();
+
+// Comparison table column toggle
+(function () {
+  const toggles = document.querySelectorAll('.col-toggle');
+  if (!toggles.length) return;
+
+  toggles.forEach(function (toggle) {
+    toggle.addEventListener('click', function () {
+      const col = toggle.getAttribute('data-col');
+      const table = toggle.closest('table');
+      if (!table) return;
+
+      const isHidden = toggle.getAttribute('data-hidden') === 'true';
+      toggle.setAttribute('data-hidden', !isHidden);
+
+      // Toggle all cells in this column
+      const cells = table.querySelectorAll('[data-col="' + col + '"]');
+      cells.forEach(function (cell) {
+        cell.setAttribute('data-hidden', !isHidden);
+      });
+    });
+
+    // Keyboard support: Enter or Space
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle.click();
+      }
+    });
+  });
+})();
