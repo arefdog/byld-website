@@ -162,8 +162,8 @@ main { display: block; }
 }
 @media (max-width: 768px) {
   .hero-full {
-    min-height: 150vh;
-    min-height: 150svh;
+    min-height: 180vh;
+    min-height: 180svh;
   }
 }
 .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
@@ -186,11 +186,8 @@ main { display: block; }
 }
 @media (max-width: 768px) {
   .hero-full .hero-inner {
-    position: absolute;
-    bottom: 10%;
-    left: 0;
-    right: 0;
-    padding: 40px var(--gutter) 40px;
+    position: relative;
+    padding: clamp(80px, 12vh, 150px) var(--gutter) clamp(40px, 5vw, 60px);
   }
 }
 .hero-copy { min-width: 0; max-width: 900px; margin: 0 auto; text-align: center; }
