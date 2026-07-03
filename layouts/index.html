@@ -42,7 +42,6 @@
       <div class="system-label">
         <span class="system-sector">{{ $s.sector }}</span>
         <span class="system-name">{{ $s.name }}</span>
-        {{ with $s.status }}<span class="status-badge {{ if eq . "Available" }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>{{ end }}
       </div>
       <div class="system-body">
         <p>{{ $s.body }}</p>
