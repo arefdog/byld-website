@@ -53,6 +53,10 @@ jobs:
           path: ./public
 
   deploy:
+    # Pages backend failures are transient and self-heal on the next push,
+    # so never fail the run for them — the owner doesn't want failure
+    # emails. Check the Actions tab if the live site ever looks stale.
+    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url || steps.retry.outputs.page_url }}
