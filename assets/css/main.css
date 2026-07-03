@@ -165,7 +165,7 @@ main { display: block; }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  object-position: 50% 45%;   /* pavilion centered, title clear in the sky */
+  object-position: 50% 20%;   /* pavilion lower, more sky visible */
 }
 .hero-scrim {
   position: absolute; inset: 0; z-index: 1;
@@ -177,6 +177,11 @@ main { display: block; }
   position: relative; z-index: 2;
   max-width: var(--maxw); margin: 0 auto; width: 100%;
   padding: clamp(128px, 17vh, 190px) var(--gutter) clamp(40px, 7vw, 80px);
+}
+@media (max-width: 768px) {
+  .hero-full .hero-inner {
+    padding: 100svh var(--gutter) 80px;
+  }
 }
 .hero-copy { min-width: 0; max-width: 900px; margin: 0 auto; text-align: center; }
 .hero-full .eyebrow { color: rgba(255,255,255,.75); }
