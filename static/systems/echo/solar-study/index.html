@@ -22,6 +22,10 @@
   .row .out{min-width:92px;text-align:right;font-weight:500;color:#e8e6df}
   button{background:#1c1e24;color:#e8e6df;border:0.5px solid #3a3d44;border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer}
   button:hover{background:#262932}
+  .play-btn{background:#e0a85a;color:#141414;border-color:#e0a85a;font-weight:600;margin-left:8px;padding:7px 18px;white-space:nowrap}
+  .play-btn:hover{background:#eab871;border-color:#eab871}
+  .play-btn.is-playing{background:#3a3d44;color:#e8e6df;border-color:#5a5f68}
+  .play-btn.is-playing:hover{background:#454951}
   .ctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:#a8a69d}
   .ctl .lbl{min-width:64px}
   .g-btn.is-on,.v-btn.is-on{background:#33373f;border-color:#5a5f68;color:#fff}
@@ -68,7 +72,7 @@
 <h1>BYLD ECHO – solar &amp; shade study</h1>
 <p class="sub">Madrid sierra · latitude 40.7°N · real sun position, physically-based sky &amp; lighting. Drag to orbit · adjust the overhang and glazing to see the trade-offs.</p>
 <div class="bar">
-  <div class="row"><span class="lbl">Day</span><input type="range" id="day" min="1" max="365" value="172"><span class="out" id="dayout"></span></div>
+  <div class="row"><span class="lbl">Day</span><input type="range" id="day" min="1" max="365" value="172"><span class="out" id="dayout"></span><button id="play" class="play-btn">▶ Play</button></div>
   <div class="row"><span class="lbl">Time</span><input type="range" id="hr" min="4" max="20" value="12" step="0.25"><span class="out" id="hrout"></span></div>
   <div class="row"><span class="lbl">Overhang</span><input type="range" id="ov" min="0.8" max="4.5" step="0.05" value="2.82"><span class="out" id="ovout"></span></div>
   <div class="ctl">
@@ -80,7 +84,6 @@
   <div class="btns">
     <button id="sols">Summer solstice</button>
     <button id="wins">Winter solstice</button>
-    <button id="play">Play</button>
     <span class="sep"></span>
     <button class="v-btn is-on" data-view="orbit">Orbit</button>
     <button class="v-btn" data-view="plan">Plan</button>
@@ -412,7 +415,7 @@ document.querySelectorAll('.v-btn').forEach(b=>b.addEventListener('click',functi
 }));
 document.getElementById('sols').onclick=()=>{document.getElementById('day').value=172;applySun();};
 document.getElementById('wins').onclick=()=>{document.getElementById('day').value=355;applySun();};
-document.getElementById('play').onclick=function(){playing=!playing;this.textContent=playing?'Pause':'Play';};
+document.getElementById('play').onclick=function(){playing=!playing;this.classList.toggle('is-playing',playing);this.textContent=playing?'⏸ Pause':'▶ Play';};
 
 // ---- init ----
 document.getElementById('ovout').textContent='2.82 m';
