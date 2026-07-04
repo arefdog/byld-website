@@ -58,9 +58,9 @@
       {{ range . }}
       {{ if reflect.IsMap . }}
       <li class="collab-card">
-        {{ with .logo }}<span class="collab-logo"><img src="{{ . | relURL }}" alt="{{ $.Title }} collaborator logo" loading="lazy"></span>{{ end }}
+        {{ if .logo }}<span class="collab-logo"><img src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy"></span>{{ end }}
         <span class="collab-meta">
-          <span class="collab-name">{{ .name }}</span>
+          {{ if not .logo }}<span class="collab-name">{{ .name }}</span>{{ end }}
           {{ with .role }}<span class="collab-role">{{ . }}</span>{{ end }}
         </span>
       </li>
