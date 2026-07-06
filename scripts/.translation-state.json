@@ -1,0 +1,13 @@
+{
+  "content/_index.md": "f71c7d44c93faa1d920db167e1845e96159eea51fd70e4721488aef2972cbd0a",
+  "content/systems/_index.md": "e94caad55002fd781a58395c01a9df1a75de87aae686e1e543d12100d211b538",
+  "content/systems/atlas.md": "675a5ff85f0cdda5ad8036d873f597fb111a8bfd299ee16031ca480587a60120",
+  "content/systems/echo.md": "1868b3a231ff21312e074890f25b9f4e0804c19632d4febbf663a5a262bf0af3",
+  "content/systems/icon.md": "5808d903836a0cbac09784ae9cb6e0e684bde7b1b76f3e1165c3d52ca1a79c84",
+  "data/en/comparison.yaml": "ac192a845d1bbe9c366174a6771f7faa18e60623b30e271675985154b387470b",
+  "data/en/faq.yaml": "f5fdbc5fdac3e655118cb562444810b5497cfcbccad0a8f03f07de0e5b09fc64",
+  "data/en/press.yaml": "2aef7d9cc901b4198fd5dba99175d89fe6df8f652510a6ccfa1cea33e84838ef",
+  "data/en/services.yaml": "029ac095d4132c26595c5b407f44adefda968cf929e64622eea124476a1fa100",
+  "data/en/systems.yaml": "228305b7f9927b414727a02f91f929fdee4b25d697f1431ee636a7ca726c67a5",
+  "i18n/en.yaml": "6e911622e6054dfa2cf12a0ec5d9161bb5b50ac068d45a15b906ee55f31b66ca"
+}

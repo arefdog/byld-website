@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,6 +36,26 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      # English is the source of truth: when English content/data changes,
+      # regenerate the Spanish files via the Claude API and commit them back.
+      # Skipped (with a notice) until the ANTHROPIC_API_KEY secret is set.
+      - name: Sync Spanish translations from English
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::notice::ANTHROPIC_API_KEY secret not set - skipping auto-translation. Spanish stays as last committed."
+            exit 0
+          fi
+          pip install --quiet anthropic pyyaml
+          python3 scripts/translate_es.py
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Auto-translate Spanish from English changes"
+            git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::Push of translations failed (non-fatal); this build still includes them."
+          fi
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
