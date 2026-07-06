@@ -44,5 +44,5 @@ prev_image:
   other: "Imagen anterior"
 next_image:
   other: "Imagen siguiente"
-switch_lang:
-  other: "View in English"
+choose_language:
+  other: "Elegir idioma"

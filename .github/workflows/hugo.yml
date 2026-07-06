@@ -37,18 +37,19 @@ jobs:
           submodules: recursive
           fetch-depth: 0
       # English is the source of truth: when English content/data changes,
-      # regenerate the Spanish files via the Claude API and commit them back.
-      # Skipped (with a notice) until the ANTHROPIC_API_KEY secret is set.
-      - name: Sync Spanish translations from English
+      # regenerate the Spanish/German/French files via the Claude API and
+      # commit them back. Skipped (with a notice) until the ANTHROPIC_API_KEY
+      # secret is set.
+      - name: Sync translations from English
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -z "$ANTHROPIC_API_KEY" ]; then
-            echo "::notice::ANTHROPIC_API_KEY secret not set - skipping auto-translation. Spanish stays as last committed."
+            echo "::notice::ANTHROPIC_API_KEY secret not set - skipping auto-translation. Translations stay as last committed."
             exit 0
           fi
           pip install --quiet anthropic pyyaml
-          python3 scripts/translate_es.py
+          python3 scripts/translate_i18n.py
           if ! git diff --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

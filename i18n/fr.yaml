@@ -1,0 +1,48 @@
+contact:
+  other: "Contact"
+what_we_do:
+  other: "Ce que nous faisons"
+services:
+  other: "Services"
+systems:
+  other: "Systèmes"
+why_byld:
+  other: "Pourquoi BYLD"
+swipe_hint:
+  other: "Faites glisser pour comparer"
+traditional:
+  other: "Traditionnel"
+standard_prefab:
+  other: "Préfabriqué standard"
+in_the_press:
+  other: "Dans la presse"
+read_more:
+  other: "Lire la suite"
+faq:
+  other: "Questions fréquentes"
+email_us:
+  other: "Écrivez-nous"
+explore:
+  other: "Découvrir"
+all_systems:
+  other: "Tous les systèmes"
+book_consultation:
+  other: "Réserver une consultation"
+collaborator_portal:
+  other: "Portail collaborateurs"
+studio:
+  other: "Studio"
+follow:
+  other: "Suivez-nous"
+navigate:
+  other: "Navigation"
+rights:
+  other: "Tous droits réservés."
+back_to_top:
+  other: "Retour en haut"
+prev_image:
+  other: "Image précédente"
+next_image:
+  other: "Image suivante"
+choose_language:
+  other: "Choisir la langue"

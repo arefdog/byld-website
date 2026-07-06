@@ -7,17 +7,20 @@
       <img src="{{ "img/byld-logo-white.svg" | relURL }}" alt="BYLD" class="brand-logo brand-logo-light" aria-hidden="true">
     </a>
 
-    {{ $other := "" }}
-    {{ range .Translations }}{{ $other = . }}{{ end }}
-    {{ if not $other }}
-      {{ range site.Home.AllTranslations }}
-        {{ if ne .Language.Lang site.Language.Lang }}{{ $other = . }}{{ end }}
-      {{ end }}
-    {{ end }}
-    {{ if $other }}
-    <a class="btn btn-ghost btn-sm header-lang" href="{{ $other.RelPermalink }}" aria-label="{{ i18n "switch_lang" }}" title="{{ i18n "switch_lang" }}">{{ $other.Language.Lang | upper }}</a>
-    {{ else }}
-    <span class="header-spacer" aria-hidden="true"></span>
-    {{ end }}
+    {{ $cur := site.Language.Lang }}
+    {{ $translations := .Translations }}
+    <div class="lang-menu" data-lang-menu>
+      <button class="btn btn-ghost btn-sm header-lang lang-current" type="button" aria-haspopup="true" aria-expanded="false" aria-label="{{ i18n "choose_language" }}">{{ $cur | upper }}<span class="lang-caret" aria-hidden="true">▾</span></button>
+      <div class="lang-list">
+        {{ range site.Home.AllTranslations }}
+          {{ $lang := .Language.Lang }}
+          {{ if ne $lang $cur }}
+            {{ $dest := . }}
+            {{ range $translations }}{{ if eq .Language.Lang $lang }}{{ $dest = . }}{{ end }}{{ end }}
+            <a href="{{ $dest.RelPermalink }}" hreflang="{{ $lang }}" lang="{{ $lang }}">{{ $lang | upper }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
   </div>
 </header>

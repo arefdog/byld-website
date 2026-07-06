@@ -214,3 +214,23 @@
     });
   });
 })();
+
+// Language dropdown in the header
+(function () {
+  const menu = document.querySelector('[data-lang-menu]');
+  if (!menu) return;
+  const btn = menu.querySelector('.lang-current');
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!menu.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();

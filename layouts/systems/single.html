@@ -6,7 +6,7 @@
       <div class="system-eyebrow-row">
         <p class="eyebrow">{{ .Params.sector }}</p>
         {{ with .Params.status }}
-        <span class="status-badge {{ if in (slice "Available" "Disponible") . }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>
+        <span class="status-badge {{ if in (slice "Available" "Disponible" "Verfügbar") . }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>
         {{ end }}
       </div>
       <h1>{{ .Title }}</h1>

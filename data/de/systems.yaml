@@ -1,0 +1,30 @@
+- sector: Hotellerie
+  name: ECHO
+  slug: echo
+  status: Verfügbar
+  images:
+    - img/sys-echo-3.jpg
+    - img/sys-echo-2.jpg
+    - img/sys-echo-1.jpg
+  body: Skalierbare Hospitality-Einheiten, die sich erweitern oder um gemeinsame Infrastruktur gruppieren lassen.
+  accolade: "Gewinner · Designer of the Year 2025"
+  accoladeLogo: img/press/condenast.svg
+- sector: Gewerbe
+  name: The ICON
+  slug: icon
+  status: Verfügbar
+  images:
+    - img/sys-icon-1.jpg
+    - img/sys-icon-2.jpg
+    - img/sys-icon-3.jpg
+  body: "Ein demontierbarer Pavillon für Markenauftritte und Events: starke Präsenz, schnell auf- und wieder abgebaut."
+  accolade: "Gewinner A+Awards 2026 · Pop-Ups & Temporary"
+  accoladeLogo: img/press/architizer.svg
+- sector: Wohnen
+  name: ATLAS
+  slug: atlas
+  status: In Entwicklung
+  images:
+    - img/sys-atlas-1.jpg
+  body: Ein modularer Wohnbaukasten, vom Einzelhaus bis zum ganzen Quartier.
+  accolade: "In Entwicklung"

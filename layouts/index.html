@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $data := index site.Data site.Language.Lang }}
+{{ $data := index hugo.Data site.Language.Lang }}
 
 <!-- HERO (full-bleed) -->
 <section class="hero hero-full" id="approach">
@@ -61,7 +61,7 @@
         {{ with $s.accolade }}
         <span class="accolade-above">
           {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
-          <span class="accolade-ov-text{{ if in (slice "In Development" "En desarrollo") . }} no-star{{ end }}">{{ . }}</span>
+          <span class="accolade-ov-text{{ if in (slice "In Development" "En desarrollo" "In Entwicklung" "En développement") . }} no-star{{ end }}">{{ . }}</span>
         </span>
         {{ end }}
       </div>

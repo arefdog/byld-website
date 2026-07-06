@@ -1,0 +1,21 @@
+rows:
+  - metric: Vitesse de construction
+    traditional: "Lente – programme long ; corps de métier en séquence, sans travaux en parallèle."
+    prefab: "Rapide – modules fabriqués en usine ; programme réduit."
+    byld: "Rapide – usine et chantier en parallèle ; montage rapide."
+  - metric: Préparation du terrain
+    traditional: "Importante – terrassement et fondations classiques."
+    prefab: "Modérée – terrassement, nivellement et dalle béton dans la plupart des cas."
+    byld: "Minimale – fondations superficielles adaptées aux terrains irréguliers ou difficiles."
+  - metric: Personnalisation
+    traditional: "Illimitée – conception entièrement sur mesure possible."
+    prefab: "Limitée – catalogue fixe ; la forme dépend des dimensions du conteneur et du transport."
+    byld: "Flexible – configurable au sein du système de design ; de vrais choix."
+  - metric: Liberté de conception
+    traditional: "Élevée – projet d'architecte, sans contrainte de forme."
+    prefab: "Faible – la forme suit le module d'usine."
+    byld: "Moyenne–Élevée – des formes variées sans perdre en efficacité."
+  - metric: Ancrage local
+    traditional: "Élevé – artisans locaux et matériaux régionaux."
+    prefab: "Faible – fabrication centralisée ; interventions à distance, pas de finitions locales."
+    byld: "Équilibré – montage local, chaîne d'approvisionnement régionale et finitions locales quand c'est possible."

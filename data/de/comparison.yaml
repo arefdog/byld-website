@@ -1,0 +1,21 @@
+rows:
+  - metric: Baugeschwindigkeit
+    traditional: "Langsam – langes Bauprogramm; Gewerke nacheinander, keine parallelen Arbeiten."
+    prefab: "Schnell – Module aus der Fabrik; verkürztes Bauprogramm."
+    byld: "Schnell – Fabrik und Baustelle parallel; zügige Montage."
+  - metric: Baugrundvorbereitung
+    traditional: "Aufwendig – Aushub und klassische Gründung."
+    prefab: "Mittel – Aushub, Nivellierung und meist eine Betonplatte."
+    byld: "Minimal – flache Gründung, die auch auf unebenem oder schwierigem Gelände funktioniert."
+  - metric: Individualisierung
+    traditional: "Unbegrenzt – vollständig maßgeschneiderter Entwurf möglich."
+    prefab: "Begrenzt – fester Katalog; die Form folgt Containermaßen und Transport."
+    byld: "Flexibel – konfigurierbar innerhalb des Designsystems; echte Wahlmöglichkeiten."
+  - metric: Gestaltungsfreiheit
+    traditional: "Hoch – architektengeführt, ohne formale Grenzen."
+    prefab: "Niedrig – die Form folgt dem Fabrikmodul."
+    byld: "Mittel–Hoch – vielfältige Formen bei gleichbleibender Effizienz."
+  - metric: Lokale Wertschöpfung
+    traditional: "Hoch – lokale Gewerke und regionale Materialien."
+    prefab: "Niedrig – zentrale Fertigung; Ausbau aus der Ferne, keine lokalen Oberflächen."
+    byld: "Ausgewogen – Montage vor Ort, regionale Lieferkette und lokale Oberflächen, wo möglich."

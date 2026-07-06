@@ -1,0 +1,30 @@
+- sector: Hôtellerie
+  name: ECHO
+  slug: echo
+  status: Disponible
+  images:
+    - img/sys-echo-3.jpg
+    - img/sys-echo-2.jpg
+    - img/sys-echo-1.jpg
+  body: Des unités hôtelières évolutives qui s'étendent ou se regroupent autour d'installations partagées.
+  accolade: "Lauréat · Designer of the Year 2025"
+  accoladeLogo: img/press/condenast.svg
+- sector: Commercial
+  name: The ICON
+  slug: icon
+  status: Disponible
+  images:
+    - img/sys-icon-1.jpg
+    - img/sys-icon-2.jpg
+    - img/sys-icon-3.jpg
+  body: "Un pavillon démontable pour les activations commerciales : forte présence, rapide à installer et à réutiliser."
+  accolade: "Lauréat A+Awards 2026 · Pop-Ups & Temporary"
+  accoladeLogo: img/press/architizer.svg
+- sector: Résidentiel
+  name: ATLAS
+  slug: atlas
+  status: En développement
+  images:
+    - img/sys-atlas-1.jpg
+  body: Un kit de construction résidentiel, de la maison individuelle aux quartiers entiers.
+  accolade: "En développement"

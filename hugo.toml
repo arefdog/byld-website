@@ -5,12 +5,12 @@ enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 
 [languages.en]
-  languageName = "English"
+  label = "English"
   locale = "en-US"
   weight = 1
 
 [languages.es]
-  languageName = "Español"
+  label = "Español"
   locale = "es-ES"
   weight = 2
   title = "BYLD – Sistemas de Construcción Modular"
@@ -26,6 +26,46 @@ disableKinds = ["taxonomy", "term"]
     weight = 60
   [[languages.es.menu.main]]
     name = "Contacto"
+    url = "/#contact"
+    weight = 70
+
+[languages.de]
+  label = "Deutsch"
+  locale = "de-DE"
+  weight = 3
+  title = "BYLD – Modulare Bausysteme"
+  [languages.de.params]
+    description = "Design und Fertigung modularer Bausysteme, mit Standortplanung, Logistik und Montagestrategien."
+  [[languages.de.menu.main]]
+    name = "Systeme"
+    url = "/#systems"
+    weight = 20
+  [[languages.de.menu.main]]
+    name = "FAQ"
+    url = "/#faq"
+    weight = 60
+  [[languages.de.menu.main]]
+    name = "Kontakt"
+    url = "/#contact"
+    weight = 70
+
+[languages.fr]
+  label = "Français"
+  locale = "fr-FR"
+  weight = 4
+  title = "BYLD – Systèmes de Construction Modulaire"
+  [languages.fr.params]
+    description = "Design et fabrication de systèmes de construction modulaire, avec planification de site, logistique et stratégies d'installation."
+  [[languages.fr.menu.main]]
+    name = "Systèmes"
+    url = "/#systems"
+    weight = 20
+  [[languages.fr.menu.main]]
+    name = "FAQ"
+    url = "/#faq"
+    weight = 60
+  [[languages.fr.menu.main]]
+    name = "Contact"
     url = "/#contact"
     weight = 70
 
