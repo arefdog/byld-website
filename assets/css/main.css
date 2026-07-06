@@ -141,6 +141,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spac
   .brand-logo { height: 36px; }
   .btn-sm { padding: 8px 13px; font-size: 12.5px; }
   .header-inner { padding-left: clamp(14px, 4vw, 24px); padding-right: clamp(14px, 4vw, 24px); }
+  /* Match the Contact and language buttons for symmetry across the logo */
+  .header-contact, .header-lang { min-width: 100px; line-height: 1; }
 }
 
 /* ---- Transparent overlay header (homepage hero) ---- */
