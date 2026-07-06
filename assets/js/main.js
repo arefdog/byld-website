@@ -111,7 +111,7 @@
     var n = slides.length;
     if (n < 2) return;
     var idx = 0, timer = null;
-    var touchStartX = 0, touchEndX = 0;
+    var touchStartX = 0, touchStartY = 0;
 
     function go(i) {
       idx = (i + n) % n;
@@ -135,16 +135,19 @@
     track.addEventListener('touchstart', function (e) {
       if (e.touches && e.touches.length) {
         touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
         stop();
       }
     }, false);
     track.addEventListener('touchend', function (e) {
       if (e.changedTouches && e.changedTouches.length) {
-        touchEndX = e.changedTouches[0].clientX;
-        var diff = touchStartX - touchEndX;
-        var threshold = 5; // minimum swipe distance in pixels
-        if (Math.abs(diff) > threshold) {
-          if (diff > 0) { go(idx + 1); } else { go(idx - 1); }
+        var diffX = touchStartX - e.changedTouches[0].clientX;
+        var diffY = touchStartY - e.changedTouches[0].clientY;
+        var threshold = 40; // minimum horizontal swipe distance in pixels
+        // Only treat as a swipe when the gesture is clearly horizontal,
+        // so scrolling the page vertically doesn't jump the carousel.
+        if (Math.abs(diffX) > threshold && Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX > 0) { go(idx + 1); } else { go(idx - 1); }
         }
         reset();
       }
