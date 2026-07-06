@@ -127,7 +127,7 @@
         <figure class="press-quote">
           <div class="press-source">
             {{ with $p.logo }}
-            <img class="press-logo" src="{{ . | relURL }}" alt="{{ $p.source }}" loading="lazy">
+            <img class="press-logo press-logo-{{ $p.source | urlize }}" src="{{ . | relURL }}" alt="{{ $p.source }}" loading="lazy">
             {{ else }}
             <span class="press-name">{{ $p.source }}</span>
             {{ end }}

@@ -459,6 +459,7 @@ main { display: block; }
   .press-quote blockquote { font-size: clamp(20px, 5vw, 26px); }
 }
 .press-quote .press-logo { height: clamp(50px, 7vw, 80px); width: auto; max-width: 300px; object-fit: contain; opacity: 1; }
+.press-quote .press-logo-divisare { height: clamp(150px, 21vw, 240px); max-width: 900px; }
 .press-quote .press-name { font-size: clamp(22px, 3vw, 28px); font-weight: 500; letter-spacing: 0.02em; color: var(--ink); }
 .press-accolade { font-size: clamp(12px, 1vw, 14px); font-weight: 500; letter-spacing: 0.02em; color: var(--muted); margin: 0; }
 /* accolade badge (used in the Systems section) */
