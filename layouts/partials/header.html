@@ -1,12 +1,23 @@
 <header class="site-header" id="top">
   <div class="header-inner">
-    <a class="btn btn-ghost btn-sm header-contact" href="{{ "#contact" | relURL }}">Contact</a>
+    <a class="btn btn-ghost btn-sm header-contact" href="{{ "#contact" | relLangURL }}">{{ i18n "contact" }}</a>
 
     <a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="BYLD home">
       <img src="{{ "img/byld-logo-black.svg" | relURL }}" alt="BYLD" class="brand-logo brand-logo-dark">
       <img src="{{ "img/byld-logo-white.svg" | relURL }}" alt="BYLD" class="brand-logo brand-logo-light" aria-hidden="true">
     </a>
 
+    {{ $other := "" }}
+    {{ range .Translations }}{{ $other = . }}{{ end }}
+    {{ if not $other }}
+      {{ range site.Home.AllTranslations }}
+        {{ if ne .Language.Lang site.Language.Lang }}{{ $other = . }}{{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if $other }}
+    <a class="btn btn-ghost btn-sm header-lang" href="{{ $other.RelPermalink }}" aria-label="{{ i18n "switch_lang" }}" title="{{ i18n "switch_lang" }}">{{ $other.Language.Lang | upper }}</a>
+    {{ else }}
     <span class="header-spacer" aria-hidden="true"></span>
+    {{ end }}
   </div>
 </header>

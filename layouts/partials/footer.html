@@ -5,25 +5,25 @@
     </div>
 
     <div class="footer-col">
-      <h4>Studio</h4>
+      <h4>{{ i18n "studio" }}</h4>
       <p>{{ site.Params.address }}</p>
       <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
     </div>
 
     <div class="footer-col">
-      <h4>Follow</h4>
+      <h4>{{ i18n "follow" }}</h4>
       {{ with site.Params.social.instagram }}<p><a href="{{ . }}" rel="noopener" target="_blank">Instagram</a></p>{{ end }}
       {{ with site.Params.social.linkedin }}<p><a href="{{ . }}" rel="noopener" target="_blank">LinkedIn</a></p>{{ end }}
     </div>
 
     <div class="footer-col">
-      <h4>Navigate</h4>
-      {{ range site.Menus.main }}<p><a href="{{ .URL | strings.TrimPrefix "/" | relURL }}">{{ .Name }}</a></p>{{ end }}
+      <h4>{{ i18n "navigate" }}</h4>
+      {{ range site.Menus.main }}<p><a href="{{ .URL | strings.TrimPrefix "/" | relLangURL }}">{{ .Name }}</a></p>{{ end }}
     </div>
   </div>
 
   <div class="footer-bottom">
-    <span>© {{ now.Year }} BYLD. All rights reserved.</span>
-    <a href="#top" class="back-top">Back to top ↑</a>
+    <span>© {{ now.Year }} BYLD. {{ i18n "rights" }}</span>
+    <a href="#top" class="back-top">{{ i18n "back_to_top" }} ↑</a>
   </div>
 </footer>

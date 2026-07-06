@@ -1,0 +1,21 @@
+rows:
+  - metric: Velocidad de construcción
+    traditional: "Lenta – programa largo; oficios en secuencia sin trabajos en paralelo."
+    prefab: "Rápida – módulos de fábrica; programa reducido."
+    byld: "Rápida – fábrica y obra en paralelo; montaje ágil."
+  - metric: Preparación del terreno
+    traditional: "Extensa – excavación y cimentación tradicional."
+    prefab: "Moderada – excavación, nivelación y losa de hormigón en la mayoría de los casos."
+    byld: "Mínima – cimentación superficial que funciona en terrenos irregulares o difíciles."
+  - metric: Personalización
+    traditional: "Ilimitada – diseño totalmente a medida."
+    prefab: "Limitada – catálogo fijo; la forma la dictan las dimensiones del contenedor y el transporte."
+    byld: "Flexible – configurable dentro del sistema de diseño; opciones reales."
+  - metric: Libertad de diseño
+    traditional: "Alta – proyecto de autor, sin restricciones de forma."
+    prefab: "Baja – la forma sigue al módulo de fábrica."
+    byld: "Media–Alta – formas variadas manteniendo la eficiencia."
+  - metric: Arraigo local
+    traditional: "Alto – oficios locales y materiales de la región."
+    prefab: "Bajo – fabricación centralizada; trabajos a distancia, sin acabados locales."
+    byld: "Equilibrado – montaje local, cadena de suministro regional y acabados locales cuando es posible."

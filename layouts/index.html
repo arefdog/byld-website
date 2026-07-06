@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $data := index site.Data site.Language.Lang }}
 
 <!-- HERO (full-bleed) -->
 <section class="hero hero-full" id="approach">
@@ -17,20 +18,20 @@
 <!-- WHAT WE DO -->
 <section class="section">
   <div class="section-head">
-    <p class="eyebrow">What we do</p>
+    <p class="eyebrow">{{ i18n "what_we_do" }}</p>
     <div class="section-lead">
-      <p>Design and manufacture of modular building systems, supported by site planning, logistics, and installation strategies.</p>
-      <p>Our approach combines precision-made components, regional manufacturing networks and local craftsmanship.</p>
-      <p>We create high-performance environments that can be delivered anywhere faster and scaled effectively.</p>
+      {{ range .Params.intro }}
+      <p>{{ . }}</p>
+      {{ end }}
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section section-alt" aria-label="Services">
-  <p class="eyebrow">Services</p>
+<section class="section section-alt" aria-label="{{ i18n "services" }}">
+  <p class="eyebrow">{{ i18n "services" }}</p>
   <div class="services-grid">
-    {{ range hugo.Data.services }}
+    {{ range $data.services }}
     <details class="service-item">
       <summary>
         <span class="service-rule" aria-hidden="true"></span>
@@ -46,10 +47,10 @@
 <!-- SYSTEMS -->
 <section class="section section-dark" id="systems">
   <div class="section-head">
-    <p class="eyebrow">Systems</p>
+    <p class="eyebrow">{{ i18n "systems" }}</p>
   </div>
   <div class="systems">
-    {{ range $s := hugo.Data.systems }}
+    {{ range $s := $data.systems }}
     <article class="system{{ if $s.images }} has-image{{ end }}">
       <div class="system-label">
         <span class="system-sector">{{ $s.sector }}</span>
@@ -60,7 +61,7 @@
         {{ with $s.accolade }}
         <span class="accolade-above">
           {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
-          <span class="accolade-ov-text{{ if eq . "In Development" }} no-star{{ end }}">{{ . }}</span>
+          <span class="accolade-ov-text{{ if in (slice "In Development" "En desarrollo") . }} no-star{{ end }}">{{ . }}</span>
         </span>
         {{ end }}
       </div>
@@ -69,7 +70,7 @@
         <div class="system-media-frame">
           {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
         </div>
-        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relURL }}">Explore →</a>{{ end }}
+        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relLangURL }}">{{ i18n "explore" }} →</a>{{ end }}
       </div>
       {{ end }}
     </article>
@@ -80,21 +81,21 @@
 <!-- COMPARISON -->
 <section class="section section-alt" id="compare">
   <div class="section-head">
-    <p class="eyebrow">Why BYLD</p>
-    <p class="table-hint" aria-hidden="true"><span class="th-text">Swipe to compare</span><span class="th-arrow">→</span></p>
+    <p class="eyebrow">{{ i18n "why_byld" }}</p>
+    <p class="table-hint" aria-hidden="true"><span class="th-text">{{ i18n "swipe_hint" }}</span><span class="th-arrow">→</span></p>
   </div>
   <div class="table-wrap">
     <table class="compare">
       <thead>
         <tr>
           <th></th>
-          <th>Traditional</th>
-          <th>Standard Prefab</th>
+          <th>{{ i18n "traditional" }}</th>
+          <th>{{ i18n "standard_prefab" }}</th>
           <th class="col-byld">BYLD</th>
         </tr>
       </thead>
       <tbody>
-        {{ range hugo.Data.comparison.rows }}
+        {{ range $data.comparison.rows }}
         <tr>
           <th scope="row">{{ .metric }}</th>
           <td>{{ partial "compare-cell.html" (dict "text" .traditional) }}</td>
@@ -110,9 +111,9 @@
 <!-- PRESS -->
 <section class="section section-press" id="press">
   <div class="section-head">
-    <p class="eyebrow">In the press</p>
+    <p class="eyebrow">{{ i18n "in_the_press" }}</p>
   </div>
-  {{ $press := hugo.Data.press }}
+  {{ $press := $data.press }}
   {{ $n := len $press }}
   {{ $starts := seq 0 3 (sub $n 1) }}
   <div class="press-carousel press-multi carousel" data-carousel data-no-autoplay>
@@ -133,7 +134,7 @@
           </div>
           {{ with $p.accolade }}<p class="press-accolade">{{ . }}</p>{{ end }}
           <blockquote>“{{ $p.quote }}”</blockquote>
-          {{ with $p.url }}<a class="press-read-link" href="{{ . }}" target="_blank" rel="noopener">Read more →</a>{{ end }}
+          {{ with $p.url }}<a class="press-read-link" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "read_more" }} →</a>{{ end }}
         </figure>
         {{ end }}
         {{ end }}
@@ -151,10 +152,10 @@
 <!-- FAQ -->
 <section class="section section-alt" id="faq">
   <div class="section-head">
-    <p class="eyebrow">FAQ</p>
+    <p class="eyebrow">{{ i18n "faq" }}</p>
   </div>
   <div class="faq">
-    {{ range hugo.Data.faq }}
+    {{ range $data.faq }}
     <details class="faq-item">
       <summary>{{ .q }}<span class="faq-icon" aria-hidden="true"></span></summary>
       <div class="faq-answer"><p>{{ .a }}</p></div>
@@ -166,8 +167,8 @@
 <!-- CONTACT -->
 <section class="section section-contact" id="contact">
   <div class="contact-simple">
-    <p class="eyebrow">Contact</p>
-    <a class="btn btn-light" href="mailto:{{ site.Params.email }}">Email us</a>
+    <p class="eyebrow">{{ i18n "contact" }}</p>
+    <a class="btn btn-light" href="mailto:{{ site.Params.email }}">{{ i18n "email_us" }}</a>
   </div>
 </section>
 

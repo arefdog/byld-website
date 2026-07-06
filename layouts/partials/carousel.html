@@ -8,8 +8,8 @@
     {{ end }}
   </div>
   {{ if gt (len $imgs) 1 }}
-  <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">&#8249;</button>
-  <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">&#8250;</button>
+  <button class="carousel-arrow carousel-prev" type="button" aria-label="{{ i18n "prev_image" }}">&#8249;</button>
+  <button class="carousel-arrow carousel-next" type="button" aria-label="{{ i18n "next_image" }}">&#8250;</button>
   <div class="carousel-dots">
     {{ range $i, $src := $imgs }}<button class="carousel-dot{{ if eq $i 0 }} is-active{{ end }}" type="button" aria-label="Go to image {{ add $i 1 }}"></button>{{ end }}
   </div>

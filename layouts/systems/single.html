@@ -2,11 +2,11 @@
 <section class="system-hero">
   <div class="system-hero-inner">
     <div>
-      <a class="system-back" href="{{ "#systems" | relURL }}">← All systems</a>
+      <a class="system-back" href="{{ "#systems" | relLangURL }}">← {{ i18n "all_systems" }}</a>
       <div class="system-eyebrow-row">
         <p class="eyebrow">{{ .Params.sector }}</p>
         {{ with .Params.status }}
-        <span class="status-badge {{ if eq . "Available" }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>
+        <span class="status-badge {{ if in (slice "Available" "Disponible") . }}is-available{{ else }}is-dev{{ end }}">{{ . }}</span>
         {{ end }}
       </div>
       <h1>{{ .Title }}</h1>
@@ -15,10 +15,10 @@
         {{ if .Params.portalUrl }}
         {{ $portal := .Params.portalUrl }}
         {{ if hasPrefix $portal "/" }}{{ $portal = $portal | strings.TrimPrefix "/" | relURL }}{{ end }}
-        <a class="btn btn-primary" href="{{ $portal }}">{{ .Params.portalLabel | default "Collaborator portal" }} →</a>
-        <a class="btn btn-ghost" href="{{ "#contact" | relURL }}">Book a consultation</a>
+        <a class="btn btn-primary" href="{{ $portal }}">{{ .Params.portalLabel | default (i18n "collaborator_portal") }} →</a>
+        <a class="btn btn-ghost" href="{{ "#contact" | relLangURL }}">{{ i18n "book_consultation" }}</a>
         {{ else }}
-        <a class="btn btn-primary" href="{{ "#contact" | relURL }}">Book a consultation</a>
+        <a class="btn btn-primary" href="{{ "#contact" | relLangURL }}">{{ i18n "book_consultation" }}</a>
         {{ end }}
         {{ with .Params.studyUrl }}<a class="btn btn-ghost" href="{{ . | strings.TrimPrefix "/" | relURL }}">{{ $.Params.studyLabel | default "Solar study" }} →</a>{{ end }}
       </div>
