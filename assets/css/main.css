@@ -141,8 +141,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spac
   .brand-logo { height: 36px; }
   .btn-sm { padding: 8px 13px; font-size: 12.5px; }
   .header-inner { padding-left: clamp(14px, 4vw, 24px); padding-right: clamp(14px, 4vw, 24px); }
-  /* Match the Contact and language buttons for symmetry across the logo */
-  .header-contact, .header-lang { min-width: 100px; line-height: 1; }
+  /* Match the Contact and language buttons for symmetry across the logo,
+     sized snugly to the longest label ("Contacto") with no extra slack */
+  .header-contact, .header-lang { min-width: 82px; line-height: 1; padding-left: 11px; padding-right: 11px; }
 }
 
 /* ---- Transparent overlay header (homepage hero) ---- */
@@ -508,8 +509,6 @@ main { display: block; }
 .prose { max-width: 760px; }
 .prose p { margin: 0 0 1.2em; }
 
-/* ---- Button (small) ---- */
-.btn-sm { padding: 10px 18px; font-size: 13px; }
 .header-cta { margin-left: 8px; }
 
 /* ---- Section helpers ---- */
