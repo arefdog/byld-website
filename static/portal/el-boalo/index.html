@@ -119,9 +119,42 @@
   footer{padding:40px 0 72px}
   .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
   .disc{margin-top:20px;font-size:11.5px;color:var(--muted);line-height:1.8;max-width:80ch}
+
+  /* password gate */
+  .gate{position:fixed;inset:0;z-index:1000;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
+  .gate-box{max-width:390px;width:100%;text-align:left}
+  .gate .brand{font-family:var(--font-display);font-size:22px;letter-spacing:.02em}
+  .gate .brand b{font-weight:500}
+  .gate-h1{font-family:var(--font-display);font-weight:400;letter-spacing:-.02em;font-size:clamp(28px,5vw,38px);margin:6px 0 0}
+  .gate-intro{color:var(--muted);font-size:15px;margin-top:14px}
+  .gate-form{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+  .gate-form input{font-family:var(--font-body);font-size:15px;padding:13px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink)}
+  .gate-form input:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
+  .gate-form button{font-family:var(--font-body);font-size:15px;font-weight:500;padding:13px 14px;border:1px solid var(--ink);border-radius:var(--radius);background:var(--ink);color:var(--paper);cursor:pointer}
+  .gate-form button:hover{background:#222}
+  .gate-error{color:var(--bad);font-size:13.5px;margin-top:12px}
+  .gate-back{display:inline-block;margin-top:20px;font-size:13px;color:var(--muted)}
+  .gate-back:hover{color:var(--ink)}
 </style>
 </head>
 <body>
+
+<div id="gate" class="gate">
+  <div class="gate-box">
+    <span class="brand">BY<b>LD</b></span>
+    <p class="eyebrow" style="margin-top:18px">Collaborator portal</p>
+    <h1 class="gate-h1">El Boalo · Sector 1B</h1>
+    <p class="gate-intro">This study is for BYLD collaborators. Enter the access password to continue.</p>
+    <form id="gate-form" class="gate-form" autocomplete="off" novalidate>
+      <input type="password" name="password" placeholder="Access password" required autocomplete="off" aria-label="Access password">
+      <button type="submit">Unlock</button>
+    </form>
+    <p id="gate-error" class="gate-error" role="alert" hidden>That password is not right. Try again or email office@gobyld.com.</p>
+    <a class="gate-back" href="/portal/">&larr; Back to portal</a>
+  </div>
+</div>
+
+<div id="site" hidden>
 
 <div class="topbar">
   <div class="wrap row">
@@ -263,5 +296,32 @@
   </footer>
 
 </div>
+</div><!-- /#site -->
+
+<script>
+(function(){
+  var HASH = "9981790be1bc452fcf8e68c5f855498a0b14f3ef3bd933b48be188626e0c4751";
+  var KEY = "byld-portal-" + HASH.slice(0, 8);
+  var gate = document.getElementById('gate');
+  var site = document.getElementById('site');
+  var form = document.getElementById('gate-form');
+  var err = document.getElementById('gate-error');
+  function unlock(){ gate.hidden = true; gate.style.display = 'none'; site.hidden = false; }
+  try { if (sessionStorage.getItem(KEY) === '1') { unlock(); return; } } catch (e) {}
+  function sha256(str){
+    var data = new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256', data).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2, '0'); }).join('');
+    });
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); err.hidden = true;
+    sha256(form.password.value).then(function(h){
+      if (h === HASH.toLowerCase()) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} unlock(); }
+      else { err.hidden = false; form.password.value = ''; form.password.focus(); }
+    });
+  });
+})();
+</script>
 </body>
 </html>
