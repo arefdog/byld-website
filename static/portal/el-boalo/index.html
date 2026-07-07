@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>El Boalo · Sector 1B — Market & Feasibility Study – BYLD</title>
+<meta name="description" content="BYLD collaborator study: El Boalo Sector 1B, market, best use, and development feasibility on public data.">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<style>
+  @font-face{font-family:"Lausanne";src:url("/fonts/TWKLausanne-300.woff2") format("woff2");font-weight:300;font-display:swap}
+  @font-face{font-family:"Lausanne";src:url("/fonts/TWKLausanne-400.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Lausanne";src:url("/fonts/TWKLausanne-500.woff2") format("woff2");font-weight:500;font-display:swap}
+  @font-face{font-family:"Helvetica Now";src:url("/fonts/HelveticaNowText-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Helvetica Now";src:url("/fonts/HelveticaNowText-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+
+  :root{
+    --ink:#0a0a0a; --paper:#ffffff; --paper-2:#f4f3f0; --muted:#6b6b6b; --line:#e3e1dc; --line-dark:#2a2a2a;
+    --good:#2f6b43; --warn:#8a6d1f; --bad:#9a3a2b;
+    --font-display:"Lausanne","Helvetica Now",Helvetica,Arial,sans-serif;
+    --font-body:"Helvetica Now",Helvetica,Arial,sans-serif;
+    --maxw:1000px; --gutter:clamp(20px,5vw,64px); --radius:2px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;letter-spacing:-0.02em;line-height:1.06;margin:0}
+  p{margin:0}
+  a{color:inherit}
+  .num{font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:var(--font-body);text-transform:uppercase;letter-spacing:0.14em;font-size:11.5px;font-weight:500;color:var(--muted)}
+
+  /* top bar */
+  .topbar{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.9);
+    backdrop-filter:saturate(180%) blur(12px);z-index:10}
+  .topbar .row{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .back{font-size:13px;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+  .back:hover{color:var(--muted)}
+  .brand{font-family:var(--font-display);font-size:18px;letter-spacing:0.02em}
+  .brand b{font-weight:500}
+
+  /* hero */
+  .hero{padding:clamp(48px,8vw,96px) 0 clamp(32px,5vw,52px);border-bottom:1px solid var(--line)}
+  .hero .eyebrow{margin-bottom:22px}
+  .hero h1{font-size:clamp(32px,6vw,58px);max-width:16ch}
+  .hero .stand{margin-top:22px;font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:60ch;line-height:1.45}
+  .status{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12.5px;font-family:var(--font-body);
+    letter-spacing:.02em;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+  .status .dot{width:8px;height:8px;border-radius:50%;background:var(--good)}
+  .status b{font-weight:500}
+
+  /* stat row */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:var(--radius);
+    margin-top:36px;overflow:hidden}
+  .stat{padding:22px 20px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .fig{font-family:var(--font-display);font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.03em;line-height:1}
+  .stat .fig small{font-size:14px;color:var(--muted);letter-spacing:0}
+  .stat .cap{font-size:12px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:.1em}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  /* sections */
+  section{padding:clamp(44px,6vw,72px) 0;border-bottom:1px solid var(--line)}
+  .shead{display:flex;gap:16px;align-items:baseline;margin-bottom:26px}
+  .shead .idx{font-family:var(--font-body);font-size:12px;color:var(--muted);letter-spacing:.1em;padding-top:5px;min-width:26px}
+  .shead h2{font-size:clamp(23px,3.2vw,32px);max-width:22ch}
+  .lede{font-size:17px;color:var(--muted);max-width:64ch;margin-bottom:26px;line-height:1.5}
+  .prose p{max-width:68ch} .prose p+p{margin-top:14px}
+  .prose b{font-weight:500}
+
+  /* ficha list */
+  .ficha{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+  .ficha .fh{background:var(--paper-2);padding:12px 18px;font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .frow{display:grid;grid-template-columns:1fr auto;gap:18px;padding:13px 18px;border-top:1px solid var(--line);align-items:baseline}
+  .frow .k{color:var(--muted);font-size:14.5px}
+  .frow .v{font-family:var(--font-display);font-size:16px;letter-spacing:-0.01em;text-align:right;font-variant-numeric:tabular-nums}
+
+  /* two-col facts */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.cols{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .card h3{font-size:18px;margin-bottom:10px}
+  .card p{font-size:14.5px;color:var(--muted)}
+  .card .big{font-family:var(--font-display);font-size:clamp(30px,4vw,44px);letter-spacing:-0.03em;line-height:1}
+  .card .sub{font-size:13px;color:var(--muted);margin-top:8px}
+
+  /* price ladder */
+  .ladder{border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .lgroup{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:18px 0 10px;
+    padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .lgroup:first-child{margin-top:0}
+  .lrow{display:grid;grid-template-columns:180px 1fr 64px;gap:12px;align-items:center;margin-bottom:9px;font-size:13.5px}
+  .ltrack{height:14px;background:var(--paper-2);border-radius:var(--radius);overflow:hidden}
+  .lfill{height:100%}
+  .lfill.a{background:#c9c7c1} .lfill.b{background:var(--ink)} .lfill.c{background:#8a8a8a}
+  .lrow .lv{font-family:var(--font-display);text-align:right;font-variant-numeric:tabular-nums}
+  @media(max-width:560px){.lrow{grid-template-columns:120px 1fr 54px}}
+
+  /* feasibility table */
+  .tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+  thead th{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;background:var(--paper-2)}
+  tbody tr:last-child td{border-bottom:none}
+  tfoot td{background:var(--paper-2);border-top:2px solid var(--line-dark);font-weight:500}
+  .r{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-display)}
+
+  /* risk / list */
+  ul.clean{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+  ul.clean li{border-left:2px solid var(--line-dark);padding:4px 0 4px 18px}
+  ul.clean li b{font-weight:500}
+  ul.clean li p{font-size:14px;color:var(--muted);margin-top:3px}
+
+  .sources{font-size:12.5px;color:var(--muted);line-height:1.9}
+  .sources b{color:var(--ink);font-weight:500}
+  footer{padding:40px 0 72px}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .disc{margin-top:20px;font-size:11.5px;color:var(--muted);line-height:1.8;max-width:80ch}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="back" href="/portal/">&larr; Collaborator portal</a>
+    <span class="brand">BY<b>LD</b></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">Madrid Sierra · El Boalo · Sector 1B · Market &amp; feasibility study</p>
+    <h1>A low-density residential estate, confirmed developable, 45 minutes from Madrid.</h1>
+    <p class="stand">A study of the 70,484 m&sup2; Boalo plot, built entirely on public data. The official planning ficha settles the key question and the market points to one product: a small, premium, landscape-led villa estate with a wellness anchor.</p>
+    <span class="status"><span class="dot"></span><b>Confirmed:</b>&nbsp;suelo urbanizable residencial, executed by convenio (BOCM 2011)</span>
+
+    <div class="stats">
+      <div class="stat"><div class="fig num">70,484<small> m&sup2;</small></div><div class="cap">Sector 1B</div></div>
+      <div class="stat"><div class="fig num">78</div><div class="cap">Homes (max)</div></div>
+      <div class="stat"><div class="fig num">17,621<small> m&sup2;</small></div><div class="cap">Buildable · 0.25</div></div>
+      <div class="stat"><div class="fig num">~45<small> min</small></div><div class="cap">To Madrid</div></div>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section>
+    <div class="shead"><span class="idx">01</span><h2>The site and the binding planning</h2></div>
+    <p class="lede">The plot is Sector 1B of the El Boalo NNSS. The official ordenación ficha, published in the BOCM, gives the binding parameters. It is developable residential land, obtained by agreement with the owner, not protected rústico.</p>
+    <div class="ficha">
+      <div class="fh"><span>Ficha urbanística · Sector 1B</span><span>NNSS 1996 · BOCM-20110725-6</span></div>
+      <div class="frow"><span class="k">Superficie del ámbito</span><span class="v">70,484 m&sup2;</span></div>
+      <div class="frow"><span class="k">Clasificación</span><span class="v">Urbanizable · no consolidado</span></div>
+      <div class="frow"><span class="k">Uso principal</span><span class="v">Residencial</span></div>
+      <div class="frow"><span class="k">Edificabilidad máxima</span><span class="v">0.25 m&sup2;/m&sup2; · 17,621 m&sup2;</span></div>
+      <div class="frow"><span class="k">Nº máximo de viviendas</span><span class="v">78</span></div>
+      <div class="frow"><span class="k">Densidad</span><span class="v">11 viv/Ha · unifamiliar</span></div>
+      <div class="frow"><span class="k">Altura / parcela mínima</span><span class="v">2 plantas · 6.5 m / 240 m&sup2;</span></div>
+      <div class="frow"><span class="k">Suelo privado neto</span><span class="v">50% · 35,242 m&sup2;</span></div>
+      <div class="frow"><span class="k">Instrumento / sistema</span><span class="v">Plan Parcial · Convenio + Compensación</span></div>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <p>The parameters describe an exclusive, low-density villa estate: eleven homes per hectare, two storeys, an average home near 226 m&sup2;, and half the land ceded as public roads and green space, run by a private conservation entity. The planning itself prescribes the premium, landscape-led product, and the low delivered density is the strongest answer to local opposition to urban expansion.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="shead"><span class="idx">02</span><h2>The market that supports it</h2></div>
+    <p class="lede">A single-night drive from a wealthy city of seven million, with a National Park at the doorstep and a genuine gap in five-star supply on the Madrid slope.</p>
+    <div class="cols">
+      <div class="card"><div class="big num">7.13M</div><div class="sub">Comunidad de Madrid population; El Boalo household income &euro;50,159, above the regional norm.</div></div>
+      <div class="card"><div class="big num">1.20M</div><div class="sub">National Park visitors a year on the Madrid slope (2.40M total, 2024).</div></div>
+      <div class="card"><div class="big num">+82%</div><div class="sub">El Boalo population growth over 20 years; corridor new-build prices rising ~12% year on year.</div></div>
+      <div class="card"><div class="big num">0</div><div class="sub">Five-star hotels on the Madrid sierra slope; Madrid's ~46 five-star are all urban. A real gap.</div></div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="shead"><span class="idx">03</span><h2>Recommended use</h2></div>
+    <p class="lede">The planning caps units and the market rewards quality, so value comes from price per home, not more homes. The answer is a premium villa estate with a small wellness hotel as its amenity and brand.</p>
+    <div class="prose">
+      <p><b>Residential is the engine.</b> Up to 78 low-density homes, with the VPP obligation (30% of residential edificability under Ley 9/2001) held at the floor and delivered as a compact block near the village edge, and the free-market homes placed as villas on the south-facing contours.</p>
+      <p><b>A wellness hotel is the amenity, not the anchor.</b> A small hotel (roughly 50 to 70 keys) exploits the five-star gap and, more importantly, turns the homes into serviced, branded residences that command a premium and sell faster to the greater-Madrid buyer. It is sized to a seasonal proximity market, not underwritten as a large resort.</p>
+      <p><b>The setting is bought cheaply.</b> Adjacent rústico land, available at a fraction of buildable value, can hold the grounds, trails and views and protect the horizon permanently, moving the open-space cost off expensive sector land.</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="shead"><span class="idx">04</span><h2>Pricing: what sells, and the headroom</h2></div>
+    <p class="lede">The corridor is cheap against Madrid and Marbella, so a differentiated nature-and-wellness product has real room to price above local stock while staying below both anchors.</p>
+    <div class="ladder">
+      <div class="lgroup">What is there today · &euro;/m&sup2;</div>
+      <div class="lrow"><span>El Boalo resale</span><div class="ltrack"><div class="lfill a" style="width:34%"></div></div><span class="lv">2,060</span></div>
+      <div class="lrow"><span>Corridor new-build</span><div class="ltrack"><div class="lfill a" style="width:42%"></div></div><span class="lv">2,540</span></div>
+      <div class="lgroup">This product should sell for</div>
+      <div class="lrow"><span>Free-market, achievable</span><div class="ltrack"><div class="lfill b" style="width:53%"></div></div><span class="lv">3,200</span></div>
+      <div class="lrow"><span>Premium / branded</span><div class="ltrack"><div class="lfill b" style="width:75%"></div></div><span class="lv">4,500</span></div>
+      <div class="lgroup">The anchors above (headroom)</div>
+      <div class="lrow"><span>Marbella average</span><div class="ltrack"><div class="lfill c" style="width:83%"></div></div><span class="lv">4,961</span></div>
+      <div class="lrow"><span>Madrid city new-build</span><div class="ltrack"><div class="lfill c" style="width:86%"></div></div><span class="lv">5,172</span></div>
+    </div>
+    <p class="lede" style="margin-top:16px;font-size:14px">Construction cost, for reference: standard homes &euro;1,600 to 1,800/m&sup2;, premium villas &euro;2,100 to 2,300/m&sup2;, a hotel &euro;2,800 to 3,500/m&sup2;. Branded-residence pricing carries a ~32% resort premium (Savills / Knight Frank).</p>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="shead"><span class="idx">05</span><h2>Feasibility, on the confirmed numbers</h2></div>
+    <p class="lede">Residential-led screening feasibility on the real 17,621 m&sup2; buildable, at achievable premium pricing. The hotel is treated as separate upside.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Line</th><th class="r">m&sup2;</th><th class="r">&euro;/m&sup2;</th><th class="r">&euro;M</th></tr></thead>
+        <tbody>
+          <tr><td>VPP (30%, Ley 9/2001)</td><td class="r">5,286</td><td class="r">1,800</td><td class="r">9.5</td></tr>
+          <tr><td>Free-market + premium villas</td><td class="r">12,335</td><td class="r">~3,900</td><td class="r">48.1</td></tr>
+          <tr><td>Construction</td><td class="r">17,621</td><td class="r">~1,900</td><td class="r">&minus;33.5</td></tr>
+          <tr><td>Urbanization + services (50% cession)</td><td class="r"></td><td class="r"></td><td class="r">&minus;7.0</td></tr>
+          <tr><td>Soft costs + 10% aprovechamiento (~15%)</td><td class="r"></td><td class="r"></td><td class="r">&minus;8.6</td></tr>
+          <tr><td>Land (core)</td><td class="r"></td><td class="r"></td><td class="r">&minus;4.0</td></tr>
+        </tbody>
+        <tfoot><tr><td>Indicative profit · residential, premium pricing</td><td class="r"></td><td class="r"></td><td class="r">~4.5</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="lede" style="margin-top:16px;font-size:14px">Roughly &euro;4 to 5M, about 8% on GDV, before the hotel's own value. The 50% cession and full urbanization are the main margin drag. The scheme rewards premium execution and branding; every &euro;250/m&sup2; achieved on the free-market product is about &euro;3M of profit. The &euro;4M land is priced full, so stage payments and pre-sell off-plan.</p>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <div class="shead"><span class="idx">06</span><h2>What to verify next</h2></div>
+    <ul class="clean">
+      <li><b>PGOU redraft and local opposition.</b><p>The 1996 NNSS is being replaced; confirm Sector 1B survives the new plan. The low-density, half-green scheme is the best political defence.</p></li>
+      <li><b>Vía pecuaria deslinde.</b><p>The ficha requires authorisation from Vías Pecuarias and Comisaría de Aguas; secure the deslinde early, as it shapes the developable area and the mandated Ronda Este connection.</p></li>
+      <li><b>Cession and urbanization load.</b><p>Only 50% of the land is privately appropriable, plus a 10% aprovechamiento cession and full urbanization within 8 years. Model it fully before pricing the land.</p></li>
+      <li><b>Plan Parcial unit mix.</b><p>Resolve the 30% VPP against the 78-home cap and large average home size, with a compact VPP block and large free-market villas.</p></li>
+    </ul>
+  </section>
+
+  <!-- sources -->
+  <section>
+    <div class="shead"><span class="idx">§</span><h2>Public sources</h2></div>
+    <p class="sources">
+      <b>Planning.</b> Ficha de ordenación Sector 1B, BOCM núm. 174, 25 Jul 2011 (BOCM-20110725-6); Ley 9/2001 del Suelo de Madrid (VPP, cesiones); Ley 1/1985 PRCAM.<br>
+      <b>Demographics &amp; income.</b> INE Atlas de Renta (tabla 31097); padrón municipal; CaixaBank Research (Madrid 7.13M).<br>
+      <b>Prices.</b> idealista / Fotocasa indices; Sociedad de Tasación (Madrid new-build €5,172/m²); Comunidad de Madrid VPP module 2025 (Zona C); Savills / Knight Frank branded-residence premiums; Marbella market reports.<br>
+      <b>Tourism.</b> Parque Nacional de la Sierra de Guadarrama (visitor statistics 2024); STR / Cushman &amp; Wakefield (five-star ADR); INE rural tourism survey.<br>
+      <b>Construction.</b> Spanish construction cost guides 2025.
+    </p>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <span>BYLD · Madrid Sierra · El Boalo Sector 1B</span>
+      <span>Collaborator material · prepared Jul 2026</span>
+    </div>
+    <p class="disc">Confidential, for BYLD collaborators. Prepared on public data. Ficha parameters are transcribed from the cited BOCM and should be reconfirmed at the ayuntamiento, as a new PGOU is in drafting. Feasibility figures are illustrative screening numbers on the confirmed edificabilidad, not a valuation, pro-forma, or investment advice. Sales figures are asking prices and market averages, not achieved prices.</p>
+  </footer>
+
+</div>
+</body>
+</html>

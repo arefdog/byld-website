@@ -36,4 +36,12 @@ scoring, purchasing power, land classification, hotels and short-term rental.
 
 <a href="https://map.gobyld.com/" target="_blank" rel="noopener">Open full screen ↗</a>
 
+### Market study — El Boalo, Sector 1B
+
+A market, best-use and feasibility study of the **Boalo plot (Sector 1B)**, built on
+public data: the confirmed planning ficha, the greater-Madrid market, recommended
+use, and a development feasibility on the real buildable area.
+
+<a href="/portal/el-boalo/" target="_blank" rel="noopener">Open the study ↗</a>
+
 More to come.
