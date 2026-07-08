@@ -1,0 +1,57 @@
+name: Enforce HTTPS on Pages
+
+on:
+  push:
+    branches: ["claude/gobyld-ssl-certificate-k3mhgj"]
+  workflow_dispatch:
+    inputs:
+      recycle_domain:
+        description: >-
+          Remove and re-add the custom domain to retrigger certificate
+          provisioning. Causes a brief outage on gobyld.com while unset.
+        type: boolean
+        default: false
+
+permissions:
+  pages: write
+
+jobs:
+  https:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Inspect Pages configuration
+        run: |
+          gh api "repos/$REPO/pages" > pages.json
+          echo "=== PAGES CONFIG ==="
+          cat pages.json | jq .
+          echo "CERT_STATE=$(jq -r '.https_certificate.state // "none"' pages.json)" >> "$GITHUB_ENV"
+          echo "HTTPS_ENFORCED=$(jq -r '.https_enforced' pages.json)" >> "$GITHUB_ENV"
+
+      - name: Recycle custom domain (only when requested)
+        if: ${{ inputs.recycle_domain == true }}
+        run: |
+          echo '{"cname":null}' | gh api -X PUT "repos/$REPO/pages" --input -
+          sleep 30
+          echo '{"cname":"gobyld.com"}' | gh api -X PUT "repos/$REPO/pages" --input -
+          echo "Domain removed and re-added; certificate provisioning restarted."
+
+      - name: Enable Enforce HTTPS
+        if: ${{ inputs.recycle_domain != true && env.HTTPS_ENFORCED != 'true' }}
+        run: |
+          case "$CERT_STATE" in
+            approved|issued|uploaded)
+              echo '{"https_enforced":true}' | gh api -X PUT "repos/$REPO/pages"  --input -
+              echo "Enforce HTTPS turned ON."
+              ;;
+            *)
+              echo "Certificate not ready (state: $CERT_STATE); cannot enforce HTTPS yet."
+              ;;
+          esac
+
+      - name: Final state
+        run: |
+          echo "=== FINAL PAGES CONFIG ==="
+          gh api "repos/$REPO/pages" | jq .
