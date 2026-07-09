@@ -1,18 +1,17 @@
 name: Enforce HTTPS on Pages
 
 on:
-  push:
-    branches: ["claude/gobyld-ssl-certificate-k3mhgj"]
   workflow_dispatch:
     inputs:
       recycle_domain:
         description: >-
           Remove and re-add the custom domain to retrigger certificate
-          provisioning. Causes a brief outage on gobyld.com while unset.
+          provisioning. Causes a brief outage on the site while unset.
         type: boolean
         default: false
 
 permissions:
+  contents: read
   pages: write
 
 jobs:
@@ -22,36 +21,37 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       REPO: ${{ github.repository }}
     steps:
-      - name: Inspect Pages configuration
-        run: |
-          gh api "repos/$REPO/pages" > pages.json
-          echo "=== PAGES CONFIG ==="
-          cat pages.json | jq .
-          echo "CERT_STATE=$(jq -r '.https_certificate.state // "none"' pages.json)" >> "$GITHUB_ENV"
-          echo "HTTPS_ENFORCED=$(jq -r '.https_enforced' pages.json)" >> "$GITHUB_ENV"
+      - name: Checkout
+        if: ${{ inputs.recycle_domain }}
+        uses: actions/checkout@v4
 
       - name: Recycle custom domain (only when requested)
-        if: ${{ inputs.recycle_domain == true }}
+        if: ${{ inputs.recycle_domain }}
         run: |
+          domain=$(cat static/CNAME)
           echo '{"cname":null}' | gh api -X PUT "repos/$REPO/pages" --input -
-          sleep 30
-          echo '{"cname":"gobyld.com"}' | gh api -X PUT "repos/$REPO/pages" --input -
-          echo "Domain removed and re-added; certificate provisioning restarted."
+          for _ in $(seq 1 12); do
+            [ "$(gh api "repos/$REPO/pages" --jq '.cname // "null"')" = "null" ] && break
+            sleep 5
+          done
+          jq -n --arg d "$domain" '{cname: $d}' | gh api -X PUT "repos/$REPO/pages" --input -
+          echo "Domain $domain removed and re-added; certificate provisioning restarted."
 
-      - name: Enable Enforce HTTPS
-        if: ${{ inputs.recycle_domain != true && env.HTTPS_ENFORCED != 'true' }}
+      - name: Enforce HTTPS once the certificate is ready
         run: |
-          case "$CERT_STATE" in
+          pages=$(gh api "repos/$REPO/pages")
+          jq . <<<"$pages"
+          if [ "$(jq -r '.https_enforced' <<<"$pages")" = "true" ]; then
+            echo "Enforce HTTPS is already on."
+            exit 0
+          fi
+          state=$(jq -r '.https_certificate.state // "none"' <<<"$pages")
+          case "$state" in
             approved|issued|uploaded)
-              echo '{"https_enforced":true}' | gh api -X PUT "repos/$REPO/pages"  --input -
+              echo '{"https_enforced":true}' | gh api -X PUT "repos/$REPO/pages" --input -
               echo "Enforce HTTPS turned ON."
               ;;
             *)
-              echo "Certificate not ready (state: $CERT_STATE); cannot enforce HTTPS yet."
+              echo "Certificate not ready (state: $state); cannot enforce HTTPS yet."
               ;;
           esac
-
-      - name: Final state
-        run: |
-          echo "=== FINAL PAGES CONFIG ==="
-          gh api "repos/$REPO/pages" | jq .
