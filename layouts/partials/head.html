@@ -48,15 +48,12 @@
       "sameAs" (slice site.Params.social.instagram site.Params.social.linkedin) }}
   <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
   {{ else if eq .Type "systems" }}
-  <!-- Product schema for system pages -->
-  {{ $ld := dict
-      "@context" "https://schema.org"
-      "@type" "Product"
-      "name" .Title
-      "description" (.Description | default site.Params.description)
-      "brand" (dict "@type" "Brand" "name" "BYLD")
-      "manufacturer" (dict "@type" "Organization" "name" "BYLD" "url" site.BaseURL) }}
-  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+  {{/* No Product schema: BYLD systems are quote-based, made-to-order building
+       systems with no fixed price, reviews, or ratings, so they don't meet
+       Google's requirements for Product structured data (offers / review /
+       aggregateRating). Emitting Product markup without those fields triggers
+       Search Console errors, so we describe these pages with Breadcrumb (and
+       the site-wide Organization) schema only. */}}
   <!-- Breadcrumb schema for navigation -->
   {{ $ld := dict
       "@context" "https://schema.org"
