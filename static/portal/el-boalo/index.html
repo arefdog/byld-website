@@ -120,6 +120,20 @@
   .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
   .disc{margin-top:20px;font-size:11.5px;color:var(--muted);line-height:1.8;max-width:80ch}
 
+  /* site gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:8px}
+  .gitem{padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--radius);overflow:hidden;display:block}
+  .gitem img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .5s ease;background:var(--paper-2)}
+  .gitem:hover img{transform:scale(1.04)}
+  .gitem.feature{grid-column:1/-1}
+  .gitem.feature img{aspect-ratio:16/7}
+  .gcap{font-size:12.5px;color:var(--muted);margin-top:14px;font-family:var(--font-body)}
+  @media (prefers-reduced-motion:reduce){.gitem img{transition:none}}
+  .lb{position:fixed;inset:0;z-index:1100;background:rgba(10,10,10,.95);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:96vw;max-height:92vh;object-fit:contain}
+  .lb-close{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;line-height:1;background:none;border:0;cursor:pointer}
+
   /* password gate */
   .gate{position:fixed;inset:0;z-index:1000;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
   .gate-box{max-width:390px;width:100%;text-align:left}
@@ -178,6 +192,23 @@
       <div class="stat"><div class="fig num">~45<small> min</small></div><div class="cap">To Madrid</div></div>
     </div>
   </div>
+
+  <!-- site gallery -->
+  <section>
+    <div class="shead"><span class="idx">&#9702;</span><h2>The site</h2></div>
+    <p class="lede">Meadow and dehesa rising into pine and granite, framed by dry-stone walls, with the Sierra de Guadarrama on the horizon. Photographed on the parcel, January 2026.</p>
+    <div class="gallery">
+      <button class="gitem feature" data-src="photos/site-01.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-01.jpg" width="1600" height="1200" alt="Golden meadow and dry-stone wall below the granite Sierra de Guadarrama"></button>
+      <button class="gitem" data-src="photos/site-02.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-02.jpg" width="1600" height="1200" alt="Meadow and dehesa with the granite peaks of the sierra under a clear sky"></button>
+      <button class="gitem" data-src="photos/site-03.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-03.jpg" width="1600" height="1200" alt="Surveying the estate from a granite outcrop over the valley"></button>
+      <button class="gitem" data-src="photos/site-04.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-04.jpg" width="1600" height="1200" alt="Autumn colour across the dehesa on the parcel"></button>
+      <button class="gitem" data-src="photos/site-05.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-05.jpg" width="1600" height="1200" alt="Holm oak and dry-stone wall in golden meadow"></button>
+      <button class="gitem" data-src="photos/site-06.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-06.jpg" width="1600" height="1200" alt="Dirt track crossing the land toward the sierra"></button>
+      <button class="gitem" data-src="photos/site-07.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-07.jpg" width="1600" height="1200" alt="Dry-stone wall and dehesa below cloud-wrapped granite mountains"></button>
+      <button class="gitem" data-src="photos/site-08.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-08.jpg" width="1600" height="1200" alt="Open green meadow and dry-stone wall under a dramatic sky"></button>
+    </div>
+    <p class="gcap">Site photography, January 2026 · Sector 1B, El Boalo. Click any image to enlarge.</p>
+  </section>
 
   <!-- 01 -->
   <section>
@@ -297,6 +328,27 @@
 
 </div>
 </div><!-- /#site -->
+
+<div class="lb" id="lb" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <img id="lb-img" alt="">
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src = ''; }
+  document.querySelectorAll('.gitem').forEach(function(b){
+    b.addEventListener('click', function(){
+      var im = b.querySelector('img');
+      open(b.getAttribute('data-src'), im ? im.alt : '');
+    });
+  });
+  lb.addEventListener('click', function(e){ if (e.target !== img) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
 
 <script>
 (function(){
