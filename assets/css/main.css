@@ -816,6 +816,15 @@ main { display: block; }
   width: 100%; height: auto; display: block;
   border-radius: var(--radius); background: #000;
 }
+
+/* image gallery (masonry columns, handles mixed portrait/landscape) */
+.system-gallery { columns: 2; column-gap: 14px; margin: 2.4em 0; }
+.system-gallery-item { margin: 0 0 14px; break-inside: avoid; }
+.system-gallery-item img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius);
+}
+@media (max-width: 560px) { .system-gallery { columns: 1; } }
 .collaborators { margin-top: 2.4em; padding-top: 1.8em; border-top: 1px solid var(--line); }
 .collaborators h2 { margin: 0 0 .6em; }
 .collab-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 14px; }

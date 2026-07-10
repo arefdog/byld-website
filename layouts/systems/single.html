@@ -51,6 +51,16 @@
   </figure>
   {{ end }}
 
+  {{ with .Params.gallery }}
+  <div class="system-gallery">
+    {{ range . }}
+    <figure class="system-gallery-item">
+      <img src="{{ .src | relURL }}" alt="{{ .alt | default $.Title }}" loading="lazy" decoding="async">
+    </figure>
+    {{ end }}
+  </div>
+  {{ end }}
+
   {{ with .Params.collaborators }}
   <div class="collaborators">
     <h2>{{ $.Params.collaboratorsLabel | default "Collaborators & partners" }}</h2>

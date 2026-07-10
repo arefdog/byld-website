@@ -17,6 +17,10 @@ collaborators:
     logo: "img/collab/climetric.png"
 studyUrl: "/systems/echo/solar-study/"
 studyLabel: "Explore the ECHO solar studies"
+gallery:
+  - src: "img/gallery/echo-1.jpg"
+  - src: "img/gallery/echo-2.jpg"
+  - src: "img/gallery/echo-3.jpg"
 weight: 10
 ---
 
