@@ -354,9 +354,9 @@ main { display: block; }
 #systems .system { border-top-color: var(--line); }
 #systems .systems .system:last-child { border-bottom-color: var(--line); }
 #systems .system-sector { color: var(--muted); }
-#systems .system-body-text { color: #2c2c2c; }
-#systems .system-link { color: var(--ink); border-bottom-color: var(--line); }
-#systems .system-link:hover { border-color: var(--ink); }
+#systems .system-body-text { color: var(--muted); }
+#systems .system-link { color: var(--ink); border-color: var(--ink); background: transparent; }
+#systems .system-link:hover { background: var(--ink); color: #fff; border-color: var(--ink); opacity: 1; }
 
 /* --- Systems: 3-up card grid --- */
 .systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); align-items: stretch; }
@@ -369,8 +369,17 @@ main { display: block; }
 .system-card .system-sector { text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; color: var(--muted); }
 .system-card .system-name { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 32px); line-height: 1.05; }
 .system-card .system-body-text { color: #2c2c2c; font-size: 15.5px; line-height: 1.5; margin: 0 0 14px; min-height: calc(3 * 1.5em); }
-.system-card .accolade-above { margin: 0; }
-.system-card .system-link { margin-top: auto; padding-top: 14px; }
+.system-card .accolade-above { margin: 0 0 22px; }
+.system-card .system-link {
+  align-self: flex-start;
+  margin-top: auto;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 11px 28px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+  transition: background .2s ease, color .2s ease;
+}
 @media (max-width: 860px) {
   .systems-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
   .systems-grid .system-media .carousel img { height: auto; }
@@ -883,6 +892,9 @@ main { display: block; }
   width: 92px; height: 36px; flex: 0 0 auto;
 }
 .collab-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+/* Hub Culture is a wide dark-background wordmark: give it more room + rounded chip */
+.collab-logo:has(img[alt="Hub Culture"]) { width: 132px; height: 40px; }
+.collab-logo img[alt="Hub Culture"] { border-radius: 5px; }
 .collab-meta { display: flex; flex-direction: column; gap: 2px; }
 .collab-name { font-weight: 600; }
 .collab-role { font-size: 13px; color: var(--muted); }

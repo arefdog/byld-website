@@ -14,7 +14,6 @@ lead: "A commercial solution for events: a demountable pavilion with real archit
 collaboratorsLabel: "Partners"
 collaborators:
   - name: "TVA"
-    role: "The Visionist Advisers"
     logo: "img/collab/tva.png"
   - name: "Hub Culture"
     logo: "img/collab/hubculture.png"
@@ -38,9 +37,7 @@ events and activations. It delivers a strong architectural presence while
 supporting rapid installation, repeat use, and adaptable branding across
 locations and campaigns.
 
-## Proven in Davos
-
-The ICON was deployed at the **World Economic Forum in Davos**, delivered
+The ICON is deployed yearly at the **World Economic Forum in Davos**, delivered
 together with partners including **TVA** and **Hub Culture**, a timber pavilion
 installed quickly, used intensively, and demounted for reuse.
 
