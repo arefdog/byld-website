@@ -28,7 +28,7 @@
 </section>
 
 <!-- SERVICES -->
-<section class="section section-alt" aria-label="{{ i18n "services" }}">
+<section class="section section-alt" id="services-band" aria-label="{{ i18n "services" }}">
   <p class="eyebrow">{{ i18n "services" }}</p>
   <div class="services-grid">
     {{ range $data.services }}
@@ -49,30 +49,37 @@
   <div class="section-head">
     <p class="eyebrow">{{ i18n "systems" }}</p>
   </div>
-  <div class="systems">
+  <div class="systems systems-grid">
     {{ range $s := $data.systems }}
-    <article class="system{{ if $s.images }} has-image{{ end }}">
-      <div class="system-label">
-        <span class="system-sector">{{ $s.sector }}</span>
-        <span class="system-name">{{ $s.name }}</span>
+    <article class="system-card">
+      {{ if $s.video }}
+      <div class="system-media">
+        <div class="system-media-frame">
+          <video class="system-video-loop" autoplay muted loop playsinline preload="metadata"
+                 {{ with $s.images }}poster="{{ (index . 0) | relURL }}"{{ end }}>
+            <source src="{{ $s.video | relURL }}" type="video/mp4">
+          </video>
+        </div>
       </div>
-      <div class="system-body">
-        <p>{{ $s.body }}</p>
+      {{ else }}{{ with $s.images }}
+      <div class="system-media">
+        <div class="system-media-frame">
+          {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
+        </div>
+      </div>
+      {{ end }}{{ end }}
+      <div class="system-card-body">
+        <span class="system-sector">{{ $s.sector }}</span>
+        <h3 class="system-name">{{ $s.name }}</h3>
+        <p class="system-body-text">{{ $s.body }}</p>
         {{ with $s.accolade }}
         <span class="accolade-above">
           {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
           <span class="accolade-ov-text{{ if in (slice "In Development" "En desarrollo" "In Entwicklung" "En développement") . }} no-star{{ end }}">{{ . }}</span>
         </span>
         {{ end }}
-      </div>
-      {{ with $s.images }}
-      <div class="system-media">
-        <div class="system-media-frame">
-          {{ partial "carousel.html" (dict "images" . "alt" (printf "%s – %s" $s.name $s.sector)) }}
-        </div>
         {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relLangURL }}">{{ i18n "explore" }} →</a>{{ end }}
       </div>
-      {{ end }}
     </article>
     {{ end }}
   </div>
