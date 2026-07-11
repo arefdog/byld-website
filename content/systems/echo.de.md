@@ -4,7 +4,7 @@ description: "Skalierbare Hospitality-Einheiten, die sich um gemeinsame Infrastr
 sector: "Hotellerie"
 status: "Verfügbar"
 image: "img/sys-echo.jpg"
-image2: "img/echo-card.jpg"
+image2: "img/echo-hero.jpg"
 image2Caption: "ECHO – das Deck spendet Schatten und schützt, ohne die Aussicht zu verstellen."
 lead: "Eine Hospitality-Lösung und eine Studie darüber, was Nachhaltigkeit in der Natur bedeutet: minimaler Materialeinsatz für Komfort an jedem Ort."
 collaboratorsLabel: "Partner"

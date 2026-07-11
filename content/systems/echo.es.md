@@ -4,7 +4,7 @@ description: "Unidades hoteleras escalables que se agrupan en torno a instalacio
 sector: "Hotelero"
 status: "Disponible"
 image: "img/sys-echo.jpg"
-image2: "img/echo-card.jpg"
+image2: "img/echo-hero.jpg"
 image2Caption: "ECHO – la terraza da sombra y protege sin cerrar las vistas."
 lead: "Una solución hotelera y un estudio sobre lo que significa la sostenibilidad en la naturaleza: materiales mínimos para crear confort en cualquier lugar."
 collaboratorsLabel: "Colaboradores"
