@@ -4,7 +4,7 @@ description: "Scalable hospitality units that cluster around shared utilities. M
 sector: "Hospitality"
 status: "Available"
 image: "img/sys-echo.jpg"
-image2: "img/echo-card.jpg"
+image2: "img/sys-echo-3.jpg"
 image2Caption: "ECHO – the deck shades and protects while keeping the views open."
 lead: "A hospitality solution and a study in what sustainability means in nature: minimal materials to create comfort anywhere."
 collaboratorsLabel: "Collaborators"

@@ -4,7 +4,7 @@ description: "Des unités hôtelières évolutives regroupées autour d'installa
 sector: "Hôtellerie"
 status: "Disponible"
 image: "img/sys-echo.jpg"
-image2: "img/echo-card.jpg"
+image2: "img/sys-echo-3.jpg"
 image2Caption: "ECHO – la terrasse ombrage et protège sans fermer les vues."
 lead: "Une solution hôtelière et une étude sur ce que signifie la durabilité dans la nature : un minimum de matériaux pour créer du confort partout."
 collaboratorsLabel: "Collaborateurs"
