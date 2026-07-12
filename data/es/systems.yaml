@@ -16,7 +16,7 @@
   slug: icon
   status: Disponible
   poster: img/candy-icon-poster.jpg
-  video: video/candy-icon.mp4
+  video: video/candy-icon-loop.mp4
   images:
     - img/candy-icon-1.jpg
     - img/candy-icon-2.jpg
