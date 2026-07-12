@@ -369,7 +369,20 @@ main { display: block; }
 .system-card-body { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 2px 4px; flex: 1; }
 .system-card .system-sector { text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; color: var(--muted); }
 .system-card .system-name { font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 32px); line-height: 1.05; }
-.system-card .system-body-text { color: #2c2c2c; font-size: 15.5px; line-height: 1.5; margin: 0 0 14px; min-height: calc(3 * 1.5em); }
+.system-card .system-body-text { color: #2c2c2c; font-size: 15.5px; line-height: 1.5; margin: 10px 0 0; }
+/* collapsed subtext behind a More toggle */
+.system-more { margin: 0 0 14px; }
+.system-more summary {
+  list-style: none; cursor: pointer;
+  display: inline-flex; align-items: center;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.system-more summary::-webkit-details-marker { display: none; }
+.system-more summary:hover { color: var(--ink); }
+.system-more .more-close { display: none; }
+.system-more[open] .more-open { display: none; }
+.system-more[open] .more-close { display: inline; }
 .system-card .accolade-above { margin: 0 0 22px; }
 .system-card .system-link {
   align-self: flex-start;
@@ -384,7 +397,6 @@ main { display: block; }
 @media (max-width: 860px) {
   .systems-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
   .systems-grid .system-media .carousel img { height: auto; }
-  .system-card .system-body-text { min-height: 0; }
 }
 
 .system-media .carousel img {

@@ -46,3 +46,8 @@ next_image:
   other: "Nächstes Bild"
 choose_language:
   other: "Sprache wählen"
+
+more_label:
+  other: "Mehr"
+less_label:
+  other: "Weniger"

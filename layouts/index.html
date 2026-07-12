@@ -71,7 +71,13 @@
       <div class="system-card-body">
         <span class="system-sector">{{ $s.sector }}</span>
         <h3 class="system-name">{{ $s.name }}</h3>
-        <p class="system-body-text">{{ $s.body }}</p>
+        <details class="system-more">
+          <summary>
+            <span class="more-open">{{ i18n "more_label" }} +</span>
+            <span class="more-close">{{ i18n "less_label" }} −</span>
+          </summary>
+          <p class="system-body-text">{{ $s.body }}</p>
+        </details>
         {{ with $s.accolade }}
         <span class="accolade-above">
           {{ with $s.accoladeLogo }}<img class="accolade-ov-logo" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
