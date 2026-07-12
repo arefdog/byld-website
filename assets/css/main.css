@@ -359,7 +359,8 @@ main { display: block; }
 #systems .system-link:hover { background: var(--ink); color: #fff; border-color: var(--ink); opacity: 1; }
 
 /* --- Systems: 3-up card grid --- */
-.systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); align-items: stretch; }
+.systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.4vw, 18px); align-items: stretch; }
+#systems .systems { max-width: 1400px; }
 .system-card { display: flex; flex-direction: column; }
 .system-card .system-media { margin: 0; display: block; }
 .system-card .system-media-frame { width: 100%; }

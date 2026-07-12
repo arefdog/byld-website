@@ -2,6 +2,7 @@
   name: ECHO
   slug: echo
   status: Disponible
+  poster: img/candy-echo-poster.jpg
   video: video/candy-echo.mp4
   images:
     - img/candy-echo-1.jpg
@@ -14,6 +15,7 @@
   name: The ICON
   slug: icon
   status: Disponible
+  poster: img/candy-icon-poster.jpg
   video: video/candy-icon.mp4
   images:
     - img/candy-icon-1.jpg

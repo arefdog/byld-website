@@ -154,6 +154,26 @@
   });
 })();
 
+// Systems videos: on hover-capable (desktop) devices, play only the card
+// being hovered; touch devices keep the default autoplay/loop.
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var vids = document.querySelectorAll('.system-video-loop');
+  Array.prototype.forEach.call(vids, function (v) {
+    v.removeAttribute('autoplay');
+    try { v.pause(); v.currentTime = 0; } catch (e) {}
+    var zone = v.closest('.system-card') || v;
+    zone.addEventListener('mouseenter', function () {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    zone.addEventListener('mouseleave', function () {
+      v.pause();
+      try { v.currentTime = 0; } catch (e) {}
+    });
+  });
+})();
+
 // Reveal-on-scroll (respects prefers-reduced-motion)
 (function () {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

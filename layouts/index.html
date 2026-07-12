@@ -56,7 +56,7 @@
       <div class="system-media">
         <div class="system-media-frame">
           <video class="system-video-loop" autoplay muted loop playsinline preload="metadata"
-                 {{ with $s.images }}poster="{{ (index . 0) | relURL }}"{{ end }}>
+                 {{ with or $s.poster (index ($s.images | default slice) 0) }}poster="{{ . | relURL }}"{{ end }}>
             <source src="{{ $s.video | relURL }}" type="video/mp4">
           </video>
         </div>
