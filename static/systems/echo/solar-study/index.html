@@ -142,6 +142,7 @@
     <li><b>The overhang is the main solar control.</b> Drag it wider and the glass stays shaded down to lower sun angles; pull it in and more direct beam reaches the core. Watch the annual figure respond.</li>
     <li><b>Only low sunrise/sunset light reaches under the eaves.</b> Set Time to ~6:00 or ~19:00 to see the rays rake across the deck and into the core.</li>
     <li><b>The winter trade-off:</b> a deep overhang blocks summer heat beautifully – but also shades the low December sun you might want to welcome in. The slider lets you find the balance.</li>
+    <li><b>Stretch to a courtyard.</b> Push the interior past ~2× its original size (Width × Length) and a central courtyard opens through the roof — bringing light and air into the deep plan.</li>
   </ul>
   <p class="fine">Solar time, true-south assumed. Core is the as-built ECHO glazed pod (≈4.5&nbsp;m). A study model – not a substitute for full energy simulation.</p>
 </div>
@@ -240,6 +241,8 @@ const coreFloorMat=new THREE.MeshStandardMaterial({map:timberTex,color:'#7a5c3c'
 const coreTopMat=new THREE.MeshStandardMaterial({map:timberTex,color:'#8a6c48',roughness:0.85});
 const glassMat=new THREE.MeshStandardMaterial({color:'#cfe3f0',roughness:0.05,metalness:0,transparent:true,opacity:0.30,envMapIntensity:1.0});
 const mulMat=new THREE.MeshStandardMaterial({color:'#2b2e33',metalness:0.75,roughness:0.35,envMapIntensity:1.2});
+const trunkMat=new THREE.MeshStandardMaterial({color:'#6b4f32',roughness:0.9});
+const foliMat=new THREE.MeshStandardMaterial({color:'#5f7d43',roughness:0.9});
 const bed=new THREE.Mesh(new THREE.BoxGeometry(2.0,0.4,1.4),new THREE.MeshStandardMaterial({color:'#e9d7b0',roughness:0.9}));
 bed.position.set(-0.8,0.32,-1.2);bed.castShadow=true;scene.add(bed);
 
@@ -306,7 +309,9 @@ function rrShape(hw,hl,r){
   s.closePath(); return s;
 }
 function perim(hw,hl,r){r=Math.min(r,hw,hl);return 4*(hw-r)+4*(hl-r)+2*Math.PI*r;}
-function slab(shape,th,topY,mat,cast,recv){
+function holeOf(sh){const pts=sh.getSpacedPoints(120);pts.reverse();const p=new THREE.Path();p.setFromPoints(pts);return p;}
+function slab(shape,th,topY,mat,cast,recv,hole){
+  if(hole)shape.holes.push(hole);
   const g=new THREE.ExtrudeGeometry(shape,{depth:th,bevelEnabled:false,curveSegments:22});
   g.rotateX(-Math.PI/2);
   const m=new THREE.Mesh(g,mat);m.position.y=topY-th;
@@ -318,23 +323,43 @@ function rebuild(){
   parts.forEach(m=>{scene.remove(m);m.geometry.dispose();});parts=[];
   const chw=coreW/2, chl=coreL/2, cr=Math.min(chw,chl);
   const rhw=chw+ohang, rhl=chl+ohang, rr=Math.min(rhw,rhl);
-  // plinth, deck, roof (rounded-rectangle slabs)
+  // courtyard: opens once the interior footprint reaches ~2x its original size
+  const A0=4.46*4.46, BAND=2.2;
+  let court=null;
+  if(coreW*coreL>=2*A0){const cw=chw-BAND, cl=chl-BAND; if(cw>0.5&&cl>0.5) court={hw:cw,hl:cl,r:Math.min(cw,cl)};}
+  const coreHole=()=>court?holeOf(rrShape(court.hw,court.hl,court.r)):null;
+  let roofHole=null;
+  if(court&&court.hw>0.95&&court.hl>0.95) roofHole=holeOf(rrShape(court.hw-0.7,court.hl-0.7,Math.max(0.2,court.r-0.7)));
+  // plinth, deck (solid; the deck is the courtyard floor), roof (holed over the court)
   slab(rrShape(Math.max(0.5,rhw-0.4),Math.max(0.5,rhl-0.4),rr-0.4),0.42,-0.18,baseMat,false,true);
   slab(rrShape(rhw-0.05,rhl-0.05,rr-0.05),0.28,0.0,deckMat,true,true);
-  slab(rrShape(rhw,rhl,rr),0.2,3.2,roofMat,true,true);
-  // glazed core: floor, ceiling, glass volume
+  slab(rrShape(rhw,rhl,rr),0.2,3.2,roofMat,true,true,roofHole);
+  // glazed core: solid floor, ring ceiling + glass wrapping the courtyard
   slab(rrShape(chw+0.02,chl+0.02,cr),0.12,0.12,coreFloorMat,false,true);
-  slab(rrShape(chw+0.02,chl+0.02,cr),0.12,2.66,coreTopMat,true,true);
-  slab(rrShape(chw,chl,cr),CORE_H,0.06+CORE_H,glassMat,false,true);
+  slab(rrShape(chw+0.02,chl+0.02,cr),0.12,2.66,coreTopMat,true,true,coreHole());
+  slab(rrShape(chw,chl,cr),CORE_H,0.06+CORE_H,glassMat,false,true,coreHole());
   // perimeter posts along the roof edge
   {const phw=Math.max(0.35,rhw-0.23),phl=Math.max(0.35,rhl-0.23),pr=Math.min(rr-0.23,phw,phl);
    const N=Math.max(12,Math.min(72,Math.round(perim(phw,phl,pr)/1.7)));
    const pp=rrShape(phw,phl,pr).getSpacedPoints(N);
    for(let i=0;i<N;i++)vbar(pp[i].x,-pp[i].y,0.12,2.95,1.47,postMat);}
-  // glazing mullions along the core
+  // outer glazing mullions
   {const Nm=Math.max(8,Math.min(56,Math.round(perim(chw,chl,cr)/1.4)));
    const mp=rrShape(chw,chl,cr).getSpacedPoints(Nm);
    for(let i=0;i<Nm;i++)vbar(mp[i].x,-mp[i].y,0.06,CORE_H,1.32,mulMat);}
+  // courtyard fit-out: inner mullions, supporting posts, a tree; tuck the bed away
+  if(court){
+    const cP=perim(court.hw,court.hl,court.r);
+    const Nc=Math.max(6,Math.min(48,Math.round(cP/1.4)));
+    const cmp=rrShape(court.hw,court.hl,court.r).getSpacedPoints(Nc);
+    for(let i=0;i<Nc;i++)vbar(cmp[i].x,-cmp[i].y,0.06,CORE_H,1.32,mulMat);
+    const Np=Math.max(4,Math.min(24,Math.round(cP/2.8)));
+    const cpp=rrShape(court.hw,court.hl,court.r).getSpacedPoints(Np);
+    for(let i=0;i<Np;i++)vbar(cpp[i].x,-cpp[i].y,0.1,2.95,1.47,postMat);
+    const trunk=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.14,1.5,8),trunkMat);trunk.position.set(0,0.85,0);trunk.castShadow=true;scene.add(trunk);parts.push(trunk);
+    const foli=new THREE.Mesh(new THREE.SphereGeometry(0.95,16,12),foliMat);foli.position.set(0,2.1,0);foli.scale.set(1,1.25,1);foli.castShadow=true;scene.add(foli);parts.push(foli);
+    bed.visible=false;
+  } else bed.visible=true;
   // shading angle, shadow frustum, compass placement
   thresh=Math.atan2(VGAP,ohang)*R2D;
   const S=Math.max(rhw,rhl)+2;sun.shadow.camera.left=-S;sun.shadow.camera.right=S;sun.shadow.camera.top=S;sun.shadow.camera.bottom=-S;sun.shadow.camera.updateProjectionMatrix();
