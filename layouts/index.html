@@ -70,10 +70,7 @@
       {{ end }}{{ end }}
       <div class="system-card-body">
         <span class="system-sector">{{ $s.sector }}</span>
-        <div class="system-title-row">
-          <h3 class="system-name">{{ $s.name }}</h3>
-          {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relLangURL }}">{{ i18n "explore" }} →</a>{{ end }}
-        </div>
+        <h3 class="system-name">{{ $s.name }}</h3>
         <details class="system-more">
           <summary aria-label="{{ i18n "more_label" }}">
             <span class="more-open">+</span>
@@ -87,6 +84,7 @@
           <span class="accolade-ov-text{{ if in (slice "In Development" "En desarrollo" "In Entwicklung" "En développement") . }} no-star{{ end }}">{{ . }}</span>
         </span>
         {{ end }}
+        {{ with $s.slug }}<a class="text-link system-link" href="{{ (printf "systems/%s/" .) | relLangURL }}">{{ i18n "explore" }} →</a>{{ end }}
       </div>
     </article>
     {{ end }}
