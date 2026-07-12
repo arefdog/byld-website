@@ -1,6 +1,7 @@
 ---
 title: "The ICON"
-description: "Pabellón desmontable para activaciones comerciales y eventos. Instalación rápida, sistema modular reutilizable. Estructura efímera premiada, construida con madera técnica e ingeniería de precisión."
+seoTitle: "The ICON: pabellón desmontable para eventos y estructura temporal"
+description: "Un pabellón desmontable para eventos y una estructura temporal. Rápido de instalar, reutilizable y hecho para viajar. Madera técnica para activaciones de marca, ferias y exposiciones. Probado en Davos."
 sector: "Comercial"
 status: "Disponible"
 image: "img/sys-icon.jpg"
@@ -33,6 +34,21 @@ adaptable en distintas ubicaciones y campañas.
 The ICON se instaló en el **Foro Económico Mundial de Davos**, entregado junto
 a partners como **TVA** y **Hub Culture**: un pabellón de madera montado en
 poco tiempo, usado de forma intensiva y desmontado para su reutilización.
+
+## Diseñado para eventos, ferias y activaciones
+
+The ICON es una estructura temporal para eventos allí donde necesitas presencia
+sin permanencia: activaciones de marca, lanzamientos de producto, ferias,
+exposiciones, festivales y hospitality efímera. Se monta en pocos días, tiene
+peso arquitectónico propio y se desmonta limpio para la siguiente ubicación.
+
+## Por qué un pabellón desmontable gana a una construcción de un solo uso
+
+Una estructura para eventos convencional se pierde en cuanto termina el evento.
+The ICON es un pabellón modular que posees y reutilizas: el mismo activo viaja
+entre ciudades y campañas, así que el coste por uso baja cada vez que se monta.
+La madera técnica lo mantiene ligero para transportar y rápido de montar, sin
+cimentaciones pesadas.
 
 ## Qué obtienes
 

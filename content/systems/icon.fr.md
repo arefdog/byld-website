@@ -1,6 +1,7 @@
 ---
 title: "The ICON"
-description: "Pavillon démontable pour les activations commerciales et l'événementiel. Installation rapide, système modulaire réutilisable. Structure éphémère primée, construite en bois d'ingénierie avec une fabrication de précision."
+seoTitle: "The ICON : pavillon événementiel démontable et structure temporaire"
+description: "Un pavillon événementiel démontable et une structure temporaire. Rapide à installer, réutilisable, conçu pour voyager. Bois d'ingénierie pour activations de marque, salons et expositions. Éprouvé à Davos."
 sector: "Commercial"
 status: "Disponible"
 image: "img/sys-icon.jpg"
@@ -34,6 +35,22 @@ campagnes.
 The ICON a été installé au **Forum Économique Mondial de Davos**, livré avec
 des partenaires comme **TVA** et **Hub Culture** : un pavillon en bois monté
 rapidement, utilisé intensivement et démonté pour être réutilisé.
+
+## Conçu pour l'événementiel, les salons et les activations
+
+The ICON est une structure événementielle temporaire pour tous les cas où vous
+avez besoin de présence sans permanence : activations de marque, lancements de
+produits, salons, expositions, festivals et hospitalité éphémère. Il se monte en
+quelques jours, s'impose architecturalement et se démonte proprement pour le
+lieu suivant.
+
+## Pourquoi un pavillon démontable vaut mieux qu'une construction à usage unique
+
+Une structure événementielle classique est perdue dès la fin de l'événement.
+The ICON est un pavillon modulaire que vous possédez et réutilisez : le même
+actif voyage entre les villes et les campagnes, si bien que le coût par
+utilisation baisse à chaque montage. Le bois d'ingénierie le garde léger à
+transporter et rapide à assembler, sans fondations lourdes.
 
 ## Ce que vous obtenez
 

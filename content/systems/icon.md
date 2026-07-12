@@ -1,6 +1,7 @@
 ---
 title: "The ICON"
-description: "Demountable pavilion for commercial activations and events. Fast installation, reusable modular system. Award-winning temporary structure built with engineered timber and precision engineering."
+seoTitle: "The ICON: Demountable Event Pavilion & Temporary Structure"
+description: "A demountable event pavilion and temporary structure. Fast to install, reusable, built to travel. Engineered timber for brand activations, exhibitions, and expos. Proven at Davos."
 sector: "Commercial"
 status: "Available"
 image: "img/sys-icon.jpg"
@@ -40,6 +41,21 @@ locations and campaigns.
 The ICON is deployed yearly at the **World Economic Forum in Davos**, delivered
 together with partners including **TVA** and **Hub Culture**, a timber pavilion
 installed quickly, used intensively, and demounted for reuse.
+
+## Built for events, exhibitions, and activations
+
+The ICON is a temporary event structure for wherever you need presence without
+permanence: brand activations, product launches, exhibitions, expos, festivals,
+and pop-up hospitality. It goes up in days, holds its own architecturally, and
+comes down clean for the next location.
+
+## Why a demountable pavilion beats a one-off build
+
+A conventional event structure is spent the moment the event ends. The ICON is a
+modular pavilion you own and reuse: the same asset travels between cities and
+campaigns, so the cost per use falls each time it goes up. Engineered timber
+keeps it light to transport and quick to assemble, with no heavy foundations to
+pour or remove.
 
 ## What you get
 
