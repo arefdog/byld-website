@@ -1,5 +1,6 @@
 ---
 title: "Sistemas de Construcción Modular y Desarrollo de Suelo"
+description: "Diseño y fabricación de sistemas de construcción modular, planificación del emplazamiento y estrategias de instalación."
 hero_tagline: "Sistemas de Construcción Modular"
 intro:
   - "Diseñamos y fabricamos sistemas de construcción modular, con planificación del emplazamiento, logística y estrategias de instalación."

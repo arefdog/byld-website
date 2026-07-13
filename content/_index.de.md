@@ -1,5 +1,6 @@
 ---
 title: "Modulare Bausysteme und Standortentwicklung"
+description: "Design und Fertigung modularer Bausysteme, Standortplanung und Montagestrategien."
 hero_tagline: "Modulare Bausysteme"
 intro:
   - "Wir entwerfen und fertigen modulare Bausysteme, mit Standortplanung, Logistik und Montagestrategien."

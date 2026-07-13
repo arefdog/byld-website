@@ -1,5 +1,6 @@
 ---
 title: "Modular Construction Systems and Site Development"
+description: "Design and manufacture of modular building systems, site planning and installation strategies."
 hero_tagline: "Modular Construction Systems"
 intro:
   - "Design and manufacture of modular building systems, supported by site planning, logistics, and installation strategies."

@@ -15,7 +15,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 2
   title = "BYLD – Sistemas de Construcción Modular"
   [languages.es.params]
-    description = "Diseño y fabricación de sistemas de construcción modular, con planificación del emplazamiento, logística y estrategias de instalación."
+    description = "Diseño y fabricación de sistemas de construcción modular, planificación del emplazamiento y estrategias de instalación."
   [[languages.es.menu.main]]
     name = "Sistemas"
     url = "/#systems"
@@ -35,7 +35,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 3
   title = "BYLD – Modulare Bausysteme"
   [languages.de.params]
-    description = "Design und Fertigung modularer Bausysteme, mit Standortplanung, Logistik und Montagestrategien."
+    description = "Design und Fertigung modularer Bausysteme, Standortplanung und Montagestrategien."
   [[languages.de.menu.main]]
     name = "Systeme"
     url = "/#systems"
@@ -55,7 +55,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 4
   title = "BYLD – Systèmes de Construction Modulaire"
   [languages.fr.params]
-    description = "Design et fabrication de systèmes de construction modulaire, avec planification de site, logistique et stratégies d'installation."
+    description = "Design et fabrication de systèmes de construction modulaire, planification de site et stratégies d'installation."
   [[languages.fr.menu.main]]
     name = "Systèmes"
     url = "/#systems"
@@ -70,7 +70,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 70
 
 [params]
-  description = "Design and manufacture of modular building systems, supported by site planning, logistics, and installation strategies."
+  description = "Design and manufacture of modular building systems, site planning and installation strategies."
   email = "office@gobyld.com"
   address = "Calle Conde de Aranda 1, 28014 Madrid, Spain"
   # Consultation form endpoint. Create a free form at https://formspree.io,

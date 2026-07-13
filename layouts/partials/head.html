@@ -28,8 +28,9 @@
   <meta name="twitter:title" content="{{ $title }}">
   <meta name="twitter:description" content="{{ $desc }}">
   <meta name="twitter:image" content="{{ $ogimg }}">
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="32x32">
   <link rel="icon" href="{{ "img/favicon.svg" | relURL }}" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="{{ "img/byld-logo-icon.png" | relURL }}">
+  <link rel="apple-touch-icon" href="{{ "img/apple-touch-icon.png" | relURL }}">
   <link rel="preload" href="{{ "fonts/TWKLausanne-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ "fonts/HelveticaNowText-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   {{ with resources.Get "css/main.css" }}
