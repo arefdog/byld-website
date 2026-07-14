@@ -52,6 +52,11 @@
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* desktop: gently settle scrolling onto section starts (assist, not lock) */
+@media (min-width: 861px) and (hover: hover) {
+  html { scroll-snap-type: y proximity; }
+  main > .section, .hero-full { scroll-snap-align: start; }
+}
 body {
   margin: 0;
   font-family: var(--font-body);
