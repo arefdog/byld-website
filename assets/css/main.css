@@ -56,6 +56,12 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (min-width: 861px) and (hover: hover) {
   html { scroll-snap-type: y proximity; }
   main > .section, .hero-full { scroll-snap-align: start; }
+  /* homepage: each section fills the viewport, content vertically centred,
+     so every snap stop presents one full screen */
+  .home-hero main > .section {
+    min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: center;
+  }
 }
 body {
   margin: 0;
