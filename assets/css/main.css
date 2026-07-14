@@ -70,6 +70,12 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   /* tighter heading-to-content gap so full sections fit one screen */
   .home-hero main > .section .section-head { margin-bottom: 36px; }
 }
+/* Full lock (mandatory) only when the screen is tall enough that every section
+   fits one viewport — shorter screens keep proximity so tall sections can't
+   trap the scroll. */
+@media (min-width: 861px) and (hover: hover) and (min-height: 820px) {
+  html { scroll-snap-type: y mandatory; }
+}
 body {
   margin: 0;
   font-family: var(--font-body);
