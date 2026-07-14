@@ -61,10 +61,14 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   .home-hero main > .section {
     min-height: 100svh;
     display: flex; flex-direction: column; justify-content: center;
+    padding-top: 56px; padding-bottom: 56px;
   }
   /* auto-margin children must not escape the padded box (flex skips
-     stretching items with auto cross-axis margins) */
-  .home-hero main > .section > * { width: 100%; }
+     stretching items with auto cross-axis margins), and must never be
+     squeezed (squeezing clips buttons/rows into the padding) */
+  .home-hero main > .section > * { width: 100%; flex-shrink: 0; }
+  /* tighter heading-to-content gap so full sections fit one screen */
+  .home-hero main > .section .section-head { margin-bottom: 36px; }
 }
 body {
   margin: 0;
