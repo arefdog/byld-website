@@ -62,6 +62,9 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
     min-height: 100svh;
     display: flex; flex-direction: column; justify-content: center;
   }
+  /* auto-margin children must not escape the padded box (flex skips
+     stretching items with auto cross-axis margins) */
+  .home-hero main > .section > * { width: 100%; }
 }
 body {
   margin: 0;
