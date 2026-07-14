@@ -70,7 +70,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 70
 
 [params]
-  description = "Design and manufacture of modular building systems, site planning and installation strategies."
+  description = "Premium modular building systems designed for efficiency and flexibility."
   email = "office@gobyld.com"
   address = "Calle Conde de Aranda 1, 28014 Madrid, Spain"
   # Consultation form endpoint. Create a free form at https://formspree.io,
