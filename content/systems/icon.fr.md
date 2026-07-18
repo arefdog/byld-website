@@ -19,6 +19,16 @@ collaborators:
     logo: "img/collab/tva.png"
   - name: "Hub Culture"
     logo: "img/collab/hubculture.png"
+gallery:
+  - src: "img/gallery/icon-1.jpg"
+  - src: "img/gallery/icon-2.jpg"
+  - src: "img/gallery/icon-3.jpg"
+  - src: "img/gallery/icon-4.jpg"
+  - src: "img/gallery/icon-5.jpg"
+  - src: "img/gallery/icon-6.jpg"
+  - src: "img/gallery/icon-7.jpg"
+  - src: "img/gallery/icon-8.jpg"
+  - src: "img/gallery/icon-9.jpg"
 weight: 20
 ---
 
