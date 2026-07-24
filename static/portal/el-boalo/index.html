@@ -427,7 +427,8 @@
   var FORM = "";
   var REQUEST_TO = "office@gobyld.com";
 
-  var KEY = "byld-portal-" + HASH.slice(0, 8);
+  var KEY = "byld-portal-" + HASH.slice(0, 8);   // shared team-password session (same as /portal/)
+  var EKEY = "byld-boalo-email";                 // Boalo-only email approval, never read by /portal/
   var gate = document.getElementById('gate');
   var site = document.getElementById('site');
   var form = document.getElementById('gate-form');
@@ -442,7 +443,7 @@
   var pwMode = false;
 
   function unlock(){ gate.hidden = true; gate.style.display = 'none'; site.hidden = false; }
-  try { if (sessionStorage.getItem(KEY) === '1' || localStorage.getItem(KEY) === '1') { unlock(); return; } } catch (e) {}
+  try { if (sessionStorage.getItem(KEY) === '1' || localStorage.getItem(EKEY) === '1') { unlock(); return; } } catch (e) {}
 
   function sha256(str){
     var data = new TextEncoder().encode(str);
@@ -500,7 +501,7 @@
     } else {
       var email = v.toLowerCase();
       sha256(email).then(function(h){
-        if (APPROVED.indexOf(h) !== -1) { try { localStorage.setItem(KEY, '1'); } catch (e) {} unlock(); }
+        if (APPROVED.indexOf(h) !== -1) { try { localStorage.setItem(EKEY, '1'); } catch (e) {} unlock(); }
         else { showRequest(email); }
       });
     }
