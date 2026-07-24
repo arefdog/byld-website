@@ -22,7 +22,6 @@
     --maxw:1000px; --gutter:clamp(20px,5vw,64px); --radius:2px;
   }
   *{box-sizing:border-box}
-  [hidden]{display:none!important}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
     font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -149,18 +148,12 @@
     <span class="brand">BY<b>LD</b></span>
     <p class="eyebrow" style="margin-top:18px">Collaborator portal</p>
     <h1 class="gate-h1">El Boalo · Sector 1B</h1>
-    <p class="gate-intro" id="gate-intro">This brief is for registered collaborators. Enter your email to view it; new emails are approved by the BYLD team.</p>
+    <p class="gate-intro">This brief is for BYLD collaborators. Enter the access password to continue.</p>
     <form id="gate-form" class="gate-form" autocomplete="off" novalidate>
-      <input type="email" name="credential" placeholder="Your work email" required autocomplete="email" aria-label="Your work email">
-      <button type="submit">Enter</button>
+      <input type="password" name="password" placeholder="Access password" required autocomplete="off" aria-label="Access password">
+      <button type="submit">Unlock</button>
     </form>
-    <p id="gate-error" class="gate-error" role="alert" hidden>That password is not right. Try again or write to office@gobyld.com.</p>
-    <div id="gate-request" hidden>
-      <p class="gate-intro" style="margin-top:18px"><b id="gate-req-email"></b> isn't registered yet.</p>
-      <a id="gate-req-btn" class="gate-form" style="display:block" href="#"><button type="button" style="width:100%">Request access</button></a>
-      <p id="gate-req-sent" class="gate-intro" hidden>Request sent. We approve new collaborators quickly, and you'll hear from us at that address.</p>
-    </div>
-    <p class="gate-intro" style="margin-top:16px;font-size:13px"><a href="#" id="gate-mode" style="text-decoration:underline">Have the team password instead?</a></p>
+    <p id="gate-error" class="gate-error" role="alert" hidden>That password is not right. Try again or email office@gobyld.com.</p>
     <a class="gate-back" href="/portal/">&larr; Back to portal</a>
   </div>
 </div>
@@ -414,97 +407,26 @@
 
 <script>
 (function(){
-  // Team password (shared with /portal/) and approved collaborator emails,
-  // both stored as SHA-256 hashes. To approve an email, add its hash here:
-  //   printf '%s' "name@agency.com" | shasum -a 256     (lowercase the email)
   var HASH = "9981790be1bc452fcf8e68c5f855498a0b14f3ef3bd933b48be188626e0c4751";
-  var APPROVED = [
-    "61b6f036c1c0f477b53a5efaf0e36b62ce5593e5c4212b01148817f308ace720", // office@gobyld.com
-    "cdb48d430a369c667edb663866e6c72f8fbcb8c03ddae8ba9f3d13b28133b0b7"
-  ];
-  // Optional form endpoint (e.g. Formspree) for automatic access requests.
-  // While empty, "Request access" opens a pre-filled email instead.
-  var FORM = "";
-  var REQUEST_TO = "office@gobyld.com";
-
-  var KEY = "byld-portal-" + HASH.slice(0, 8);   // shared team-password session (same as /portal/)
-  var EKEY = "byld-boalo-email";                 // Boalo-only email approval, never read by /portal/
+  var KEY = "byld-portal-" + HASH.slice(0, 8);
   var gate = document.getElementById('gate');
   var site = document.getElementById('site');
   var form = document.getElementById('gate-form');
-  var input = form.credential;
   var err = document.getElementById('gate-error');
-  var intro = document.getElementById('gate-intro');
-  var req = document.getElementById('gate-request');
-  var reqEmail = document.getElementById('gate-req-email');
-  var reqBtn = document.getElementById('gate-req-btn');
-  var reqSent = document.getElementById('gate-req-sent');
-  var mode = document.getElementById('gate-mode');
-  var pwMode = false;
-
   function unlock(){ gate.hidden = true; gate.style.display = 'none'; site.hidden = false; }
-  try { if (sessionStorage.getItem(KEY) === '1' || localStorage.getItem(EKEY) === '1') { unlock(); return; } } catch (e) {}
-
+  try { if (sessionStorage.getItem(KEY) === '1') { unlock(); return; } } catch (e) {}
   function sha256(str){
     var data = new TextEncoder().encode(str);
     return crypto.subtle.digest('SHA-256', data).then(function(buf){
       return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2, '0'); }).join('');
     });
   }
-
-  mode.addEventListener('click', function(e){
-    e.preventDefault(); pwMode = !pwMode;
-    err.hidden = true; req.hidden = true;
-    if (pwMode) {
-      input.type = 'password'; input.placeholder = 'Access password'; input.autocomplete = 'off';
-      intro.textContent = 'Enter the team access password to continue.';
-      mode.textContent = 'Enter with your email instead?';
-    } else {
-      input.type = 'email'; input.placeholder = 'Your work email'; input.autocomplete = 'email';
-      intro.textContent = 'This brief is for registered collaborators. Enter your email to view it; new emails are approved by the BYLD team.';
-      mode.textContent = 'Have the team password instead?';
-    }
-    input.value = ''; input.focus();
-  });
-
-  function showRequest(email){
-    reqEmail.textContent = email;
-    reqSent.hidden = true; reqBtn.hidden = false; req.hidden = false;
-    reqBtn.onclick = function(e){
-      e.preventDefault();
-      if (FORM) {
-        fetch(FORM, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email: email, page: 'El Boalo agency brief', message: 'Portal access request' }) })
-          .then(function(){ reqBtn.hidden = true; reqSent.hidden = false; })
-          .catch(function(){ location.href = mailtoFor(email); });
-      } else {
-        location.href = mailtoFor(email);
-        reqBtn.hidden = true; reqSent.hidden = false;
-      }
-    };
-  }
-  function mailtoFor(email){
-    return 'mailto:' + REQUEST_TO +
-      '?subject=' + encodeURIComponent('Portal access request — El Boalo brief') +
-      '&body=' + encodeURIComponent('Please approve ' + email + ' for the El Boalo collaborator brief.');
-  }
-
   form.addEventListener('submit', function(e){
-    e.preventDefault(); err.hidden = true; req.hidden = true;
-    var v = input.value.trim();
-    if (!v) { input.focus(); return; }
-    if (pwMode) {
-      sha256(v).then(function(h){
-        if (h === HASH.toLowerCase()) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} unlock(); }
-        else { err.hidden = false; input.value = ''; input.focus(); }
-      });
-    } else {
-      var email = v.toLowerCase();
-      sha256(email).then(function(h){
-        if (APPROVED.indexOf(h) !== -1) { try { localStorage.setItem(EKEY, '1'); } catch (e) {} unlock(); }
-        else { showRequest(email); }
-      });
-    }
+    e.preventDefault(); err.hidden = true;
+    sha256(form.password.value).then(function(h){
+      if (h === HASH.toLowerCase()) { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} unlock(); }
+      else { err.hidden = false; form.password.value = ''; form.password.focus(); }
+    });
   });
 })();
 </script>
