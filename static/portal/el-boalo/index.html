@@ -42,8 +42,8 @@
 
   /* landing title: logo lockup + place name */
   .landing{padding:clamp(64px,13vw,148px) 0 clamp(44px,7vw,84px);border-bottom:1px solid var(--line)}
-  .lockup{display:flex;align-items:baseline;gap:clamp(16px,2.6vw,34px);flex-wrap:wrap}
-  .lockup .mark{width:clamp(96px,13vw,176px);height:auto;flex:0 0 auto;transform:translateY(-0.06em)}
+  .lockup{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(18px,3vw,34px)}
+  .lockup .mark{width:clamp(96px,13vw,176px);height:auto;display:block}
   /* Lausanne ships no italic file, so a measured skew stands in for one:
      a browser-synthesised italic shears unevenly at display sizes. */
   .lockup .place{font-family:var(--font-display);font-weight:300;
@@ -152,14 +152,43 @@
   .lb-close{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;line-height:1;background:none;border:0;cursor:pointer}
 
   /* contact, matching the BYLD homepage */
-  .contact{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);color:var(--paper);
-    text-align:center;padding:clamp(56px,9vw,110px) var(--gutter)}
+  .contact{text-align:center;padding:clamp(56px,9vw,110px) 0}
   .contact .eyebrow{color:#9a9a9a}
   .contact h2{color:var(--paper);font-size:clamp(28px,4.4vw,48px);margin:14px 0 30px}
   .contact .btn-light{display:inline-block;background:#fff;color:var(--ink);border:1px solid #fff;
     border-radius:var(--radius);padding:14px 30px;font-size:15px;font-weight:500;font-family:var(--font-body)}
   .contact .btn-light:hover{background:transparent;color:#fff}
   .contact .note{color:#8a8a8a;font-size:12.5px;margin-top:22px}
+
+
+  /* tonal grounds: each section sits on its own value, painted full width */
+  section{background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax)}
+  section.t-mist{background:#f4f3f0;box-shadow:0 0 0 100vmax #f4f3f0}
+  section.t-stone{background:#eae8e3;box-shadow:0 0 0 100vmax #eae8e3}
+  section.t-slate{background:#dcd9d3;box-shadow:0 0 0 100vmax #dcd9d3}
+  section.t-ink{background:var(--ink);box-shadow:0 0 0 100vmax var(--ink);border-bottom:0;color:var(--paper)}
+  section.t-ink h2, section.t-ink h3{color:var(--paper)}
+  section.t-ink .lede, section.t-ink .gcap, section.t-ink .shead .idx{color:#9a9a9a}
+  section.t-ink .prose p{color:#dcdcdc}
+  section.t-ink .prose b{color:#fff}
+  section.t-ink .tw{border-color:#2a2a2a}
+  section.t-ink table{color:#dcdcdc}
+  section.t-ink thead th{background:#151515;color:#9a9a9a}
+  section.t-ink th, section.t-ink td{border-bottom-color:#2a2a2a}
+  section.t-ink tbody tr.me td{background:#151515;color:#fff}
+  section.t-ink .ladder{border-color:#2a2a2a}
+  section.t-ink .lgroup{color:#9a9a9a;border-bottom-color:#2a2a2a}
+  section.t-ink .ltrack{background:#242424}
+  section.t-ink .lfill.b{background:#fff}
+  section.t-ink .lfill.a{background:#565656}
+  section.t-ink .lfill.c{background:#8a8a8a}
+  section.t-ink .card{border-color:#2a2a2a}
+  section.t-ink .card .sub{color:#9a9a9a}
+  section.t-ink ul.clean li{border-left-color:#3a3a3a}
+  section.t-ink ul.clean li p{color:#9a9a9a}
+  section.t-ink .subhead{border-top-color:#2a2a2a}
+  section.t-ink .sources{color:#8a8a8a}
+  section.t-ink .sources b{color:#e8e8e8}
 
   .sources{font-size:12.5px;color:var(--muted);line-height:1.9}
   .sources b{color:var(--ink);font-weight:500}
@@ -242,7 +271,7 @@
   </button>
 
   <!-- 01 where -->
-  <section>
+  <section class="t-paper">
     <div class="shead"><span class="idx">01</span><h2>Where it is</h2></div>
     <p class="lede">Forty-five minutes north of Madrid, at the foot of the Sierra de Guadarrama National Park. Close enough to use every weekend, far enough to be another world.</p>
     <button class="colimg" data-src="photos/route-map.jpg" aria-label="Enlarge image">
@@ -251,7 +280,7 @@
     <p class="gcap">Door to door in about forty-five minutes: from Madrid Centro, up the A-6 or M-607, to the foot of the sierra.</p>
   </section>
 
-  <section>
+  <section class="t-mist">
     <div class="shead"><span class="idx">02</span><h2>The land</h2></div>
     <p class="lede">Meadow and dehesa rising into pine and granite, framed by dry-stone walls, with the Sierra de Guadarrama on the horizon.</p>
     <button class="colimg" data-src="photos/estate-aerial.jpg" aria-label="Enlarge image">
@@ -261,6 +290,7 @@
     <div class="gallery sm">
       <button class="gitem" data-src="photos/site-02.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-02.jpg" width="1600" height="1200" alt="Meadow and dehesa with the granite peaks of the sierra under a clear sky"></button>
       <button class="gitem" data-src="photos/site-03.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-03.jpg" width="1600" height="1200" alt="Surveying the estate from a granite outcrop over the valley"></button>
+      <button class="gitem" data-src="photos/site-04.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-04.jpg" width="1600" height="1200" alt="Autumn colour across the dehesa on the parcel"></button>
       <button class="gitem" data-src="photos/site-05.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-05.jpg" width="1600" height="1200" alt="Holm oak and dry-stone wall in golden meadow"></button>
       <button class="gitem" data-src="photos/site-06.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-06.jpg" width="1600" height="1200" alt="Dirt track crossing the land toward the sierra"></button>
       <button class="gitem" data-src="photos/site-07.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-07.jpg" width="1600" height="1200" alt="Dry-stone wall and dehesa below cloud-wrapped granite mountains"></button>
@@ -269,7 +299,7 @@
     <p class="gcap">Estate visualisation and site photography, January 2026 · Sector 1B, El Boalo. Click any image to enlarge.</p>
   </section>
 
-  <section>
+  <section class="t-paper">
     <div class="shead"><span class="idx">03</span><h2>What we are building</h2></div>
     <p class="lede">A low-density estate of villas set on the south-facing contours, with a wellness hotel and spa, a working farm and a sports club, and the majority of the land kept open as dehesa and trails. Simple buildings, few materials, the landscape left to do the work.</p>
     <div class="tw">
@@ -290,6 +320,10 @@
         </tbody>
       </table>
     </div>
+    <button class="colimg" data-src="photos/estate-overview.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/estate-overview.jpg" alt="The estate from the air at golden hour: villas on the contours, the hotel, courts, farm and playground, with La Pedriza behind and the village to the east">
+    </button>
+    <p class="gcap">The estate entire: villas on the western contours, the hotel and its gardens at the centre, courts and play to the east, the farm beyond, and the village on the far side of the road. Indicative visualisation.</p>
     <div class="ficha" style="margin-top:20px">
       <div class="fh"><span>The scheme</span><span>Sector 1B · Sierra de Guadarrama</span></div>
       <div class="frow"><span class="k">Estate</span><span class="v">70,484 m&sup2;</span></div>
@@ -310,6 +344,10 @@
       <button class="gitem" data-src="photos/play-courts-3.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/play-courts-3.jpg" alt="Timber play structures and outdoor training frames set in the dehesa, mountains across the valley"></button>
     </div>
     <p class="gcap">The sports club: padel and tennis, timber play structures and outdoor training in the dehesa. Indicative visualisations.</p>
+    <button class="colimg" data-src="photos/room-family.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/room-family.jpg" alt="From inside a room: the open glass wall looks onto the timber playground and the mountains beyond">
+    </button>
+    <p class="gcap">Play within sight of the room. Indicative visualisation.</p>
 
     <div class="prose" style="margin-top:22px">
       <p><b>The farm and the table.</b> The farm is being developed with local growers as a real agricultural operation rather than a decorative kitchen garden: the estate's produce, and the sierra's, on the table. Alongside it we are in talks with figures from the culinary world to pair the right restaurant with the incoming operator, so the food is a destination in its own right and not a hotel amenity. A restaurant people drive up from Madrid for brings the estate an audience of its own.</p>
@@ -322,25 +360,25 @@
     </div>
 
     <h3 class="subhead">What is for sale</h3>
-    <p class="lede">Homes in three tiers, and the hotel itself. The estate villas and suite villas are the product to take to private buyers; the hotel is available whole, to an operator or an investor.</p>
+    <p class="lede">One envelope of 17,621 m&sup2; on seven hectares, in five parts. The rooms and the villas sell to private buyers; the spa, restaurant and commercial sell separately, as a business.</p>
     <div class="tw">
       <table>
-        <thead><tr><th>Product</th><th class="r">Homes</th><th class="r">Typical size</th><th class="r">&euro;/m&sup2;</th><th class="r">Indicative price</th></tr></thead>
+        <thead><tr><th>Product</th><th class="r">Buildable</th><th class="r">&euro;/m&sup2;</th><th>Sold as</th></tr></thead>
         <tbody>
-          <tr><td><b>Estate villa</b></td><td class="r">~10&ndash;28</td><td class="r">~250 m&sup2;</td><td class="r">3,200&ndash;3,600</td><td class="r">from ~&euro;850,000</td></tr>
-          <tr><td><b>Suite villa &middot; branded</b></td><td class="r">~6&ndash;16</td><td class="r">~330 m&sup2;</td><td class="r">4,500&ndash;5,500</td><td class="r">from ~&euro;1.5M</td></tr>
-          <tr><td>Regulated homes</td><td class="r">~20&ndash;40</td><td class="r">~110 m&sup2;</td><td class="r">regulated</td><td class="r">public register</td></tr>
+          <tr><td><b>Hotel rooms</b></td><td class="r">5,286 m&sup2;</td><td class="r">4,500&ndash;5,500</td><td>Individually, owned outright, managed and let by the hotel</td></tr>
+          <tr><td><b>Villas</b></td><td class="r">5,392 m&sup2;</td><td class="r">3,200&ndash;3,600</td><td>Freehold, in a range of sizes, on their own plots</td></tr>
+          <tr><td><b>Spa, restaurant &amp; commercial</b></td><td class="r">5,110 m&sup2;</td><td class="r">2,800&ndash;3,200</td><td>Separately, as an income-producing asset</td></tr>
+          <tr><td>Regulated homes &middot; VPP</td><td class="r">3,524 m&sup2;</td><td class="r">~1,800</td><td>Public register, outside the agency mandate</td></tr>
+          <tr><td>Parking</td><td class="r">1,762 m&sup2;</td><td class="r">with the unit</td><td>Allocated pro rata to the rooms and the homes</td></tr>
         </tbody>
-        <tfoot><tr><td>Within the planning envelope</td><td class="r">up to 78</td><td class="r"></td><td class="r"></td><td class="r"></td></tr></tfoot>
       </table>
     </div>
-    <p class="gcap">Mix, sizes and prices are indicative within the planning envelope and will be fixed at Plan Parcial. Regulated homes are allocated through the public register and sit outside the agency mandate.</p>
+    <p class="gcap">Areas are from the current development brief and will be fixed at Plan Parcial. VPP is sold at the regulated ceiling for this price zone.</p>
     <div class="prose" style="margin-top:22px">
-      <p><b>The hotel is also for sale.</b> We are in talks with a select group of operators. What is offered is the hotel together with the management contract that comes with it: the wellness hotel, spa, restaurant and sports club as a single asset, and the agreement under which the operator runs them and services the suite villas. The buyer holds the property, the operating business, and the recurring revenue from the residences the hotel manages and lets.</p>
-      <p>Available turnkey on completion, or earlier in partnership on the design and the programme. By negotiation.</p>
-    </div>
-    <div class="prose" style="margin-top:22px">
-      <p>The two tiers, defined. <b>Estate villas</b> are freehold homes on their own plots with full access to everything the estate offers, services taken as wanted. <b>Suite villas</b> are the branded tier: private villas that live inside the hotel's world. Owned outright on the finest plots and delivered turnkey, they are serviced daily as suites of the hotel, and when you are away the hotel lets them for you. Your villa earns as a suite in the weeks it would otherwise stand empty.</p>
+      <p><b>The rooms.</b> Standalone rooms across the estate, sold individually and owned outright. They stay inside the hotel's world: serviced daily, and let by the hotel whenever the owner is away, so the room earns in the weeks it would otherwise stand empty.</p>
+      <p><b>The villas.</b> Freehold homes in a range of sizes on their own plots, with full access to everything the estate offers.</p>
+      <p><b>The spa, restaurant and commercial.</b> Sold separately as the operating heart of the estate, together with the management contract over the rooms. We are in talks with a select group of operators, and with figures from the culinary world to pair the right restaurant with them.</p>
+      <p><b>The regulated homes.</b> Placed between the estate and the pueblo, and built to the same architectural standard as everything else here. They are the estate's edge onto the village, so they are designed as a piece of the village.</p>
     </div>
     <button class="colimg" data-src="photos/suite-villa.jpg" aria-label="Enlarge image">
       <img loading="lazy" src="photos/suite-villa.jpg" alt="Inside a suite villa at dusk: a circular glass courtyard around an olive tree, bedroom and living room in warm light, the sierra beyond">
@@ -364,7 +402,7 @@
   </button>
 
 
-  <section>
+  <section class="t-stone">
     <div class="shead"><span class="idx">04</span><h2>Market analysis</h2></div>
     <p class="lede">The buyer lives in Madrid. More than 100,000 households in the region have the income or wealth to buy here, the wealth sits in the corridor facing the sierra, and one in three of the high earners already owns a second home. We are building where their money already wants to be.</p>
     <div class="cols">
@@ -405,7 +443,7 @@
   </section>
 
 
-  <section>
+  <section class="t-paper">
     <div class="shead"><span class="idx">05</span><h2>Comparables</h2></div>
     <p class="lede">Europe's serviced, branded destination retreats. Two dozen are set out here on the dimensions that drive value: proximity to a major city, where El Boalo leads, price per m&sup2;, climate and operator.</p>
     <div class="tw">
@@ -453,20 +491,20 @@
     <span class="tag">The estate table &middot; indicative visualisation</span>
   </button>
 
-  <section>
+  <section class="t-mist">
     <div class="shead"><span class="idx">06</span><h2>The estate can grow</h2></div>
     <p class="lede">The land around the sector is available to us, and we intend to take it.</p>
     <div class="prose">
       <p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and it <b>secures the horizon in perpetuity</b>: nothing is ever built between these homes and the sierra.</p>
       <p>For a buyer, that is the difference between a view and an owned view. It widens the estate from seven hectares to a landholding measured in tens, and it gives the scheme room to add further phases of homes and hospitality as demand proves out.</p>
     </div>
-    <button class="colimg" data-src="photos/site-04.jpg" aria-label="Enlarge photo">
-      <img loading="lazy" src="photos/site-04.jpg" alt="Autumn colour across the dehesa surrounding the sector, granite hills behind">
+    <button class="colimg" data-src="photos/estate-masterplan.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/estate-masterplan.jpg" alt="The estate seen from high above at sunset, the surrounding dehesa and the village of El Boalo beyond">
     </button>
-    <p class="gcap">The land around the sector, in autumn. Site photography, January 2026.</p>
+    <p class="gcap">The estate in its landscape, and the land around it. Indicative visualisation.</p>
   </section>
 
-  <section>
+  <section class="t-ink">
     <div class="shead"><span class="idx">07</span><h2>A call to Madrid agents</h2></div>
     <p class="lede">Present the estate to your buyers and tell us what comes back. We are looking for hard signal, not opinion, and for the partners who will bring it to market with us.</p>
     <ul class="clean">
@@ -484,7 +522,7 @@
   </button>
 
   <!-- sources -->
-  <section>
+  <section class="t-mist">
     <div class="shead"><span class="idx">&sect;</span><h2>Sources</h2></div>
     <p class="sources">
       <b>Market &amp; catchment.</b> AEAT IRPF statistics by municipality and bracket (Pozuelo €88,011; Madrid 44% of €601k+ earners; affluent-pool sizing); INE Atlas de Renta, padrón and migration flows (EVR); INE Censo/ECEPOV 2021 (second-home stock and shares); Colegio de Registradores and Notariado (buyer origin, 2025); Knight Frank Madrid (internationals 55% of prime purchases); Parque Nacional de la Sierra de Guadarrama, visitor statistics 2024.<br>
@@ -494,7 +532,7 @@
     </p>
   </section>
 
-  <section class="contact">
+  <section class="contact t-ink">
     <p class="eyebrow">Contact</p>
     <h2>Take it to your buyers.</h2>
     <a class="btn-light" href="mailto:office@gobyld.com?subject=El%20Boalo%20%C2%B7%20Agency%20enquiry">Email us</a>
