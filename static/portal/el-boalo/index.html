@@ -138,6 +138,12 @@
   /* compact photo strip */
   .gallery.sm{grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:8px}
   .gallery.sm .gitem img{aspect-ratio:1/1}
+  /* swipeable site-photo carousel */
+  .carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;margin-top:8px;scrollbar-width:none}
+  .carousel::-webkit-scrollbar{display:none}
+  .carousel .gitem{flex:0 0 min(86%,820px);scroll-snap-align:start}
+  .carousel .gitem img{aspect-ratio:3/2;height:auto}
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:8px}
   .gitem{padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--radius);overflow:hidden;display:block}
   .gitem img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .5s ease;background:var(--paper-2)}
@@ -287,16 +293,16 @@
       <img loading="lazy" src="photos/estate-aerial.jpg" alt="Aerial view at dusk with the estate boundary traced in light, the village of El Boalo beyond">
     </button>
     <p class="gcap">The estate, outlined: seven hectares traced in light, the village beyond, and a further twenty hectares of protected countryside around it. Click any image to enlarge.</p>
-    <div class="gallery sm">
-      <button class="gitem" data-src="photos/site-02.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-02.jpg" width="1600" height="1200" alt="Meadow and dehesa with the granite peaks of the sierra under a clear sky"></button>
-      <button class="gitem" data-src="photos/site-03.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-03.jpg" width="1600" height="1200" alt="Surveying the estate from a granite outcrop over the valley"></button>
-      <button class="gitem" data-src="photos/site-04.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-04.jpg" width="1600" height="1200" alt="Autumn colour across the dehesa on the parcel"></button>
-      <button class="gitem" data-src="photos/site-05.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-05.jpg" width="1600" height="1200" alt="Holm oak and dry-stone wall in golden meadow"></button>
-      <button class="gitem" data-src="photos/site-06.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-06.jpg" width="1600" height="1200" alt="Dirt track crossing the land toward the sierra"></button>
-      <button class="gitem" data-src="photos/site-07.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-07.jpg" width="1600" height="1200" alt="Dry-stone wall and dehesa below cloud-wrapped granite mountains"></button>
-      <button class="gitem" data-src="photos/site-08.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-08.jpg" width="1600" height="1200" alt="Open green meadow and dry-stone wall under a dramatic sky"></button>
+    <div class="carousel">
+      <button class="gitem" data-src="photos/site-02.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-02.jpg" alt="Meadow and dehesa with the granite peaks of the sierra under a clear sky"></button>
+      <button class="gitem" data-src="photos/site-03.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-03.jpg" alt="Surveying the estate from a granite outcrop over the valley"></button>
+      <button class="gitem" data-src="photos/site-04.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-04.jpg" alt="Autumn colour across the dehesa on the parcel"></button>
+      <button class="gitem" data-src="photos/site-05.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-05.jpg" alt="Holm oak and dry-stone wall in golden meadow"></button>
+      <button class="gitem" data-src="photos/site-06.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-06.jpg" alt="Dirt track crossing the land toward the sierra"></button>
+      <button class="gitem" data-src="photos/site-07.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-07.jpg" alt="Dry-stone wall and dehesa below cloud-wrapped granite mountains"></button>
+      <button class="gitem" data-src="photos/site-08.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-08.jpg" alt="Open green meadow and dry-stone wall under a dramatic sky"></button>
     </div>
-    <p class="gcap">Estate visualisation and site photography, January 2026 · Sector 1B, El Boalo. Click any image to enlarge.</p>
+    <p class="gcap">Site photography, January 2026 &middot; Sector 1B, El Boalo. Swipe or scroll sideways to walk the land; click any image to enlarge.</p>
   </section>
 
   <section class="t-paper">
@@ -348,9 +354,15 @@
       <img loading="lazy" src="photos/room-family.jpg" alt="From inside a room: the open glass wall looks onto the timber playground and the mountains beyond">
     </button>
     <p class="gcap">Play within sight of the room. Indicative visualisation.</p>
+    <div class="gallery">
+      <button class="gitem" data-src="photos/life-mountain.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-mountain.jpg" alt="A climber above the valley at dawn, rope on the pack, La Pedriza and the village below"></button>
+      <button class="gitem" data-src="photos/life-riding.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-riding.jpg" alt="Two riders on the ca&ntilde;ada at golden hour, dry-stone walls and the sierra ahead"></button>
+      <button class="gitem" data-src="photos/life-snow.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-snow.jpg" alt="Skiing above the valley at sunset, the reservoir and villages far below"></button>
+    </div>
+    <p class="gcap">The mountain, the ca&ntilde;adas, the snow: the same view in three seasons. Indicative visualisations.</p>
 
     <div class="prose" style="margin-top:22px">
-      <p><b>The farm and the table.</b> The farm is being developed with local growers as a real agricultural operation rather than a decorative kitchen garden: the estate's produce, and the sierra's, on the table. Alongside it we are in talks with figures from the culinary world to pair the right restaurant with the incoming operator, so the food is a destination in its own right and not a hotel amenity. A restaurant people drive up from Madrid for brings the estate an audience of its own.</p>
+      <p><b>The farm and the table.</b> The farm is being developed with local growers as a real agricultural operation rather than a decorative kitchen garden, and we are looking to extend it across the 200,000 m&sup2; of protected landscape around the sector: the estate's produce, and the sierra's, on the table. Alongside it we are in talks with figures from the culinary world to pair the right restaurant with the incoming operator, so the food is a destination in its own right and not a hotel amenity. A restaurant people drive up from Madrid for brings the estate an audience of its own.</p>
     </div>
 
 
@@ -496,6 +508,7 @@
     <p class="lede">The land around the sector is available to us, and we intend to take it.</p>
     <div class="prose">
       <p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and it <b>secures the horizon in perpetuity</b>: nothing is ever built between these homes and the sierra.</p>
+      <p>We are looking to farm the 200,000 m&sup2; of protected landscape around the sector and fold it into the life of the estate. Grazing, olives and field crops supply the restaurant; the land becomes the guests' walking and riding country; and the hotel draws on what its own landscape produces. The surroundings are not a buffer, they are part of the operation, and they are what makes the hotel sustainable in the plain sense of the word.</p>
       <p>For a buyer, that is the difference between a view and an owned view. It widens the estate from seven hectares to a landholding measured in tens, and it gives the scheme room to add further phases of homes and hospitality as demand proves out.</p>
     </div>
     <button class="colimg" data-src="photos/estate-masterplan.jpg" aria-label="Enlarge image">
