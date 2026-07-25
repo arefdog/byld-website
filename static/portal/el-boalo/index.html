@@ -112,22 +112,13 @@
   .bleed .tag{position:absolute;left:clamp(20px,5vw,64px);bottom:18px;font-family:var(--font-body);
     font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(10,10,10,.55);
     padding:7px 12px;border-radius:var(--radius);backdrop-filter:blur(6px)}
-  /* half-bleed split: image touches the viewport edge, text keeps the page gutter */
-  .split{width:100vw;margin-left:calc(50% - 50vw);display:grid;grid-template-columns:1fr 1fr;align-items:stretch;margin-top:26px;margin-bottom:8px}
-  .split .media{position:relative;padding:0;border:0;background:none;cursor:zoom-in;display:block}
-  .split .media img{display:block;width:100%;height:100%;min-height:340px;max-height:600px;object-fit:cover}
-  .split .media .tag{position:absolute;left:18px;bottom:14px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:#fff;background:rgba(10,10,10,.55);padding:6px 10px;border-radius:var(--radius);backdrop-filter:blur(6px)}
-  .split .txt{display:flex;align-items:center}
-  .split .txt .inner{max-width:470px;padding:40px clamp(20px,5vw,64px);margin:0 auto}
-  .split .txt p{font-size:15px;line-height:1.65}
-  .split .txt p+p{margin-top:12px}
-  .split .txt .gcap{margin-top:16px}
-  @media(max-width:760px){.split{grid-template-columns:1fr}.split .media img{min-height:260px;max-height:380px}.split .txt .inner{padding:26px var(--gutter);max-width:none}}
-  /* asymmetric image pair */
-  .duo{display:grid;grid-template-columns:1.55fr 1fr;gap:10px;margin-top:20px}
+  /* column feature: exactly the text column's width, aligned to the type */
+  .colimg{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;margin-top:22px}
+  .colimg img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  /* equal pair: two images, identical size, one gap */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
   @media(max-width:640px){.duo{grid-template-columns:1fr}}
-  .duo .gitem img{aspect-ratio:auto;height:100%;min-height:240px}
+  .duo .gitem img{aspect-ratio:3/2}
   /* compact photo strip */
   .gallery.sm{grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:8px}
   .gallery.sm .gitem img{aspect-ratio:1/1}
@@ -216,16 +207,11 @@
   <!-- gallery -->
   <section>
     <div class="shead"><span class="idx">&#9702;</span><h2>The site</h2></div>
-    <div class="split">
-      <div class="txt"><div class="inner">
-        <p class="lede" style="margin-bottom:0">Meadow and dehesa rising into pine and granite, framed by dry-stone walls, with the Sierra de Guadarrama on the horizon.</p>
-        <p class="gcap">Seven hectares traced in light, the village beyond, and a further twenty hectares of protected countryside around it. Click any image to enlarge.</p>
-      </div></div>
-      <button class="media" data-src="photos/estate-aerial.jpg" aria-label="Enlarge image">
-        <img loading="lazy" src="photos/estate-aerial.jpg" alt="Aerial view at dusk with the estate boundary traced in light, the village of El Boalo beyond">
-        <span class="tag">The estate, outlined</span>
-      </button>
-    </div>
+    <p class="lede">Meadow and dehesa rising into pine and granite, framed by dry-stone walls, with the Sierra de Guadarrama on the horizon.</p>
+    <button class="colimg" data-src="photos/estate-aerial.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/estate-aerial.jpg" alt="Aerial view at dusk with the estate boundary traced in light, the village of El Boalo beyond">
+    </button>
+    <p class="gcap">The estate, outlined: seven hectares traced in light, the village beyond, and a further twenty hectares of protected countryside around it. Click any image to enlarge.</p>
     <div class="gallery sm">
       <button class="gitem" data-src="photos/site-02.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-02.jpg" width="1600" height="1200" alt="Meadow and dehesa with the granite peaks of the sierra under a clear sky"></button>
       <button class="gitem" data-src="photos/site-03.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-03.jpg" width="1600" height="1200" alt="Surveying the estate from a granite outcrop over the valley"></button>
@@ -271,11 +257,6 @@
     <p class="gcap">An estate villa at dusk, and one of the hotel's standalone rooms in the landscape. Indicative visualisations.</p>
   </section>
 
-  <button class="bleed" data-src="photos/life-pool.jpg" aria-label="Enlarge image">
-    <img loading="lazy" src="photos/life-pool.jpg" alt="The sports pavilion and natural stone pool at golden hour, yoga on the deck, the granite sierra beyond">
-    <span class="tag">The wellness club &middot; indicative visualisation</span>
-  </button>
-
   <!-- 02 -->
   <section>
     <div class="shead"><span class="idx">02</span><h2>Who it is for</h2></div>
@@ -286,24 +267,25 @@
       <div class="card"><div class="big num">1 in 3</div><div class="sub">High-income Spanish households own a second home, and Madrid households hold the country's largest second-home stock.</div></div>
       <div class="card"><div class="big num">+82%</div><div class="sub">Population growth in El Boalo over twenty years, driven by Madrid families moving to the sierra.</div></div>
     </div>
-    <div class="split">
-      <button class="media" data-src="photos/route-map.jpg" aria-label="Enlarge image">
-        <img loading="lazy" src="photos/route-map.jpg" alt="Aerial map tracing the route from Madrid Centro north to El Boalo at the foot of the Sierra de Guadarrama">
-        <span class="tag">Madrid to the estate &middot; 45 minutes</span>
-      </button>
-      <div class="txt"><div class="inner">
-        <p>Three buyers, all already in Madrid. <b>Families making the sierra their primary home:</b> the corridor's growth is Madrid families moving out, and El Boalo has grown 82% on the strength of it. <b>Households buying the weekend home they will actually use:</b> a third of high-income Spanish households own a second home, and the sierra is the only escape 45 minutes from the office rather than four hours down the coast. <b>Madrid's internationals:</b> 1.2 million foreign residents, taking 55% of the capital's prime purchases.</p>
-        <p class="gcap">Door to door in about forty-five minutes: from Madrid Centro, up the A-6 or M-607, to the foot of the sierra.</p>
-      </div></div>
-    </div>
+    <button class="colimg" data-src="photos/route-map.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/route-map.jpg" alt="Aerial map tracing the route from Madrid Centro north to El Boalo at the foot of the Sierra de Guadarrama">
+    </button>
+    <p class="gcap">Door to door in about forty-five minutes: from Madrid Centro, up the A-6 or M-607, to the foot of the sierra.</p>
     <div class="prose" style="margin-top:22px">
+      <p>Three buyers, all already in Madrid. <b>Families making the sierra their primary home:</b> the corridor's growth is Madrid families moving out, and El Boalo has grown 82% on the strength of it. <b>Households buying the weekend home they will actually use:</b> a third of high-income Spanish households own a second home, and the sierra is the only escape 45 minutes from the office rather than four hours down the coast. <b>Madrid's internationals:</b> 1.2 million foreign residents, taking 55% of the capital's prime purchases.</p>
       <p>And the estate recruits its own buyers: 1.2 million people visit the national park on this slope every year, and <b>guests who come for a night at the hotel become owners</b>. The hotel is the shop window: the sierra has no five-star address, and Madrid's luxury hotels are all in the city.</p>
     </div>
-    <div class="gallery" style="margin-top:20px">
-      <button class="gitem feature" data-src="photos/hotel-lobby.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby.jpg" width="1536" height="1024" style="aspect-ratio:21/9" alt="The hotel lobby at dusk: reception, estate shop, café bar and lounges under a timber ceiling, the sierra through the glass"></button>
+    <div class="duo">
+      <button class="gitem" data-src="photos/hotel-lobby.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby.jpg" alt="The hotel lobby at dusk: reception, estate shop and café bar under a timber ceiling, the sierra through the glass"></button>
+      <button class="gitem" data-src="photos/hotel-lobby-2.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-2.jpg" alt="The hotel lounge at golden hour: low sofas and stone tables facing the olive grove and the mountains"></button>
     </div>
-    <p class="gcap">The shop window itself: reception, the estate shop, caf&eacute; and lounge, open to the sierra. Indicative visualisation.</p>
+    <p class="gcap">The shop window itself: reception, shop, caf&eacute; and lounge, open to the sierra. Indicative visualisations.</p>
   </section>
+
+  <button class="bleed" data-src="photos/life-pool.jpg" aria-label="Enlarge image">
+    <img loading="lazy" src="photos/life-pool.jpg" alt="The sports pavilion and natural stone pool at golden hour, yoga on the deck, the granite sierra beyond">
+    <span class="tag">The wellness club &middot; indicative visualisation</span>
+  </button>
 
   <!-- 03 -->
   <section>
@@ -321,16 +303,13 @@
       </table>
     </div>
     <p class="gcap">Mix, sizes and prices are indicative within the planning envelope and will be fixed at Plan Parcial. Regulated homes are allocated through the public register and sit outside the agency mandate.</p>
-    <div class="split">
-      <div class="txt"><div class="inner">
-        <p>The two tiers, defined. <b>Estate villas</b> are freehold homes on their own plots with full access to everything the estate offers, services taken as wanted. <b>Suite villas</b> are the branded tier: private villas that live inside the hotel's world. Owned outright on the finest plots and delivered turnkey, they are serviced daily as suites of the hotel, and when you are away the hotel lets them for you. Your villa earns as a suite in the weeks it would otherwise stand empty.</p>
-        <p class="gcap">The suite villa: a hotel suite that is also your home. Indicative visualisation.</p>
-      </div></div>
-      <button class="media" data-src="photos/suite-villa.jpg" aria-label="Enlarge image">
-        <img loading="lazy" src="photos/suite-villa.jpg" alt="Inside a suite villa at dusk: a circular glass courtyard around an olive tree, bedroom and living room in warm light, the sierra beyond">
-        <span class="tag">The suite villa</span>
-      </button>
+    <div class="prose" style="margin-top:22px">
+      <p>The two tiers, defined. <b>Estate villas</b> are freehold homes on their own plots with full access to everything the estate offers, services taken as wanted. <b>Suite villas</b> are the branded tier: private villas that live inside the hotel's world. Owned outright on the finest plots and delivered turnkey, they are serviced daily as suites of the hotel, and when you are away the hotel lets them for you. Your villa earns as a suite in the weeks it would otherwise stand empty.</p>
     </div>
+    <button class="colimg" data-src="photos/suite-villa.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/suite-villa.jpg" alt="Inside a suite villa at dusk: a circular glass courtyard around an olive tree, bedroom and living room in warm light, the sierra beyond">
+    </button>
+    <p class="gcap">The suite villa: a hotel suite that is also your home. Indicative visualisation.</p>
     <div class="prose" style="margin-top:22px">
       <p>Alongside the homes, owners buy into the estate itself: <b>the hotel and spa, the farm, the sports club and the dehesa commons</b>, with trails, dark skies and a horizon that stays open. That is the difference between a house in the sierra and a residence on a serviced estate, and it is what the branded tier is priced on.</p>
     </div>
@@ -342,11 +321,6 @@
     </div>
     <p class="gcap">Life on the estate: the spa, the deck, the table, the saddle. Indicative visualisations.</p>
   </section>
-
-  <button class="bleed" data-src="photos/life-restaurant.jpg" aria-label="Enlarge image">
-    <img loading="lazy" src="photos/life-restaurant.jpg" alt="The estate restaurant terrace at sunset: pergola, stone walls, fire pit and the sierra beyond">
-    <span class="tag">The estate table &middot; indicative visualisation</span>
-  </button>
 
   <!-- 04 -->
   <section>
@@ -411,26 +385,24 @@
     </div>
   </section>
 
+  <button class="bleed" data-src="photos/life-restaurant.jpg" aria-label="Enlarge image">
+    <img loading="lazy" src="photos/life-restaurant.jpg" alt="The estate restaurant terrace at sunset: pergola, stone walls, fire pit and the sierra beyond">
+    <span class="tag">The estate table &middot; indicative visualisation</span>
+  </button>
+
   <!-- 06 -->
   <section>
     <div class="shead"><span class="idx">06</span><h2>The estate can grow</h2></div>
     <p class="lede">The land around the sector is available to us, and we intend to take it.</p>
-    <div class="split">
-      <button class="media" data-src="photos/masterplan-vision.jpg" aria-label="Enlarge image">
-        <img loading="lazy" src="photos/masterplan-vision.jpg" alt="Aerial vision of the estate threaded through dehesa, boulders and trails">
-        <span class="tag">The estate vision &middot; indicative</span>
-      </button>
-      <div class="txt"><div class="inner">
-        <p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and it <b>secures the horizon in perpetuity</b>: nothing is ever built between these homes and the sierra.</p>
-        <p>For a buyer, that is the difference between a view and an owned view. It widens the estate from seven hectares to a landholding measured in tens, and it gives the scheme room to add further phases of homes and hospitality as demand proves out.</p>
-      </div></div>
+    <div class="prose">
+      <p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and it <b>secures the horizon in perpetuity</b>: nothing is ever built between these homes and the sierra.</p>
+      <p>For a buyer, that is the difference between a view and an owned view. It widens the estate from seven hectares to a landholding measured in tens, and it gives the scheme room to add further phases of homes and hospitality as demand proves out.</p>
     </div>
+    <button class="colimg" data-src="photos/masterplan-vision.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/masterplan-vision.jpg" alt="Aerial vision of the estate threaded through dehesa, boulders and trails">
+    </button>
+    <p class="gcap">The estate vision from above. Indicative visualisation.</p>
   </section>
-
-  <button class="bleed" data-src="photos/site-01.jpg" aria-label="Enlarge photo">
-    <img loading="lazy" src="photos/site-01.jpg" alt="Golden meadow and dry-stone wall below the granite Sierra de Guadarrama">
-    <span class="tag">The horizon the estate secures &middot; site photography, January 2026</span>
-  </button>
 
   <!-- 07 -->
   <section>
@@ -444,6 +416,11 @@
       <li><b>Reservation intent.</b><p>Expressions of interest and reservation appetite off-plan, with the deposit level buyers will commit at.</p></li>
     </ul>
   </section>
+
+  <button class="bleed" data-src="photos/site-01.jpg" aria-label="Enlarge photo">
+    <img loading="lazy" src="photos/site-01.jpg" alt="Golden meadow and dry-stone wall below the granite Sierra de Guadarrama">
+    <span class="tag">The horizon the estate secures &middot; site photography, January 2026</span>
+  </button>
 
   <!-- sources -->
   <section>
@@ -477,7 +454,7 @@
   var lb = document.getElementById('lb'), img = document.getElementById('lb-img');
   function open(src, alt){ img.src = src; img.alt = alt || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
   function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src = ''; }
-  document.querySelectorAll('.gitem, .bleed, .split .media').forEach(function(b){
+  document.querySelectorAll('.gitem, .bleed, .colimg').forEach(function(b){
     b.addEventListener('click', function(){
       var im = b.querySelector('img');
       open(b.getAttribute('data-src'), im ? im.alt : '');
