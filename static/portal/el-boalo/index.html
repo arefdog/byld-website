@@ -138,6 +138,16 @@
   /* compact photo strip */
   .gallery.sm{grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:8px}
   .gallery.sm .gitem img{aspect-ratio:1/1}
+  /* programme cards */
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:8px}
+  @media(max-width:680px){.pgrid{grid-template-columns:1fr}}
+  .pcard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
+  .pcard .pmedia{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+  .pcard .pmedia img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+  .pcard .pbody{padding:18px 20px 20px}
+  .pcard h3{font-size:19px;margin-bottom:8px}
+  .pcard p{font-size:14.5px;color:var(--muted)}
+  section.t-mist .pcard{background:#fff;border-color:#e0ded8}
   /* swipeable site-photo carousel */
   .carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;margin-top:8px;scrollbar-width:none}
@@ -297,7 +307,6 @@
       <button class="gitem" data-src="photos/site-02.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-02.jpg" alt="Meadow and dehesa with the granite peaks of the sierra under a clear sky"></button>
       <button class="gitem" data-src="photos/site-03.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-03.jpg" alt="Surveying the estate from a granite outcrop over the valley"></button>
       <button class="gitem" data-src="photos/site-04.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-04.jpg" alt="Autumn colour across the dehesa on the parcel"></button>
-      <button class="gitem" data-src="photos/site-05.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-05.jpg" alt="Holm oak and dry-stone wall in golden meadow"></button>
       <button class="gitem" data-src="photos/site-06.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-06.jpg" alt="Dirt track crossing the land toward the sierra"></button>
       <button class="gitem" data-src="photos/site-07.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-07.jpg" alt="Dry-stone wall and dehesa below cloud-wrapped granite mountains"></button>
       <button class="gitem" data-src="photos/site-08.jpg" aria-label="Enlarge photo"><img loading="lazy" src="photos/site-08.jpg" alt="Open green meadow and dry-stone wall under a dramatic sky"></button>
@@ -308,24 +317,6 @@
   <section class="t-paper">
     <div class="shead"><span class="idx">03</span><h2>What we are building</h2></div>
     <p class="lede">A low-density estate of villas set on the south-facing contours, with a wellness hotel and spa, a working farm and a sports club, and the majority of the land kept open as dehesa and trails. Simple buildings, few materials, the landscape left to do the work.</p>
-    <div class="tw">
-      <table>
-        <thead><tr><th>Element</th><th>What it is</th></tr></thead>
-        <tbody>
-          <tr><td><b>The residences</b></td><td>A select number of homes and hotel rooms, in a range of configurations, stepped along the south and south-east contours for sun, views and privacy, each in its own landscape setting</td></tr>
-          <tr><td><b>Wellness hotel &amp; spa</b></td><td>A boutique hotel and spa on the access contour, serving owners and guests, and making every home a serviced residence</td></tr>
-          <tr><td><b>Farm &amp; table</b></td><td>A working farm and kitchen garden on the east meadow, developed with local farmers, feeding a restaurant meant to be a destination in itself</td></tr>
-          <tr><td><b>Courts &amp; play</b></td><td>Padel and tennis, pools, a fitness pavilion, and timber play structures for children</td></tr>
-          <tr><td><b>Bike hub &amp; trails</b></td><td>Mountain-bike and gravel trails through the dehesa, a workshop and secure storage, and road routes to the sierra passes from the door</td></tr>
-          <tr><td><b>Climbing &amp; mountain</b></td><td>Guided climbing and bouldering on La Pedriza, nearly a thousand routes minutes away; walking and trail running from the gate; La Maliciosa (2,222 m) above the village</td></tr>
-          <tr><td><b>Water</b></td><td>Embalse de Santillana, ten minutes away: open-water swimming, paddle and kayak, birdwatching</td></tr>
-          <tr><td><b>Snow</b></td><td>Navacerrada and Valdesqu&iacute; about thirty minutes further up the sierra, and the peaks under snow from the estate all winter</td></tr>
-          <tr><td><b>Riding</b></td><td>On the ca&ntilde;adas and drove roads with the established local stables</td></tr>
-          <tr><td><b>Dehesa commons &amp; dark skies</b></td><td>Half the estate held open: trails along the dry-stone-wall spines, stargazing, low lighting by design, no fences</td></tr>
-          <tr><td><b>The village</b></td><td>The estate opens to Mataelpino's boloencierro and the harvest calendar: local producers at the table, festival weekends</td></tr>
-        </tbody>
-      </table>
-    </div>
     <button class="colimg" data-src="photos/estate-overview.jpg" aria-label="Enlarge image">
       <img loading="lazy" src="photos/estate-overview.jpg" alt="The estate from the air at golden hour: villas on the contours, the hotel, courts, farm and playground, with La Pedriza behind and the village to the east">
     </button>
@@ -346,24 +337,11 @@
     </div>
     <p class="gcap">An estate villa at dusk, and one of the hotel's standalone rooms in the landscape. Indicative visualisations.</p>
     <div class="duo">
-      <button class="gitem" data-src="photos/play-courts.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/play-courts.jpg" alt="The sports club: padel and tennis courts beside the adventure playground and pergola caf&eacute;, the sierra behind"></button>
       <button class="gitem" data-src="photos/play-courts-3.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/play-courts-3.jpg" alt="Timber play structures and outdoor training frames set in the dehesa, mountains across the valley"></button>
+      <button class="gitem" data-src="photos/room-family.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/room-family.jpg" alt="From inside a room: the open glass wall looks onto the timber playground and the mountains beyond"></button>
     </div>
-    <p class="gcap">The sports club: padel and tennis, timber play structures and outdoor training in the dehesa. Indicative visualisations.</p>
-    <button class="colimg" data-src="photos/room-family.jpg" aria-label="Enlarge image">
-      <img loading="lazy" src="photos/room-family.jpg" alt="From inside a room: the open glass wall looks onto the timber playground and the mountains beyond">
-    </button>
-    <p class="gcap">Play within sight of the room. Indicative visualisation.</p>
-    <div class="gallery">
-      <button class="gitem" data-src="photos/life-mountain.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-mountain.jpg" alt="A climber above the valley at dawn, rope on the pack, La Pedriza and the village below"></button>
-      <button class="gitem" data-src="photos/life-riding.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-riding.jpg" alt="Two riders on the ca&ntilde;ada at golden hour, dry-stone walls and the sierra ahead"></button>
-      <button class="gitem" data-src="photos/life-snow.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-snow.jpg" alt="Skiing above the valley at sunset, the reservoir and villages far below"></button>
-    </div>
-    <p class="gcap">The mountain, the ca&ntilde;adas, the snow: the same view in three seasons. Indicative visualisations.</p>
+    <p class="gcap">Timber play in the dehesa, within sight of the room. Indicative visualisations.</p>
 
-    <div class="prose" style="margin-top:22px">
-      <p><b>The farm and the table.</b> The farm is being developed with local growers as a real agricultural operation rather than a decorative kitchen garden, and we are looking to extend it across the 200,000 m&sup2; of protected landscape around the sector: the estate's produce, and the sierra's, on the table. Alongside it we are in talks with figures from the culinary world to pair the right restaurant with the incoming operator, so the food is a destination in its own right and not a hotel amenity. A restaurant people drive up from Madrid for brings the estate an audience of its own.</p>
-    </div>
 
 
     <div class="prose" style="margin-top:26px">
@@ -399,13 +377,36 @@
     <div class="prose" style="margin-top:22px">
       <p>Alongside the homes, owners buy into the estate itself: <b>the hotel and spa, the farm, the sports club and the dehesa commons</b>, with trails, dark skies and a horizon that stays open. That is the difference between a house in the sierra and a residence on a serviced estate, and it is what the branded tier is priced on.</p>
     </div>
-    <div class="gallery" style="margin-top:20px">
-      <button class="gitem" data-src="photos/life-spa.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-spa.jpg" alt="The spa: thermal pools and daybeds under a timber ceiling, open to the olive grove and the mountains"></button>
+    <div class="duo">
       <button class="gitem" data-src="photos/life-yoga.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-yoga.jpg" alt="The studio: a circular yoga and meditation hall under an oculus, glass walls to the dehesa"></button>
-      <button class="gitem" data-src="photos/life-farm.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-farm.jpg" alt="The kitchen garden: raised beds and an open fire kitchen under the pergola, harvest on the table"></button>
       <button class="gitem" data-src="photos/life-table.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-table.jpg" alt="The farm restaurant from above: terraces, fire pit and music between the gardens and the valley"></button>
     </div>
-    <p class="gcap">Life on the estate: the spa, the studio, the garden, the table. Indicative visualisations.</p>
+    <p class="gcap">The studio, and the farm restaurant from above. Indicative visualisations.</p>
+  </section>
+
+  <section class="t-mist">
+    <div class="shead"><span class="idx">04</span><h2>The programme</h2></div>
+    <p class="lede">Built on what the area is already known for. Every part of it exists to put guests and owners straight into the landscape, and each one gives the hotel another reason to be visited.</p>
+    <div class="pgrid">
+      <div class="pcard"><button class="pmedia" data-src="photos/life-spa.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-spa.jpg" alt="The spa: thermal pools and daybeds under a timber ceiling, open to the olive grove and the mountains"></button><div class="pbody"><h3>Wellness hotel &amp; spa</h3><p>A boutique hotel and spa on the access contour, serving owners and guests, and making every home a serviced residence</p></div></div>
+      <div class="pcard"><button class="pmedia" data-src="photos/life-farm.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-farm.jpg" alt="The kitchen garden: raised beds and an open fire kitchen under the pergola, harvest on the table"></button><div class="pbody"><h3>Farm &amp; table</h3><p>A working farm and kitchen garden on the east meadow, developed with local farmers, feeding a restaurant meant to be a destination in itself</p></div></div>
+      <div class="pcard"><button class="pmedia" data-src="photos/play-courts.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/play-courts.jpg" alt="The sports club: padel and tennis courts beside the adventure playground and pergola caf&eacute;, the sierra behind"></button><div class="pbody"><h3>Courts &amp; play</h3><p>Padel and tennis, pools, a fitness pavilion, and timber play structures for children</p></div></div>
+      <div class="pcard"><button class="pmedia" data-src="photos/life-mountain.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-mountain.jpg" alt="A climber above the valley at dawn, rope on the pack, La Pedriza and the village below"></button><div class="pbody"><h3>Climbing &amp; mountain</h3><p>Guided climbing and bouldering on La Pedriza, nearly a thousand routes minutes away; walking and trail running from the gate; La Maliciosa (2,222 m) above the village</p></div></div>
+      <div class="pcard"><button class="pmedia" data-src="photos/life-riding.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-riding.jpg" alt="Two riders on the ca&ntilde;ada at golden hour, dry-stone walls and the sierra ahead"></button><div class="pbody"><h3>Riding</h3><p>On the ca&ntilde;adas and drove roads with the established local stables</p></div></div>
+      <div class="pcard"><button class="pmedia" data-src="photos/life-snow.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/life-snow.jpg" alt="Skiing above the valley at sunset, the reservoir and villages far below"></button><div class="pbody"><h3>Snow</h3><p>Navacerrada and Valdesqu&iacute; about thirty minutes further up the sierra, and the peaks under snow from the estate all winter</p></div></div>
+      <div class="pcard"><button class="pmedia" data-src="photos/site-05.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/site-05.jpg" alt="Holm oak and dry-stone wall in golden meadow"></button><div class="pbody"><h3>Dehesa commons &amp; dark skies</h3><p>Half the estate held open: trails along the dry-stone-wall spines, stargazing, low lighting by design, no fences</p></div></div>
+      <div class="pcard"><div class="pbody"><h3>Bike hub &amp; trails</h3><p>Mountain-bike and gravel trails through the dehesa, a workshop and secure storage, and road routes to the sierra passes from the door</p></div></div>
+      <div class="pcard"><div class="pbody"><h3>Water</h3><p>Embalse de Santillana, ten minutes away: open-water swimming, paddle and kayak, birdwatching</p></div></div>
+      <div class="pcard"><div class="pbody"><h3>The village</h3><p>The estate opens to Mataelpino&rsquo;s boloencierro and the harvest calendar: local producers at the table, festival weekends</p></div></div>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <p><b>The farm and the table.</b> The farm is being developed with local growers as a real agricultural operation rather than a decorative kitchen garden, and we are looking to extend it across the 200,000 m&sup2; of protected landscape around the sector: the estate's produce, and the sierra's, on the table. Alongside it we are in talks with figures from the culinary world to pair the right restaurant with the incoming operator, so the food is a destination in its own right and not a hotel amenity. A restaurant people drive up from Madrid for brings the estate an audience of its own.</p>
+    </div>
+    <button class="colimg" data-src="photos/farming.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/farming.jpg" alt="The working farm at golden hour: greenhouses, market rows and grazing horses below the sierra, the harvest laid on the table">
+    </button>
+    <p class="gcap">The farm as a working operation: greenhouses, market rows, grazing, and the harvest on the table. Indicative visualisation.</p>
+    <p class="gcap">Skiing, climbing and the reservoir are the sierra&rsquo;s own; the estate organises them. Indicative visualisations throughout.</p>
   </section>
 
   <button class="bleed" data-src="photos/wellness-club.jpg" aria-label="Enlarge image">
@@ -415,7 +416,7 @@
 
 
   <section class="t-stone">
-    <div class="shead"><span class="idx">04</span><h2>Market analysis</h2></div>
+    <div class="shead"><span class="idx">05</span><h2>Market analysis</h2></div>
     <p class="lede">The buyer lives in Madrid. More than 100,000 households in the region have the income or wealth to buy here, the wealth sits in the corridor facing the sierra, and one in three of the high earners already owns a second home. We are building where their money already wants to be.</p>
     <div class="cols">
       <div class="card"><div class="big num">100,000+</div><div class="sub">Madrid households with the income or wealth to buy at our price points. Madrid holds 44% of Spain's top earners.</div></div>
@@ -456,7 +457,7 @@
 
 
   <section class="t-paper">
-    <div class="shead"><span class="idx">05</span><h2>Comparables</h2></div>
+    <div class="shead"><span class="idx">06</span><h2>Comparables</h2></div>
     <p class="lede">Europe's serviced, branded destination retreats. Two dozen are set out here on the dimensions that drive value: proximity to a major city, where El Boalo leads, price per m&sup2;, climate and operator.</p>
     <div class="tw">
       <table>
@@ -504,21 +505,22 @@
   </button>
 
   <section class="t-mist">
-    <div class="shead"><span class="idx">06</span><h2>The estate can grow</h2></div>
+    <div class="shead"><span class="idx">07</span><h2>The estate can grow</h2></div>
     <p class="lede">The land around the sector is available to us, and we intend to take it.</p>
     <div class="prose">
       <p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and it <b>secures the horizon in perpetuity</b>: nothing is ever built between these homes and the sierra.</p>
       <p>We are looking to farm the 200,000 m&sup2; of protected landscape around the sector and fold it into the life of the estate. Grazing, olives and field crops supply the restaurant; the land becomes the guests' walking and riding country; and the hotel draws on what its own landscape produces. The surroundings are not a buffer, they are part of the operation, and they are what makes the hotel sustainable in the plain sense of the word.</p>
       <p>For a buyer, that is the difference between a view and an owned view. It widens the estate from seven hectares to a landholding measured in tens, and it gives the scheme room to add further phases of homes and hospitality as demand proves out.</p>
     </div>
-    <button class="colimg" data-src="photos/estate-masterplan.jpg" aria-label="Enlarge image">
-      <img loading="lazy" src="photos/estate-masterplan.jpg" alt="The estate seen from high above at sunset, the surrounding dehesa and the village of El Boalo beyond">
-    </button>
-    <p class="gcap">The estate in its landscape, and the land around it. Indicative visualisation.</p>
+    <div class="duo">
+      <button class="gitem" data-src="photos/estate-masterplan.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/estate-masterplan.jpg" alt="The estate seen from high above at sunset, the surrounding dehesa and the village of El Boalo beyond"></button>
+      <button class="gitem" data-src="photos/growing-farms.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/growing-farms.jpg" alt="The same view with the surrounding land under cultivation: orchards, vines and field crops wrapping the estate"></button>
+    </div>
+    <p class="gcap">The estate today, and the estate once the land around it is farmed. Indicative visualisations.</p>
   </section>
 
   <section class="t-ink">
-    <div class="shead"><span class="idx">07</span><h2>A call to Madrid agents</h2></div>
+    <div class="shead"><span class="idx">08</span><h2>A call to Madrid agents</h2></div>
     <p class="lede">Present the estate to your buyers and tell us what comes back. We are looking for hard signal, not opinion, and for the partners who will bring it to market with us.</p>
     <ul class="clean">
       <li><b>Appetite at the price points.</b><p>Estate villas from ~&euro;850,000 and suite villas from ~&euro;1.5M. Where does interest concentrate, where does it break, and what are buyers looking for?</p></li>
@@ -573,7 +575,7 @@
   var lb = document.getElementById('lb'), img = document.getElementById('lb-img');
   function open(src, alt){ img.src = src; img.alt = alt || ''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
   function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src = ''; }
-  document.querySelectorAll('.gitem, .bleed, .colimg').forEach(function(b){
+  document.querySelectorAll('.gitem, .bleed, .colimg, .pmedia').forEach(function(b){
     b.addEventListener('click', function(){
       var im = b.querySelector('img');
       open(b.getAttribute('data-src'), im ? im.alt : '');
