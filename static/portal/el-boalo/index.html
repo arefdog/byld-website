@@ -40,6 +40,20 @@
   .brand{font-family:var(--font-display);font-size:18px;letter-spacing:0.02em}
   .brand b{font-weight:500}
 
+  /* landing title: logo lockup + place name */
+  .landing{padding:clamp(64px,13vw,148px) 0 clamp(44px,7vw,84px);border-bottom:1px solid var(--line)}
+  .lockup{display:flex;align-items:baseline;gap:clamp(16px,2.6vw,34px);flex-wrap:wrap}
+  .lockup .mark{width:clamp(96px,13vw,176px);height:auto;flex:0 0 auto;transform:translateY(-0.06em)}
+  /* Lausanne ships no italic file, so a measured skew stands in for one:
+     a browser-synthesised italic shears unevenly at display sizes. */
+  .lockup .place{font-family:var(--font-display);font-weight:300;
+    font-size:clamp(46px,11vw,132px);letter-spacing:-0.035em;line-height:.86;white-space:nowrap;
+    display:inline-block;transform:skewX(-10deg);transform-origin:0 100%;padding-right:.08em}
+  .landing .rule{height:1px;background:var(--line);margin:clamp(26px,4vw,44px) 0 0}
+  .landing .meta{display:flex;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin-top:16px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:520px){.lockup{gap:12px}.lockup .place{font-size:clamp(40px,15vw,64px)}}
+
   .hero{padding:clamp(48px,8vw,96px) 0 clamp(32px,5vw,52px);border-bottom:1px solid var(--line)}
   .hero .eyebrow{margin-bottom:22px}
   .hero h1{font-size:clamp(32px,6vw,58px);max-width:17ch}
@@ -62,6 +76,8 @@
   .shead{display:flex;gap:16px;align-items:baseline;margin-bottom:26px}
   .shead .idx{font-family:var(--font-body);font-size:12px;color:var(--muted);letter-spacing:.1em;padding-top:5px;min-width:26px}
   .shead h2{font-size:clamp(23px,3.2vw,32px);max-width:24ch}
+  .subhead{font-family:var(--font-display);font-weight:400;letter-spacing:-0.02em;
+    font-size:clamp(20px,2.6vw,26px);margin:40px 0 20px;padding-top:36px;border-top:1px solid var(--line)}
   .lede{font-size:17px;color:var(--muted);max-width:64ch;margin-bottom:26px;line-height:1.5}
   .prose p{max-width:68ch} .prose p+p{margin-top:14px}
   .prose b{font-weight:500}
@@ -135,6 +151,16 @@
   .lb img{max-width:96vw;max-height:92vh;object-fit:contain}
   .lb-close{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;line-height:1;background:none;border:0;cursor:pointer}
 
+  /* contact, matching the BYLD homepage */
+  .contact{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);color:var(--paper);
+    text-align:center;padding:clamp(56px,9vw,110px) var(--gutter)}
+  .contact .eyebrow{color:#9a9a9a}
+  .contact h2{color:var(--paper);font-size:clamp(28px,4.4vw,48px);margin:14px 0 30px}
+  .contact .btn-light{display:inline-block;background:#fff;color:var(--ink);border:1px solid #fff;
+    border-radius:var(--radius);padding:14px 30px;font-size:15px;font-weight:500;font-family:var(--font-body)}
+  .contact .btn-light:hover{background:transparent;color:#fff}
+  .contact .note{color:#8a8a8a;font-size:12.5px;margin-top:22px}
+
   .sources{font-size:12.5px;color:var(--muted);line-height:1.9}
   .sources b{color:var(--ink);font-weight:500}
   footer{padding:40px 0 72px}
@@ -185,8 +211,19 @@
 
 <div class="wrap">
 
+  <div class="landing">
+    <div class="lockup">
+      <img class="mark" src="/img/byld-logo-black.svg" alt="BYLD">
+      <span class="place">El Boalo</span>
+    </div>
+    <div class="rule"></div>
+    <div class="meta">
+      <span>Madrid Sierra &middot; Sector 1B</span>
+      <span>Agency brief &middot; 2026</span>
+    </div>
+  </div>
+
   <div class="hero">
-    <p class="eyebrow">Madrid Sierra · El Boalo · Sector 1B · Agency brief</p>
     <h1>A serviced mountain estate for Madrid, forty-five minutes from the city.</h1>
     <p class="stand">A private collection of villas and residences on a seven-hectare estate in the Sierra de Guadarrama, set within a further twenty hectares of protected countryside, all meadow, dehesa and granite, with a wellness hotel, spa and working farm at its heart. This is what we are building, who it is for, and what it sells for.</p>
     <span class="status"><span class="dot"></span><b>Designated residential land</b>&nbsp;· Sector 1B · Sierra de Guadarrama</span>
@@ -204,9 +241,18 @@
     <span class="tag">A room at the hotel &middot; indicative visualisation</span>
   </button>
 
-  <!-- gallery -->
+  <!-- 01 where -->
   <section>
-    <div class="shead"><span class="idx">&#9702;</span><h2>The site</h2></div>
+    <div class="shead"><span class="idx">01</span><h2>Where it is</h2></div>
+    <p class="lede">Forty-five minutes north of Madrid, at the foot of the Sierra de Guadarrama National Park. Close enough to use every weekend, far enough to be another world.</p>
+    <button class="colimg" data-src="photos/route-map.jpg" aria-label="Enlarge image">
+      <img loading="lazy" src="photos/route-map.jpg" alt="Aerial map tracing the route from Madrid Centro north to El Boalo at the foot of the Sierra de Guadarrama">
+    </button>
+    <p class="gcap">Door to door in about forty-five minutes: from Madrid Centro, up the A-6 or M-607, to the foot of the sierra.</p>
+  </section>
+
+  <section>
+    <div class="shead"><span class="idx">02</span><h2>The land</h2></div>
     <p class="lede">Meadow and dehesa rising into pine and granite, framed by dry-stone walls, with the Sierra de Guadarrama on the horizon.</p>
     <button class="colimg" data-src="photos/estate-aerial.jpg" aria-label="Enlarge image">
       <img loading="lazy" src="photos/estate-aerial.jpg" alt="Aerial view at dusk with the estate boundary traced in light, the village of El Boalo beyond">
@@ -223,9 +269,8 @@
     <p class="gcap">Estate visualisation and site photography, January 2026 · Sector 1B, El Boalo. Click any image to enlarge.</p>
   </section>
 
-  <!-- 01 -->
   <section>
-    <div class="shead"><span class="idx">01</span><h2>What we are building</h2></div>
+    <div class="shead"><span class="idx">03</span><h2>What we are building</h2></div>
     <p class="lede">A low-density estate of villas set on the south-facing contours, with a wellness hotel and spa, a working farm and a sports club, and the majority of the land kept open as dehesa and trails. Simple buildings, few materials, the landscape left to do the work.</p>
     <div class="tw">
       <table>
@@ -264,45 +309,8 @@
       <p><b>How it is built.</b> The design is deliberately simple. Buildings sit low and quiet in the landscape, using few materials and using them well: local granite, timber, lime render, glass where the view earns it. Nothing competes with the sierra.</p>
       <p>That simplicity is what carries the estate. Every structure exists to put people into the landscape rather than to shield them from it, and restraint in the building is what lets the land do the work. It is the most effective use of this site, and the most durable.</p>
     </div>
-  </section>
 
-  <!-- 02 -->
-  <section>
-    <div class="shead"><span class="idx">02</span><h2>Who it is for</h2></div>
-    <p class="lede">The buyer lives in Madrid. More than 100,000 households in the region have the income or wealth to buy here, the wealth sits in the corridor facing the sierra, and one in three of the high earners already owns a second home. We are building where their money already wants to be.</p>
-    <div class="cols">
-      <div class="card"><div class="big num">100,000+</div><div class="sub">Madrid households with the income or wealth to buy at our price points. Madrid holds 44% of Spain's top earners.</div></div>
-      <div class="card"><div class="big num">&euro;88,011</div><div class="sub">Average declared income in Pozuelo de Alarc&oacute;n, Spain's richest town, 35 minutes away. Five of Spain's ten wealthiest municipalities face the sierra.</div></div>
-      <div class="card"><div class="big num">1 in 3</div><div class="sub">High-income Spanish households own a second home, and Madrid households hold the country's largest second-home stock.</div></div>
-      <div class="card"><div class="big num">+82%</div><div class="sub">Population growth in El Boalo over twenty years, driven by Madrid families moving to the sierra.</div></div>
-    </div>
-    <button class="colimg" data-src="photos/route-map.jpg" aria-label="Enlarge image">
-      <img loading="lazy" src="photos/route-map.jpg" alt="Aerial map tracing the route from Madrid Centro north to El Boalo at the foot of the Sierra de Guadarrama">
-    </button>
-    <p class="gcap">Door to door in about forty-five minutes: from Madrid Centro, up the A-6 or M-607, to the foot of the sierra.</p>
-    <div class="prose" style="margin-top:22px">
-      <p>Three buyers, all already in Madrid. <b>Families making the sierra their primary home:</b> the corridor's growth is Madrid families moving out, and El Boalo has grown 82% on the strength of it. <b>Households buying the weekend home they will actually use:</b> a third of high-income Spanish households own a second home, and the sierra is the only escape 45 minutes from the office rather than four hours down the coast. <b>Madrid's internationals:</b> 1.2 million foreign residents, taking 55% of the capital's prime purchases.</p>
-      <p>And the estate recruits its own buyers: 1.2 million people visit the national park on this slope every year, and <b>guests who come for a night at the hotel become owners</b>. The hotel is the shop window: the sierra has no five-star address, and Madrid's luxury hotels are all in the city.</p>
-    </div>
-    <div class="duo">
-      <button class="gitem" data-src="photos/hotel-lobby.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby.jpg" alt="The hotel lobby at dusk: reception, estate shop and café bar under a timber ceiling, the sierra through the glass"></button>
-      <button class="gitem" data-src="photos/hotel-lobby-2.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-2.jpg" alt="The hotel lounge at golden hour: low sofas and stone tables facing the olive grove and the mountains"></button>
-    </div>
-    <div class="duo">
-      <button class="gitem" data-src="photos/hotel-lobby-3.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-3.jpg" alt="The great hall of the hotel: layered lounges around an open fire, the olive grove and mountains beyond the glass"></button>
-      <button class="gitem" data-src="photos/hotel-lobby-4.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-4.jpg" alt="The estate workspace: a curved glass library and study looking over the dehesa"></button>
-    </div>
-    <p class="gcap">The shop window itself: reception and shop, the caf&eacute; lounge, the great hall, and the estate workspace for the days you work from the sierra. Indicative visualisations.</p>
-  </section>
-
-  <button class="bleed" data-src="photos/wellness-club.jpg" aria-label="Enlarge image">
-    <img loading="lazy" src="photos/wellness-club.jpg" alt="The wellness club: pavilion, gym and natural stone pool at golden hour, yoga on the deck, the granite sierra beyond">
-    <span class="tag">The wellness club &middot; indicative visualisation</span>
-  </button>
-
-  <!-- 03 -->
-  <section>
-    <div class="shead"><span class="idx">03</span><h2>What is for sale</h2></div>
+    <h3 class="subhead">What is for sale</h3>
     <p class="lede">Homes in three tiers. The estate villas and suite villas are the product to take to buyers.</p>
     <div class="tw">
       <table>
@@ -335,9 +343,36 @@
     <p class="gcap">Life on the estate: the spa, the studio, the garden, the table. Indicative visualisations.</p>
   </section>
 
-  <!-- 04 -->
+  <button class="bleed" data-src="photos/wellness-club.jpg" aria-label="Enlarge image">
+    <img loading="lazy" src="photos/wellness-club.jpg" alt="The wellness club: pavilion, gym and natural stone pool at golden hour, yoga on the deck, the granite sierra beyond">
+    <span class="tag">The wellness club &middot; indicative visualisation</span>
+  </button>
+
+
   <section>
-    <div class="shead"><span class="idx">04</span><h2>Where the price sits</h2></div>
+    <div class="shead"><span class="idx">04</span><h2>Market analysis</h2></div>
+    <p class="lede">The buyer lives in Madrid. More than 100,000 households in the region have the income or wealth to buy here, the wealth sits in the corridor facing the sierra, and one in three of the high earners already owns a second home. We are building where their money already wants to be.</p>
+    <div class="cols">
+      <div class="card"><div class="big num">100,000+</div><div class="sub">Madrid households with the income or wealth to buy at our price points. Madrid holds 44% of Spain's top earners.</div></div>
+      <div class="card"><div class="big num">&euro;88,011</div><div class="sub">Average declared income in Pozuelo de Alarc&oacute;n, Spain's richest town, 35 minutes away. Five of Spain's ten wealthiest municipalities face the sierra.</div></div>
+      <div class="card"><div class="big num">1 in 3</div><div class="sub">High-income Spanish households own a second home, and Madrid households hold the country's largest second-home stock.</div></div>
+      <div class="card"><div class="big num">+82%</div><div class="sub">Population growth in El Boalo over twenty years, driven by Madrid families moving to the sierra.</div></div>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <p>Three buyers, all already in Madrid. <b>Families making the sierra their primary home:</b> the corridor's growth is Madrid families moving out, and El Boalo has grown 82% on the strength of it. <b>Households buying the weekend home they will actually use:</b> a third of high-income Spanish households own a second home, and the sierra is the only escape 45 minutes from the office rather than four hours down the coast. <b>Madrid's internationals:</b> 1.2 million foreign residents, taking 55% of the capital's prime purchases.</p>
+      <p>And the estate recruits its own buyers: 1.2 million people visit the national park on this slope every year, and <b>guests who come for a night at the hotel become owners</b>. The hotel is the shop window: the sierra has no five-star address, and Madrid's luxury hotels are all in the city.</p>
+    </div>
+    <div class="duo">
+      <button class="gitem" data-src="photos/hotel-lobby.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby.jpg" alt="The hotel lobby at dusk: reception, estate shop and café bar under a timber ceiling, the sierra through the glass"></button>
+      <button class="gitem" data-src="photos/hotel-lobby-2.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-2.jpg" alt="The hotel lounge at golden hour: low sofas and stone tables facing the olive grove and the mountains"></button>
+    </div>
+    <div class="duo">
+      <button class="gitem" data-src="photos/hotel-lobby-3.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-3.jpg" alt="The great hall of the hotel: layered lounges around an open fire, the olive grove and mountains beyond the glass"></button>
+      <button class="gitem" data-src="photos/hotel-lobby-4.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-4.jpg" alt="The estate workspace: a curved glass library and study looking over the dehesa"></button>
+    </div>
+    <p class="gcap">The shop window itself: reception and shop, the caf&eacute; lounge, the great hall, and the estate workspace for the days you work from the sierra. Indicative visualisations.</p>
+
+    <h3 class="subhead">Where the price sits</h3>
     <p class="lede">Priced against real villas, not averages: thirty-plus live listings across the sierra corridor, pulled July 2026. The estate villa matches what new design villas already ask in the ring; the suite villa carries the serviced premium that clears twenty minutes away today.</p>
     <div class="ladder">
       <div class="lgroup">The corridor today · &euro;/m&sup2;</div>
@@ -354,9 +389,9 @@
     <p class="gcap" style="margin-top:14px">Inner ring: quality 300 m&sup2;+ villas in El Boalo, Moralzarzal, Manzanares el Real, Becerril and Collado Mediano ask &euro;650k to &euro;1.2M. New design villas in the same towns ask 3,750 to 3,870 &euro;/m&sup2;. In Torrelodones, twenty minutes closer to Madrid, new villas ask up to 5,500 &euro;/m&sup2; and &euro;3.2M. The suite villa is that Torrelodones money, offered a hotel instead of a motorway.</p>
   </section>
 
-  <!-- 05 -->
+
   <section>
-    <div class="shead"><span class="idx">05</span><h2>The category we are entering</h2></div>
+    <div class="shead"><span class="idx">05</span><h2>Comparables</h2></div>
     <p class="lede">Europe's serviced, branded destination retreats. Two dozen are set out here on the dimensions that drive value: proximity to a major city, where El Boalo leads, price per m&sup2;, climate and operator.</p>
     <div class="tw">
       <table>
@@ -403,7 +438,6 @@
     <span class="tag">The estate table &middot; indicative visualisation</span>
   </button>
 
-  <!-- 06 -->
   <section>
     <div class="shead"><span class="idx">06</span><h2>The estate can grow</h2></div>
     <p class="lede">The land around the sector is available to us, and we intend to take it.</p>
@@ -417,7 +451,6 @@
     <p class="gcap">The land around the sector, in autumn. Site photography, January 2026.</p>
   </section>
 
-  <!-- 07 -->
   <section>
     <div class="shead"><span class="idx">07</span><h2>A call to Madrid agents</h2></div>
     <p class="lede">Present the estate to your buyers and tell us what comes back. We are looking for hard signal, not opinion, and for the partners who will bring it to market with us.</p>
@@ -444,6 +477,13 @@
       <b>Prices.</b> idealista / Fotocasa indices; Sociedad de Tasación (Madrid new-build €5,172/m²); Savills / Knight Frank branded-residence premiums. Peer retreats: published sales and prime-market data for each destination.<br>
       <b>Scheme.</b> Ficha urbanística Sector 1B, NNSS El Boalo (BOCM núm. 174, 25 Jul 2011); BYLD masterplan tool, map.gobyld.com.
     </p>
+  </section>
+
+  <section class="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Take it to your buyers.</h2>
+    <a class="btn-light" href="mailto:office@gobyld.com?subject=El%20Boalo%20%C2%B7%20Agency%20enquiry">Email us</a>
+    <p class="note">BYLD &middot; Calle Conde de Aranda 1, 28014 Madrid</p>
   </section>
 
   <footer>
