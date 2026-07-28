@@ -221,6 +221,29 @@
   section.t-ink .sources{color:#8a8a8a}
   section.t-ink .sources b{color:#e8e8e8}
 
+  /* altitude: the two-up comparison and the elevation profile */
+  .altlead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:4px}
+  .altlead .fig{font-family:var(--font-display);font-weight:300;font-size:clamp(44px,7vw,78px);
+    letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+  .altlead .fig small{font-size:.36em;letter-spacing:0;color:var(--muted);margin-left:.12em}
+  .altlead .qual{font-size:15.5px;color:var(--muted)}
+  .altpair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:560px){.altpair{grid-template-columns:1fr}}
+  .altpair .ac{border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;background:var(--paper-2)}
+  .altpair .ac .k{font-size:13.5px;color:var(--muted)}
+  .altpair .ac .v{font-family:var(--font-display);font-size:clamp(28px,4vw,38px);letter-spacing:-.03em;
+    line-height:1;margin-top:8px;font-variant-numeric:tabular-nums}
+  .altpair .ac.here .v{color:var(--bad)}
+  .altwhy{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  @media(max-width:720px){.altwhy{grid-template-columns:1fr}}
+  .altwhy .ac{border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .altwhy .ac .mk{display:block;width:13px;height:13px;border:1.5px solid var(--bad);margin-bottom:14px}
+  .altwhy .ac h4{font-family:var(--font-display);font-weight:400;font-size:17.5px;letter-spacing:-.015em}
+  .altwhy .ac p{font-size:14.5px;color:var(--muted);margin-top:8px;line-height:1.55}
+  .profile{margin-top:22px;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--paper);padding:8px 6px 4px;overflow-x:auto}
+  .profile svg{display:block;width:100%;min-width:560px;height:auto}
+
   .sources{font-size:12.5px;color:var(--muted);line-height:1.9}
   .sources b{color:var(--ink);font-weight:500}
   footer{padding:40px 0 72px}
@@ -304,11 +327,103 @@
   <!-- 01 where -->
   <section class="t-paper">
     <div class="shead"><span class="idx">01</span><h2>Where it is</h2></div>
-    <p class="lede">Forty-five minutes north of Madrid, at the foot of the Sierra de Guadarrama National Park. Close enough to use every weekend, far enough to be another world.</p>
+    <p class="lede">Forty-five minutes north of Madrid, at the foot of the Sierra de Guadarrama National Park, and a quarter of a kilometre above the city. Close enough to use every weekend, far enough to be another world.</p>
     <button class="colimg" data-src="photos/route-map.jpg" aria-label="Enlarge image">
       <img loading="lazy" src="photos/route-map.jpg" alt="Aerial map tracing the route from Madrid Centro north to El Boalo at the foot of the Sierra de Guadarrama">
     </button>
     <p class="gcap">Door to door in about forty-five minutes: from Madrid Centro, up the A-6 or M-607, to the foot of the sierra.</p>
+
+    <h3 class="subhead">How high it sits</h3>
+    <p class="lede">The drive is the easy part of the answer. What people actually move for is the height: the estate stands 253 metres above Madrid, and that is the difference between the city's air and the sierra's.</p>
+    <div class="altlead">
+      <span class="fig num">+253<small>m</small></span>
+      <span class="qual">higher than Madrid</span>
+    </div>
+    <p class="lede" style="margin-top:16px">El Boalo sits at 920 m, on the granite shelf where the meseta meets the Sierra de Guadarrama. That altitude is what changes the air you live in.</p>
+    <div class="altpair">
+      <div class="ac here"><div class="k">El Boalo</div><div class="v">920 m</div></div>
+      <div class="ac"><div class="k">Madrid</div><div class="v">667 m</div></div>
+    </div>
+    <div class="altwhy">
+      <div class="ac"><span class="mk" aria-hidden="true"></span><h4>Cooler summers</h4><p>Afternoons and especially nights run cooler than the city, the reason madrile&ntilde;os have escaped up here for generations.</p></div>
+      <div class="ac"><span class="mk" aria-hidden="true"></span><h4>Cleaner air</h4><p>Above the winter pollution haze that settles over Madrid, in mountain air coming straight off the Guadarrama.</p></div>
+      <div class="ac"><span class="mk" aria-hidden="true"></span><h4>Four real seasons</h4><p>Snow on the peaks in winter, green springs, and the national park on the doorstep year-round.</p></div>
+    </div>
+    <p class="gcap" style="margin-top:14px">Altitudes are exact; the climate benefits are directional, and are to be confirmed against AEMET station data before publishing hard figures.</p>
+
+    <p class="lede" style="margin-top:30px">Read across the range and the position explains itself. The estate is not in the mountains and not on the plain: it sits on the last shelf before the sierra rises, high enough to hold the climate, low enough to keep the road open and the drive short.</p>
+    <div class="profile">
+      <svg viewBox="0 0 1000 540" role="img" aria-label="Elevation profile from the Sierra de Guadarrama through El Boalo at 920 m down to Madrid at 667 m">
+        <defs>
+          <clipPath id="terrainclip">
+            <path d="M60,255 L200,78 L280,171 L380,156 L560,321 L830,362 L980,379 L980,470 L60,470 Z"></path>
+          </clipPath>
+        </defs>
+        <!-- gridlines -->
+        <g stroke="#e3e1dc" stroke-width="1">
+          <line x1="60" y1="66" x2="980" y2="66"></line>
+          <line x1="60" y1="147" x2="980" y2="147"></line>
+          <line x1="60" y1="228" x2="980" y2="228"></line>
+          <line x1="60" y1="308" x2="980" y2="308"></line>
+          <line x1="60" y1="389" x2="980" y2="389"></line>
+          <line x1="60" y1="470" x2="980" y2="470"></line>
+        </g>
+        <g font-family="Helvetica Now, Helvetica, Arial, sans-serif" font-size="13" fill="#6b6b6b" text-anchor="end">
+          <text x="52" y="70">2,500 m</text>
+          <text x="52" y="151">2,000 m</text>
+          <text x="52" y="232">1,500 m</text>
+          <text x="52" y="312">1,000 m</text>
+          <text x="52" y="393">500 m</text>
+          <text x="52" y="474">0 m</text>
+        </g>
+        <!-- the site column -->
+        <rect x="536" y="60" width="48" height="410" fill="#9a3a2b" opacity="0.07"></rect>
+        <!-- terrain -->
+        <path d="M60,255 L200,78 L280,171 L380,156 L560,321 L830,362 L980,379 L980,470 L60,470 Z"
+              fill="#d9cbb2"></path>
+        <!-- snow above ~1,780 m -->
+        <g clip-path="url(#terrainclip)">
+          <rect x="60" y="40" width="920" height="142" fill="#e8eef4"></rect>
+        </g>
+        <path d="M60,255 L200,78 L280,171 L380,156 L560,321 L830,362 L980,379"
+              fill="none" stroke="#6b5b43" stroke-width="2"></path>
+        <!-- peaks -->
+        <g stroke="#8a8a8a" stroke-width="1" stroke-dasharray="3 3">
+          <line x1="200" y1="78" x2="200" y2="46"></line>
+          <line x1="380" y1="156" x2="380" y2="124"></line>
+          <line x1="830" y1="362" x2="830" y2="330"></line>
+        </g>
+        <g fill="#fff" stroke="#6b5b43" stroke-width="2">
+          <circle cx="200" cy="78" r="5"></circle>
+          <circle cx="380" cy="156" r="5"></circle>
+        </g>
+        <circle cx="830" cy="362" r="6" fill="#2f5fb8"></circle>
+        <g font-family="Lausanne, Helvetica Now, Helvetica, Arial, sans-serif" fill="#0a0a0a" text-anchor="middle">
+          <text x="200" y="34" font-size="19">Pe&ntilde;alara</text>
+          <text x="380" y="112" font-size="19">La Pe&ntilde;ota</text>
+          <text x="830" y="318" font-size="19">Madrid</text>
+        </g>
+        <g font-family="Helvetica Now, Helvetica, Arial, sans-serif" font-size="14" fill="#6b6b6b" text-anchor="middle">
+          <text x="200" y="54">2,428 m</text>
+          <text x="380" y="132">1,945 m</text>
+          <text x="830" y="338">667 m</text>
+        </g>
+        <!-- the site -->
+        <circle cx="560" cy="321" r="16" fill="#9a3a2b" opacity="0.16"></circle>
+        <circle cx="560" cy="321" r="8" fill="#9a3a2b" stroke="#fff" stroke-width="2.5"></circle>
+        <line x1="574" y1="313" x2="640" y2="268" stroke="#9a3a2b" stroke-width="1" stroke-dasharray="3 3"></line>
+        <rect x="640" y="206" width="260" height="66" rx="4" fill="#ffffff" stroke="#e3e1dc" stroke-width="1"></rect>
+        <text x="660" y="234" font-family="Lausanne, Helvetica Now, Helvetica, Arial, sans-serif" font-size="19" fill="#0a0a0a">El Boalo &middot; 920 m</text>
+        <text x="660" y="256" font-family="Helvetica Now, Helvetica, Arial, sans-serif" font-size="14" fill="#6b6b6b">the shelf at the foot of the sierra</text>
+        <!-- baseline -->
+        <g font-family="Helvetica Now, Helvetica, Arial, sans-serif" font-size="14" fill="#6b6b6b">
+          <text x="60" y="506" font-size="15" fill="#0a0a0a" font-weight="500">NW</text>
+          <text x="520" y="506" text-anchor="middle">Sierra de Guadarrama &rarr; El Boalo &rarr; cuenca del Tajo</text>
+          <text x="980" y="506" text-anchor="end" font-size="15" fill="#0a0a0a" font-weight="500">SE</text>
+        </g>
+      </svg>
+    </div>
+    <p class="gcap">Northwest to southeast across the range: the high Guadarrama, the estate on the shelf at 920 m, then the long fall to Madrid at 667 m. Peak and settlement altitudes are exact; the ground between them is a schematic section, not a survey.</p>
   </section>
 
   <section class="t-mist">
