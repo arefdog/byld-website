@@ -131,10 +131,11 @@
   .r{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-display)}
   .tw tr.me td{background:var(--paper-2);font-weight:500}
 
-  ul.clean{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
-  ul.clean li{border-left:2px solid var(--line-dark);padding:4px 0 4px 18px}
-  ul.clean li b{font-weight:500}
-  ul.clean li p{font-size:14px;color:var(--muted);margin-top:3px}
+  ul.clean{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px}
+  ul.clean li{border-left:2px solid var(--line-dark);padding:2px 0 2px 18px}
+  ul.clean li b{display:block;font-family:var(--font-display);font-weight:400;font-size:17.5px;
+    letter-spacing:-0.015em;line-height:1.2}
+  ul.clean li p{font-size:14.5px;color:var(--muted);margin-top:6px;line-height:1.55;max-width:66ch}
 
   body{overflow-x:clip}
   .bleed{width:100vw;margin-left:calc(50% - 50vw);position:relative;display:block;padding:0;border:0;background:none;cursor:zoom-in}
@@ -431,17 +432,49 @@
 
   <section class="t-stone">
     <div class="shead"><span class="idx">05</span><h2>Market analysis</h2></div>
-    <p class="lede">The buyer lives in Madrid. More than 100,000 households in the region have the income or wealth to buy here, the wealth sits in the corridor facing the sierra, and one in three of the high earners already owns a second home. We are building where their money already wants to be.</p>
+    <p class="lede">The buyer lives in Madrid. Some 65,000 declarations in the region clear &euro;150,000 a year, the wealth sits in the corridor facing the sierra, and two thirds of those households have yet to buy a second home. We are building where their money already wants to be.</p>
     <div class="cols">
-      <div class="card"><div class="big num">100,000+</div><div class="sub">Madrid households with the income or wealth to buy at our price points. Madrid holds 44% of Spain's top earners.</div></div>
+      <div class="card"><div class="big num">64,640</div><div class="sub">Madrid tax declarations above &euro;150,000 a year, of which 6,573 above &euro;601,000. That is the income that carries a purchase here, and Madrid holds 44% of Spain's top earners.</div></div>
       <div class="card"><div class="big num">&euro;88,011</div><div class="sub">Average declared income in Pozuelo de Alarc&oacute;n, Spain's richest town, 35 minutes away. Five of Spain's ten wealthiest municipalities face the sierra.</div></div>
-      <div class="card"><div class="big num">1 in 3</div><div class="sub">High-income Spanish households own a second home, and Madrid households hold the country's largest second-home stock.</div></div>
+      <div class="card"><div class="big num">2 in 3</div><div class="sub">Households earning over &euro;5,000 a month do not yet own a second home, and those that do hold it on the coast, hours away. The sierra is the only second-home market 45 minutes from the office, and it has no serviced stock.</div></div>
       <div class="card"><div class="big num">+82%</div><div class="sub">Population growth in El Boalo over twenty years, driven by Madrid families moving to the sierra.</div></div>
     </div>
-    <div class="prose" style="margin-top:22px">
-      <p>Three buyers, all already in Madrid. <b>Families making the sierra their primary home:</b> the corridor's growth is Madrid families moving out, and El Boalo has grown 82% on the strength of it. <b>Households buying the weekend home they will actually use:</b> a third of high-income Spanish households own a second home, and the sierra is the only escape 45 minutes from the office rather than four hours down the coast. <b>Madrid's internationals:</b> 1.2 million foreign residents, taking 55% of the capital's prime purchases.</p>
-      <p>And the estate recruits its own buyers: 1.2 million people visit the national park on this slope every year, and <b>guests who come for a night at the hotel become owners</b>. The hotel is the shop window: the sierra has no five-star address, and Madrid's luxury hotels are all in the city.</p>
+    <h3 class="subhead">Three buyers, all already in Madrid</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Buyer</th><th class="r">Pool</th><th>Buys</th><th>What to test</th></tr></thead>
+        <tbody>
+          <tr><td><b>Sierra primary movers</b><br><span style="color:var(--muted);font-size:13px">Madrid families relocating to the corridor</span></td>
+            <td class="r">400&ndash;650 households a year</td>
+            <td>Estate villa &middot; from ~&euro;850k</td><td>Schools, year-round living, the commute</td></tr>
+          <tr><td><b>Second-home buyers</b><br><span style="color:var(--muted);font-size:13px">High-income Madrid, no second home yet</span></td>
+            <td class="r">~45,000 households</td>
+            <td>Estate villa and suite villa</td><td>Weekend use against the coast</td></tr>
+          <tr><td><b>Madrid internationals</b><br><span style="color:var(--muted);font-size:13px">1.2M foreign residents, 45% of prime purchases</span></td>
+            <td class="r">1.2M residents</td>
+            <td>Suite villa &middot; from ~&euro;1.5M</td><td>Serviced, lock-and-leave, the brand</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="gcap">Each buyer maps to a product and a question. Section 08 asks you to test exactly these. Movers are net padr&oacute;n growth across the seven corridor towns at 2.5 people per household; second-home pool is the &euro;150k+ declarations less the share already holding one.</p>
+
+    <h3 class="subhead">The ask, against the pool</h3>
+    <div class="stats" style="margin-top:0">
+      <div class="stat"><div class="fig num">78</div><div class="cap">Homes to sell</div></div>
+      <div class="stat"><div class="fig num">1<small> in 830</small></div><div class="cap">Of &euro;150k+ households</div></div>
+      <div class="stat"><div class="fig num">3.7<small>%</small></div><div class="cap">Of annual corridor sales</div></div>
+      <div class="stat"><div class="fig num">&lt;4<small> mo</small></div><div class="cap">Prime time to sell</div></div>
+    </div>
+    <p class="gcap" style="margin-top:14px">The corridor already closes ~2,100 dwelling sales a year across the ten towns. Selling the estate out means taking under four of every hundred. The question is not whether Madrid absorbs it, but which buyer moves first.</p>
+
+    <h3 class="subhead">Why now</h3>
+    <ul class="clean">
+      <li><b>Madrid prime is compounding.</b><p>Five to six per cent a year, three years running. Knight Frank names Madrid Europe's strongest prime market again for 2026.</p></li>
+      <li><b>New build has set a record.</b><p>&euro;5,172/m&sup2; in the city, December 2025, up 10.7% on the year and the highest in the series.</p></li>
+      <li><b>The corridor has nothing to sell.</b><p>A handful of townhouse and semi-detached schemes in the pipeline, none of them serviced. The estate arrives into a market repricing upward with nothing like it to buy.</p></li>
+      <li><b>The hotel recruits its own buyers.</b><p>1.2 million people visit the national park on this slope every year, and guests who come for a night become owners. The sierra has no five-star address, and Madrid's luxury hotels are all in the city.</p></li>
+    </ul>
+
     <div class="duo">
       <button class="gitem" data-src="photos/hotel-lobby-3.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-3.jpg" alt="The great hall of the hotel: layered lounges around an open fire, the olive grove and mountains beyond the glass"></button>
       <button class="gitem" data-src="photos/hotel-lobby-4.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/hotel-lobby-4.jpg" alt="The estate workspace: a curved glass library and study looking over the dehesa"></button>
@@ -463,6 +496,15 @@
       <div class="lrow"><span>Torrelodones luxury tier</span><div class="ltrack"><div class="lfill c" style="width:91%"></div></div><span class="lv">to 5,500</span></div>
     </div>
     <p class="gcap" style="margin-top:14px">Inner ring: quality 300 m&sup2;+ villas in El Boalo, Moralzarzal, Manzanares el Real, Becerril and Collado Mediano ask &euro;650k to &euro;1.2M. New design villas in the same towns ask 3,750 to 3,870 &euro;/m&sup2;. In Torrelodones, twenty minutes closer to Madrid, new villas ask up to 5,500 &euro;/m&sup2; and &euro;3.2M. The suite villa is that Torrelodones money, offered a hotel instead of a motorway.</p>
+    <p class="gcap" style="margin-top:10px">And the corridor clears at these levels: the average Torrelodones purchase reached ~&euro;935,000 in 2025 with transactions up 10%, and prime homes there now sell in under four months, down from six to eight a year earlier. The ten corridor towns together closed ~2,100 dwelling sales in 2024 and again in 2025.</p>
+
+    <h3 class="subhead">Reading the pricing honestly</h3>
+    <p class="lede">Three things carry this pricing. We would rather set them out than have you find them.</p>
+    <ul class="clean">
+      <li><b>The step up from resale &middot; &euro;2,060 &rarr; &euro;3,400/m&sup2;</b><p>What sits between those numbers is everything the resale house does not have: new build, the hotel and spa, the farm, and a horizon that stays open. New design villas in these same towns already fetch &euro;3,750 with none of that behind them, so most of the step is already proven in the corridor.</p></li>
+      <li><b>The operator &middot; not yet signed</b><p>The suite-villa tier is priced with a named operator on the estate. Talks are under way; until a brand is signed, read that tier against the estate villa.</p></li>
+      <li><b>The timeline &middot; fixed at Plan Parcial</b><p>Areas and counts are indicative within the planning envelope until then, and reservations are expressions of interest, not contracts.</p></li>
+    </ul>
   </section>
 
 
@@ -501,11 +543,46 @@
       </table>
     </div>
     <p class="gcap">&euro;/m&sup2; disclosed from published sales where available, otherwise an estimate from the local prime market. Per-unit prices shown where sold whole. Metro figures are population; CHF converted at ~1.05. Drive times approximate.</p>
+    <p class="lede" style="margin-top:26px">Four things read straight off the table.</p>
+    <ul class="clean">
+      <li><b>We enter at the floor of the category.</b><p>The band runs from around &euro;4,375/m&sup2; up through the &euro;6&ndash;15k Mediterranean, Tuscan and lake estates to &euro;16&ndash;25k in the high Alps and the Aman tier. Our pricing sits at the entry, with the whole category above us.</p></li>
+      <li><b>No peer combines what we have.</b><p>A metropolitan market of 7.1 million, larger than Lisbon or Athens, forty-five minutes away, and a genuine mountain landscape. The city-adjacent peers are urban seafront, not countryside. The great rural estates sit two to three hours from Rome or Athens. We have both.</p></li>
+      <li><b>Four seasons, so demand runs all year.</b><p>At 920 m the estate is a cool-air escape from Madrid's summers, has snow within reach in winter, and temperate spring and autumn. The Mediterranean peers are summer-led and the Alpine peers winter-led. We are open, and sought after, in every month.</p></li>
+      <li><b>The brand premium is there to take &middot; +39%</b><p>Branded residences in resort locations command a 39% premium over unbranded stock, the highest of any setting, against a 33% global average. An operator affiliation on this estate captures that uplift directly.</p></li>
+    </ul>
+
+    <h3 class="subhead">What each retreat charges over its own city</h3>
+    <p class="lede">A retreat is bought by the city that feeds it, so the honest test of price is the multiple it asks over that city's own housing, set against what that city can pay. On that test every peer charges a premium. We are the only one asking less than the city behind us.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Retreat</th><th>Feeder city</th><th class="r">City &euro;/m&sup2;</th><th class="r">Retreat &euro;/m&sup2;</th><th class="r">Multiple</th><th class="r">City GDP/cap</th></tr></thead>
+        <tbody>
+          <tr><td>Reschio</td><td>Perugia</td><td class="r">1,221</td><td class="r">~12,500</td><td class="r">10.2&times;</td><td class="r">32,600</td></tr>
+          <tr><td>Amanzoe</td><td>Athens</td><td class="r">2,580</td><td class="r">~20,000</td><td class="r">7.8&times;</td><td class="r">36,700</td></tr>
+          <tr><td>One&amp;Only Aesthesis</td><td>Athens</td><td class="r">2,580</td><td class="r">~16,000</td><td class="r">6.2&times;</td><td class="r">36,700</td></tr>
+          <tr><td>Lefay</td><td>Verona</td><td class="r">2,816</td><td class="r">~10,000</td><td class="r">3.6&times;</td><td class="r">42,200</td></tr>
+          <tr><td>Rosewood Castiglion del Bosco</td><td>Florence</td><td class="r">4,733</td><td class="r">~14,000</td><td class="r">3.0&times;</td><td class="r">39,500</td></tr>
+          <tr><td>The Ellinikon Riviera</td><td>Athens</td><td class="r">2,580</td><td class="r">7,630</td><td class="r">3.0&times;</td><td class="r">36,700</td></tr>
+          <tr><td>Finca Cortesin</td><td>M&aacute;laga</td><td class="r">3,784</td><td class="r">~11,000</td><td class="r">2.9&times;</td><td class="r">26,000</td></tr>
+          <tr><td>La Zagaleta</td><td>M&aacute;laga</td><td class="r">3,784</td><td class="r">~9,000</td><td class="r">2.4&times;</td><td class="r">26,000</td></tr>
+          <tr><td>Costa Navarino</td><td>Kalamata</td><td class="r">2,461</td><td class="r">5,760</td><td class="r">2.3&times;</td><td class="r">22,000</td></tr>
+          <tr><td>Quinta do Lago</td><td>Faro</td><td class="r">3,870</td><td class="r">~8,000</td><td class="r">2.1&times;</td><td class="r">33,400</td></tr>
+          <tr><td>Argentario</td><td>Rome</td><td class="r">3,758</td><td class="r">~8,000</td><td class="r">2.1&times;</td><td class="r">43,800</td></tr>
+          <tr><td>Son Vida</td><td>Palma</td><td class="r">5,257</td><td class="r">~10,000</td><td class="r">1.9&times;</td><td class="r">38,200</td></tr>
+          <tr><td>Muda Reserve</td><td>Lisbon</td><td class="r">6,107</td><td class="r">~11,000</td><td class="r">1.8&times;</td><td class="r">48,800</td></tr>
+          <tr><td>Tegernsee estates</td><td>Munich</td><td class="r">7,855</td><td class="r">~12,500</td><td class="r">1.6&times;</td><td class="r">66,600</td></tr>
+          <tr><td>Sotogrande</td><td>M&aacute;laga</td><td class="r">3,784</td><td class="r">~6,000</td><td class="r">1.6&times;</td><td class="r">26,000</td></tr>
+          <tr><td>Terre Blanche</td><td>Nice</td><td class="r">5,216</td><td class="r">~7,700</td><td class="r">1.5&times;</td><td class="r">37,300</td></tr>
+          <tr><td>Ombria</td><td>Faro</td><td class="r">3,870</td><td class="r">4,375</td><td class="r">1.1&times;</td><td class="r">33,400</td></tr>
+          <tr class="me"><td><b>El Boalo</b></td><td>Madrid</td><td class="r">6,013</td><td class="r">3,400&ndash;5,500</td><td class="r">0.7&times;</td><td class="r">47,900</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="gcap">City &euro;/m&sup2; is the metro residential average, mid-2026, from the national portal index in each market. Retreat &euro;/m&sup2; is the midpoint of the band in the table above. GDP per capita is Eurostat regional GDP in PPS per inhabitant, 2023, one measure across all markets. The Swiss and Austrian peers are left out here: their home cities price above the retreats themselves, so the multiple carries no meaning.</p>
     <div class="prose" style="margin-top:22px">
-      <p><b>We enter at the floor of the category.</b> The band runs from around &euro;4,375/m&sup2; up through the &euro;6&ndash;15k Mediterranean, Tuscan and lake estates to &euro;16&ndash;25k in the high Alps and the Aman tier. Our pricing sits at the entry, with the whole category above us.</p>
-      <p><b>No peer combines what we have.</b> A metropolitan market of 7.1 million, larger than Lisbon or Athens, forty-five minutes away, and a genuine mountain landscape. The city-adjacent peers are urban seafront, not countryside. The great rural estates sit two to three hours from Rome or Athens. We have both.</p>
-      <p><b>Four seasons, so demand runs all year.</b> At 920 m the estate is a cool-air escape from Madrid's summers, has snow within reach in winter, and temperate spring and autumn. The Mediterranean peers are summer-led and the Alpine peers winter-led. We are open, and sought after, in every month.</p>
-      <p><b>The brand premium is there to take.</b> Branded residences command roughly +32% in resort markets. An operator affiliation on this estate captures that uplift directly.</p>
+      <p><b>The peer group asks about twice its city. We ask seven tenths.</b> The median retreat here sells at 2.2 times the average metre in the city that feeds it, and the top of the group at six to ten times. The estate villa at &euro;3,400 is 0.57 times the Madrid metre and the suite villa at &euro;5,000 is 0.83 times it. A Madrid buyer trades their flat for a villa on a serviced estate and pays less per metre than they would in their own street.</p>
+      <p><b>And Madrid can pay.</b> At 47,900 PPS per inhabitant, Madrid's purchasing power sits level with Lisbon, above Rome, Florence, Verona, Athens, Faro and M&aacute;laga, and roughly twice Kalamata's. The retreats charging six and ten times their city sit in the weakest of these economies. We are asking the lowest multiple in the group of the second strongest.</p>
+      <p>Two readings follow, and both help the sale. Either the estate is priced under what this market will carry, or the whole category has been pricing scarcity that Madrid has not yet been offered. <b>The first is upside for the early buyer. The second is the reason to be early.</b></p>
     </div>
   </section>
 
@@ -517,13 +594,13 @@
   <section class="t-mist">
     <div class="shead"><span class="idx">07</span><h2>The estate can grow</h2></div>
     <p class="lede">The land around the sector is available to us, and we intend to take it.</p>
-    <div class="prose">
-      <p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and it <b>secures the horizon in perpetuity</b>: nothing is ever built between these homes and the sierra.</p>
-      <p>We are looking to farm the 200,000 m&sup2; of protected landscape around the sector and fold it into the life of the estate. Grazing, olives and field crops supply the restaurant; the land becomes the guests' walking and riding country; and the hotel draws on what its own landscape produces. The surroundings are not a buffer, they are part of the operation, and they are what makes the hotel sustainable in the plain sense of the word.</p>
-      <p>For a buyer, that is the difference between a view and an owned view. It widens the estate from seven hectares to a landholding measured in tens, and it gives the scheme room to add further phases of homes and hospitality as demand proves out.</p>
-      <p><b>And there is an upside beyond the plan.</b> Madrid's growth keeps moving north, and El Boalo's planning is being redrawn: the 1996 norms are due to be replaced by a new general plan. Land classified as rural today can be brought forward for residential use in that process, as it has been elsewhere in this corridor. If any of the land around the sector is reclassified in time, the value created would fall first to the people who bought at the beginning, on land bought at rural prices.</p>
-      <p class="gcap" style="margin-top:14px">This is a possibility, not a plan and not an entitlement. No reclassification has been applied for or granted, and none is promised.</p>
-    </div>
+    <ul class="clean">
+      <li><b>The horizon, secured in perpetuity</b><p>Adjacent parcels can be brought into the estate to extend its private landscape well beyond the sector boundary. That land carries the grounds, the trail network, the paddocks and the farm, and nothing is ever built between these homes and the sierra.</p></li>
+      <li><b>200,000 m&sup2; farmed, not fenced</b><p>Grazing, olives and field crops supply the restaurant; the land becomes the guests' walking and riding country; and the hotel draws on what its own landscape produces. The surroundings are not a buffer, they are part of the operation, and they are what makes the hotel sustainable in the plain sense of the word.</p></li>
+      <li><b>Seven hectares to a landholding measured in tens</b><p>For a buyer, that is the difference between a view and an owned view. It also gives the scheme room to add further phases of homes and hospitality as demand proves out.</p></li>
+      <li><b>Upside beyond the plan &middot; the general plan is being redrawn</b><p>Madrid's growth keeps moving north, and El Boalo's 1996 norms are due to be replaced. Land classified as rural today can be brought forward for residential use in that process, as it has been elsewhere in this corridor. If any land around the sector is reclassified in time, the value created falls first to the people who bought at the beginning, on land bought at rural prices.</p></li>
+    </ul>
+    <p class="gcap" style="margin-top:16px">The reclassification is a possibility, not a plan and not an entitlement. None has been applied for or granted, and none is promised.</p>
     <div class="duo">
       <button class="gitem" data-src="photos/estate-masterplan.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/estate-masterplan.jpg" alt="The estate seen from high above at sunset, the surrounding dehesa and the village of El Boalo beyond"></button>
       <button class="gitem" data-src="photos/growing-farms.jpg" aria-label="Enlarge image"><img loading="lazy" src="photos/growing-farms.jpg" alt="The same view with the surrounding land under cultivation: orchards, vines and field crops wrapping the estate"></button>
@@ -552,9 +629,11 @@
   <section class="t-mist">
     <div class="shead"><span class="idx">&sect;</span><h2>Sources</h2></div>
     <p class="sources">
-      <b>Market &amp; catchment.</b> AEAT IRPF statistics by municipality and bracket (Pozuelo €88,011; Madrid 44% of €601k+ earners; affluent-pool sizing); INE Atlas de Renta, padrón and migration flows (EVR); INE Censo/ECEPOV 2021 (second-home stock and shares); Colegio de Registradores and Notariado (buyer origin, 2025); Knight Frank Madrid (internationals 55% of prime purchases); Parque Nacional de la Sierra de Guadarrama, visitor statistics 2024.<br>
+      <b>Market &amp; catchment.</b> AEAT, Estadística de los declarantes del IRPF 2023, Comunidad de Madrid (64,640 declarations above €150k, 6,573 above €601k; Pozuelo €88,011; Madrid 44% of €601k+ earners); INE Atlas de Renta and padrón, table 2881 (corridor population growth); INE ECEPOV 2021 (31.2% of households above €5,000/month hold a second residence); Banco de España, Encuesta Financiera de las Familias 2022; Colegio de Registradores and Notariado (buyer origin, 2025); Knight Frank Madrid (internationals 45% of prime purchases, 2024); Parque Nacional de la Sierra de Guadarrama, visitor statistics 2024.<br>
+      <b>Transactions &amp; velocity.</b> MIVAU, transacciones inmobiliarias por municipio (2024&ndash;2025, latest quarters provisional); Engel &amp; V&ouml;lkers northwest-Madrid market report via idealista/news, Sep 2025 (Torrelodones average price and selling times).<br>
       <b>Villa comparables.</b> 30+ live idealista listings across El Boalo, Moralzarzal, Manzanares el Real, Becerril, Collado Mediano, Alpedrete, Guadarrama, Hoyo de Manzanares, Galapagar and Torrelodones, July 2026; idealista municipal price index, June 2026.<br>
-      <b>Prices.</b> idealista / Fotocasa indices; Sociedad de Tasación (Madrid new-build €5,172/m²); Savills / Knight Frank branded-residence premiums. Peer retreats: published sales and prime-market data for each destination.<br>
+      <b>City comparison.</b> Metro residential averages mid-2026 from the national index in each market (idealista, idealista.pt, ImmoScout24, Immobiliare.it / Monitorimmobiliare, MeilleursAgents, Spitogatos, Indomio); Eurostat regional GDP per capita in PPS, 2023 (nama_10r_2gdp).<br>
+      <b>Prices.</b> idealista / Fotocasa indices; Sociedad de Tasación (Madrid new-build €5,172/m², Dec 2025); Knight Frank Prime Global Cities Index and PIRI (Madrid prime growth 2023&ndash;2026); Savills Branded Residences report 2025/26 (resort premium 39%). Peer retreats: published sales and prime-market data for each destination.<br>
       <b>Scheme.</b> Ficha urbanística Sector 1B, NNSS El Boalo (BOCM núm. 174, 25 Jul 2011); BYLD masterplan tool, map.gobyld.com.
     </p>
   </section>
