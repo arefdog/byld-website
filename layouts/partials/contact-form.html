@@ -1,0 +1,22 @@
+<div class="contact-form"
+     data-endpoint="{{ site.Params.contactEndpoint }}"
+     data-email="{{ site.Params.email }}"
+     data-lead="{{ i18n "contact_lead" }}"
+     data-suggestions="{{ i18n "contact_suggestions" }}">
+  <p class="eyebrow">{{ i18n "contact" }}</p>
+  <h2>{{ i18n "contact_heading" }}</h2>
+  <div class="cf-card">
+    <label class="sr-only" for="cf-msg">{{ i18n "contact_heading" }}</label>
+    <textarea class="cf-vision" id="cf-msg" rows="4" spellcheck="false"></textarea>
+    <div class="cf-chips"></div>
+    <div class="cf-row">
+      <input type="text" id="cf-name" placeholder="{{ i18n "contact_name" }}" autocomplete="name">
+      <input type="email" id="cf-email" placeholder="{{ i18n "contact_email" }}" autocomplete="email">
+    </div>
+    <button type="button" class="btn btn-primary cf-send">{{ i18n "contact_send" }}</button>
+    <p class="cf-status" role="status" aria-live="polite"
+       data-sent="{{ i18n "contact_sent" }}"
+       data-error="{{ i18n "contact_error" }}"
+       data-need="{{ i18n "contact_need_msg" }}"></p>
+  </div>
+</div>

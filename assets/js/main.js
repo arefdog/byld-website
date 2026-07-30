@@ -254,3 +254,63 @@
     }
   });
 })();
+
+// Contact dialogue box: seeded lead-in, animated suggestions, capture + mailto fallback
+(function () {
+  var wrap = document.querySelector('.contact-form');
+  if (!wrap) return;
+  var LEAD = wrap.dataset.lead || 'I want to build ';
+  var sugg = (wrap.dataset.suggestions || '').split('|').filter(Boolean);
+  var endpoint = (wrap.dataset.endpoint || '').trim();
+  var email = wrap.dataset.email || '';
+  var msg = wrap.querySelector('#cf-msg');
+  var chipsBox = wrap.querySelector('.cf-chips');
+  var nameEl = wrap.querySelector('#cf-name');
+  var emailEl = wrap.querySelector('#cf-email');
+  var status = wrap.querySelector('.cf-status');
+  var btn = wrap.querySelector('.cf-send');
+
+  var stopped = false, i = 0, j = 0, del = false, t = null;
+  function stop() { stopped = true; if (t) clearTimeout(t); msg.setAttribute('placeholder', ''); }
+  function tick() {
+    if (stopped || !sugg.length) return;
+    var full = LEAD + sugg[i];
+    j += del ? -1 : 1;
+    msg.setAttribute('placeholder', full.slice(0, j) + (del ? '' : '…'));
+    var w = del ? 45 : 75;
+    if (!del && j >= full.length) { del = true; w = 1600; }
+    else if (del && j <= LEAD.length) { del = false; i = (i + 1) % sugg.length; w = 350; }
+    t = setTimeout(tick, w);
+  }
+  sugg.forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'cf-chip'; b.textContent = s;
+    b.addEventListener('click', function () {
+      msg.value = LEAD + s + ' ';
+      msg.focus(); msg.setSelectionRange(msg.value.length, msg.value.length);
+      stop();
+    });
+    chipsBox.appendChild(b);
+  });
+  msg.addEventListener('focus', function () {
+    if (!msg.value) { msg.value = LEAD; msg.setSelectionRange(msg.value.length, msg.value.length); }
+    stop();
+  });
+  tick();
+
+  btn.addEventListener('click', function () {
+    var m = (msg.value || '').trim(), n = (nameEl.value || '').trim(), em = (emailEl.value || '').trim();
+    if (!m || m === LEAD.trim()) { status.textContent = status.dataset.need; msg.focus(); return; }
+    if (endpoint) {
+      btn.disabled = true;
+      fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ name: n, email: em, message: m, source: 'gobyld.com' }) })
+        .then(function () { status.textContent = status.dataset.sent; msg.value = ''; nameEl.value = ''; emailEl.value = ''; })
+        .catch(function () { status.textContent = status.dataset.error; })
+        .finally(function () { btn.disabled = false; });
+    } else {
+      var body = m + (n ? '\n\nName: ' + n : '') + (em ? '\nEmail: ' + em : '');
+      window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Enquiry from gobyld.com') + '&body=' + encodeURIComponent(body);
+      status.textContent = status.dataset.sent;
+    }
+  });
+})();

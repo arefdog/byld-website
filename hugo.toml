@@ -78,6 +78,11 @@ disableKinds = ["taxonomy", "term"]
   # While empty, the form falls back to a pre-filled email to the address above.
   formAction = ""
 
+  # Contact dialogue box endpoint (Google Apps Script web-app URL ending in /exec).
+  # Paste the deployed script URL here; until then Send falls back to a
+  # pre-filled email to the address above.
+  contactEndpoint = ""
+
   # Analytics (off until set). Use ONE of these:
   #   plausibleDomain = "gobyld.com"   # privacy-friendly, recommended
   #   googleAnalytics = "G-XXXXXXXXXX" # GA4

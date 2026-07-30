@@ -179,10 +179,7 @@
 
 <!-- CONTACT -->
 <section class="section section-contact" id="contact">
-  <div class="contact-simple">
-    <p class="eyebrow">{{ i18n "contact" }}</p>
-    <a class="btn btn-light" href="mailto:{{ site.Params.email }}">{{ i18n "email_us" }}</a>
-  </div>
+  {{ partial "contact-form.html" . }}
 </section>
 
 {{ end }}
