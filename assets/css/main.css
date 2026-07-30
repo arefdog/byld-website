@@ -676,7 +676,7 @@ main { display: block; }
 .faq-answer p { margin: 0; color: var(--muted); font-size: 14px; }
 
 /* ---- Contact / consultation ---- */
-.section-contact { max-width: none; background: var(--ink); color: var(--paper); text-align: center; }
+.section-contact { max-width: none; background: var(--ink); color: var(--paper); text-align: center; min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: clamp(32px, 5vh, 64px) var(--gutter); }
 .contact-simple { max-width: 640px; margin: 0 auto; }
 .contact-simple h2 { color: var(--paper); font-size: clamp(30px, 5vw, 54px); margin: 0 0 32px; }
 .btn-light { background: #fff; color: var(--ink); border-color: #fff; }
@@ -687,19 +687,19 @@ main { display: block; }
 /* ---- Contact dialogue box ---- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .contact-form { max-width: 720px; margin: 0 auto; text-align: center; }
-.contact-form h2 { color: var(--paper); font-size: clamp(28px, 4.5vw, 46px); margin: 0 0 28px; }
-.cf-card { background: #fff; color: var(--ink); border-radius: 14px; padding: clamp(20px, 3vw, 32px); text-align: left; }
-.cf-vision { width: 100%; min-height: 122px; resize: vertical; font-family: var(--font-body); font-size: clamp(17px, 2vw, 20px); line-height: 1.5; padding: 16px 18px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+.contact-form h2 { color: var(--paper); font-size: clamp(23px, 3.2vw, 36px); margin: 0 0 16px; }
+.cf-card { background: #fff; color: var(--ink); border-radius: 14px; padding: clamp(16px, 2.2vw, 24px); text-align: left; }
+.cf-vision { width: 100%; min-height: 82px; resize: vertical; font-family: var(--font-body); font-size: clamp(16px, 1.7vw, 19px); line-height: 1.45; padding: 13px 16px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
 .cf-vision:focus { outline: none; border-color: var(--ink); }
 .cf-vision::placeholder { color: #9a9a9a; }
-.cf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.cf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 11px 0 0; }
 .cf-chip { font-size: 13px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); cursor: pointer; font-family: var(--font-body); transition: border-color .15s ease, color .15s ease; }
 .cf-chip:hover { border-color: var(--ink); color: var(--ink); }
-.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .cf-row input { font-family: var(--font-body); font-size: 15px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); width: 100%; }
 .cf-row input:focus { outline: none; border-color: var(--ink); }
-.cf-send { width: 100%; margin-top: 16px; }
-.cf-status { font-size: 13px; color: var(--muted); margin: 12px 0 0; min-height: 1.1em; }
+.cf-send { width: 100%; margin-top: 12px; }
+.cf-status { font-size: 13px; color: var(--muted); margin: 9px 0 0; min-height: 1.1em; }
 @media (max-width: 560px) { .cf-row { grid-template-columns: 1fr; } }
 .contact-intro h2 { color: var(--paper); font-size: clamp(28px, 4vw, 46px); margin-bottom: 18px; }
 .contact-intro p { color: #c2c2c2; max-width: 42ch; }
