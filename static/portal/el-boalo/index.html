@@ -192,11 +192,6 @@
   .tickrow.h span+span{text-align:center}
   .tickrow .y{color:#2f6b43;text-align:center;font-weight:500}
   .tickrow .n{color:#c9c5bd;text-align:center}
-
-@media(max-width:680px){
-    .pcarousel .pcard{flex:0 0 84vw}
-    .pcarousel .pcard .pmedia img{height:clamp(200px,32vh,300px)}
-  }
   .pcard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
   .pcard .pmedia{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
   .pcard .pmedia img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
@@ -205,11 +200,6 @@
   .pcard p{font-size:14.5px;color:var(--muted)}
   section.t-mist .pcard{background:#fff;border-color:#e0ded8}
   /* swipeable site-photo carousel */
-@media(max-width:680px){
-    .carousel{padding-inline:14px;scroll-padding-inline-start:14px}
-    .carousel .gitem{flex:0 0 88vw}
-    .carousel .gitem img{height:clamp(240px,42vh,380px)}
-  }
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:8px}
   .gitem{padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--radius);overflow:hidden;display:block}
   .gitem img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .5s ease;background:var(--paper-2)}
@@ -444,13 +434,13 @@
     padding:clamp(12px,1.8vh,20px) clamp(24px,5vw,72px) clamp(14px,2vh,22px);
     border-top:1px solid var(--line);background:inherit}
   section.fr.t-ink .cbar{border-color:#2a2a2a}
-  .cdots{display:flex;gap:6px}
+  .cdots{display:flex;gap:6px;min-width:0;overflow:hidden}
   .cdots i{width:26px;height:3px;border-radius:2px;background:var(--ink);opacity:.16;transition:.2s}
   .cdots i.on{opacity:1}
   section.fr.t-ink .cdots i{background:#fff}
   .cnav{display:flex;gap:8px}
   .cnav{align-items:center;gap:10px}
-  .cnav button{height:52px;min-width:52px;padding:0 20px;border-radius:999px;
+  .cnav button{height:52px;min-width:52px;padding:0 20px;white-space:nowrap;flex:0 0 auto;overflow:hidden;border-radius:999px;
     border:1px solid var(--ink);background:transparent;color:var(--ink);
     font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.14em;
     text-transform:uppercase;cursor:pointer;line-height:1;
@@ -461,11 +451,33 @@
   .cnav button[disabled]{opacity:.2;pointer-events:none}
   section.fr.t-ink .cnav button{border-color:#fff;color:#fff}
   section.fr.t-ink .cnav button.next{background:#fff;color:var(--ink)}
-  .cbar .cnum{font-size:11.5px;letter-spacing:.18em;color:var(--muted);white-space:nowrap}
+  .cbar .cnum{white-space:nowrap;font-size:11.5px;letter-spacing:.18em;color:var(--muted);white-space:nowrap}
   @media(max-width:680px){
-    .ccards .ccard{padding:18px 20px}
-    .ccards .ccard h4{font-size:clamp(22px,6.6vw,30px)}
-    .cnav button{width:34px;height:34px}
+    /* text frames get padding; media frames must stay edge to edge */
+    .ccards .ccard:not(.media){padding:18px 20px}
+    .ccards .ccard.media{padding:0}
+    .ccards .ccard.media.ai{padding:14px 16px}
+    .ccards .ccard.media.wide{padding:14px 16px}
+    .ccards .ccard h4{font-size:clamp(21px,6.2vw,28px)}
+    .ccards .ccard p{font-size:14.5px}
+    /* controls: fit the label, or drop it when there is no room */
+    .cbar{padding:10px 16px 14px;gap:10px}
+    .cnav{gap:7px}
+    .cnav button{height:42px;min-width:42px;padding:0 14px;font-size:11px;letter-spacing:.1em;gap:7px}
+    .cnav button.prev{padding:0;width:42px;min-width:42px}
+    .cbar .cnum{font-size:10.5px;letter-spacing:.12em}
+    .cdots i{width:16px;height:3px}
+    /* stacked splits: image above, text below, both centred */
+    .ccards .ccard.split{padding:16px 18px;gap:14px;align-content:center;justify-items:center}
+    .ccards .ccard.split .fig{width:100%;justify-content:center}
+    .ccards .ccard.split .fig img{max-height:34svh;width:auto;max-width:100%;margin:0 auto}
+    .ccards .ccard.split .txt{width:100%}
+    .ccards .ccard.split.edge{grid-template-rows:1fr auto}
+  }
+  @media(max-width:560px){
+    .cnav button.next span{display:none}
+    .cnav button.next{padding:0;width:42px;min-width:42px}
+    .cdots{display:none}
   }
   /* what we are building: the claim, then the two halves of it */
   .claim{font-family:var(--font-display);font-weight:300;font-size:clamp(28px,4.4vw,52px);
@@ -1117,7 +1129,7 @@
     var num=document.createElement('div'); num.className='cnum';
     var nav=document.createElement('div'); nav.className='cnav';
     var prev=document.createElement('button'); prev.type='button'; prev.className='prev'; prev.innerHTML='<span aria-hidden="true">&#8592;</span>'; prev.setAttribute('aria-label','Previous');
-    var next=document.createElement('button'); next.type='button'; next.className='next'; next.innerHTML='Swipe <span aria-hidden="true">&#8594;</span>'; next.setAttribute('aria-label','Next');
+    var next=document.createElement('button'); next.type='button'; next.className='next'; next.innerHTML='<span>Swipe</span> <span aria-hidden="true">&#8594;</span>'; next.setAttribute('aria-label','Next');
     nav.appendChild(prev); nav.appendChild(next);
     bar.appendChild(dots); bar.appendChild(num); bar.appendChild(nav); sec.appendChild(bar);
     function page(d){ tr.scrollBy({left:d*tr.clientWidth,behavior:'smooth'}); }
