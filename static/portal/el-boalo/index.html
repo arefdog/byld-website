@@ -62,6 +62,8 @@
   .landing .rule{height:1px;background:rgba(255,255,255,.34);margin:clamp(22px,3.4vh,40px) 0 0}
   .landing .meta{display:flex;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin-top:16px;
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+  .landing .meta .brief{color:#fff;font-size:clamp(13px,1.5vw,17px);letter-spacing:.2em}
+  .landing .meta .brief b{font-weight:500}
   .landing .credit{position:absolute;right:var(--gutter);top:clamp(20px,4vh,34px);
     font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;
     background:rgba(10,10,10,.55);padding:7px 12px;border-radius:var(--radius);backdrop-filter:blur(6px)}
@@ -290,7 +292,7 @@
     .ccards .ccard.split.edge .txt{padding:20px 22px}
   }
   /* diagrams scale to fit their half, never crop */
-  .ccards .ccard.split .fig{align-items:stretch}
+  .ccards .ccard.split .fig:has(.figwrap){display:flex;align-items:center;justify-content:center;padding:clamp(14px,2.2vh,28px) clamp(16px,2vw,40px)}
   .ccards .ccard.split .fig .figwrap{width:100%;height:100%;max-height:88%;display:flex;align-items:center;justify-content:center;overflow:visible}
   .ccards .ccard.split .fig svg{width:100%;height:100%;max-height:100%;max-width:100%}
   /* numbers never wrap or stack */
@@ -314,6 +316,8 @@
   .ccards .ccard.lead.split .fig text{fill:#c9c7c2}
   .ccards .ccard.lead.split .fig rect[fill="#0a0a0a"]{fill:#ffffff}
   .ccards .ccard.lead.split .fig rect[fill="#f0eeea"]{fill:rgba(255,255,255,.12)}
+  .ccards .ccard .cardh .of{font-family:var(--font-body);font-size:11px;letter-spacing:.16em;color:var(--muted);margin-left:10px}
+  .ccards .ccard table .sub{font-size:11.5px;color:var(--muted);line-height:1.3}
   .ccards .ccard h4.cardh{font-family:var(--font-display);font-weight:400;
     font-size:clamp(17px,1.7vw,23px);line-height:1.12;letter-spacing:-0.022em;max-width:34ch}
   /* pane frames: centre the content, but never let it spill past the top */
@@ -334,16 +338,15 @@
   section.fr.t-ink .ccards .ccard .specs .v{color:var(--paper)}
   /* split frame: media one side, its text the other */
   .ccards .ccard.split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
-    gap:clamp(20px,3vw,52px);align-items:stretch;
-    padding:clamp(14px,2.2vh,28px) clamp(24px,5vw,64px)}
+    gap:clamp(20px,3vw,52px);align-items:stretch;padding:0 0 0 clamp(24px,5vw,64px)}
   .ccards .ccard.split .txt h4{font-size:clamp(21px,2.3vw,33px)}
   .ccards .ccard.split .txt p{font-size:clamp(14px,1.05vw,16.5px);max-width:38ch}
-  .ccards .ccard.split .fig{min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
-  .ccards .ccard.split .fig button{display:block;width:100%;height:100%;max-height:74svh;padding:0;border:0;background:none;cursor:zoom-in}
-  .ccards .ccard.split .fig img{width:100%;height:100%;max-height:74svh;object-fit:cover;
-    object-position:center;border:1px solid var(--line);display:block}
+  .ccards .ccard.split .fig{min-width:0;height:100%;display:block;overflow:hidden}
+  .ccards .ccard.split .fig button{display:block;width:100%;height:100%;max-height:none;padding:0;border:0;background:none;cursor:zoom-in}
+  .ccards .ccard.split .fig img{width:100%;height:100%;max-height:none;object-fit:cover;
+    object-position:center;border:0;display:block}
   .ccards .ccard.split .fig .figwrap{width:100%;max-height:74svh}
-  .ccards .ccard.split .txt{min-width:0;align-self:center}
+  .ccards .ccard.split .txt{min-width:0;align-self:center;padding:clamp(14px,2.2vh,28px) 0}
   .ccards .ccard.split .txt h4{font-size:clamp(22px,2.5vw,36px);max-width:16ch}
   .ccards .ccard.split .txt p{max-width:40ch}
   section.fr.t-ink .ccards .ccard.split .fig img{border-color:#2c2c2c}
@@ -352,14 +355,25 @@
     .ccards .ccard.split .fig img{max-height:38svh}
   }
   /* AI visualisations are shown as plates, not full bleed */
-  .ccards .ccard.media.ai{padding:clamp(16px,2.6vh,34px) clamp(24px,5vw,72px);
-    justify-content:center;align-items:center;background:inherit}
-  /* fixed box + contain: the plate never resizes while the track scrolls */
-  .ccards .ccard.media.ai > button{width:100%;height:100%;max-width:1080px;
-    display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .ccards .ccard.media.ai img{width:100%;height:100%;max-width:100%;max-height:100%;
-    object-fit:contain;object-position:center;border:0}
-  section.fr.t-ink .ccards .ccard.media.ai img{border-color:#2c2c2c}
+  /* the scheme table, set on the dark lead frame */
+  .ccards .ccard.lead.split .fig.fichawrap{display:flex;align-items:center;justify-content:center;
+    padding:clamp(16px,3vh,40px) clamp(24px,4vw,64px) clamp(16px,3vh,40px) 0;overflow:auto}
+  .ccards .ccard.lead .ficha{width:100%;background:transparent;border:1px solid #2f2f2c;border-radius:2px}
+  .ccards .ccard.lead .ficha .fh{background:#161614;color:#8f8d87;border-bottom:1px solid #2f2f2c}
+  .ccards .ccard.lead .ficha .frow{border-top:1px solid #232320}
+  .ccards .ccard.lead .ficha .frow:first-of-type{border-top:0}
+  .ccards .ccard.lead .ficha .k{color:#8f8d87}
+  .ccards .ccard.lead .ficha .v{color:var(--paper)}
+  @media(max-width:860px){
+    .ccards .ccard.lead.split{grid-template-rows:auto auto}
+    .ccards .ccard.lead.split .fig.fichawrap{padding:0 18px 18px}
+  }
+  /* renders fill their frame: no letterbox bars, no resize on scroll */
+  .ccards .ccard.media.ai{padding:0;background:inherit;justify-content:center;align-items:stretch}
+  .ccards .ccard.media.ai > button{width:100%;height:100%;max-width:none;
+    display:block;overflow:hidden;padding:0;border:0;background:none;cursor:zoom-in}
+  .ccards .ccard.media.ai img{width:100%;height:100%;max-width:none;max-height:none;
+    object-fit:cover;object-position:center;border:0;display:block}
   /* the programme, all in one frame */
   .pgrid2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.6vw,24px);width:100%;
     max-width:1180px;margin:0 auto}
@@ -431,7 +445,7 @@
   .figwrap{overflow:auto;max-height:100%} .figwrap svg{display:block;width:100%;min-width:520px;height:auto}
 
   /* controls live in their own band, never over the artwork */
-  .cbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;
+  .cbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(20px,5vw,56px);
     padding:clamp(12px,1.8vh,20px) clamp(24px,5vw,72px) clamp(14px,2vh,22px);
     border-top:1px solid var(--line);background:inherit}
   section.fr.t-ink .cbar{border-color:#2a2a2a}
@@ -445,8 +459,8 @@
   .cnav button[disabled]{opacity:.22;pointer-events:none}
   section.fr.t-ink .cnav button{border-color:#fff;color:#fff}
   section.fr.t-ink .cnav button:hover{background:#fff;color:var(--ink)}
-  .cmeta{justify-self:end;display:flex;align-items:center;gap:14px;min-width:0}
-  .cdots{display:flex;gap:6px;min-width:0;overflow:hidden}
+  .cmeta{justify-self:end;display:flex;align-items:center;gap:14px;min-width:0;max-width:100%}
+  .cdots{display:flex;gap:6px;min-width:0;max-width:min(30vw,260px);overflow:hidden}
   .cdots i{width:22px;height:3px;border-radius:2px;background:var(--ink);opacity:.16;transition:.2s}
   .cdots i.on{opacity:1}
   section.fr.t-ink .cdots i{background:#fff}
@@ -455,24 +469,24 @@
     /* text frames get padding; media frames must stay edge to edge */
     .ccards .ccard:not(.media){padding:18px 20px}
     .ccards .ccard.media{padding:0}
-    .ccards .ccard.media.ai{padding:14px 16px}
+    .ccards .ccard.media.ai{padding:0}
     .ccards .ccard.media.wide{padding:14px 16px}
     .ccards .ccard h4{font-size:clamp(21px,6.2vw,28px)}
     .ccards .ccard p{font-size:14.5px}
     /* controls: fit the label, or drop it when there is no room */
-    .cbar{padding:10px 16px 14px;gap:10px}
+    .cbar{padding:10px 16px 14px;gap:16px}
     .cnav{gap:10px}
     .cnav button{width:44px;height:44px;min-width:44px;font-size:15px}
     .cbar .cnum{font-size:10.5px;letter-spacing:.12em}
     .cdots i{width:14px}
     /* stacked splits: image above, text below, both centred */
-    .ccards .ccard.split{padding:16px 18px;gap:14px;align-content:center;justify-items:center}
+    .ccards .ccard.split{padding:0;gap:0;grid-template-rows:34svh auto;align-content:start}
     .ccards .ccard.split .fig{width:100%;justify-content:center}
     .ccards .ccard.split .fig img{height:34svh;max-height:34svh;width:100%;object-fit:cover}
-    .ccards .ccard.split .txt{width:100%}
+    .ccards .ccard.split .txt{width:100%;padding:16px 18px}
     .ccards .ccard.split.edge{grid-template-rows:1fr auto}
   }
-  @media(max-width:560px){
+  @media(max-width:820px){
     .cdots{display:none}
   }
   /* what we are building: the claim, then the two halves of it */
@@ -559,7 +573,7 @@
       <div class="rule"></div>
       <div class="meta">
         <span>Madrid Sierra &middot; Sector 1B</span>
-        <span>Agency brief &middot; 2026</span>
+        <span class="brief"><b>Agency brief</b> &middot; 2026</span>
       </div>
     </div>
   </div>
@@ -764,7 +778,7 @@
 
   <section class="fr t-paper"><header class="frhead"><h2>What we are building</h2></header>
     <div class="ccards">
-      <div class="ccard lead"><h4>A wellness retreat for Madrid</h4><p>Hospitality at its finest.</p><p>Fully serviced branded residences.</p><p>Your second home without the hassle, in open country.</p></div>
+      <div class="ccard lead split"><div class="txt"><h4>A wellness retreat for Madrid</h4><p>Hospitality at its finest.</p><p>Fully serviced branded residences.</p><p>Your second home without the hassle, in open country.</p></div><div class="fig fichawrap"><div class="ficha"><div class="fh"><span>The scheme</span><span>Sector 1B &middot; Sierra de Guadarrama</span></div><div class="frow"><span class="k">Estate</span><span class="v">70,484 m&sup2;</span></div><div class="frow"><span class="k">Protected surrounds</span><span class="v">+200,000 m&sup2; · unbuildable neighbouring land</span></div><div class="frow"><span class="k">Homes</span><span class="v">up to 78</span></div><div class="frow"><span class="k">Density</span><span class="v">low · villa scale</span></div><div class="frow"><span class="k">Height</span><span class="v">2 storeys · 6.5 m</span></div><div class="frow"><span class="k">Land kept open</span><span class="v">~75%</span></div><div class="frow"><span class="k">Elevation</span><span class="v">920 m · south-facing</span></div></div></div></div>
       <div class="ccard media ai"><button class="gitem" data-src="photos/estate-aerial.webp" aria-label="Enlarge image"><img decoding="async" src="photos/estate-aerial.webp" alt="Aerial view at dusk with the estate boundary traced in light, the village of El Boalo beyond" width="1536" height="1024"></button></div>
       <div class="ccard media ai"><button class="gitem" data-src="photos/estate-masterplan.webp" aria-label="Enlarge image"><img decoding="async" src="photos/estate-masterplan.webp" alt="The estate seen from high above at sunset, the surrounding dehesa and the village of El Boalo beyond" width="1536" height="1024"></button></div>
       <div class="ccard media ai"><button class="gitem" data-src="photos/estate-overview.webp" aria-label="Enlarge image"><img decoding="async" src="photos/estate-overview.webp" alt="The estate from the air at golden hour: villas on the contours, the hotel, courts, farm and playground, with La Pedriza behind and the village to the east" width="1536" height="1024"></button></div>
@@ -775,7 +789,7 @@
       <div class="ccard split"><div class="txt"><h4>Somewhere to work, and somewhere to stop</h4><p>A study and library on the estate: desks that face the dehesa, a table for the calls that need a room, quiet corners for the ones that need none. Fast connection, no commute, and the door to twenty hectares of open country three steps away.</p><p>It is what makes the sierra a place you use on a Wednesday rather than only in August. Work the morning here, walk at lunch, and be back in Madrid in forty-five minutes when the week demands it.</p></div><div class="fig"><button class="gitem" data-src="photos/hotel-lobby-4.webp" aria-label="Enlarge image"><img decoding="async" src="photos/hotel-lobby-4.webp" alt="The estate workspace: a curved glass library and study looking over the dehesa" width="1536" height="1024"></button></div></div>
       <div class="ccard"><h4>What it sells &middot; the residences</h4><p>Low-density villas on the south-facing contours, with a working farm and a sports club alongside. Simple buildings, few materials, the landscape left to do the work.</p></div>
       <div class="ccard split"><div class="txt"><h4>The club at the end of the day</h4><p>Thermal water and cold plunge in the rock, a sauna facing the peaks, treatment rooms, a gym and studio, and courts and pools beyond. Everything a serious day in the sierra asks for afterwards: come down off La Pedriza, in from the gravel trails, back from Navacerrada, and the recovery is a two-minute walk from your door.</p><p>Space for the active hours and the still ones. Train early, swim at noon, and read by the fire while the light goes off the granite. Owners hold membership as part of the estate, and the hotel runs it to a standard that has to satisfy paying guests as well, which is what keeps it sharp year after year.</p></div><div class="fig"><button class="gitem" data-src="photos/wellness-club.webp" aria-label="Enlarge image"><img decoding="async" src="photos/wellness-club.webp" alt="The wellness club: pavilion, gym and natural stone pool at golden hour, yoga on the deck, the granite sierra beyond" width="1536" height="1024"></button></div></div>
-      <div class="ccard media wide"><div class="ficha"><div class="fh"><span>The scheme</span><span>Sector 1B &middot; Sierra de Guadarrama</span></div><div class="frow"><span class="k">Estate</span><span class="v">70,484 m&sup2;</span></div><div class="frow"><span class="k">Protected surrounds</span><span class="v">+200,000 m&sup2; · unbuildable neighbouring land</span></div><div class="frow"><span class="k">Homes</span><span class="v">up to 78</span></div><div class="frow"><span class="k">Density</span><span class="v">low · villa scale</span></div><div class="frow"><span class="k">Height</span><span class="v">2 storeys · 6.5 m</span></div><div class="frow"><span class="k">Land kept open</span><span class="v">~75%</span></div><div class="frow"><span class="k">Elevation</span><span class="v">920 m · south-facing</span></div></div></div>
+      
       <div class="ccard media wide"><h4 class="cardh">What is for sale</h4><div class="tw">
       <table>
         <thead><tr><th>Product</th><th class="r">Buildable</th><th class="r">&euro;/m&sup2;</th><th>Sold as</th></tr></thead>
@@ -853,62 +867,12 @@
       <div class="ccard"><h4>The brand premium is there to take</h4><p>Branded residences in resort locations command a 39% premium over unbranded stock, the highest of any setting, against a 33% global average.</p></div>
       <div class="ccard"><h4>We ask less than our own city</h4><p>Every peer charges a premium over the city that feeds it. At 0.7 times the Madrid metre, we are the only one asking less.</p></div>
       <div class="ccard"><h4>This category trades at double elsewhere</h4><p>The median retreat in section 06 sells at 2.2 times the average metre in the city that feeds it. We ask 0.7 times Madrid. Reaching the bottom of the category is not a forecast, it is a correction.</p></div>
-      <div class="ccard media wide"><h4 class="cardh">The peer set</h4><div class="tw">
-      <table class="wide">
-        <thead><tr><th>Retreat</th><th>Setting</th><th class="r">&euro;/m&sup2;</th><th>Nearest city</th><th class="r">Metro pop.</th><th>Climate</th><th>Operator</th></tr></thead>
-        <tbody>
-          <tr class="me"><td><b>El Boalo</b></td><td>Spain &middot; Sierra de Guadarrama</td><td class="r nw">3,400&ndash;5,500</td><td class="nw">Madrid 45 min</td><td class="r nw">7.0M</td><td>Continental mountain &middot; 4 seasons</td><td>BYLD</td></tr>
-          <tr><td>One&amp;Only Aesthesis</td><td>Greece &middot; Athens Riviera</td><td class="r nw">~12&ndash;20k</td><td class="nw">Athens 30 min</td><td class="r nw">3.7M</td><td>Mediterranean coastal</td><td>One&amp;Only</td></tr>
-          <tr><td>The Ellinikon Riviera</td><td>Greece &middot; Athens Riviera (urban)</td><td class="r nw">~7,630</td><td class="nw">Athens, in metro</td><td class="r nw">3.7M</td><td>Mediterranean coastal</td><td>LAMDA (branded)</td></tr>
-          <tr><td>Terre Blanche</td><td>France &middot; Provence</td><td class="r">~7,700+</td><td class="nw">Nice/Cannes 45 min</td><td class="r nw">1.0M</td><td>Mediterranean &middot; warm</td><td>Terre Blanche</td></tr>
-          <tr><td>B&uuml;rgenstock</td><td>Switzerland &middot; Lake Lucerne</td><td class="r nw">~15&ndash;25k</td><td class="nw">Lucerne 30 min &middot; Zurich 1h</td><td class="r nw">&ndash;</td><td>Alpine lake</td><td>B&uuml;rgenstock</td></tr>
-          <tr><td>Muda Reserve</td><td>Portugal &middot; Comporta/Alentejo</td><td class="r nw">~8&ndash;14k</td><td class="nw">Lisbon 1h</td><td class="r nw">2.9M</td><td>Mild Mediterranean</td><td>Vanguard</td></tr>
-          <tr><td>Costa Terra</td><td>Portugal &middot; Melides</td><td class="r nw">from &euro;4M</td><td class="nw">Lisbon 1h15</td><td class="r nw">2.9M</td><td>Mild Mediterranean</td><td>Costa Terra</td></tr>
-          <tr><td>Tegernsee estates</td><td>Germany &middot; Bavaria</td><td class="r nw">~10&ndash;15k</td><td class="nw">Munich 1h</td><td class="r nw">2.9M</td><td>Alpine foothills &middot; 4 seasons</td><td>independent</td></tr>
-          <tr><td>La Zagaleta</td><td>Spain &middot; Benah&aacute;vis</td><td class="r nw">~6&ndash;12k</td><td class="nw">M&aacute;laga 1h</td><td class="r nw">1.7M</td><td>Mediterranean</td><td>gated estate</td></tr>
-          <tr><td>Finca Cortesin</td><td>Spain &middot; Casares</td><td class="r nw">~8&ndash;14k</td><td class="nw">M&aacute;laga 1h</td><td class="r nw">1.7M</td><td>Mediterranean</td><td>resort estate</td></tr>
-          <tr><td>Sotogrande</td><td>Spain &middot; C&aacute;diz</td><td class="r nw">~4&ndash;8k</td><td class="nw">Gibraltar 30 min &middot; M&aacute;laga 1h15</td><td class="r nw">&ndash;</td><td>Mediterranean</td><td>gated estate</td></tr>
-          <tr><td>Son Vida</td><td>Spain &middot; Mallorca</td><td class="r nw">~8&ndash;12k</td><td class="nw">Palma 15 min</td><td class="r nw">0.5M</td><td>Mediterranean island</td><td>resort estate</td></tr>
-          <tr><td>Quinta do Lago</td><td>Portugal &middot; Algarve</td><td class="r nw">~6&ndash;10k</td><td class="nw">Faro 15 min &middot; Lisbon 2.5h</td><td class="r nw">&ndash;</td><td>Mild Mediterranean &middot; 300+ sun</td><td>resort estate</td></tr>
-          <tr><td>Kitzb&uuml;hel chalets</td><td>Austria &middot; Tyrol</td><td class="r nw">&gt;10k</td><td class="nw">Innsbruck 1h &middot; Munich 1h45</td><td class="r nw">&ndash;</td><td>Alpine &middot; ski</td><td>independent</td></tr>
-          <tr><td>Lefay</td><td>Italy &middot; Lake Garda</td><td class="r nw">~8&ndash;12k</td><td class="nw">Verona 1h &middot; Milan 2h</td><td class="r nw">3.2M</td><td>Mild lake &middot; 4 seasons</td><td>Lefay</td></tr>
-          <tr><td>Argentario</td><td>Italy &middot; Tuscan Maremma</td><td class="r nw">~6&ndash;10k</td><td class="nw">Rome 2h</td><td class="r nw">4.3M</td><td>Mediterranean</td><td>independent</td></tr>
-          <tr><td>Six Senses Crans-Montana</td><td>Switzerland &middot; Valais</td><td class="r nw">~9.5&ndash;21k</td><td class="nw">Geneva 2h</td><td class="r nw">0.6M</td><td>Alpine &middot; ski</td><td>Six Senses</td></tr>
-          <tr><td>The Alpina Gstaad</td><td>Switzerland &middot; Bernese Oberland</td><td class="r">~25k+</td><td class="nw">Geneva 2h</td><td class="r nw">&ndash;</td><td>Alpine &middot; ski</td><td>The Alpina</td></tr>
-          <tr><td>Amanzoe</td><td>Greece &middot; Porto Heli</td><td class="r nw">~15&ndash;25k</td><td class="nw">Athens 2h45</td><td class="r nw">3.7M</td><td>Mediterranean</td><td>Aman</td></tr>
-          <tr><td>Rosewood Castiglion del Bosco</td><td>Italy &middot; Val d'Orcia</td><td class="r nw">~10&ndash;18k</td><td class="nw">Florence 2h &middot; Rome 3h</td><td class="r nw">&ndash;</td><td>Continental Med &middot; 4 seasons</td><td>Rosewood</td></tr>
-          <tr><td>Reschio</td><td>Italy &middot; Umbria hills</td><td class="r nw">~10&ndash;15k</td><td class="nw">Perugia 45 min &middot; Rome 3h</td><td class="r nw">&ndash;</td><td>Continental &middot; 4 seasons</td><td>Castello di Reschio</td></tr>
-          <tr><td>Andermatt</td><td>Switzerland &middot; Uri Alps</td><td class="r nw">~16&ndash;18k</td><td class="nw">Zurich 90 min</td><td class="r nw">1.4M</td><td>Alpine &middot; ski Nov&ndash;Apr</td><td>The Chedi / Elie Saab</td></tr>
-          <tr><td>Costa Navarino</td><td>Greece &middot; Messinia coast</td><td class="r nw">~5,760</td><td class="nw">Kalamata 40 min &middot; Athens 3.5h</td><td class="r nw">&ndash;</td><td>Mediterranean &middot; hot summers</td><td>Mandarin Oriental / W</td></tr>
-          <tr><td>Ombria</td><td>Portugal &middot; inner Algarve</td><td class="r nw">~4,375</td><td class="nw">Faro 25 min &middot; Lisbon 2.5h</td><td class="r nw">&ndash;</td><td>Mild Mediterranean &middot; 300+ sun</td><td>Viceroy</td></tr>
-        </tbody>
-      </table>
-      </div></div>
-      <div class="ccard media wide"><h4 class="cardh">What each retreat charges over its own city</h4><div class="tw">
-      <table>
-        <thead><tr><th>Retreat</th><th>Feeder city</th><th class="r">City &euro;/m&sup2;</th><th class="r">Retreat &euro;/m&sup2;</th><th class="r">Multiple</th><th class="r">City GDP/cap</th></tr></thead>
-        <tbody>
-          <tr><td>Reschio</td><td>Perugia</td><td class="r">1,221</td><td class="r">~12,500</td><td class="r">10.2&times;</td><td class="r">32,600</td></tr>
-          <tr><td>Amanzoe</td><td>Athens</td><td class="r">2,580</td><td class="r">~20,000</td><td class="r">7.8&times;</td><td class="r">36,700</td></tr>
-          <tr><td>One&amp;Only Aesthesis</td><td>Athens</td><td class="r">2,580</td><td class="r">~16,000</td><td class="r">6.2&times;</td><td class="r">36,700</td></tr>
-          <tr><td>Lefay</td><td>Verona</td><td class="r">2,816</td><td class="r">~10,000</td><td class="r">3.6&times;</td><td class="r">42,200</td></tr>
-          <tr><td>Rosewood Castiglion del Bosco</td><td>Florence</td><td class="r">4,733</td><td class="r">~14,000</td><td class="r">3.0&times;</td><td class="r">39,500</td></tr>
-          <tr><td>The Ellinikon Riviera</td><td>Athens</td><td class="r">2,580</td><td class="r">7,630</td><td class="r">3.0&times;</td><td class="r">36,700</td></tr>
-          <tr><td>Finca Cortesin</td><td>M&aacute;laga</td><td class="r">3,784</td><td class="r">~11,000</td><td class="r">2.9&times;</td><td class="r">26,000</td></tr>
-          <tr><td>La Zagaleta</td><td>M&aacute;laga</td><td class="r">3,784</td><td class="r">~9,000</td><td class="r">2.4&times;</td><td class="r">26,000</td></tr>
-          <tr><td>Costa Navarino</td><td>Kalamata</td><td class="r">2,461</td><td class="r">5,760</td><td class="r">2.3&times;</td><td class="r">22,000</td></tr>
-          <tr><td>Quinta do Lago</td><td>Faro</td><td class="r">3,870</td><td class="r">~8,000</td><td class="r">2.1&times;</td><td class="r">33,400</td></tr>
-          <tr><td>Argentario</td><td>Rome</td><td class="r">3,758</td><td class="r">~8,000</td><td class="r">2.1&times;</td><td class="r">43,800</td></tr>
-          <tr><td>Son Vida</td><td>Palma</td><td class="r">5,257</td><td class="r">~10,000</td><td class="r">1.9&times;</td><td class="r">38,200</td></tr>
-          <tr><td>Muda Reserve</td><td>Lisbon</td><td class="r">6,107</td><td class="r">~11,000</td><td class="r">1.8&times;</td><td class="r">48,800</td></tr>
-          <tr><td>Tegernsee estates</td><td>Munich</td><td class="r">7,855</td><td class="r">~12,500</td><td class="r">1.6&times;</td><td class="r">66,600</td></tr>
-          <tr><td>Sotogrande</td><td>M&aacute;laga</td><td class="r">3,784</td><td class="r">~6,000</td><td class="r">1.6&times;</td><td class="r">26,000</td></tr>
-          <tr><td>Terre Blanche</td><td>Nice</td><td class="r">5,216</td><td class="r">~7,700</td><td class="r">1.5&times;</td><td class="r">37,300</td></tr>
-          <tr><td>Ombria</td><td>Faro</td><td class="r">3,870</td><td class="r">4,375</td><td class="r">1.1&times;</td><td class="r">33,400</td></tr>
-          <tr class="me"><td><b>El Boalo</b></td><td>Madrid</td><td class="r">6,013</td><td class="r">3,400&ndash;5,500</td><td class="r">0.7&times;</td><td class="r">47,900</td></tr>
-        </tbody>
-      </table>
-      </div></div>
+      
+      
+    
+      <div class="ccard media wide"><h4 class="cardh">The category, most expensive first <span class="of">1 of 3</span></h4><div class="tw"><table><thead><tr><th>Retreat</th><th class="r">&euro;/m&sup2;</th><th>Nearest city</th><th class="r">City &euro;/m&sup2;</th><th class="r">Multiple</th><th>Operator</th></tr></thead><tbody><tr class="me"><td><b>El Boalo</b><br><span class="sub">Spain &middot; Sierra de Guadarrama &middot; Continental mountain &middot; 4 seasons</span></td><td class="r nw">3,400&ndash;5,500</td><td class="nw">Madrid 45 min</td><td class="r nw">6,013</td><td class="r nw">0.7&times;</td><td class="nw">BYLD</td></tr><tr><td><b>Reschio</b><br><span class="sub">Italy &middot; Umbria hills &middot; Continental &middot; 4 seasons</span></td><td class="r nw">~10&ndash;15k</td><td class="nw">Perugia 45 min &middot; Rome 3h</td><td class="r nw">1,221</td><td class="r nw">10.2&times;</td><td class="nw">Castello di Reschio</td></tr><tr><td><b>Amanzoe</b><br><span class="sub">Greece &middot; Porto Heli &middot; Mediterranean</span></td><td class="r nw">~15&ndash;25k</td><td class="nw">Athens 2h45</td><td class="r nw">2,580</td><td class="r nw">7.8&times;</td><td class="nw">Aman</td></tr><tr><td><b>One&amp;Only Aesthesis</b><br><span class="sub">Greece &middot; Athens Riviera &middot; Mediterranean coastal</span></td><td class="r nw">~12&ndash;20k</td><td class="nw">Athens 30 min</td><td class="r nw">2,580</td><td class="r nw">6.2&times;</td><td class="nw">One&amp;Only</td></tr><tr><td><b>Lefay</b><br><span class="sub">Italy &middot; Lake Garda &middot; Mild lake &middot; 4 seasons</span></td><td class="r nw">~8&ndash;12k</td><td class="nw">Verona 1h &middot; Milan 2h</td><td class="r nw">2,816</td><td class="r nw">3.6&times;</td><td class="nw">Lefay</td></tr><tr><td><b>The Ellinikon Riviera</b><br><span class="sub">Greece &middot; Athens Riviera (urban) &middot; Mediterranean coastal</span></td><td class="r nw">~7,630</td><td class="nw">Athens, in metro</td><td class="r nw">2,580</td><td class="r nw">3.0&times;</td><td class="nw">LAMDA (branded)</td></tr><tr><td><b>Rosewood Castiglion del Bosco</b><br><span class="sub">Italy &middot; Val d'Orcia &middot; Continental Med &middot; 4 seasons</span></td><td class="r nw">~10&ndash;18k</td><td class="nw">Florence 2h &middot; Rome 3h</td><td class="r nw">4,733</td><td class="r nw">3.0&times;</td><td class="nw">Rosewood</td></tr><tr><td><b>Finca Cortesin</b><br><span class="sub">Spain &middot; Casares &middot; Mediterranean</span></td><td class="r nw">~8&ndash;14k</td><td class="nw">M&aacute;laga 1h</td><td class="r nw">3,784</td><td class="r nw">2.9&times;</td><td class="nw">resort estate</td></tr></tbody></table></div></div>
+      <div class="ccard media wide"><h4 class="cardh">The category, continued <span class="of">2 of 3</span></h4><div class="tw"><table><thead><tr><th>Retreat</th><th class="r">&euro;/m&sup2;</th><th>Nearest city</th><th class="r">City &euro;/m&sup2;</th><th class="r">Multiple</th><th>Operator</th></tr></thead><tbody><tr><td><b>La Zagaleta</b><br><span class="sub">Spain &middot; Benah&aacute;vis &middot; Mediterranean</span></td><td class="r nw">~6&ndash;12k</td><td class="nw">M&aacute;laga 1h</td><td class="r nw">3,784</td><td class="r nw">2.4&times;</td><td class="nw">gated estate</td></tr><tr><td><b>Costa Navarino</b><br><span class="sub">Greece &middot; Messinia coast &middot; Mediterranean &middot; hot summers</span></td><td class="r nw">~5,760</td><td class="nw">Kalamata 40 min &middot; Athens 3.5h</td><td class="r nw">2,461</td><td class="r nw">2.3&times;</td><td class="nw">Mandarin Oriental / W</td></tr><tr><td><b>Quinta do Lago</b><br><span class="sub">Portugal &middot; Algarve &middot; Mild Mediterranean &middot; 300+ sun</span></td><td class="r nw">~6&ndash;10k</td><td class="nw">Faro 15 min &middot; Lisbon 2.5h</td><td class="r nw">3,870</td><td class="r nw">2.1&times;</td><td class="nw">resort estate</td></tr><tr><td><b>Argentario</b><br><span class="sub">Italy &middot; Tuscan Maremma &middot; Mediterranean</span></td><td class="r nw">~6&ndash;10k</td><td class="nw">Rome 2h</td><td class="r nw">3,758</td><td class="r nw">2.1&times;</td><td class="nw">independent</td></tr><tr><td><b>Son Vida</b><br><span class="sub">Spain &middot; Mallorca &middot; Mediterranean island</span></td><td class="r nw">~8&ndash;12k</td><td class="nw">Palma 15 min</td><td class="r nw">5,257</td><td class="r nw">1.9&times;</td><td class="nw">resort estate</td></tr><tr><td><b>Muda Reserve</b><br><span class="sub">Portugal &middot; Comporta/Alentejo &middot; Mild Mediterranean</span></td><td class="r nw">~8&ndash;14k</td><td class="nw">Lisbon 1h</td><td class="r nw">6,107</td><td class="r nw">1.8&times;</td><td class="nw">Vanguard</td></tr><tr><td><b>Tegernsee estates</b><br><span class="sub">Germany &middot; Bavaria &middot; Alpine foothills &middot; 4 seasons</span></td><td class="r nw">~10&ndash;15k</td><td class="nw">Munich 1h</td><td class="r nw">7,855</td><td class="r nw">1.6&times;</td><td class="nw">independent</td></tr><tr><td><b>Sotogrande</b><br><span class="sub">Spain &middot; C&aacute;diz &middot; Mediterranean</span></td><td class="r nw">~4&ndash;8k</td><td class="nw">Gibraltar 30 min &middot; M&aacute;laga 1h15</td><td class="r nw">3,784</td><td class="r nw">1.6&times;</td><td class="nw">gated estate</td></tr></tbody></table></div></div>
+      <div class="ccard media wide"><h4 class="cardh">The category, and where we sit <span class="of">3 of 3</span></h4><div class="tw"><table><thead><tr><th>Retreat</th><th class="r">&euro;/m&sup2;</th><th>Nearest city</th><th class="r">City &euro;/m&sup2;</th><th class="r">Multiple</th><th>Operator</th></tr></thead><tbody><tr><td><b>Terre Blanche</b><br><span class="sub">France &middot; Provence &middot; Mediterranean &middot; warm</span></td><td class="r nw">~7,700+</td><td class="nw">Nice/Cannes 45 min</td><td class="r nw">5,216</td><td class="r nw">1.5&times;</td><td class="nw">Terre Blanche</td></tr><tr><td><b>Ombria</b><br><span class="sub">Portugal &middot; inner Algarve &middot; Mild Mediterranean &middot; 300+ sun</span></td><td class="r nw">~4,375</td><td class="nw">Faro 25 min &middot; Lisbon 2.5h</td><td class="r nw">3,870</td><td class="r nw">1.1&times;</td><td class="nw">Viceroy</td></tr><tr><td><b>B&uuml;rgenstock</b><br><span class="sub">Switzerland &middot; Lake Lucerne &middot; Alpine lake</span></td><td class="r nw">~15&ndash;25k</td><td class="nw">Lucerne 30 min &middot; Zurich 1h</td><td class="r nw">&ndash;</td><td class="r nw">—</td><td class="nw">B&uuml;rgenstock</td></tr><tr><td><b>Costa Terra</b><br><span class="sub">Portugal &middot; Melides &middot; Mild Mediterranean</span></td><td class="r nw">from &euro;4M</td><td class="nw">Lisbon 1h15</td><td class="r nw">&ndash;</td><td class="r nw">—</td><td class="nw">Costa Terra</td></tr><tr><td><b>Kitzb&uuml;hel chalets</b><br><span class="sub">Austria &middot; Tyrol &middot; Alpine &middot; ski</span></td><td class="r nw">&gt;10k</td><td class="nw">Innsbruck 1h &middot; Munich 1h45</td><td class="r nw">&ndash;</td><td class="r nw">—</td><td class="nw">independent</td></tr><tr><td><b>Six Senses Crans-Montana</b><br><span class="sub">Switzerland &middot; Valais &middot; Alpine &middot; ski</span></td><td class="r nw">~9.5&ndash;21k</td><td class="nw">Geneva 2h</td><td class="r nw">&ndash;</td><td class="r nw">—</td><td class="nw">Six Senses</td></tr><tr><td><b>The Alpina Gstaad</b><br><span class="sub">Switzerland &middot; Bernese Oberland &middot; Alpine &middot; ski</span></td><td class="r nw">~25k+</td><td class="nw">Geneva 2h</td><td class="r nw">&ndash;</td><td class="r nw">—</td><td class="nw">The Alpina</td></tr><tr><td><b>Andermatt</b><br><span class="sub">Switzerland &middot; Uri Alps &middot; Alpine &middot; ski Nov&ndash;Apr</span></td><td class="r nw">~16&ndash;18k</td><td class="nw">Zurich 90 min</td><td class="r nw">&ndash;</td><td class="r nw">—</td><td class="nw">The Chedi / Elie Saab</td></tr></tbody></table></div></div>
     </div>
   </section>
 
