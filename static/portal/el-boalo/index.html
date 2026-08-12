@@ -363,6 +363,11 @@
     .ccards .ccard.split:has(.fig.fichawrap){align-content:start;overflow:auto;
       grid-template-rows:auto auto;padding-bottom:8px}
     .ccards .ccard.split .fig.tbl{padding:0 16px 16px;display:block}
+    .ccards .ccard.lead .fig.fichawrap{display:block;align-items:flex-start;overflow:visible;padding:0 18px 18px}
+    .ccards .ccard.split:has(.fig.tbl),
+    .ccards .ccard.split:has(.fig.fichawrap){justify-content:flex-start;align-items:start}
+    .ccards .ccard.split:has(.fig.tbl) > *,
+    .ccards .ccard.split:has(.fig.fichawrap) > *{align-self:start}
     .ccards .ccard.split .fig.tbl .tw{overflow:auto}
     .ccards .ccard.split .fig.tbl table{font-size:12px;min-width:520px}
     .ccards .ccard.lead .ficha{font-size:14px}
