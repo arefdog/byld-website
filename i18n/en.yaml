@@ -53,9 +53,9 @@ less_label:
   other: "Less"
 
 contact_heading:
-  other: "Tell us what you want to build"
+  other: "Tell us about your project"
 contact_lead:
-  other: "I want to build "
+  other: "I'm looking to develop "
 contact_suggestions:
   other: "a hospitality project|an event structure|a residence|something else"
 contact_name:
