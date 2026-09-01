@@ -11,12 +11,17 @@
     <div class="cf-chips"></div>
     <div class="cf-row">
       <input type="text" id="cf-name" placeholder="{{ i18n "contact_name" }}" autocomplete="name">
-      <input type="email" id="cf-email" placeholder="{{ i18n "contact_email" }}" autocomplete="email">
+      <input type="email" id="cf-email" placeholder="{{ i18n "contact_email" }}" autocomplete="email" required aria-required="true">
+    </div>
+    <div class="cf-row">
+      <input type="text" id="cf-company" placeholder="{{ i18n "contact_company" }}" autocomplete="organization">
+      <input type="tel" id="cf-phone" placeholder="{{ i18n "contact_phone" }}" autocomplete="tel">
     </div>
     <button type="button" class="btn btn-primary cf-send">{{ i18n "contact_send" }}</button>
     <p class="cf-status" role="status" aria-live="polite"
        data-sent="{{ i18n "contact_sent" }}"
        data-error="{{ i18n "contact_error" }}"
-       data-need="{{ i18n "contact_need_msg" }}"></p>
+       data-need="{{ i18n "contact_need_msg" }}"
+       data-needemail="{{ i18n "contact_need_email" }}"></p>
   </div>
 </div>

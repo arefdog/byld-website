@@ -61,9 +61,15 @@ contact_lead:
 contact_suggestions:
   other: "a hospitality project|an event structure|a residence|something else"
 contact_name:
-  other: "Name"
+  other: "Name (optional)"
+contact_company:
+  other: "Company (optional)"
+contact_phone:
+  other: "Phone (optional)"
 contact_email:
   other: "Email"
+contact_need_email:
+  other: "Add your email so we can reply with a price."
 contact_send:
   other: "Price it"
 contact_sent:

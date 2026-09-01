@@ -267,6 +267,8 @@
   var chipsBox = wrap.querySelector('.cf-chips');
   var nameEl = wrap.querySelector('#cf-name');
   var emailEl = wrap.querySelector('#cf-email');
+  var companyEl = wrap.querySelector('#cf-company');
+  var phoneEl = wrap.querySelector('#cf-phone');
   var status = wrap.querySelector('.cf-status');
   var btn = wrap.querySelector('.cf-send');
 
@@ -300,15 +302,17 @@
 
   btn.addEventListener('click', function () {
     var m = (msg.value || '').trim(), n = (nameEl.value || '').trim(), em = (emailEl.value || '').trim();
+    var co = (companyEl.value || '').trim(), ph = (phoneEl.value || '').trim();
     if (!m || m === LEAD.trim()) { status.textContent = status.dataset.need; msg.focus(); return; }
+    if (!em || !emailEl.checkValidity()) { status.textContent = status.dataset.needemail; emailEl.focus(); return; }
     if (endpoint) {
       btn.disabled = true;
-      fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ name: n, email: em, message: m, source: 'gobyld.com' }) })
-        .then(function () { status.textContent = status.dataset.sent; msg.value = ''; nameEl.value = ''; emailEl.value = ''; })
+      fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ name: n, email: em, company: co, phone: ph, message: m, source: 'gobyld.com' }) })
+        .then(function () { status.textContent = status.dataset.sent; msg.value = ''; nameEl.value = ''; emailEl.value = ''; companyEl.value = ''; phoneEl.value = ''; })
         .catch(function () { status.textContent = status.dataset.error; })
         .finally(function () { btn.disabled = false; });
     } else {
-      var body = m + (n ? '\n\nName: ' + n : '') + (em ? '\nEmail: ' + em : '');
+      var body = m + (n ? '\n\nName: ' + n : '') + (co ? '\nCompany: ' + co : '') + (ph ? '\nPhone: ' + ph : '') + '\nEmail: ' + em;
       window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Enquiry from gobyld.com') + '&body=' + encodeURIComponent(body);
       status.textContent = status.dataset.sent;
     }
