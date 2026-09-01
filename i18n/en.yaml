@@ -67,7 +67,7 @@ contact_company:
 contact_phone:
   other: "Phone"
 contact_email:
-  other: "Email"
+  other: "Email (required)"
 contact_optnote:
   other: "Only your email is required."
 contact_need_email:

@@ -9,15 +9,16 @@
     <label class="sr-only" for="cf-msg">{{ i18n "contact_heading" }}</label>
     <textarea class="cf-vision" id="cf-msg" rows="4" spellcheck="false"></textarea>
     <div class="cf-chips"></div>
-    <div class="cf-row">
-      <input type="text" id="cf-name" placeholder="{{ i18n "contact_name" }}" autocomplete="name">
-      <input type="email" id="cf-email" placeholder="{{ i18n "contact_email" }}" autocomplete="email" required aria-required="true">
+    <div class="cf-grid">
+      <div class="cf-col">
+        <input type="text" id="cf-name" placeholder="{{ i18n "contact_name" }}" autocomplete="name">
+        <input type="text" id="cf-company" placeholder="{{ i18n "contact_company" }}" autocomplete="organization">
+        <input type="tel" id="cf-phone" placeholder="{{ i18n "contact_phone" }}" autocomplete="tel">
+      </div>
+      <div class="cf-col cf-col-email">
+        <input type="email" id="cf-email" placeholder="{{ i18n "contact_email" }}" autocomplete="email" required aria-required="true">
+      </div>
     </div>
-    <div class="cf-row">
-      <input type="text" id="cf-company" placeholder="{{ i18n "contact_company" }}" autocomplete="organization">
-      <input type="tel" id="cf-phone" placeholder="{{ i18n "contact_phone" }}" autocomplete="tel">
-    </div>
-    <p class="cf-optnote">{{ i18n "contact_optnote" }}</p>
     <button type="button" class="btn btn-primary cf-send">{{ i18n "contact_send" }}</button>
     <p class="cf-status" role="status" aria-live="polite"
        data-sent="{{ i18n "contact_sent" }}"
