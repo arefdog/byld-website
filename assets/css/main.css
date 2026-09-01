@@ -704,6 +704,7 @@ main { display: block; }
 .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .cf-row input { font-family: var(--font-body); font-size: 15px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); width: 100%; }
 .cf-row input:focus { outline: none; border-color: var(--ink); }
+.cf-optnote { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
 .cf-send { width: 100%; margin-top: 12px; background: var(--ink); color: #fff; border: 1px solid var(--ink); }
 .cf-send:hover { background: #262626; color: #fff; border-color: #262626; }
 .cf-status { font-size: 13px; color: var(--muted); margin: 9px 0 0; min-height: 1.1em; }
