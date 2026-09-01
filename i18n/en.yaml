@@ -53,7 +53,9 @@ less_label:
   other: "Less"
 
 contact_heading:
-  other: "Tell us about your project"
+  other: "Price your project with BYLD"
+contact_help:
+  other: "Tell us what you're building, the rough size, the location, and your timeline. We'll come back with an indicative price."
 contact_lead:
   other: "I'm looking to develop "
 contact_suggestions:
@@ -63,10 +65,12 @@ contact_name:
 contact_email:
   other: "Email"
 contact_send:
-  other: "Send it to BYLD"
+  other: "Price it"
 contact_sent:
-  other: "Thanks — your message is on its way. We'll be in touch."
+  other: "Thanks, your details are on their way. We'll come back with an indicative price shortly."
 contact_error:
   other: "Something went wrong. Please email office@gobyld.com."
 contact_need_msg:
-  other: "Tell us what you'd like to build first."
+  other: "Add a few details about your project first."
+contact_prefer:
+  other: "Prefer email?"

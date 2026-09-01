@@ -5,6 +5,7 @@
      data-suggestions="{{ i18n "contact_suggestions" }}">
   <p class="eyebrow">{{ i18n "contact" }}</p>
   <h2>{{ i18n "contact_heading" }}</h2>
+  <p class="cf-help">{{ i18n "contact_help" }}</p>
   <div class="cf-card">
     <label class="sr-only" for="cf-msg">{{ i18n "contact_heading" }}</label>
     <textarea class="cf-vision" id="cf-msg" rows="4" spellcheck="false"></textarea>
@@ -19,4 +20,10 @@
        data-error="{{ i18n "contact_error" }}"
        data-need="{{ i18n "contact_need_msg" }}"></p>
   </div>
+  <p class="cf-details">
+    {{ i18n "contact_prefer" }}
+    <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>
+    <span class="cf-dot" aria-hidden="true">·</span>
+    <span class="cf-addr">{{ site.Params.address }}</span>
+  </p>
 </div>
